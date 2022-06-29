@@ -23,7 +23,7 @@ public class MedicineController {
     /**
      * Creator: NghiaNTT
      * Time: 29/02/2022
-     * @param id: medicineId
+     * @param id: String
      * @return MedicineDetailDto contain properties to show customers
      */
     @GetMapping("{id}")
@@ -37,10 +37,10 @@ public class MedicineController {
     /**
      * Creator: NghiaNTT
      * Time: 29/02/2022
-     * @param id: medicineId
+     * @param id: String
      * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
      */
-    @GetMapping("get5RelativeMedicinesOf/{id}")
+    @GetMapping("get-5-relative-medicines-type/{id}")
     public ResponseEntity<List<MedicineDetailDto>> get5RelativeMedicinesOf(@PathVariable("id") String id) {
         List<MedicineDetailDto> medicineDetailDto = iMedicineService.get5RelativeMedicinesOf(id);
         if (medicineDetailDto == null) {

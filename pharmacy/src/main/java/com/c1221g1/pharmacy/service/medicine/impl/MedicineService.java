@@ -13,14 +13,30 @@ public class MedicineService implements IMedicineService {
     @Autowired
     private IMedicineRepository iMedicineRepository;
 
-
+    /**
+     * Creator: NghiaNTT
+     * Time: 29/02/2022
+     * @param id: String
+     * @return MedicineDetailDto contain properties to show customers
+     */
     @Override
     public MedicineDetailDto getMedicineDetailDtoById(String id) {
         return iMedicineRepository.getMedicineDetailDtoById(id).orElse(null);
     }
 
+    /**
+     * Creator: NghiaNTT
+     * Time: 29/02/2022
+     * @param id: String
+     * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
+     */
     @Override
     public List<MedicineDetailDto> get5RelativeMedicinesOf(String id) {
-        return null;
+        Integer medicineTypeId = iMedicineRepository.findMedicineTypeById(id);
+        if (medicineTypeId == null) {
+            return null;
+        }
+        return iMedicineRepository.get5RelativeMedicinesOf(medicineTypeId);
     }
+
 }
