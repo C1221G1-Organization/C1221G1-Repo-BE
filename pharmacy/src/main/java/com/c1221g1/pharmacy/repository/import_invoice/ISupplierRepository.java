@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface ISupplierRepository extends JpaRepository<Supplier, String> {
 
@@ -38,7 +39,6 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
      * because later on we will need to go to the deleted providers
      * 16h 29/06/2022
      */
-
     @Transactional
     @Modifying
     @Query(value = "UPDATE supplier SET `flag` = 0 WHERE supplier_id = :id",
@@ -46,7 +46,7 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
     void deleteSupplierById(@Param("id") String id);
 
     /**
-     * lấy gái trị các trường
+     * get field values
      * supplier_name (supplier name )  supplier name
      * supplier_address supplier name )  supplier address
      * supplier_phone ( supplier name )  supplier phone )
@@ -59,10 +59,10 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
     @Modifying
     @Query(value = " insert into supplier (supplier_name, supplier_address,  supplier_phone, supplier_email, note) VALUE (:note, :supplier_address, :supplier_email, :supplier_name, :supplier_phone )",
             nativeQuery = true)
-    void saveSupplier(@Param("supplier_name") String supplier_name,
-                      @Param("supplier_address") String supplier_address,
-                      @Param("supplier_phone") String supplier_phone,
-                      @Param("supplier_email") String supplier_email,
+    void saveSupplier(@Param("supplier_name") String supplierName,
+                      @Param("supplier_address") String supplierAddress,
+                      @Param("supplier_phone") String supplierPhone,
+                      @Param("supplier_email") String supplierEmail,
                       @Param("note") String note
     );
 
@@ -78,9 +78,10 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
 
 
     /**
-     * lấy tất cả giá trị mà người dừng gữi xuống ( and id )
-     * set lại các trường  (supplier_name) (supplier_address) (supplier_email)(supplier_phone) (note)
+     * take all the value that the stop send down( and id )
+     * reset the fields  (supplier_name) (supplier_address) (supplier_email)(supplier_phone) (note)
      * ( The value that you putting send )
+     * 19h 29/06/2022
      */
     @Transactional
     @Modifying
@@ -92,10 +93,17 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
             "    note = :note " +
             "where supplier_id = :supplier_id",
             nativeQuery = true)
-    void updateSupplier(@Param("supplier_name") String supplier_name,
-                        @Param("supplier_address") String supplier_address,
-                        @Param("supplier_email") String supplier_email,
-                        @Param("supplier_phone") String supplier_phone,
+    void updateSupplier(@Param("supplier_name") String supplierName,
+                        @Param("supplier_address") String supplierAddress,
+                        @Param("supplier_email") String supplierEmail,
+                        @Param("supplier_phone") String supplierPhone,
                         @Param("note") String note,
-                        @Param("supplier_id") String supplier_id);
+                        @Param("supplier_id") String supplierId);
+
+
+    /**
+     * get all supplier   ( )
+     */
+    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where flag =1  ", nativeQuery = true)
+    List<Supplier> listSupplier();
 }

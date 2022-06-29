@@ -47,9 +47,14 @@ public class SupplierService implements ISupplierService {
         iSupplierRepository.deleteSupplierById(id);
     }
 
+
+    /**
+     * find all the providers for adding new tables
+     *
+     */
     @Override
     public List<Supplier> findAll() {
-        return null;
+        return iSupplierRepository.listSupplier();
     }
 
     @Override
