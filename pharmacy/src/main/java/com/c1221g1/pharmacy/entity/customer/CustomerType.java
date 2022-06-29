@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerType {
@@ -18,4 +18,28 @@ public class CustomerType {
     private String customerTypeName;
     @OneToMany(mappedBy = "customerType")
     private List<Customer> customerList;
+
+    public Integer getCustomerTypeId() {
+        return customerTypeId;
+    }
+
+    public void setCustomerTypeId(Integer customerTypeId) {
+        this.customerTypeId = customerTypeId;
+    }
+
+    public String getCustomerTypeName() {
+        return customerTypeName;
+    }
+
+    public void setCustomerTypeName(String customerTypeName) {
+        this.customerTypeName = customerTypeName;
+    }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
+    }
 }
