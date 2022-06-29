@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -20,7 +21,12 @@ import java.util.Optional;
 public class EmployeeController {
     @Autowired
     private IEmployeeService iEmployeeService;
-
+    /**
+     * this function use to get all page Employee
+     *
+     * @author GiangTB
+     * @Time 15:30 29/06/2022
+     */
     @GetMapping(value = "")
     public ResponseEntity<Page<Employee>> getAllEmployee(@RequestParam Optional<String> employeeId,
                                                          @RequestParam Optional<String> employeeName,
@@ -29,13 +35,13 @@ public class EmployeeController {
                                                          @RequestParam Optional<String> employeePhone,
                                                          @RequestParam(defaultValue = "0") Integer page,
                                                          @RequestParam(defaultValue = "5") Integer size,
-                                                         @RequestParam Optional<String> sort){
+                                                         @RequestParam(defaultValue = "employee_id") Optional<String> sort){
         String employeeIdVal= employeeId.orElse("");
         String employeeNameVal= employeeName.orElse("");
         String positionVal= position.orElse("");
         String employeeAddressVal= employeeAddress.orElse("");
         String employeePhoneVal= employeePhone.orElse("");
-        String sortBy= sort.orElse("");
+        String sortBy= sort.orElse("employee_id");
         Pageable pageable = PageRequest.of(page,size, Sort.by(sortBy));
         Page<Employee> employeePage =
                 this.iEmployeeService.getAllEmployee(employeeIdVal,
@@ -46,8 +52,29 @@ public class EmployeeController {
         return new ResponseEntity<>(employeePage,HttpStatus.OK);
     }
 
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 16:00 29/06/2022
+     */
+    @GetMapping(value = "/list")
+    public ResponseEntity<List<Employee>> getList(){
+        List<Employee> employeeList = this.iEmployeeService.getListEmployee();
+        if(employeeList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employeeList,HttpStatus.OK);
+    }
+
+    /**
+     * this function use to delete employee from page (not delete in database)
+     *
+     * @author GiangTB
+     * @Time 17:00 29/06/2022
+     */
     @PatchMapping(value = "/delete/{id}")
-    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable Integer id){
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable String id){
         Employee employee = this.iEmployeeService.findEmployeeById(id);
         if (employee == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

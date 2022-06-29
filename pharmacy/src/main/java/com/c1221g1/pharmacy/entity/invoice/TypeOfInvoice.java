@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.invoice;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class TypeOfInvoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer typeOfInvoiceId;
     private String typeOfInvoiceName;
+    @JsonBackReference
     @OneToMany(mappedBy = "typeOfInvoice")
     private List<Invoice> invoiceList;
 }

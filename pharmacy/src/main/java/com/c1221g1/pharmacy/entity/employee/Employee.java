@@ -35,10 +35,11 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
-    @JsonBackReference
+    @JsonBackReference(value = "employeeInvoiceList")
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
 

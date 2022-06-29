@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class Payment {
     private Integer paymentId;
     private Integer paymentDiscount;
     private Double paymentPrepayment;
+    @JsonBackReference
     @OneToMany(mappedBy = "payment")
     private List<ImportInvoice> importInvoiceList;
 }

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface IEmployeeRepository extends JpaRepository<Employee,String> {
     @Query(value="select employee_id,employee_address,employee_date_start,\n" +
@@ -33,12 +34,17 @@ public interface IEmployeeRepository extends JpaRepository<Employee,String> {
                                   String employeePhoneVal, Pageable pageable);
 
     @Query(value = "select employee_address,employee_phone,employee_name," +
-            "employee_id,employee_note,employee_image,employee_date_start\n" +
+            "employee_id,employee_note,employee_image,employee_date_start,username,position_id,flag\n" +
             "from employee where employee_id = :id",nativeQuery=true)
-    Employee findEmployeeById(Integer id);
+    Employee findEmployeeById(String id);
 
     @Transactional
     @Modifying
     @Query(value="UPDATE employee set flag = 0 where employee_id = :id ", nativeQuery=true)
-    void deleteEmployeeById(Integer id);
+    void deleteEmployeeById(String id);
+
+    @Query(value = "select employee_id, employee_date_start,employee_image," +
+            "employee_note,employee_name,employee_name,employee_phone," +
+            "employee_address,position_id,username,flag from employee",nativeQuery=true)
+    List<Employee> getListEmployee();
 }

@@ -4,6 +4,7 @@ import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -57,8 +58,10 @@ public class Medicine {
     @ManyToOne
     @JoinColumn (name = "medicine_conversion_unit_id",referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
+    @JsonBackReference
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
+    @JsonBackReference
     @OneToMany(mappedBy = "medicine")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
     @OneToMany(mappedBy = "medicine")

@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.cart;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,9 +28,11 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "discount_id", referencedColumnName = "discountId")
     private Discount discount;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "cart")
     private List<PaymentOnline> paymentOnlineList;
+    @JsonBackReference
+
     @OneToMany(mappedBy = "cart")
     private List<CartDetail> cartDetailList;
 }
