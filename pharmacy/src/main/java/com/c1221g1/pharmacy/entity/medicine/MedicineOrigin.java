@@ -11,11 +11,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicineConversionUnit {
+public class MedicineOrigin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer medicineConversionUnitId;
-    private String medicineConversionUnitName;
-    @OneToMany(mappedBy = "medicineConversionUnit")
+    private Integer medicineOriginId;
+    private String medicineOriginName;
+
+    @OneToMany(mappedBy = "medicineOrigin")
     private List<Medicine> medicineList;
 }
