@@ -1,17 +1,13 @@
 package com.c1221g1.pharmacy.dto.prescription;
 
-import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
-
-import java.util.List;
-
 public class PrescriptionDto {
     private String prescriptionId;
     private String prescriptionName;
     private String prescriptionSymptom;
-    private String prescriptionObject;
+    private String prescriptionTargetUser;
+    private String prescriptionNote;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-    private List<MedicinePrescription> medicinePrescriptionList;
 
     public PrescriptionDto() {
     }
@@ -40,12 +36,20 @@ public class PrescriptionDto {
         this.prescriptionSymptom = prescriptionSymptom;
     }
 
-    public String getPrescriptionObject() {
-        return prescriptionObject;
+    public String getPrescriptionTargetUser() {
+        return prescriptionTargetUser;
     }
 
-    public void setPrescriptionObject(String prescriptionObject) {
-        this.prescriptionObject = prescriptionObject;
+    public void setPrescriptionTargetUser(String prescriptionTargetUser) {
+        this.prescriptionTargetUser = prescriptionTargetUser;
+    }
+
+    public String getPrescriptionNote() {
+        return prescriptionNote;
+    }
+
+    public void setPrescriptionNote(String prescriptionNote) {
+        this.prescriptionNote = prescriptionNote;
     }
 
     public Integer getPrescriptionNumberOfDays() {
@@ -62,13 +66,5 @@ public class PrescriptionDto {
 
     public void setFlag(Boolean flag) {
         this.flag = flag;
-    }
-
-    public List<MedicinePrescription> getMedicinePrescriptionList() {
-        return medicinePrescriptionList;
-    }
-
-    public void setMedicinePrescriptionList(List<MedicinePrescription> medicinePrescriptionList) {
-        this.medicinePrescriptionList = medicinePrescriptionList;
     }
 }

@@ -8,4 +8,10 @@ public interface IPrescriptionService {
     Page<Prescription> findAll(String id, String name, String target, String symptom, Pageable pageable);
 
     void save(Prescription prescription);
+
+    Prescription findById(String id);
+
+    void deleteById(String id);
+
+    void edit(Prescription prescription);
 }

@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.prescription;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"medicinePrescriptionList"})
 public class Prescription {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -29,7 +31,7 @@ public class Prescription {
     private String prescriptionNote;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-    @JsonBackReference
+//    @JsonBackReference(value = "prescriptionList")
     @OneToMany(mappedBy = "prescription")
     private List<MedicinePrescription> medicinePrescriptionList;
 }

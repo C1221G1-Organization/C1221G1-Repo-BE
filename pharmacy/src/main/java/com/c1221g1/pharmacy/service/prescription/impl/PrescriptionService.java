@@ -21,6 +21,27 @@ public class PrescriptionService implements IPrescriptionService {
 
     @Override
     public void save(Prescription prescription) {
-        this.prescriptionRepository.createPrescription();
+        this.prescriptionRepository.save(prescription);
+    }
+
+    @Override
+    public Prescription findById(String id) {
+        return this.prescriptionRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteById(String id) {
+        this.prescriptionRepository.deletePrescriptionById(id);
+    }
+
+    @Override
+    public void edit(Prescription prescription) {
+        prescriptionRepository.editPrescription(
+                prescription.getPrescriptionName(),
+                prescription.getPrescriptionSymptom(),
+                prescription.getPrescriptionTargetUser(),
+                prescription.getPrescriptionNote(),
+                prescription.getPrescriptionNumberOfDays(),
+                prescription.getPrescriptionId() );
     }
 }

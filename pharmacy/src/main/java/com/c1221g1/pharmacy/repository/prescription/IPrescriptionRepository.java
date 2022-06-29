@@ -11,6 +11,11 @@ import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
 
 public interface IPrescriptionRepository extends JpaRepository<Prescription, String> {
+    /**
+     * HienTLD
+     * Câu lệnh sql danh sách toa thuốc và tìm kiếm
+     * 16:00 29/06/2022
+     */
     @Query(value = "select prescription.prescription_id, prescription.flag, prescription.prescription_name, prescription.prescription_target_user," +
             " prescription.prescription_symptom, prescription.prescription_number_of_days, prescription.prescription_note from prescription" +
             " where prescription.prescription_id like :id and prescription.prescription_name like :names" +
@@ -27,14 +32,48 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             @Param("symptom") String symptom,
             Pageable pageable);
 
-    @Transactional
-    @Modifying
-    @Query(value = "insert into prescription(prescription_id, flag, prescription_name, prescription_note, prescription_number_of_days, prescription_symptom, prescription_target_user)" +
-            " values (?,?,?,?,?,?,?); ", nativeQuery = true)
-    void createPrescription();
+//    /**
+//     * HienTLD
+//     * Câu lệnh sql thêm mới toa thuốc
+//     * 16:30 29/06/2022
+//     */
+//    @Transactional
+//    @Modifying
+//    @Query(value = "insert into prescription(prescription_id, flag, prescription_name, prescription_note, prescription_number_of_days, prescription_symptom, prescription_target_user)" +
+//            " values (?,?,?,?,?,?,?); ", nativeQuery = true)
+//    void createPrescription();
 
+    /**
+     * HienTLD
+     * Câu lệnh sql xoá toa thuốc theo cờ 'flag'
+     * 16:00 29/06/2022
+     */
     @Transactional
     @Modifying
-    @Query(value = "update prescription set flag = 0 where precsription_id = :id", nativeQuery = true)
+    @Query(value = "update prescription set `flag` = 0 where prescription_id = :id", nativeQuery = true)
     void deletePrescriptionById(@Param("id") String id);
+
+
+    /**
+     * HienTLD
+     * Sửa toa thuốc (xoá theo cờ 'flag')
+     * 20:14 29/06/2022
+     */
+    @Transactional
+    @Modifying
+    @Query(value = "update prescription" +
+            " set prescription_name = :prescription_name," +
+            " prescription_symptom = :prescription_symptom," +
+            " prescription_target_user = :prescription_target_user," +
+            " prescription_note = :prescription_note," +
+            " prescription_number_of_days = :prescription_number_of_days " +
+            "where prescription_id = :prescription_id",
+            nativeQuery = true)
+    void editPrescription(@Param("prescription_name") String name,
+                          @Param("prescription_symptom") String symptom,
+                          @Param("prescription_target_user") String targetUser,
+                          @Param("prescription_note") String note,
+                          @Param("prescription_number_of_days") Integer numberOfDays,
+                          @Param("prescription_id") String id);
+
 }

@@ -3,12 +3,14 @@ package com.c1221g1.pharmacy.controller;
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
+import org.omg.CosNaming.NamingContextPackage.NotEmpty;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -25,6 +27,11 @@ public class PrescriptionController {
     @Autowired
     private IPrescriptionService prescriptionService;
 
+    /**
+     * HienTLD
+     * Danh sách toa thuốc và tìm kiếm
+     * 16:00 29/06/2022
+     */
     @GetMapping("")
     public ResponseEntity<Page<Prescription>> getPagePrescription(@RequestParam Optional<String> id,
                                                                   @RequestParam Optional<String> names,
@@ -45,10 +52,16 @@ public class PrescriptionController {
         return new ResponseEntity<>(prescriptionPage, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<List<FieldError>> createBlog(@Validated @RequestBody PrescriptionDto prescriptionDto,
-                                                       BindingResult bindingResult){
-        if (bindingResult.hasFieldErrors()){
+    /**
+     * HienTLD
+     * Thêm mới toa thuốc
+     * 16:30 29/06/2022
+     */
+    @PostMapping(value = "/create")
+    @ResponseBody
+    public ResponseEntity<List<FieldError>> createPrescription(@Validated @RequestBody PrescriptionDto prescriptionDto,
+                                                               BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
 
@@ -60,4 +73,39 @@ public class PrescriptionController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    /**
+     * HienTLD
+     * Xoá toa thuốc (xoá theo cờ 'flag')
+     * 16:00 29/06/2022
+     */
+    @PatchMapping("/delete/{id}")
+    public ResponseEntity<Prescription> deletePrescription(@PathVariable("id") String id) {
+        try {
+            this.prescriptionService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    /**
+     * HienTLD
+     * Sửa toa thuốc (xoá theo cờ 'flag')
+     * 20:14 29/06/2022
+     */
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Prescription> updateCar(@RequestBody PrescriptionDto prescriptionDto,
+                                       @PathVariable("id") String id) {
+        prescriptionDto.setFlag(true);
+        Prescription prescription = new Prescription();
+        BeanUtils.copyProperties(prescriptionDto, prescription);
+        System.err.println(prescription);
+
+        prescriptionService.edit(prescription);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
