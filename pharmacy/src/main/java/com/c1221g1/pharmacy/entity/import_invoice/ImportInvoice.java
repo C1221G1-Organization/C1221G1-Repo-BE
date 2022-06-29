@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
 
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
