@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
+import com.c1221g1.pharmacy.dto.employee.Position;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import org.springframework.beans.BeanUtils;
@@ -16,9 +17,15 @@ import javax.validation.Valid;
 @CrossOrigin
 @RequestMapping(value = "api/manager-employee/employees")
 public class EmployeeController {
+
     @Autowired
     IEmployeeService iEmployeeService;
 
+    /*
+      Created by TamNA
+      Time: 5:50:00 29/06/2022
+      Function:  Create Employee
+ */
     @PostMapping(value = "/create")
     public ResponseEntity<Employee> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
                                                    BindingResult bindingResult) {
@@ -28,25 +35,32 @@ public class EmployeeController {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
         this.iEmployeeService.saveEmployee(employee);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
-
-    @PatchMapping(value = "/update/{id}")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee, @PathVariable String id) {
-        this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//
-//    @GetMapping(value = "/find/{id}")
-//    public ResponseEntity<Employee> findEmployeeById(@PathVariable String id) {
-//        Employee employee = this.iEmployeeService.findEmployeeById(id);
-//
-//        if (employee == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//
-//        return new ResponseEntity<>(employee, HttpStatus.OK);
-//    }
+    /*
+      Created by TamNA
+      Time: 9:50:00 29/06/2022
+      Function:  Update Employee
+ */
+    @PatchMapping(value = "/update/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable String id,
+                                                   @Valid @RequestBody EmployeeDto employeeDto,
+                                                   BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        employeeDto.setEmployeeId(String.valueOf(id));
+        Employee employee = new Employee();
+
+        BeanUtils.copyProperties(employeeDto, employee);
+
+
+        this.iEmployeeService.updateEmployee(employee);
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
+
 }

@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -35,14 +34,14 @@ public class Employee {
     @Column(columnDefinition = "BIT")
     private boolean flag;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
-    @JsonBackReference
+    @JsonBackReference(value = "employeeUsername")
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
+    @JsonBackReference(value = "employeeImportInvoiceList")
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
 }

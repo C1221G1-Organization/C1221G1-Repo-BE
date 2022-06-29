@@ -19,7 +19,11 @@ import java.util.List;
 public class PositionController {
     @Autowired
     IPositionService iPositionService;
-
+    /*
+      Created by TamNA
+      Time: 5:50:00 29/06/2022
+      Function:  Select Position
+ */
     @GetMapping(value = "/position")
     public ResponseEntity<List<Position>> getAllPosition() {
         List<Position> positions = this.iPositionService.findAll();
