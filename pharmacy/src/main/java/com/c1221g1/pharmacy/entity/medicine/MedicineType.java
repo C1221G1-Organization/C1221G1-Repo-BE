@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"medicineList"})
 public class MedicineType {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
