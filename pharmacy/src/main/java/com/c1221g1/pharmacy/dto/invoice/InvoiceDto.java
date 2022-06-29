@@ -14,11 +14,25 @@ public class InvoiceDto {
     private TypeOfInvoice typeOfInvoice;
     private String invoiceNote;
     private String invoiceCreatedDate;
+    /*
+    * Created by DaLQA
+    * Time: 4:12 PM 29/06/2022
+    * Function: create new property invoiceCreateTime
+    * */
+    private String invoiceCreateTime;
     private boolean flag;
     private List<InvoiceMedicine> invoiceMedicineList;
 
 
     public InvoiceDto() {
+    }
+
+    public String getInvoiceCreateTime() {
+        return invoiceCreateTime;
+    }
+
+    public void setInvoiceCreateTime(String invoiceCreateTime) {
+        this.invoiceCreateTime = invoiceCreateTime;
     }
 
     public String getInvoiceId() {

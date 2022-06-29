@@ -2,18 +2,13 @@ package com.c1221g1.pharmacy.entity.invoice;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Invoice {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -34,8 +29,89 @@ public class Invoice {
     @Column(columnDefinition = "LONGTEXT")
     private String invoiceNote;
     private String invoiceCreatedDate;
+    /*
+     * Created by DaLQA
+     * Time: 4:12 PM 29/06/2022
+     * Function: create new property invoiceCreateTime
+     * */
+    private String invoiceCreateTime;
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceMedicine> invoiceMedicineList;
+
+    public Invoice() {
+    }
+
+    public String getInvoiceCreateTime() {
+        return invoiceCreateTime;
+    }
+
+    public void setInvoiceCreateTime(String invoiceCreateTime) {
+        this.invoiceCreateTime = invoiceCreateTime;
+    }
+
+    public String getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(String invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public TypeOfInvoice getTypeOfInvoice() {
+        return typeOfInvoice;
+    }
+
+    public void setTypeOfInvoice(TypeOfInvoice typeOfInvoice) {
+        this.typeOfInvoice = typeOfInvoice;
+    }
+
+    public String getInvoiceNote() {
+        return invoiceNote;
+    }
+
+    public void setInvoiceNote(String invoiceNote) {
+        this.invoiceNote = invoiceNote;
+    }
+
+    public String getInvoiceCreatedDate() {
+        return invoiceCreatedDate;
+    }
+
+    public void setInvoiceCreatedDate(String invoiceCreatedDate) {
+        this.invoiceCreatedDate = invoiceCreatedDate;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public List<InvoiceMedicine> getInvoiceMedicineList() {
+        return invoiceMedicineList;
+    }
+
+    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
+        this.invoiceMedicineList = invoiceMedicineList;
+    }
 }
