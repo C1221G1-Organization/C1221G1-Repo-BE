@@ -11,16 +11,21 @@ public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository iCustomerRepository;
 
-
     @Override
-    public void createCustomer(Customer customer) {
-        this.iCustomerRepository.saveCustomer(customer.getCustomerName(), customer.getCustomerBirthday(),
-                customer.getCustomerGender(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerNote());
+    public Customer save(Customer customer) {
+        return this.iCustomerRepository.save(customer);
     }
 
     @Override
     public Customer findByCustomerId(String customerId) {
         return this.iCustomerRepository.findById(customerId).orElse(null);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        this.iCustomerRepository.updateCustomer(customer.getCustomerName(), customer.getCustomerAddress()
+                , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone(),
+                customer.getCustomerId());
     }
 
 }

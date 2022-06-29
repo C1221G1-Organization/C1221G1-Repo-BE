@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.customer;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,8 @@ public class CustomerType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerTypeId;
     private String customerTypeName;
-    @JsonBackReference
+    @JsonBackReference(value = "customerList")
     @OneToMany(mappedBy = "customerType")
+
     private List<Customer> customerList;
 }

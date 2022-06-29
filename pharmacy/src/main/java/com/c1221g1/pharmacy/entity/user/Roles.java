@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
     private String roleName;
+    @JsonBackReference(value = "userRoleList")
     @OneToMany(mappedBy = "roles")
     private List<UserRole> userRoleList;
 }

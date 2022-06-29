@@ -3,6 +3,7 @@ package com.c1221g1.pharmacy.entity.customer;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@JsonIgnoreProperties({"customerList"})
 public class Customer {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -32,15 +34,15 @@ public class Customer {
     private String customerNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-    @JsonBackReference
+    @JsonBackReference(value = "customerUsername")
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
-    private Users customerUsername ;
+    private Users customerUsername;
 
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
-
+    @JsonBackReference(value = "cartList")
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
 }
