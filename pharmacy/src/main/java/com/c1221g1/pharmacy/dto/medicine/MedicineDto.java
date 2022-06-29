@@ -4,10 +4,15 @@ import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
+import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
 import com.c1221g1.pharmacy.entity.medicine.MedicineType;
 import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
 
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 public class MedicineDto {
@@ -16,17 +21,22 @@ public class MedicineDto {
     private String medicineActiveIngredients;
     private Integer medicineQuantity;
     private Double medicineImportPrice;
-    private Double medicineWholesalePrice;
-    private Double medicineRetailPrice;
     private Double medicineDiscount;
     private Double medicineWholesaleProfit;
     private Double medicineRetailSaleProfit;
     private Double medicineTax;
+    private Double medicineConversionRate;
+    private String medicineManufacture;
+    private String medicineUsage;
+    private String medicineInstruction;
+    private String medicineAgeApproved;
+    private String medicineImage;
+    private String medicineDescription;
     private boolean flag;
+    private MedicineOrigin medicineOrigin;
     private MedicineType medicineType;
     private MedicineUnit medicineUnit;
     private MedicineConversionUnit medicineConversionUnit;
-    private List<MedicinePrescription> medicinePrescriptionList;
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
     private List<InvoiceMedicine> invoiceMedicineList;
     private List<CartDetail> cartDetailList;
@@ -74,22 +84,6 @@ public class MedicineDto {
         this.medicineImportPrice = medicineImportPrice;
     }
 
-    public Double getMedicineWholesalePrice() {
-        return medicineWholesalePrice;
-    }
-
-    public void setMedicineWholesalePrice(Double medicineWholesalePrice) {
-        this.medicineWholesalePrice = medicineWholesalePrice;
-    }
-
-    public Double getMedicineRetailPrice() {
-        return medicineRetailPrice;
-    }
-
-    public void setMedicineRetailPrice(Double medicineRetailPrice) {
-        this.medicineRetailPrice = medicineRetailPrice;
-    }
-
     public Double getMedicineDiscount() {
         return medicineDiscount;
     }
@@ -122,12 +116,76 @@ public class MedicineDto {
         this.medicineTax = medicineTax;
     }
 
+    public Double getMedicineConversionRate() {
+        return medicineConversionRate;
+    }
+
+    public void setMedicineConversionRate(Double medicineConversionRate) {
+        this.medicineConversionRate = medicineConversionRate;
+    }
+
+    public String getMedicineManufacture() {
+        return medicineManufacture;
+    }
+
+    public void setMedicineManufacture(String medicineManufacture) {
+        this.medicineManufacture = medicineManufacture;
+    }
+
+    public String getMedicineUsage() {
+        return medicineUsage;
+    }
+
+    public void setMedicineUsage(String medicineUsage) {
+        this.medicineUsage = medicineUsage;
+    }
+
+    public String getMedicineInstruction() {
+        return medicineInstruction;
+    }
+
+    public void setMedicineInstruction(String medicineInstruction) {
+        this.medicineInstruction = medicineInstruction;
+    }
+
+    public String getMedicineAgeApproved() {
+        return medicineAgeApproved;
+    }
+
+    public void setMedicineAgeApproved(String medicineAgeApproved) {
+        this.medicineAgeApproved = medicineAgeApproved;
+    }
+
+    public String getMedicineImage() {
+        return medicineImage;
+    }
+
+    public void setMedicineImage(String medicineImage) {
+        this.medicineImage = medicineImage;
+    }
+
+    public String getMedicineDescription() {
+        return medicineDescription;
+    }
+
+    public void setMedicineDescription(String medicineDescription) {
+        this.medicineDescription = medicineDescription;
+    }
+
     public boolean isFlag() {
         return flag;
     }
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    public MedicineOrigin getMedicineOrigin() {
+        return medicineOrigin;
+    }
+
+    public void setMedicineOrigin(MedicineOrigin medicineOrigin) {
+        this.medicineOrigin = medicineOrigin;
     }
 
     public MedicineType getMedicineType() {
@@ -152,14 +210,6 @@ public class MedicineDto {
 
     public void setMedicineConversionUnit(MedicineConversionUnit medicineConversionUnit) {
         this.medicineConversionUnit = medicineConversionUnit;
-    }
-
-    public List<MedicinePrescription> getMedicinePrescriptionList() {
-        return medicinePrescriptionList;
-    }
-
-    public void setMedicinePrescriptionList(List<MedicinePrescription> medicinePrescriptionList) {
-        this.medicinePrescriptionList = medicinePrescriptionList;
     }
 
     public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
