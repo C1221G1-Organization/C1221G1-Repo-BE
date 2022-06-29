@@ -2,9 +2,10 @@ package com.c1221g1.pharmacy.dto.cart;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-
-public class CartDetailDto {
+public class CartDetailDto implements Validator {
     private Integer cartDetailId;
     private Integer cartDetailQuantity;
     private Medicine medicine;
@@ -45,4 +46,14 @@ public class CartDetailDto {
         this.cart = cart;
     }
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        CartDetailDto cartDetailDto = (CartDetailDto) target;
+
+    }
 }

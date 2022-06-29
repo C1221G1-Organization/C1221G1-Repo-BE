@@ -3,6 +3,7 @@ package com.c1221g1.pharmacy.entity.cart;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -12,9 +13,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class PaymentOnline {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer paymentId;
-    private Float discount;
+    @Column(columnDefinition = "VARCHAR(20)")
+    @GeneratedValue(generator = "payment-id-generator")
+    @GenericGenerator(name = "payment-id-generator",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "HDO"),
+            strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
+    private String paymentId;
+    private Double discount;
     @JoinColumn(columnDefinition = "DATETIME")
     private String timeCreate;
     private String note;
