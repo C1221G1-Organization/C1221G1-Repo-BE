@@ -23,7 +23,7 @@ public class InvoiceService implements IInvoiceService {
 
     @Override
     public void delete(String id) {
-        iInvoiceRepository.deleteById(id);
+        iInvoiceRepository.deleteByFlag(id);
     }
 
     @Override

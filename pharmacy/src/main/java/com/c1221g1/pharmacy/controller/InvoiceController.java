@@ -11,13 +11,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("api/manager-sale/invoice")
 public class InvoiceController {
     @Autowired
     IInvoiceService iInvoiceService;
 
+    /**
+     * Create by TuanPA
+     * Function: get all invoices, search/sort invoices
+     */
     @GetMapping
     ResponseEntity<Page<Invoice>> getList(
                                     @RequestParam(defaultValue = "") String startDate,
@@ -43,6 +46,10 @@ public class InvoiceController {
         }
     }
 
+    /**
+     * Created by TuanPA
+     * Function: Delete invoice(set invoice flag 1->0)
+     */
     @PatchMapping("/delete/{id}")
     public ResponseEntity<Invoice> deleteInvoice(@PathVariable String id) {
         Invoice invoice = iInvoiceService.findById(id);
