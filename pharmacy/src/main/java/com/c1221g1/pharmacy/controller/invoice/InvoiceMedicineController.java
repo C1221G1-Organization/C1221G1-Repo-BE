@@ -2,9 +2,14 @@ package com.c1221g1.pharmacy.controller.invoice;
 
 import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
 import com.c1221g1.pharmacy.dto.invoice.InvoiceMedicineDto;
+import com.c1221g1.pharmacy.dto.invoice.MedicineInvoiceDto;
+import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
+import com.c1221g1.pharmacy.service.customer.ICustomerService;
+import com.c1221g1.pharmacy.service.employee.IEmployeeService;
+import com.c1221g1.pharmacy.service.invoice.IInvoiceMedicineService;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
 import com.c1221g1.pharmacy.service.invoice.ITypeOfInvoiceService;
 import org.springframework.beans.BeanUtils;
@@ -15,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -29,9 +35,19 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/manager-sale/invoiceMedicines")
 public class InvoiceMedicineController {
     @Autowired
-    IInvoiceService iInvoiceService;
+    private IInvoiceMedicineService iInvoiceMedicineService;
     @Autowired
-    ITypeOfInvoiceService iTypeOfInvoiceService;
+    private IInvoiceService iInvoiceService;
+    @Autowired
+    private ITypeOfInvoiceService iTypeOfInvoiceService;
+    @Autowired
+    private ICustomerService iCustomerService;
+
+    /*
+     * Created by DaLQA
+     * Time: 7:30 PM 29/06/2022
+     * Function: function createRetailInvoice
+     * */
     @PostMapping("/createRetail")
     public ResponseEntity<Map<String, String>> createRetailInvoice(@Validated @RequestBody InvoiceMedicineDto invoiceMedicineDto,
                                                                    BindingResult bindingResult) {
@@ -41,6 +57,24 @@ public class InvoiceMedicineController {
             Map<String, String> errorMap = bindingResult.getFieldErrors()
                     .stream().collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(invoiceMedicineDto.getCustomerDto(), customer);
+        if (invoiceMedicineDto.getCustomerDto().getCustomerId() == null) {
+            customer = iCustomerService.getRetailCustomer();
+        }
+        TypeOfInvoice typeOfInvoice = iTypeOfInvoiceService.getTypeOfInvoiceRetail();
+        Invoice invoice = new Invoice();
+        invoice.setCustomer(customer);
+        invoice.setInvoiceNote(invoiceMedicineDto.getInvoiceNote());
+        invoice.setTypeOfInvoice(typeOfInvoice);
+        iInvoiceService.saveInvoice(invoice);
+        Invoice newInvoice = iInvoiceService.getNewInvoice();
+        List<MedicineInvoiceDto> list = invoiceMedicineDto.getMedicines();
+        for (int i = 0; i < list.size(); i++) {
+            Integer quantity = list.get(i).getQuantity();
+            Integer medicineInvoiceId = list.get(i).getId();
+            iInvoiceMedicineService.createInvoiceMedicine(quantity, medicineInvoiceId, newInvoice.getInvoiceId());
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

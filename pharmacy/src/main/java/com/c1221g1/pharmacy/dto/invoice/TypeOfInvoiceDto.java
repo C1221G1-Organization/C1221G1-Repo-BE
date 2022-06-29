@@ -1,7 +1,6 @@
 package com.c1221g1.pharmacy.dto.invoice;
 
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
-
 import java.util.List;
 
 public class TypeOfInvoiceDto {
