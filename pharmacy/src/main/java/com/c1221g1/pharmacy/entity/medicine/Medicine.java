@@ -1,9 +1,11 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
+import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -21,12 +24,11 @@ public class Medicine {
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")
     @GenericGenerator(name = "prod-generator",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "TH"),
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "T"),
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String medicineId;
     private String medicineName;
     private String medicineActiveIngredients;
-    private Integer medicineQuantity;
     private Double medicineImportPrice;
     private Double medicineDiscount;
     private Double medicineWholesaleProfit;
@@ -65,4 +67,8 @@ public class Medicine {
     private List<InvoiceMedicine> invoiceMedicineList;
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
+
+    @OneToMany(mappedBy = "medicine")
+    @JsonBackReference
+    private Set<MedicineStorage> medicineStorageSet;
 }
