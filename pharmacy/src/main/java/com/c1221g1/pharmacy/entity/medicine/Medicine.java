@@ -21,12 +21,11 @@ public class Medicine {
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")
     @GenericGenerator(name = "prod-generator",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "TH"),
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "T"),
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String medicineId;
     private String medicineName;
     private String medicineActiveIngredients;
-    private Integer medicineQuantity;
     private Double medicineImportPrice;
     private Double medicineDiscount;
     private Double medicineWholesaleProfit;
