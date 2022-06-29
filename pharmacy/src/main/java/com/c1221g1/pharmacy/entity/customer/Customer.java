@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.entity.customer;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,7 +32,7 @@ public class Customer {
     private String customerNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
     private Users customerUsername ;

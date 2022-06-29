@@ -10,6 +10,7 @@ public class CustomerDto {
     private String customerId;
     private String customerName;
     private String customerBirthday;
+    private Integer customerGender;
     private String customerAddress;
     private String customerPhone;
     private String customerNote;
@@ -20,6 +21,14 @@ public class CustomerDto {
 
 
     public CustomerDto() {
+    }
+
+    public Integer getCustomerGender() {
+        return customerGender;
+    }
+
+    public void setCustomerGender(Integer customerGender) {
+        this.customerGender = customerGender;
     }
 
     public String getCustomerId() {
