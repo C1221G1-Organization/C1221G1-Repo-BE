@@ -11,6 +11,13 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface IEmployeeRepository extends JpaRepository<Employee,String> {
+
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 15:30 29/06/2022
+     */
     @Query(value="select employee_id,employee_address,employee_date_start,\n" +
             "       employee_image,employee_name,employee_note,\n" +
             "       employee_phone,position_id,username,flag\n" +
@@ -33,16 +40,36 @@ public interface IEmployeeRepository extends JpaRepository<Employee,String> {
                                   String positionVal, String employeeAddressVal,
                                   String employeePhoneVal, Pageable pageable);
 
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 17:00 29/06/2022
+     */
     @Query(value = "select employee_address,employee_phone,employee_name," +
             "employee_id,employee_note,employee_image,employee_date_start,username,position_id,flag\n" +
             "from employee where employee_id = :id",nativeQuery=true)
     Employee findEmployeeById(String id);
 
+
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 17:00 29/06/2022
+     */
     @Transactional
     @Modifying
     @Query(value="UPDATE employee set flag = 0 where employee_id = :id ", nativeQuery=true)
     void deleteEmployeeById(String id);
 
+
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 16:30 29/06/2022
+     */
     @Query(value = "select employee_id, employee_date_start,employee_image," +
             "employee_note,employee_name,employee_name,employee_phone," +
             "employee_address,position_id,username,flag from employee",nativeQuery=true)

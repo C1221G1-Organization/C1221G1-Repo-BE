@@ -17,7 +17,12 @@ import java.util.List;
 public class PositionController {
     @Autowired
     private IPositionService iPositionService;
-
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 16:30 29/06/2022
+     */
     @GetMapping(value = "")
     public ResponseEntity<List<Position>> getAllPosition(){
         List<Position> positionList = this.iPositionService.getAllPosition();
