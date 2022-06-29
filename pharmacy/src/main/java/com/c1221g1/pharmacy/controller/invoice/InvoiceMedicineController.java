@@ -1,14 +1,11 @@
 package com.c1221g1.pharmacy.controller.invoice;
 
-import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
 import com.c1221g1.pharmacy.dto.invoice.InvoiceMedicineDto;
 import com.c1221g1.pharmacy.dto.invoice.MedicineInvoiceDto;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
-import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
 import com.c1221g1.pharmacy.service.customer.ICustomerService;
-import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceMedicineService;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
 import com.c1221g1.pharmacy.service.invoice.ITypeOfInvoiceService;
@@ -56,7 +53,7 @@ public class InvoiceMedicineController {
             System.out.println(bindingResult.getFieldError());
             Map<String, String> errorMap = bindingResult.getFieldErrors()
                     .stream().collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Customer customer = new Customer();
         BeanUtils.copyProperties(invoiceMedicineDto.getCustomerDto(), customer);
@@ -78,4 +75,21 @@ public class InvoiceMedicineController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    /*
+     * Created by DaLQA
+     * Time: 00:50 PM 30/06/2022
+     * Function: function updateQuantityMedicine
+     * */
+//    @PatchMapping("/updateQuantityMedicine")
+//    public ResponseEntity<Map<String,String>> updateQuantityMedicine (@Validated @RequestBody InvoiceMedicineDto invoiceMedicineDto,
+//                                                                      BindingResult bindingResult){
+//        String errorQuantity = "";
+//        if (bindingResult.hasErrors()) {
+//            System.out.println(bindingResult.getFieldError());
+//            Map<String, String> errorMap = bindingResult.getFieldErrors()
+//                    .stream().collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
 }

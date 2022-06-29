@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.service.invoice;
 
-import com.c1221g1.pharmacy.dto.invoice.MedicineInvoiceDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
-
-import java.util.List;
 
 public interface IInvoiceService {
     /*
@@ -18,6 +15,4 @@ public interface IInvoiceService {
      * Function: function getNewInvoice
      * */
     Invoice getNewInvoice();
-
-
 }

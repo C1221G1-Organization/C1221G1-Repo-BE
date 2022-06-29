@@ -10,6 +10,6 @@ public interface ITypeOfInvoiceRepository extends JpaRepository<TypeOfInvoice,In
      * Time: 7:30 PM 29/06/2022
      * Function: function getTypeOfInvoiceRetail
      * */
-    @Query(value = "select * from type_of_invoice where type_of_invoice_id = 1;",nativeQuery = true)
+    @Query(value = "select type_of_invoice_id, type_of_invoice_name from type_of_invoice  where type_of_invoice_id = 1;",nativeQuery = true)
     TypeOfInvoice getTypeOfInvoiceRetail();
 }
