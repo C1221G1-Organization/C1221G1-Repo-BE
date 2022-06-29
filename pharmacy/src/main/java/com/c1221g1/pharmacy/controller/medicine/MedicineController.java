@@ -29,26 +29,56 @@ public class MedicineController {
     @Autowired
     private IMedicineConversionUnitService medicineConversionUnitService;
 
-//    @ModelAttribute("medicineOriginList")
-//    public List<MedicineOrigin> getMedicineOriginList() {
-//        return this.medicineOriginService.findAll();
-//    }
-//
-//    @ModelAttribute("medicineTypeList")
-//    public List<MedicineType> getMedicineTypeList() {
-//        return this.medicineTypeService.findAll();
-//    }
-//
-//    @ModelAttribute("medicineUnitList")
-//    public List<MedicineUnit> getMedicineUnitList() {
-//        return this.medicineUnitService.findAll();
-//    }
-//
-//    @ModelAttribute("medicineConversionUnitList")
-//    public List<MedicineConversionUnit> getMedicineConversionUnitList() {
-//        return this.medicineConversionUnitService.findAll();
-//    }
+    /**
+     * this function use to push medicineOriginList to modelAttribute
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
+     */
+    @ModelAttribute("medicineOriginList")
+    public List<MedicineOrigin> getMedicineOriginList() {
+        return this.medicineOriginService.findAll();
+    }
 
+    /**
+     * this function use to push medicineTypeList to modelAttribute
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
+     */
+    @ModelAttribute("medicineTypeList")
+    public List<MedicineType> getMedicineTypeList() {
+        return this.medicineTypeService.findAll();
+    }
+
+    /**
+     * this function use to push medicineUnitList to modelAttribute
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
+     */
+    @ModelAttribute("medicineUnitList")
+    public List<MedicineUnit> getMedicineUnitList() {
+        return this.medicineUnitService.findAll();
+    }
+
+    /**
+     * this function use to push medicineConversionUnitList to modelAttribute
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
+     */
+    @ModelAttribute("medicineConversionUnitList")
+    public List<MedicineConversionUnit> getMedicineConversionUnitList() {
+        return this.medicineConversionUnitService.findAll();
+    }
+
+    /**
+     * this function use to create new medicine
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
+     */
     @PostMapping("")
     public ResponseEntity<List<FieldError>> createNewMedicine(@Valid @RequestBody MedicineDto medicineDto,
                                                               BindingResult bindingResult) {
@@ -70,6 +100,40 @@ public class MedicineController {
         medicine.setMedicineConversionUnit(medicineConversionUnit);
         BeanUtils.copyProperties(medicineDto, medicine);
         this.medicineService.createMedicine(medicine);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * this function use to edit exist medicine
+     *
+     * @author LongNH
+     * @Time 20:01 29/06/2022
+     */
+    @PutMapping("{id}")
+    public ResponseEntity<List<FieldError>> updateMedicine(@PathVariable("id") String id,
+                                                           @Valid @RequestBody MedicineDto medicineDto,
+                                                           BindingResult bindingResult) {
+        Medicine existMedicine = this.medicineService.findById(id).orElse(null);
+        if (existMedicine == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        MedicineType medicineType = new MedicineType();
+        MedicineOrigin medicineOrigin = new MedicineOrigin();
+        MedicineUnit medicineUnit = new MedicineUnit();
+        MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineType.setMedicineTypeId(medicineDto.getMedicineType().getMedicineTypeId());
+        medicineOrigin.setMedicineOriginId(medicineDto.getMedicineOrigin().getMedicineOriginId());
+        medicineUnit.setMedicineUnitId(medicineDto.getMedicineUnit().getMedicineUnitId());
+        medicineConversionUnit.setMedicineConversionUnitId(medicineDto.getMedicineConversionUnit().getMedicineConversionUnitId());
+        existMedicine.setMedicineType(medicineType);
+        existMedicine.setMedicineOrigin(medicineOrigin);
+        existMedicine.setMedicineUnit(medicineUnit);
+        existMedicine.setMedicineConversionUnit(medicineConversionUnit);
+        BeanUtils.copyProperties(medicineDto, existMedicine);
+        this.medicineService.updateMedicine(existMedicine);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -6,38 +6,42 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MedicineService implements IMedicineService {
     @Autowired
     private IMedicineRepository medicineRepository;
 
+    /**
+     * this function use to create new medicine
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
+     */
     @Override
     public void createMedicine(Medicine medicine) {
-        String medicineId = medicine.getMedicineId();
-        String medicineName = medicine.getMedicineName();
-        String medicineActiveIngredients = medicine.getMedicineActiveIngredients();
-        Double medicineImportPrice = medicine.getMedicineImportPrice();
-        Double medicineDiscount = medicine.getMedicineDiscount();
-        Double medicineWholesaleProfit = medicine.getMedicineWholesaleProfit();
-        Double medicineRetailSaleProfit = medicine.getMedicineRetailSaleProfit();
-        Double medicineTax = medicine.getMedicineTax();
-        Double medicineConversionRate = medicine.getMedicineConversionRate();
-        String medicineManufacture = medicine.getMedicineManufacture();
-        String medicineUsage = medicine.getMedicineUsage();
-        String medicineInstruction = medicine.getMedicineInstruction();
-        String medicineAgeApproved = medicine.getMedicineAgeApproved();
-        String medicineImage = medicine.getMedicineImage();
-        String medicineDescription = medicine.getMedicineDescription();
-        Integer medicineOriginId = medicine.getMedicineOrigin().getMedicineOriginId();
-        String medicineTypeId = medicine.getMedicineType().getMedicineTypeId();
-        Integer medicineUnitId = medicine.getMedicineUnit().getMedicineUnitId();
-        Integer medicineConversionUnitId = medicine.getMedicineConversionUnit().getMedicineConversionUnitId();
-        this.medicineRepository.createMedicine
-                (
-                        medicineId, medicineName, medicineActiveIngredients, medicineImportPrice, medicineDiscount,
-                        medicineWholesaleProfit, medicineRetailSaleProfit, medicineTax, medicineConversionRate,
-                        medicineManufacture, medicineUsage, medicineInstruction, medicineAgeApproved, medicineImage,
-                        medicineDescription, true, medicineOriginId, medicineTypeId, medicineUnitId, medicineConversionUnitId
-                );
+        medicine.setFlag(true);
+        this.medicineRepository.save(medicine);
+    }
+    /**
+     * this function use to find medicine in db and return medicine
+     *
+     * @author LongNH
+     * @Time 20:20 29/06/2022
+     */
+    @Override
+    public Optional<Medicine> findById(String id) {
+        return this.medicineRepository.findMedicineById(id);
+    }
+    /**
+     * this function use to create exist medicine
+     *
+     * @author LongNH
+     * @Time 20:10 29/06/2022
+     */
+    @Override
+    public void updateMedicine(Medicine existMedicine) {
+        this.medicineRepository.updateMedicine(existMedicine);
     }
 }
