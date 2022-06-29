@@ -19,20 +19,28 @@ public class SupplierService implements ISupplierService {
 
     @Override
     public void save(Supplier supplier) {
-
+        supplier.setFlag(true);
+        iSupplierRepository.save(supplier);
 
     }
 
     @Override
     public Supplier findById(String id) {
-        return null;
+        return iSupplierRepository.findByIdSupplier(id);
     }
 
 
     @Override
     public void update(Supplier supplier) {
-
+        iSupplierRepository.updateSupplier(
+                supplier.getSupplierName(),
+                supplier.getSupplierAddress(),
+                supplier.getSupplierEmail(),
+                supplier.getSupplierPhone(),
+                supplier.getNote(),
+                supplier.getSupplierId() );
     }
+
 
     @Override
     public void removeSupplierById(String id) {

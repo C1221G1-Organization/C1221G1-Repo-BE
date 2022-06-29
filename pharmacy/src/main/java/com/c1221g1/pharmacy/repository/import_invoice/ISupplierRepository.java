@@ -12,7 +12,15 @@ import javax.transaction.Transactional;
 
 public interface ISupplierRepository extends JpaRepository<Supplier, String> {
 
-
+    /**
+     * get all the information in the db of the vendors table provided that the 'flag' = 1
+     * ( 1 is exists in the list ) ( 0 is hidden from the list )
+     * ( searchId ( vendor id )
+     * searchName ( Provider name)
+     * searchAddress (provider address)
+     * searchPhone (provider phone number)    search for 4 fields named as follows)
+     * 16h 29/06/2022
+     */
     @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where ( supplier_id like :searchId and supplier_name like :searchName and supplier_address like :searchAddress and supplier_phone like :searchPhone ) and `flag` = 1  ",
             countQuery = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where ( supplier_id like :searchId and supplier_name like :searchName and supplier_address like :searchAddress and supplier_phone like :searchPhone ) and `flag` = 1  ",
             nativeQuery = true)
@@ -23,13 +31,30 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
             @Param("searchPhone") String searchPhone,
             Pageable pageable);
 
+    /**
+     * edit status 'flag ' 0
+     * ( we will hide it from the list page)
+     * <p>
+     * because later on we will need to go to the deleted providers
+     * 16h 29/06/2022
+     */
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE supplier SET flag = 0 WHERE supplier_id = :id", nativeQuery = true)
+    @Query(value = "UPDATE supplier SET `flag` = 0 WHERE supplier_id = :id",
+            nativeQuery = true)
     void deleteSupplierById(@Param("id") String id);
 
-
+    /**
+     * lấy gái trị các trường
+     * supplier_name (supplier name )  supplier name
+     * supplier_address supplier name )  supplier address
+     * supplier_phone ( supplier name )  supplier phone )
+     * supplier_email ( email  supplier)
+     * note
+     * save  in database
+     * 16h 29/06/2022
+     */
     @Transactional
     @Modifying
     @Query(value = " insert into supplier (supplier_name, supplier_address,  supplier_phone, supplier_email, note) VALUE (:note, :supplier_address, :supplier_email, :supplier_name, :supplier_phone )",
@@ -40,10 +65,37 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
                       @Param("supplier_email") String supplier_email,
                       @Param("note") String note
     );
-//
-//    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where supplier_id :supplierId",
-//            nativeQuery = true)
-//    Supplier findById(@Param("supplierId") String supplierId);
-//
 
+
+    /**
+     * get for 1 supplier whose id is the value the user entered
+     * (  Serve for detail screen, edit supplier information  )
+     * 16h 29/06/2022
+     */
+    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where supplier_id = :supplierId",
+            nativeQuery = true)
+    Supplier findByIdSupplier(@Param("supplierId") String supplierId);
+
+
+    /**
+     * lấy tất cả giá trị mà người dừng gữi xuống ( and id )
+     * set lại các trường  (supplier_name) (supplier_address) (supplier_email)(supplier_phone) (note)
+     * ( The value that you putting send )
+     */
+    @Transactional
+    @Modifying
+    @Query(value = "update supplier \n" +
+            "set supplier_name= :supplier_name,\n" +
+            "    supplier_address = :supplier_address,\n" +
+            "    supplier_email = :supplier_email,\n" +
+            "    supplier_phone= :supplier_phone,\n" +
+            "    note = :note " +
+            "where supplier_id = :supplier_id",
+            nativeQuery = true)
+    void updateSupplier(@Param("supplier_name") String supplier_name,
+                        @Param("supplier_address") String supplier_address,
+                        @Param("supplier_email") String supplier_email,
+                        @Param("supplier_phone") String supplier_phone,
+                        @Param("note") String note,
+                        @Param("supplier_id") String supplier_id);
 }
