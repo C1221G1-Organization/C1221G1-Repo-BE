@@ -48,14 +48,7 @@ public class SupplierService implements ISupplierService {
     }
 
 
-    /**
-     * find all the providers for adding new tables
-     *
-     */
-    @Override
-    public List<Supplier> findAll() {
-        return iSupplierRepository.listSupplier();
-    }
+
 
     @Override
     public Page<Supplier> findAll(String searchId,

@@ -101,9 +101,4 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
                         @Param("supplier_id") String supplierId);
 
 
-    /**
-     * get all supplier   ( )
-     */
-    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where flag =1  ", nativeQuery = true)
-    List<Supplier> listSupplier();
 }
