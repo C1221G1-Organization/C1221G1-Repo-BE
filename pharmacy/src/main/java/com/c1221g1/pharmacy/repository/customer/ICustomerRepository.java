@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ICustomerRepository extends JpaRepository<Customer, String> {
     /**
      * Create by TruongNQ
-     * Time : 20:05 29/06/2022
-     * Function update customer
+     * Time : 23:56 29/06/2022
+     * Function update customer and customer_type
      */
     @Transactional
     @Modifying
     @Query(value = "update customer set customer_name = :customer_name,customer_address = :customer_address,customer_birthday = :customer_birthday" +
-            ",customer_gender = :customer_gender,customer_note = :customer_note,customer_phone = :customer_phone where customer_id = :customer_id",
+            ",customer_gender = :customer_gender,customer_note = :customer_note,customer_phone = :customer_phone,customer_type_id = :customer_type_id where customer_id = :customer_id",
     nativeQuery = true)
 
     void updateCustomer(@Param("customer_name")String customer_name ,
@@ -25,7 +25,8 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_birthday")String customer_birthday ,
                         @Param("customer_gender")Integer customer_gender ,
                         @Param("customer_note")String customer_note ,
-                        @Param("customer_phone")String customer_phone ,
+                        @Param("customer_phone")String customer_phone,
+                        @Param("customer_type_id")Integer customer_type_id,
                         @Param("customer_id")String customer_id );
 
 

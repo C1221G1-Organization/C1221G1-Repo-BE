@@ -25,7 +25,7 @@ public class CustomerService implements ICustomerService {
     public void updateCustomer(Customer customer) {
         this.iCustomerRepository.updateCustomer(customer.getCustomerName(), customer.getCustomerAddress()
                 , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone(),
-                customer.getCustomerId());
+                customer.getCustomerType().getCustomerTypeId(),customer.getCustomerId());
     }
 
 }
