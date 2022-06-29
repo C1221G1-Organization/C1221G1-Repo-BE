@@ -17,9 +17,14 @@ public class ImportInvoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer importInvoiceId;
     private Integer importSystemCode;
-    private Integer accountingVoucherNumber;
+//    private Integer accountingVoucherNumber;
     @Column(columnDefinition = "DATE")
     private String importInvoiceDate;
+    private String importInvoiceHour;
+    // thêm
+    private Double paymentPrepayment;
+    private Double total;
+
     @Column(columnDefinition = "BIT")
     private boolean flag;
 
