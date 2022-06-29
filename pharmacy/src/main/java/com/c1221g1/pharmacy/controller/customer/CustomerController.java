@@ -22,6 +22,13 @@ public class CustomerController {
     @Autowired
     private ICustomerService iCustomerService;
 
+    /**
+     * create by TinBQ
+     * time: 29/06/2022
+     * This method to get data from table customer have paging, searching and sorting follow field "customerId",
+     *"customerName", "customerAddress", "customerPhone", "customerType"
+     */
+
     @GetMapping("")
     public ResponseEntity<Page<Customer>> getSearchAndSortCustomer(
             @RequestParam Optional<String> customerId,
@@ -46,9 +53,20 @@ public class CustomerController {
         return new ResponseEntity<>(customerPage, HttpStatus.OK);
     }
 
-//    @PathParam("/{id}")
-//    public ResponseEntity<?> deleteMedicine(@PathVariable("id") String id) {
-//        return null;
-//    }
+    /**
+     * create by TinBQ
+     * time: 29/06/2022
+     * This method to set field flag in Database from 1 to 0
+     */
+
+    @PatchMapping("delete-customer/{customer_id}")
+    public ResponseEntity<Customer> deleteMedicine(@PathVariable("customer_id") String id) {
+        try {
+            this.iCustomerService.deleteCustomer(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }

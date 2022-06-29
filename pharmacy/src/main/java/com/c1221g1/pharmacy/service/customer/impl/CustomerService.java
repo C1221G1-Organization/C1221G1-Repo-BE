@@ -19,8 +19,8 @@ public class CustomerService implements ICustomerService {
         return iCustomerRepository.getAllSearchAndSortCustomer("%" + customerId + "%", "%" + customerType + "%", "%" + customerName + "%", "%" + customerAddress + "%", "%" + customerPhone + "%", pageable);
     }
 
-//    @Override
-//    public void deleteCustomer(String id) {
-//        iCustomerRepository.deleteCustomer(id);
-//    }
+    @Override
+    public void deleteCustomer(String id) {
+        iCustomerRepository.deleteCustomer(id);
+    }
 }

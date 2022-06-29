@@ -12,6 +12,6 @@ public interface ICustomerService {
                                    String customerPhone,
                                    String customerType);
 
-//    void deleteCustomer(String id);
+    void deleteCustomer(String id);
 
 }
