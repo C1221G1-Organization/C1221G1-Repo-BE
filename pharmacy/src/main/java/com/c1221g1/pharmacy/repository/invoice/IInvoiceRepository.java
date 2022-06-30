@@ -16,13 +16,14 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
      * @return invoice page
      */
     @Query(value = "select invoice.invoice_id,customer_id,employee_id,invoice_created_date,invoice_note, " +
-            "       sum(invoice_medicine.invoice_medicine_quantity * medicine.medicine_conversion_rate * medicine.medicine_retail_sale_profit * medicine.medicine_import_price) " +
+            "       sum((medicine.medicine_retail_sale_profit + 1) * medicine.medicine_import_price)" +
+            " * invoice_medicine.invoice_medicine_quantity as invoice_total_money " +
             "from medicine join invoice_medicine on medicine.medicine_id = invoice_medicine.medicine_id " +
             "join invoice on invoice_medicine.invoice_id = invoice.invoice_id " +
-            "group by medicine.medicine_id" +
-            "having :startDate < invoice_created_date < :endDate "+
+            "where :startDate < invoice_created_date < :endDate "+
             "and :startTime < invoice_created_time < :endTime "+
-            "and typeOfInvoiceId = :typeOfInvoiceId", nativeQuery = true)
+            "and typeOfInvoiceId = :typeOfInvoiceId" +
+            "group by medicine.medicine_id", nativeQuery = true)
     Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
 
     /**
@@ -31,12 +32,13 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
      * @return invoice page
      */
     @Query(value = "select invoice.invoice_id,customer_id,employee_id,invoice_created_date,invoice_note, " +
-            "       sum(invoice_medicine.invoice_medicine_quantity * medicine.medicine_conversion_rate * medicine.medicine_retail_sale_profit * medicine.medicine_import_price) " +
+            "      sum((medicine.medicine_retail_sale_profit + 1) * medicine.medicine_import_price)" +
+            " * invoice_medicine.invoice_medicine_quantity as invoice_total_money " +
             "from medicine join invoice_medicine on medicine.medicine_id = invoice_medicine.medicine_id " +
             "join invoice on invoice_medicine.invoice_id = invoice.invoice_id " +
-            "group by medicine.medicine_id" +
-            "having :startDate < invoice_created_date < :endDate "+
-            "and :startTime < invoice_created_time < :endTime ", nativeQuery = true)
+            "where :startDate < invoice_created_date < :endDate "+
+            "and :startTime < invoice_created_time < :endTime "+
+            "group by medicine.medicine_id", nativeQuery = true)
     Page<Invoice> findAllWithoutInvoiceTypeArg(String startDate, String endDate, String startTime, String endTime, Pageable pageable);
 
     /**
