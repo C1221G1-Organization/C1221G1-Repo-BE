@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface IMedicineService {
     void createMedicine(Medicine medicine);
 
-    Optional<Medicine> findById(String id);
+    Optional<Medicine> findMedicineById(String id);
 
     void updateMedicine(Medicine existMedicine);
 }

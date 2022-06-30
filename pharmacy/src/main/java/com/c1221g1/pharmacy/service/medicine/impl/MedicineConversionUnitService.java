@@ -15,7 +15,7 @@ public class MedicineConversionUnitService implements IMedicineConversionUnitSer
      * @Time 15:30 29/06/2022
      */
     @Override
-    public List<MedicineConversionUnit> findAll() {
+    public List<MedicineConversionUnit> getAll() {
         return null;
     }
 }

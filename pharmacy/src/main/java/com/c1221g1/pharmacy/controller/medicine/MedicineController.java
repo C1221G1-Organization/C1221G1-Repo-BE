@@ -30,47 +30,47 @@ public class MedicineController {
     private IMedicineConversionUnitService medicineConversionUnitService;
 
     /**
-     * this function use to push medicineOriginList to modelAttribute
+     * this function use to create medicineOriginList to modelAttribute
      *
      * @author LongNH
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineOriginList")
     public List<MedicineOrigin> getMedicineOriginList() {
-        return this.medicineOriginService.findAll();
+        return this.medicineOriginService.getAll();
     }
 
     /**
-     * this function use to push medicineTypeList to modelAttribute
+     * this function use to create medicineTypeList to modelAttribute
      *
      * @author LongNH
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineTypeList")
     public List<MedicineType> getMedicineTypeList() {
-        return this.medicineTypeService.findAll();
+        return this.medicineTypeService.getAll();
     }
 
     /**
-     * this function use to push medicineUnitList to modelAttribute
+     * this function use to create medicineUnitList to modelAttribute
      *
      * @author LongNH
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineUnitList")
     public List<MedicineUnit> getMedicineUnitList() {
-        return this.medicineUnitService.findAll();
+        return this.medicineUnitService.getAll();
     }
 
     /**
-     * this function use to push medicineConversionUnitList to modelAttribute
+     * this function use to create medicineConversionUnitList to modelAttribute
      *
      * @author LongNH
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineConversionUnitList")
     public List<MedicineConversionUnit> getMedicineConversionUnitList() {
-        return this.medicineConversionUnitService.findAll();
+        return this.medicineConversionUnitService.getAll();
     }
 
     /**
@@ -113,7 +113,7 @@ public class MedicineController {
     public ResponseEntity<List<FieldError>> updateMedicine(@PathVariable("id") String id,
                                                            @Valid @RequestBody MedicineDto medicineDto,
                                                            BindingResult bindingResult) {
-        Medicine existMedicine = this.medicineService.findById(id).orElse(null);
+        Medicine existMedicine = this.medicineService.findMedicineById(id).orElse(null);
         System.out.println(existMedicine);
         if (existMedicine == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

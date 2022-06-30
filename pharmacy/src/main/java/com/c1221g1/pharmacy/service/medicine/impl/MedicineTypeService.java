@@ -15,7 +15,7 @@ public class MedicineTypeService implements IMedicineTypeService {
      * @Time 15:30 29/06/2022
      */
     @Override
-    public List<MedicineType> findAll() {
+    public List<MedicineType> getAll() {
         return null;
     }
 }

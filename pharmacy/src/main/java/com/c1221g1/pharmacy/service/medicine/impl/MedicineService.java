@@ -31,7 +31,7 @@ public class MedicineService implements IMedicineService {
      * @Time 20:20 29/06/2022
      */
     @Override
-    public Optional<Medicine> findById(String id) {
+    public Optional<Medicine> findMedicineById(String id) {
         return this.medicineRepository.findMedicineById(id);
     }
     /**

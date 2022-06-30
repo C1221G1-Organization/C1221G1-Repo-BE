@@ -15,7 +15,7 @@ public class MedicineOriginService implements IMedicineOriginService {
      * @Time 15:30 29/06/2022
      */
     @Override
-    public List<MedicineOrigin> findAll() {
+    public List<MedicineOrigin> getAll() {
         return null;
     }
 }
