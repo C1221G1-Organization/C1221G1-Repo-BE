@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.medicine;
 
 import com.c1221g1.pharmacy.dto.import_invoice.SupplierDto;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;

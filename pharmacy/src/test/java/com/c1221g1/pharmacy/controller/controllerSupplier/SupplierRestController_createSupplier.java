@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.controllerSupplier;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
