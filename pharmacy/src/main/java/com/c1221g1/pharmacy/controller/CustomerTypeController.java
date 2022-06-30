@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @CrossOrigin
+@RequestMapping("/api/customerType")
 @RestController
 public class CustomerTypeController {
     @Autowired
     private ICustomerTypeService iCustomerTypeService;
-
-    @GetMapping(value = "/customerType")
+    /**
+     * Create by TruongNQ
+     * Time : 23:58 29/06/2022
+     * Function to use get all list customer type
+     */
+    @GetMapping(value = "/list")
     public ResponseEntity<List<CustomerType>> getCustomerType() {
         List<CustomerType> customerTypes = this.iCustomerTypeService.findAllCustomerType();
         if (customerTypes == null) {

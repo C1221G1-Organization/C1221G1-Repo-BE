@@ -40,7 +40,7 @@ public class CustomerController {
     /**
      * Create by TruongNQ
      * Time : 20:21 29/06/2022
-     * Get customer by id
+     * Function get customer by id
      */
     @GetMapping(value = "/findByCustomerId")
     public ResponseEntity<Customer> findCustomerById(@RequestParam String customerId) {
