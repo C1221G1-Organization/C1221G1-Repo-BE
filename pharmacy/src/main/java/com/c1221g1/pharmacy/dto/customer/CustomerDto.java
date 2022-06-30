@@ -16,7 +16,6 @@ public class CustomerDto {
     private String customerName;
     private String customerBirthday;
     @NotNull(message = "Name may not be null")
-    @NotEmpty(message = "Name may not be empty")
     private Integer customerGender;
     private String customerAddress;
 

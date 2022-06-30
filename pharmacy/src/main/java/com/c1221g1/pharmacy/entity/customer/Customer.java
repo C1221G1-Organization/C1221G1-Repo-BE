@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,7 @@ public class Customer {
     private String customerName;
     @Column(columnDefinition = "DATE")
     private String customerBirthday;
+    @NotNull
     private Integer customerGender;
     private String customerAddress;
     private String customerPhone;
