@@ -19,7 +19,14 @@ public class Users {
     private String password;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-    @OneToMany(mappedBy = "users")
+    /**
+     * Created by HuuNQ
+     * Time 12:00 30/06/2022
+     * Function: this provider use for some one login by social
+     */
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
+    @OneToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private List<UserRole> userRoleList;
 
     @OneToOne(mappedBy = "customerUsername")

@@ -2,9 +2,19 @@ package com.c1221g1.pharmacy.repository.user;
 
 import com.c1221g1.pharmacy.entity.user.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface IUserRoleRepository extends JpaRepository<UserRole,Integer> {
+    /**
+     * Created by HuuNQ
+     * Time 12:00 30/06/2022
+     * Function: use to insert user role to table user_role in database
+     */
     @Query(value="insert into user_role(username,role)values (:email,:i)",nativeQuery=true)
-    void saveUserRole(String email, int i);
+    @Transactional
+    @Modifying
+    void saveUserRole(@Param("email") String email,@Param("i") int i);
 }
