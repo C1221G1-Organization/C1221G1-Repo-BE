@@ -140,7 +140,7 @@ public class PaymentOnlineController_getPaymentOnline {
     /**
      * Created by: KhoaPV
      * Date created: 30/6/2022
-     * function: test case find paymentOnline with customerName valid but have no result.
+     * function: test case find paymentOnline with customerName valid paymentOnlineId valid. Have 1 item response.
      *
      * @throws Exception
      */
