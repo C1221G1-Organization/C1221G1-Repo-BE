@@ -5,6 +5,7 @@ import com.c1221g1.pharmacy.dto.employee.PositionDto;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
+import com.c1221g1.pharmacy.service.employee.IPositionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ public class EmployeeController {
 
     @Autowired
     IEmployeeService iEmployeeService;
+    @Autowired
+    IPositionService iPositionService;
+
 
     /*
       Created by TamNA
