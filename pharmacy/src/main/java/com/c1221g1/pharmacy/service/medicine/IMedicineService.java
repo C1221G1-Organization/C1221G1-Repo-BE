@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IMedicineService {
 
-    MedicineDetailDto getMedicineDetailDtoById(String id);
+    MedicineDetailDto getMedicineDetailDtoById(String medicineId);
 
-    List<MedicineDetailDto> get5RelativeMedicinesOf(String id);
+    List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId);
 }

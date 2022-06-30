@@ -14,29 +14,30 @@ public class MedicineService implements IMedicineService {
     private IMedicineRepository iMedicineRepository;
 
     /**
-     * Creator: NghiaNTT
-     * Time: 29/02/2022
-     * @param id: String
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
      * @return MedicineDetailDto contain properties to show customers
      */
     @Override
-    public MedicineDetailDto getMedicineDetailDtoById(String id) {
-        return iMedicineRepository.getMedicineDetailDtoById(id).orElse(null);
+    public MedicineDetailDto getMedicineDetailDtoById(String medicineId) {
+        return iMedicineRepository.getMedicineDetailDtoById(medicineId)
+            .orElse(null);
     }
 
     /**
-     * Creator: NghiaNTT
-     * Time: 29/02/2022
-     * @param id: String
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
      * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
      */
     @Override
-    public List<MedicineDetailDto> get5RelativeMedicinesOf(String id) {
-        Integer medicineTypeId = iMedicineRepository.findMedicineTypeById(id);
+    public List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId) {
+        Integer medicineTypeId = iMedicineRepository.findMedicineTypeById(medicineId);
         if (medicineTypeId == null) {
             return null;
         }
-        return iMedicineRepository.get5RelativeMedicinesOf(medicineTypeId);
+        return iMedicineRepository.get5RelativeMedicinesOf(medicineId, medicineTypeId);
     }
 
 }
