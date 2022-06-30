@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.medicine;
 
 import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
