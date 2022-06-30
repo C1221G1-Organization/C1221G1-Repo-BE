@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
+import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
@@ -28,7 +29,6 @@ public class Medicine {
     private String medicineId;
     private String medicineName;
     private String medicineActiveIngredients;
-    private Integer medicineQuantity;
     private Double medicineImportPrice;
     private Double medicineDiscount;
     private Double medicineWholesaleProfit;
@@ -48,26 +48,29 @@ public class Medicine {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "medicine_origin_id",referencedColumnName = "medicineOriginId")
+    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId")
     private MedicineOrigin medicineOrigin;
     @ManyToOne
-    @JoinColumn(name = "medicine_type_id",referencedColumnName = "medicineTypeId")
+    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId")
     private MedicineType medicineType;
     @ManyToOne
-    @JoinColumn (name = "medicine_unit_id",referencedColumnName = "medicineUnitId")
+    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId")
     private MedicineUnit medicineUnit;
     @ManyToOne
-    @JoinColumn (name = "medicine_conversion_unit_id",referencedColumnName = "medicineConversionUnitId")
+    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
+    @JsonBackReference(value = "medicinePrescriptionList")
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
+    @JsonBackReference(value = "importInvoiceMedicineList")
     @OneToMany(mappedBy = "medicine")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
+    @JsonBackReference(value = "invoiceMedicineList")
     @OneToMany(mappedBy = "medicine")
     private List<InvoiceMedicine> invoiceMedicineList;
+    @JsonBackReference(value = "cartDetailList")
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
-
     @OneToMany(mappedBy = "medicine")
     @JsonBackReference(value = "medicineStorageSet")
     private Set<MedicineStorage> medicineStorageSet;

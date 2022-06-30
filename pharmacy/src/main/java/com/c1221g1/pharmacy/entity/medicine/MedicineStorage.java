@@ -20,4 +20,6 @@ public class MedicineStorage {
     private Long medicineQuantity;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
 }
+
