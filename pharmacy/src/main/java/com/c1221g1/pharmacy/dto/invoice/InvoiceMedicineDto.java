@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.dto.invoice;
 
 import com.c1221g1.pharmacy.dto.customer.CustomerDto;
+import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import javax.validation.Valid;
@@ -47,6 +48,13 @@ public class InvoiceMedicineDto {
     /*
      * Created by DaLQA
      * Time: 7:30 PM 29/06/2022
+     * Function: create property customerDto for InvoiceMedicineDto
+     * */
+    @Valid
+    private EmployeeDto employeeDto;
+    /*
+     * Created by DaLQA
+     * Time: 7:30 PM 29/06/2022
      * Function: create property medicines for InvoiceMedicineDto
      * */
     private List<MedicineInvoiceDto> medicines;
@@ -65,6 +73,13 @@ public class InvoiceMedicineDto {
         this.invoiceTotalMoney = invoiceTotalMoney;
     }
 
+    public EmployeeDto getEmployeeDto() {
+        return employeeDto;
+    }
+
+    public void setEmployeeDto(EmployeeDto employeeDto) {
+        this.employeeDto = employeeDto;
+    }
 
     public void setInvoiceNote(String invoiceNote) {
         this.invoiceNote = invoiceNote;

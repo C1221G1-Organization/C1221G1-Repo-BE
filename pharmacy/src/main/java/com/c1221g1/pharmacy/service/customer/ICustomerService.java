@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.service.customer;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
+import com.c1221g1.pharmacy.entity.employee.Employee;
 
 public interface ICustomerService {
     /*
@@ -9,4 +10,5 @@ public interface ICustomerService {
      * Function: function getRetailCustomer
      * */
     Customer getRetailCustomer();
+
 }
