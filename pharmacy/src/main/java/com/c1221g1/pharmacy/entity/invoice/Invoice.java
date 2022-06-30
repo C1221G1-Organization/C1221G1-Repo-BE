@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.entity.invoice;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,8 +35,10 @@ public class Invoice {
     private String invoiceNote;
     private String invoiceCreateTime;
     private String invoiceCreatedDate;
+    private Double invoiceTotalMoney;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+    @JsonBackReference(value = "invoiceMedicineList")
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceMedicine> invoiceMedicineList;
 
@@ -109,5 +112,13 @@ public class Invoice {
 
     public void setInvoiceCreateTime(String invoiceCreateTime) {
         this.invoiceCreateTime = invoiceCreateTime;
+    }
+
+    public Double getInvoiceTotalMoney() {
+        return invoiceTotalMoney;
+    }
+
+    public void setInvoiceTotalMoney(Double invoiceTotalMoney) {
+        this.invoiceTotalMoney = invoiceTotalMoney;
     }
 }
