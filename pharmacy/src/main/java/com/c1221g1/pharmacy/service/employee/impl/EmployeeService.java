@@ -14,7 +14,12 @@ import java.util.List;
 public class EmployeeService implements IEmployeeService {
     @Autowired
     IEmployeeRepository iEmployeeRepository;
-
+    /**
+     * this function use to get all page Employee
+     *
+     * @author GiangTB
+     * @Time 15:30 29/06/2022
+     */
     @Override
     public Page<Employee> getAllEmployee(String employeeIdVal, String employeeNameVal,
                                          String positionVal, String employeeAddressVal, String employeePhoneVal, Pageable pageable) {
@@ -27,7 +32,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     /**
-     * this function use to get all list Employee
+     * this function use to find Employee by id
      *
      * @author GiangTB
      * @Time 17:00 29/06/2022
@@ -38,7 +43,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     /**
-     * this function use to get all list Employee
+     * this function use to delete employee from page (not delete database)
      *
      * @author GiangTB
      * @Time 17:00 29/06/2022

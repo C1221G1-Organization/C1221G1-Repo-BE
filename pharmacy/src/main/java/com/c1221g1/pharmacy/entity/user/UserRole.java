@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

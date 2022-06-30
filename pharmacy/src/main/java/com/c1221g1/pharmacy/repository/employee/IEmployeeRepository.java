@@ -13,7 +13,7 @@ import java.util.List;
 public interface IEmployeeRepository extends JpaRepository<Employee,String> {
 
     /**
-     * this function use to get all list Employee
+     * this function use to get all page Employee
      *
      * @author GiangTB
      * @Time 15:30 29/06/2022

@@ -17,7 +17,7 @@ public class CustomerType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerTypeId;
     private String customerTypeName;
-    @JsonBackReference
+    @JsonBackReference(value = "customerList")
     @OneToMany(mappedBy = "customerType")
     private List<Customer> customerList;
 }

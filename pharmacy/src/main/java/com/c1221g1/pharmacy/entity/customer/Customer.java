@@ -40,7 +40,7 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
-    @JsonBackReference
+    @JsonBackReference(value = "cartList")
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
 }

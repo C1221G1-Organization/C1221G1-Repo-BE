@@ -13,6 +13,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -35,102 +38,12 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
-    @JsonBackReference
+//    @JsonBackReference(value = "employeeUsername")
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
-    @JsonBackReference(value = "employeeInvoiceList")
+    @JsonBackReference(value = "importInvoiceList")
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
 
-    public Employee() {
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public String getEmployeeImage() {
-        return employeeImage;
-    }
-
-    public void setEmployeeImage(String employeeImage) {
-        this.employeeImage = employeeImage;
-    }
-
-    public String getEmployeeAddress() {
-        return employeeAddress;
-    }
-
-    public void setEmployeeAddress(String employeeAddress) {
-        this.employeeAddress = employeeAddress;
-    }
-
-    public String getEmployeePhone() {
-        return employeePhone;
-    }
-
-    public void setEmployeePhone(String employeePhone) {
-        this.employeePhone = employeePhone;
-    }
-
-    public String getEmployeeDateStart() {
-        return employeeDateStart;
-    }
-
-    public void setEmployeeDateStart(String employeeDateStart) {
-        this.employeeDateStart = employeeDateStart;
-    }
-
-    public String getEmployeeNote() {
-        return employeeNote;
-    }
-
-    public void setEmployeeNote(String employeeNote) {
-        this.employeeNote = employeeNote;
-    }
-
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public Users getEmployeeUsername() {
-        return employeeUsername;
-    }
-
-    public void setEmployeeUsername(Users employeeUsername) {
-        this.employeeUsername = employeeUsername;
-    }
-
-    public List<ImportInvoice> getImportInvoiceList() {
-        return importInvoiceList;
-    }
-
-    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
-        this.importInvoiceList = importInvoiceList;
-    }
 }

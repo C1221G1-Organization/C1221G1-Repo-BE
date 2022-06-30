@@ -13,13 +13,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties
+
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
     private String roleName;
-    @JsonBackReference
+    @JsonBackReference(value = "userRoleList")
     @OneToMany(mappedBy = "roles")
     private List<UserRole> userRoleList;
 }
