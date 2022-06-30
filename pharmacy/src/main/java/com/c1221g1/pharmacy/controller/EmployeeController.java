@@ -1,8 +1,9 @@
 package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.Position;
+import com.c1221g1.pharmacy.dto.employee.PositionDto;
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,12 +52,14 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        employeeDto.setEmployeeId(String.valueOf(id));
+
+
         Employee employee = new Employee();
+        Position position = new Position();
 
         BeanUtils.copyProperties(employeeDto, employee);
-
-
+//        BeanUtils.copyProperties(employeeDto.getPositionDto(), position);
+//
         this.iEmployeeService.updateEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
 

@@ -37,7 +37,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
-    @JsonBackReference(value = "employeeUsername")
+
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
