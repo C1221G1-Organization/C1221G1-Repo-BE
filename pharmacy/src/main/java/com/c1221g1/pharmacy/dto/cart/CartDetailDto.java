@@ -6,20 +6,12 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class CartDetailDto implements Validator {
-    private Integer cartDetailId;
+//    private Integer cartDetailId;
     private Integer cartDetailQuantity;
     private Medicine medicine;
     private Cart cart;
 
     public CartDetailDto() {
-    }
-
-    public Integer getCartDetailId() {
-        return cartDetailId;
-    }
-
-    public void setCartDetailId(Integer cartDetailId) {
-        this.cartDetailId = cartDetailId;
     }
 
     public Integer getCartDetailQuantity() {

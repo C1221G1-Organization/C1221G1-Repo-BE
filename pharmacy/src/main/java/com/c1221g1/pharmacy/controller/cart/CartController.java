@@ -2,7 +2,10 @@ package com.c1221g1.pharmacy.controller.cart;
 
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
 import com.c1221g1.pharmacy.entity.cart.Cart;
+import com.c1221g1.pharmacy.entity.cart.CartDetail;
+import com.c1221g1.pharmacy.service.cart.ICartDetailService;
 import com.c1221g1.pharmacy.service.cart.ICartService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,22 +24,29 @@ import java.util.Map;
 public class CartController {
     @Autowired
     private ICartService iCartService;
+    @Autowired
+    private ICartDetailService iCartDetailService;
 
     /**
      * Created by: KhoaPV
-     * Date created: 28/6/2022
-     * function: Update item, item quantity in cart
+     * Date created: 29/6/2022
+     * function: Update item in cart by customer id, item quantity in cart
      * if cart null: create new cart
      *
-     * @param customer
-     * @param medicine
-     * @param quantity
+     * @param cartDetailDto
+     * @param bindingResult
      * @return
      */
-    @PatchMapping("/update")
-    public ResponseEntity<?> updateItem(@Validated @RequestBody CartDetailDto cartDetailDto, BindingResult bindingResult) {
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateItem(@PathVariable String id,
+                                        @Validated @RequestBody CartDetailDto cartDetailDto,
+                                        BindingResult bindingResult) {
+        Cart cart = this.iCartService.findCartByCustomerId(id);
+        if (cart == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         new CartDetailDto().validate(cartDetailDto, bindingResult);
-        this.iCartService.checkExistOfLinksObject(cartDetailDto, bindingResult);
+        this.iCartDetailService.checkExistOfLinksObject(cartDetailDto, bindingResult);
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             bindingResult.getAllErrors().forEach((error) -> {
@@ -46,19 +56,42 @@ public class CartController {
             });
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
-
-        Cart cart = this.iCartService.findCartByCustomerId(customer.getCustomerId());
-        if (cart == null) {
-            cart.setCustomer(customer);
-            this.iCartService.save(cart);
-        } else {
-
-        }
+        CartDetail cartDetail = new CartDetail();
+        BeanUtils.copyProperties(cartDetailDto, cartDetail);
+        this.iCartDetailService.updateItemCartDetail(cartDetail);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
      * Created by: KhoaPV
-     * Date created: 28/6/2022
+     * Date created: 30/6/2022
+     * function: find cart by customer by id (check customer have cart before)
+     * if cart null: create new cart and return cart to client.
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findCartByCustomerId(@PathVariable String id) {
+        Map<String, Object> cartResponse = new HashMap<>();
+        Cart cart = this.iCartService.findCartByCustomerId(id);
+        if (cart == null) {
+            Cart newCart = new Cart();
+            Cart cartReturn = this.iCartService.save(newCart, id);
+            cartResponse.put("cart", cartReturn);
+            cartResponse.put("totalItems", 0);
+            //create new cart for this customer.
+            return new ResponseEntity<>(cartResponse, HttpStatus.OK);
+        }
+        Integer totalItems = this.iCartService.countItemInCart(id);
+        cartResponse.put("cart", cart);
+        cartResponse.put("totalItems", totalItems);
+        return new ResponseEntity<>(cartResponse, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 29/6/2022
      * function: exception handle if validate have errors. Return bad request to client and error messages.
      *
      * @param ex

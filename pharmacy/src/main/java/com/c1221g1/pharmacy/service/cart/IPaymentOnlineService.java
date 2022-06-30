@@ -6,4 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface IPaymentOnlineService {
     Page<PaymentOnline> findAll(String paymentOnlineIdVal, String customerNameVal, Pageable pageable);
+
+    void save(PaymentOnline paymentOnline);
 }

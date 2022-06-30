@@ -33,6 +33,18 @@ public interface ICartRepository extends JpaRepository<Cart, Integer> {
 
     /**
      * Created by: KhoaPV
+     * Date created: 30/6/2022
+     * function: Update cart status to true (complete)
+     *
+     * @param cart
+     */
+    @Query(value = "UPDATE cart\n" +
+            "SET cart_status = TRUE\n" +
+            "WHERE cart_id = :id", nativeQuery = true)
+    void setCartCompleted(@Param("id") Integer cartId);
+
+    /**
+     * Created by: KhoaPV
      * Date created: 29/6/2022
      * function: finding cart object by cart id and cart status
      *
@@ -49,6 +61,7 @@ public interface ICartRepository extends JpaRepository<Cart, Integer> {
      * Created by: KhoaPV
      * Date created: 29/6/2022
      * function: Count how may item in cart of customer object
+     *
      * @param cartId
      * @param status
      * @return
@@ -59,5 +72,5 @@ public interface ICartRepository extends JpaRepository<Cart, Integer> {
             "WHERE c.customer_id = :customer_id\n" +
             "  AND c.cart_status = :status\n" +
             "GROUP BY c.cart_id", nativeQuery = true)
-    Integer countItemInCart(@Param("customer_id") String cartId, @Param("status") Boolean status);
+    Integer countItemInCart(@Param("customer_id") String customerId, @Param("status") Boolean status);
 }

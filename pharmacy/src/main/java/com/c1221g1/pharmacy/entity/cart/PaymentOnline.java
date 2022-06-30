@@ -19,7 +19,6 @@ public class PaymentOnline {
             parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "HDO"),
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String paymentId;
-    private Double discount;
     @JoinColumn(columnDefinition = "DATETIME")
     private String timeCreate;
     private String note;

@@ -1,16 +1,11 @@
 package com.c1221g1.pharmacy.service.cart.impl;
 
-import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
 import com.c1221g1.pharmacy.entity.cart.Cart;
-import com.c1221g1.pharmacy.entity.customer.Customer;
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.cart.ICartRepository;
 import com.c1221g1.pharmacy.service.cart.ICartService;
 import com.c1221g1.pharmacy.service.customer.ICustomerService;
-import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
 import java.time.LocalDate;
 
@@ -18,9 +13,8 @@ import java.time.LocalDate;
 public class CartService implements ICartService {
     @Autowired
     private ICartRepository iCartRepository;
-
     @Autowired
-    private IMedicineService iMedicineService;
+    private ICustomerService iCustomerService;
 
     /**
      * Created by: KhoaPV
@@ -41,30 +35,38 @@ public class CartService implements ICartService {
      * function: call repository to save cart object into database
      *
      * @param cart
+     * @param customerId
      */
     @Override
-    public void save(Cart cart) {
+    public Cart save(Cart cart, String customerId) {
+        cart.setCustomer(this.iCustomerService.findByCustomerId(customerId));
         cart.setCartStatus(false);
         cart.setDateCreate(LocalDate.now().toString());
-        this.iCartRepository.saveCart(cart);
+        return this.iCartRepository.save(cart);
     }
 
     /**
      * Created by: KhoaPV
-     * Date created: 28/6/2022
-     * function: check exist of cart and medicine object. if not exist then add error into bindingResult
+     * Date created: 30/6/2022
+     * function: call repository to set cart status complete (true).
      *
-     * @param cartDetailDto
+     * @param cartId
      */
     @Override
-    public void checkExistOfLinksObject(CartDetailDto cartDetailDto, BindingResult bindingResult) {
-        Cart cart = this.iCartRepository.findCartById(cartDetailDto.getCart().getCartId(), false);
-        if (cart == null) {
-            bindingResult.rejectValue("cart", "cart.notfound");
-        }
-        Medicine medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId());
-        if (medicine == null) {
-            bindingResult.rejectValue("medicine", "medicine.notfound");
-        }
+    public void setCartComplete(Integer cartId) {
+        this.iCartRepository.setCartCompleted(cartId);
     }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 30/6/2022
+     * function: call repository to count how many items in cart.
+     * @param customerId
+     * @return totalItems
+     */
+    @Override
+    public Integer countItemInCart(String customerId) {
+        return this.iCartRepository.countItemInCart(customerId, false);
+    }
+
 }

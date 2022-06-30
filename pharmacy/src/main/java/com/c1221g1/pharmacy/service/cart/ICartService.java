@@ -9,7 +9,9 @@ import org.springframework.validation.BindingResult;
 public interface ICartService {
     Cart findCartByCustomerId(String customerId);
 
-    void save(Cart cart);
+    Cart save(Cart cart,String customerId);
 
-    void checkExistOfLinksObject(CartDetailDto cartDetailDto, BindingResult bindingResult);
+    void setCartComplete(Integer cartId);
+
+    Integer countItemInCart(String customerId);
 }
