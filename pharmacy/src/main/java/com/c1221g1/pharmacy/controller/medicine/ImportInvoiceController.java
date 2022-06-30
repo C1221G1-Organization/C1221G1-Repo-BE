@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ImportInvoiceController {
 
     @Autowired
-   private IImportInvoiceService importInvoiceService;
+    private IImportInvoiceService importInvoiceService;
 
     /**
      * this function use to get all list Import Invoice
@@ -34,8 +34,6 @@ public class ImportInvoiceController {
             @RequestParam Optional<String> endDate,
             @RequestParam Optional<String> startTime,
             @RequestParam Optional<String> endTime,
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "5") Integer size,
             @RequestParam Optional<String> fieldSort) {
 
         String startDateVal = startDate.orElse("");
@@ -43,20 +41,8 @@ public class ImportInvoiceController {
         String startTimeVal = startTime.orElse("");
         String endTimeVal = endTime.orElse("");
         String fieldSortVal = fieldSort.orElse("import_invoice_id");
-        Pageable pageable = PageRequest.of(page,size, Sort.by(fieldSortVal).ascending());
+        Pageable pageable = PageRequest.of(0, 5, Sort.by(fieldSortVal).ascending());
         Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDateVal, endDateVal, startTimeVal, endTimeVal, pageable);
-
-        if(importInvoicePage.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(importInvoicePage, HttpStatus.OK);
-        }
-    }
-
-    @GetMapping(value = "ght")
-    ResponseEntity<List<ImportInvoice>> getPage1() {
-
-        List<ImportInvoice> importInvoicePage = importInvoiceService.findAll();
 
         if(importInvoicePage.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

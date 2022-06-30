@@ -7,9 +7,20 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IImportInvoiceService {
+
+    /**
+     * this function use to get all list Import Invoice
+     *
+     * @author HongHTX
+     * @Time 17:00 29/06/2022
+     */
     Page<ImportInvoice> findAllImportInvoice(String startDate, String endDate, String startTime, String endTime, Pageable pageable);
 
+    /**
+     * this function use to delete flag from list Import Invoice
+     *
+     * @author HongHTX
+     * @Time 17:00 29/06/2022
+     */
     void deleteById(String id);
-
-    List<ImportInvoice> findAll();
 }

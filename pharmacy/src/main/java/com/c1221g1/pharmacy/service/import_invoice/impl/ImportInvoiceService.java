@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ImportInvoiceService implements IImportInvoiceService {
 
@@ -40,10 +38,6 @@ public class ImportInvoiceService implements IImportInvoiceService {
         importInvoiceRepository.deleteImportInvoice(id);
     }
 
-    @Override
-    public List<ImportInvoice> findAll() {
-        return importInvoiceRepository.findAll1();
-    }
 
 
 
