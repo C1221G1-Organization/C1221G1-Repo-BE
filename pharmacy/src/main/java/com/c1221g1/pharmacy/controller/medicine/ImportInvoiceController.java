@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ImportInvoiceController {
 
     @Autowired
-    IImportInvoiceService importInvoiceService;
+   private IImportInvoiceService importInvoiceService;
 
     /**
      * this function use to get all list Import Invoice
@@ -80,7 +80,5 @@ public class ImportInvoiceController {
             importInvoiceService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
-
     }
-
 }

@@ -6,12 +6,14 @@ import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ImportInvoiceService implements IImportInvoiceService {
+
 
     @Autowired
     private IImportInvoiceRepository importInvoiceRepository;
@@ -42,4 +44,7 @@ public class ImportInvoiceService implements IImportInvoiceService {
     public List<ImportInvoice> findAll() {
         return importInvoiceRepository.findAll1();
     }
+
+
+
 }
