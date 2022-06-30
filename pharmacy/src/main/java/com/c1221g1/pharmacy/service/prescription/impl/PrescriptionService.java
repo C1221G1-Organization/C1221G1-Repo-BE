@@ -36,12 +36,6 @@ public class PrescriptionService implements IPrescriptionService {
 
     @Override
     public void edit(Prescription prescription) {
-        prescriptionRepository.editPrescription(
-                prescription.getPrescriptionName(),
-                prescription.getPrescriptionSymptom(),
-                prescription.getPrescriptionTargetUser(),
-                prescription.getPrescriptionNote(),
-                prescription.getPrescriptionNumberOfDays(),
-                prescription.getPrescriptionId() );
+        prescriptionRepository.editPrescription(prescription);
     }
 }

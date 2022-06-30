@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.prescription;
 
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
@@ -58,7 +58,6 @@ public class PrescriptionController {
      * 16:30 29/06/2022
      */
     @PostMapping(value = "/create")
-    @ResponseBody
     public ResponseEntity<List<FieldError>> createPrescription(@Validated @RequestBody PrescriptionDto prescriptionDto,
                                                                BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
@@ -90,22 +89,29 @@ public class PrescriptionController {
     }
 
 
-
     /**
      * HienTLD
      * Sửa toa thuốc (xoá theo cờ 'flag')
-     * 20:14 29/06/2022
+     * update 11:18 30/06/2022
      */
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<Prescription> updateCar(@RequestBody PrescriptionDto prescriptionDto,
-                                       @PathVariable("id") String id) {
-        prescriptionDto.setFlag(true);
-        Prescription prescription = new Prescription();
-        BeanUtils.copyProperties(prescriptionDto, prescription);
-        System.err.println(prescription);
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<List<FieldError>> editSmartPhone(@Validated @RequestBody PrescriptionDto prescriptionDto,
+                                                           BindingResult bindingResult,
+                                                           @PathVariable String id) throws NotEmpty {
 
-        prescriptionService.edit(prescription);
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldErrors() ,HttpStatus.BAD_REQUEST);
+        }
+        Prescription prescription = new Prescription();
+
+        prescription.setPrescriptionId(id);
+
+        prescription.setFlag(true);
+
+        BeanUtils.copyProperties(prescriptionDto, prescription);
+
+        this.prescriptionService.edit(prescription);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

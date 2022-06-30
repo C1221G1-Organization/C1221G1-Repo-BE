@@ -57,23 +57,19 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
     /**
      * HienTLD
      * Sửa toa thuốc (xoá theo cờ 'flag')
-     * 20:14 29/06/2022
+     * update 11:18 30/06/2022
      */
     @Transactional
     @Modifying
     @Query(value = "update prescription" +
-            " set prescription_name = :prescription_name," +
-            " prescription_symptom = :prescription_symptom," +
-            " prescription_target_user = :prescription_target_user," +
-            " prescription_note = :prescription_note," +
-            " prescription_number_of_days = :prescription_number_of_days " +
-            "where prescription_id = :prescription_id",
+            " set prescription_name = :#{#prescription.prescriptionName}," +
+            " prescription_symptom = :#{#prescription.prescriptionSymptom}," +
+            " prescription_target_user = :#{#prescription.prescriptionTargetUser}," +
+            " prescription_note = :#{#prescription.prescriptionNote}," +
+            " prescription_number_of_days = :#{#prescription.prescriptionNumberOfDays} " +
+            "where prescription_id = :#{#prescription.prescriptionId}",
             nativeQuery = true)
-    void editPrescription(@Param("prescription_name") String name,
-                          @Param("prescription_symptom") String symptom,
-                          @Param("prescription_target_user") String targetUser,
-                          @Param("prescription_note") String note,
-                          @Param("prescription_number_of_days") Integer numberOfDays,
-                          @Param("prescription_id") String id);
+    void editPrescription(Prescription prescription);
+
 
 }

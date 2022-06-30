@@ -1,11 +1,32 @@
 package com.c1221g1.pharmacy.dto.prescription;
 
+import javax.validation.constraints.*;
+
 public class PrescriptionDto {
     private String prescriptionId;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 50)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
     private String prescriptionName;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 100)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
     private String prescriptionSymptom;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 50)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
     private String prescriptionTargetUser;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 100)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
     private String prescriptionNote;
+    @NotNull
+    @Min(1)
+    @Max(365)
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
 
