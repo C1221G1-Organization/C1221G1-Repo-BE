@@ -1,6 +1,9 @@
 package com.c1221g1.pharmacy.service.report.impl;
 
+import com.c1221g1.pharmacy.dto.report.MedicineBeAboutExpired;
+import com.c1221g1.pharmacy.dto.report.MedicineNeedToImport;
 import com.c1221g1.pharmacy.dto.report.Revenue;
+import com.c1221g1.pharmacy.dto.report.SupplierHaveReceivable;
 import com.c1221g1.pharmacy.repository.report.IReportRepository;
 import com.c1221g1.pharmacy.service.report.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,33 @@ public class ReportService implements IReportService {
     public List<Revenue> getRevenueByEmployee(String startTime, String endTime) {
         return this.iReportRepository.getRevenueByEmployee(startTime,endTime);
     }
+    /**
+     * this method to get list of supplier that have receivable or payable
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Override
+    public List<SupplierHaveReceivable> getSupplierHaveReceivable() {
+        return this.iReportRepository.getSupplierHaveReceivable();
+    }
 
+    /**
+     * this method to get list medicine to be out of stock
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Override
+    public List<MedicineNeedToImport> getMedicineNeedToImport() {
+        return this.iReportRepository.getMedicineNeedToImport();
+    }
 
+    /**
+     * this method to get list medicine to be about out of date
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Override
+    public List<MedicineBeAboutExpired> getMedicineBeAboutExpired() {
+        return this.iReportRepository.getMedicineBeAboutExpired();
+    }
 }

@@ -1,14 +1,15 @@
 package com.c1221g1.pharmacy.controller.report;
 
+import com.c1221g1.pharmacy.dto.report.MedicineBeAboutExpired;
+import com.c1221g1.pharmacy.dto.report.MedicineNeedToImport;
 import com.c1221g1.pharmacy.dto.report.Revenue;
-import com.c1221g1.pharmacy.dto.report.Supplier;
+import com.c1221g1.pharmacy.dto.report.SupplierHaveReceivable;
 import com.c1221g1.pharmacy.service.report.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,21 +89,46 @@ public class ReportController {
             return new ResponseEntity<>(revenueList, HttpStatus.OK);
         }
     }
+
     /**
      * this method to get list of supplier that have receivable or payable
      * @author DinhH
-     * @Time 15:30 29/06/2022
-     * ps: because the data base of supplier, stock have issue so
+     * @Time 20:30 30/06/2022
      */
     @GetMapping("/supplier")
-    public ResponseEntity<List<Supplier>> getSupplier(){
-            List<Supplier> suppliers = new ArrayList<>();
-            suppliers.add(new Supplier(1,"Hoa Long",15000000,10000000,5000000));
-            suppliers.add(new Supplier(2,"Nhất Sơn",20000000,10000000,10000000));
-            suppliers.add(new Supplier(3,"Hoa Đà",200000000,100000000,100000000));
-            if (suppliers.isEmpty()){
+    public ResponseEntity<List<SupplierHaveReceivable>> getSupplierHaveReceivable(){
+            List<SupplierHaveReceivable> supplierHaveReceivableList = this.iReportService.getSupplierHaveReceivable();
+            if (supplierHaveReceivableList.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            return new ResponseEntity<>(suppliers, HttpStatus.OK);
+            return new ResponseEntity<>(supplierHaveReceivableList, HttpStatus.OK);
+    }
+
+    /**
+     * this method to get list medicine to be out of stock
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @GetMapping("/medicineNeedToImport")
+    public ResponseEntity<List<MedicineNeedToImport>> getMedicineNeedToImport(){
+        List<MedicineNeedToImport> medicineNeedToImports = this.iReportService.getMedicineNeedToImport();
+        if (medicineNeedToImports.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(medicineNeedToImports, HttpStatus.OK);
+    }
+
+    /**
+     * this method to get list medicine to be about out of date
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @GetMapping("/medicineBeAboutExpired")
+    public ResponseEntity<List<MedicineBeAboutExpired>> getMedicineBeAboutExpired(){
+        List<MedicineBeAboutExpired> medicineBeAboutExpired = this.iReportService.getMedicineBeAboutExpired();
+        if (medicineBeAboutExpired.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(medicineBeAboutExpired, HttpStatus.OK);
     }
 }

@@ -1,6 +1,9 @@
 package com.c1221g1.pharmacy.repository.report;
 
+import com.c1221g1.pharmacy.dto.report.MedicineBeAboutExpired;
+import com.c1221g1.pharmacy.dto.report.MedicineNeedToImport;
 import com.c1221g1.pharmacy.dto.report.Revenue;
+import com.c1221g1.pharmacy.dto.report.SupplierHaveReceivable;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -47,4 +50,41 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "            Group by i.employee_id", nativeQuery = true)
     List<Revenue> getRevenueByEmployee(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
+    /**
+     * this method to get list of supplier that have receivable or payable
+     * @author DinhH
+     * @Time 15:30 29/06/2022
+     */
+    @Query(value = "select s.supplier_id supplierId, s.supplier_name supplierName,\n" +
+            "       sum((ii.total-ii.payment_prepayment)) balance\n" +
+            "from supplier s\n" +
+            "         inner join import_invoice ii on s.supplier_id = ii.supplier_id\n" +
+            "group by s.supplier_id\n" +
+            "having balance>0", nativeQuery = true)
+    List<SupplierHaveReceivable> getSupplierHaveReceivable();
+
+    /**
+     * this method to get list medicine to be out of stock
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Query(value = "select m.medicine_id medicineId, m.medicine_name medicineName, ms.medicine_quantity\n" +
+            "from medicine m\n" +
+            "inner join medicine_storage ms on m.medicine_id = ms.medicine_id\n" +
+            "where medicine_quantity<5;", nativeQuery = true)
+    List<MedicineNeedToImport> getMedicineNeedToImport();
+
+    /**
+     * this method to get list medicine to be about out of date
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Query(value = "select m.medicine_id medicineId, m.medicine_name medicineName, ms.medicine_quantity quantity,\n" +
+            "       iim.import_invoice_medicine_expiry expiredDate\n" +
+            "from medicine_storage ms\n" +
+            "inner join medicine m on ms.medicine_id = m.medicine_id\n" +
+            "inner join import_invoice_medicine iim on m.medicine_id = iim.medicine_id\n" +
+            "where (iim.import_invoice_medicine_expiry-now()<10)\n" +
+            "group by m.medicine_id", nativeQuery = true)
+    List<MedicineBeAboutExpired> getMedicineBeAboutExpired();
 }
