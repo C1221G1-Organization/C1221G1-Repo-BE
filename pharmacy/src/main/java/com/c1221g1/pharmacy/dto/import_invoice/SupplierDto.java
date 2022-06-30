@@ -1,15 +1,24 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
 
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
-
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class SupplierDto {
     private String supplierId;
+    @NotEmpty
+    @NotNull
     private String supplierName;
+
     private String supplierAddress;
+
+    @NotNull
+    @NotEmpty
     private String supplierPhone;
+
+    @NotNull
+    @NotEmpty
     private String supplierEmail;
+
     private String note;
     private boolean flag;
 //    private List<ImportInvoice> importInvoiceList;

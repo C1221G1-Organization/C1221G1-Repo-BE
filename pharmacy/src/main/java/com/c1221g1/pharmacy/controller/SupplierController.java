@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("**")
-@RequestMapping("/api/manager-medicine/medicines")
+@RequestMapping("/api/manager-medicine/medicines/supplier")
 public class SupplierController {
 
 
@@ -31,17 +31,18 @@ public class SupplierController {
      * RequestParam (searchId)(searchName)(searchAddress)(searchPhone)
      * to get the search value
      * call method findAll() in supplierSevice
-     * 18h 29/06/2022
+     * <p>
+     * 18h 29/06/2022  trần ngọc luật
      */
     @GetMapping("")
-    public ResponseEntity<Page<Supplier>> getPageCar(@RequestParam Optional<String> searchId,
-                                                     @RequestParam Optional<String> searchName,
-                                                     @RequestParam Optional<String> searchAddress,
-                                                     @RequestParam Optional<String> searchPhone,
-                                                     @RequestParam(defaultValue = "0") int page,
-                                                     @RequestParam(defaultValue = "6") Integer pageSize,
-                                                     @RequestParam Optional<String> sort,
-                                                     @RequestParam Optional<String> dir
+    public ResponseEntity<Page<Supplier>> getPageSupplier(@RequestParam Optional<String> searchId,
+                                                          @RequestParam Optional<String> searchName,
+                                                          @RequestParam Optional<String> searchAddress,
+                                                          @RequestParam Optional<String> searchPhone,
+                                                          @RequestParam(defaultValue = "0") int page,
+                                                          @RequestParam(defaultValue = "10") Integer pageSize,
+                                                          @RequestParam Optional<String> sort,
+                                                          @RequestParam Optional<String> dir
     ) {
 
         Pageable pageable;
@@ -74,12 +75,21 @@ public class SupplierController {
      * get supplier_id from the path
      * and assign it to a variable id
      * call removeSupplierById method to set 'flag' to 0 in repository
+     * <p>
+     * 18h 29/06/2022  trần ngọc luật
      */
-    @PatchMapping("/delete-supplier/{supplier_id}")
-    public ResponseEntity<Supplier> deleteCar(@PathVariable("supplier_id") String id) {
+    @PatchMapping("/delete/{supplier_id}")
+    public ResponseEntity<Supplier> deleteSupplier(@PathVariable("supplier_id") String id) {
         try {
-            this.iSupplierService.removeSupplierById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            if ("null".equals(id)) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            } else if ("".equals(id)) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            } else {
+                this.iSupplierService.removeSupplierById(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -89,9 +99,10 @@ public class SupplierController {
     /**
      * get for 1 supplier whose id is the value the user entered
      * (  Serve for detail screen, edit supplier information  )
-     * 18h 29/06/2022
+     * <p></p>
+     * 18h 29/06/2022  trần ngọc luật
      */
-    @GetMapping("supplier/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Supplier> getSupplier(@PathVariable("id") String id) {
         Supplier supplier = iSupplierService.findById(id);
         System.err.println("ID");
@@ -110,7 +121,7 @@ public class SupplierController {
      * and call method save in service
      * 18h 29/06/2022
      */
-    @PostMapping(value = "/save-supplier")
+    @PostMapping(value = "/save")
     public ResponseEntity<?> saveSupplier(@Validated @RequestBody SupplierDto supplierDto,
                                           BindingResult bindingResult) {
 
@@ -131,18 +142,29 @@ public class SupplierController {
      * RequestBody to get all the value submitted by the user
      * <p>
      * call method update() in supplierService
-     * 20h 29/06/2022
+     * 20h 29/06/2022 trần ngọc luật
      */
-    @PatchMapping("/update-supplier/{id}")
-    public ResponseEntity<?> updateCar(@RequestBody SupplierDto supplierDto,
-                                       @PathVariable("id") String id) {
-        supplierDto.setFlag(true);
-        Supplier supplier = new Supplier();
-        BeanUtils.copyProperties(supplierDto, supplier);
-        System.err.println(supplier);
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<?> updateCar(@Validated @RequestBody SupplierDto supplierDto,
+                                       @PathVariable("id") String id,
+                                       BindingResult bindingResult) {
 
-        iSupplierService.update(supplier);
-        return new ResponseEntity<>(HttpStatus.OK);
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
+        }
+        if ("null".equals(id)) {
+            return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
+        } else if ("".equals(id)) {
+            return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
+        } else {
+            supplierDto.setFlag(true);
+            Supplier supplier = new Supplier();
+            BeanUtils.copyProperties(supplierDto, supplier);
+            System.err.println(supplier);
+
+            iSupplierService.update(supplier);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
 

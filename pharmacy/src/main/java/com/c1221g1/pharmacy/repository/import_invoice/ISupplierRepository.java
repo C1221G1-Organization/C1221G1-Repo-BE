@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 public interface ISupplierRepository extends JpaRepository<Supplier, String> {
 
@@ -86,19 +85,14 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
     @Transactional
     @Modifying
     @Query(value = "update supplier \n" +
-            "set supplier_name= :supplier_name,\n" +
-            "    supplier_address = :supplier_address,\n" +
-            "    supplier_email = :supplier_email,\n" +
-            "    supplier_phone= :supplier_phone,\n" +
-            "    note = :note " +
-            "where supplier_id = :supplier_id",
+            "set supplier_name= :#{#supplier.supplierName},\n" +
+            "    supplier_address = :#{#supplier.supplierAddress},\n" +
+            "    supplier_email = :#{#supplier.supplierEmail},\n" +
+            "    supplier_phone= :#{#supplier.supplierPhone},\n" +
+            "    note = :#{#supplier.supplierName} " +
+            "where supplier_id = :#{#supplier.supplierId}",
             nativeQuery = true)
-    void updateSupplier(@Param("supplier_name") String supplierName,
-                        @Param("supplier_address") String supplierAddress,
-                        @Param("supplier_email") String supplierEmail,
-                        @Param("supplier_phone") String supplierPhone,
-                        @Param("note") String note,
-                        @Param("supplier_id") String supplierId);
+    void updateSupplier(Supplier supplier);
 
 
 }
