@@ -25,7 +25,7 @@ public class CartDetailService implements ICartDetailService {
 
     /**
      * Created by: KhoaPV
-     * Date created: 28/6/2022
+     * Date created: 29/6/2022
      * function: check exist of cart and medicine object. if not exist then add error into bindingResult
      *
      * @param cartDetailDto
@@ -43,11 +43,25 @@ public class CartDetailService implements ICartDetailService {
         }
     }
 
+    /**
+     * Created by: KhoaPV
+     * Date created: 29/6/2022
+     * function: save new cart detail to databse
+     *
+     * @param cartDetail
+     */
     @Override
     public void save(CartDetail cartDetail) {
 
     }
 
+    /**
+     * Created by: KhoaPV
+     * Date created: 29/6/2022
+     * function: Update detail of item in cart, when user change quantity (Add to cart, remove from cart, reduce quantity
+     *
+     * @param cartDetail
+     */
     @Override
     public void updateItemCartDetail(CartDetail cartDetail) {
 

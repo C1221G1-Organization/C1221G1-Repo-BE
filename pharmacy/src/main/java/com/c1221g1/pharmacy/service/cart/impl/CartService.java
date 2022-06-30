@@ -18,7 +18,7 @@ public class CartService implements ICartService {
 
     /**
      * Created by: KhoaPV
-     * Date created: 28/6/2022
+     * Date created: 29/6/2022
      * function: finding cart object have status false (incomplete) with customer id
      *
      * @param customerId
@@ -31,7 +31,7 @@ public class CartService implements ICartService {
 
     /**
      * Created by: KhoaPV
-     * Date created: 28/6/2022
+     * Date created: 29/6/2022
      * function: call repository to save cart object into database
      *
      * @param cart
