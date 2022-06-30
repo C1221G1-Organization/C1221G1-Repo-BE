@@ -8,24 +8,36 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MedicineService implements IMedicineService {
 
     @Autowired
     private IMedicineRepository medicineRepository;
 
-//    @Override
-//    public Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
-//                                          String medicineNameValue, String medicineActiveIngredientsValue,
-//                                          String importPriceValue, String wholesalePriceValue,
-//                                          String retailPriceValue) {
-//        return medicineRepository.pageFindAll(pageable,idValue,medicineTypeValue,medicineNameValue,
-//                medicineActiveIngredientsValue, importPriceValue, wholesalePriceValue, retailPriceValue);
-//    }
+
 
     @Override
-    public Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue, String medicineNameValue, String medicineActiveIngredientsValue, String importPriceValue, String wholesalePriceValue, String retailPriceValue) {
-        return null;
+    public Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
+                                          String medicineNameValue, String medicineActiveIngredientsValue,
+                                          String importPriceValue, String wholesalePriceValue, String retailPriceValue) {
+        return medicineRepository.getAllMedicine(pageable, "%" + idValue + "%",
+                "%" + medicineTypeValue + "%", "%" + medicineNameValue + "%",
+                "%" + medicineActiveIngredientsValue + "%",
+                "%" + importPriceValue + "%", "%" + wholesalePriceValue + "%",
+                "%" + retailPriceValue + "%");
+    }
+
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: get list medicine
+     */
+
+    @Override
+    public List<Medicine> getListMedicine() {
+        return medicineRepository.getListMedicine();
     }
 
 
@@ -51,4 +63,6 @@ public class MedicineService implements IMedicineService {
     public void deleteMedicineById(String id) {
         this.medicineRepository.deleteMedicineById(id);
     }
+
+
 }

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -28,7 +29,13 @@ public class MedicineController {
     private IMedicineUnitService medicineUnitService;
 
 
-    @GetMapping("/listMedicine")
+
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: get all page medicine
+     */
+    @GetMapping("/")
     public ResponseEntity<Page<Medicine>> findAllMedicine(@PageableDefault(value = 3) Pageable pageable,
                                                           @RequestParam Optional<String> medicineId,
                                                           @RequestParam Optional<String> medicineType,
@@ -52,6 +59,20 @@ public class MedicineController {
         return new ResponseEntity<>(medicinePage, HttpStatus.OK);
     }
 
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: get list medicine
+     */
+
+
+    public ResponseEntity<List<Medicine>> getList(){
+      List<Medicine> medicineList = medicineService.getListMedicine();
+      if (medicineList.isEmpty()){
+          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      }
+      return new ResponseEntity<>(medicineList,HttpStatus.OK);
+    }
 
 
 
