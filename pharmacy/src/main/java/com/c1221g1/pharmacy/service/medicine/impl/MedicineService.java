@@ -45,8 +45,5 @@ public class MedicineService implements IMedicineService {
         System.out.println(existMedicine.getMedicineId());
         this.medicineRepository.updateMedicine(existMedicine);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5994c8197acff693e71bb33472520fe498661423
+
