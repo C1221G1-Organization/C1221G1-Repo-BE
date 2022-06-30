@@ -31,6 +31,12 @@ public class Invoice {
     private String invoiceCreatedDate;
     /*
      * Created by DaLQA
+     * Time: 8:36 PM 30/06/2022
+     * Function: create new property invoiceCreateTime
+     * */
+    private Double invoiceTotalMoney;
+    /*
+     * Created by DaLQA
      * Time: 4:12 PM 29/06/2022
      * Function: create new property invoiceCreateTime
      * */
@@ -41,6 +47,14 @@ public class Invoice {
     private List<InvoiceMedicine> invoiceMedicineList;
 
     public Invoice() {
+    }
+
+    public Double getInvoiceTotalMoney() {
+        return invoiceTotalMoney;
+    }
+
+    public void setInvoiceTotalMoney(Double invoiceTotalMoney) {
+        this.invoiceTotalMoney = invoiceTotalMoney;
     }
 
     public String getInvoiceCreateTime() {

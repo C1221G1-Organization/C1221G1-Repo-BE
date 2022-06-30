@@ -62,6 +62,7 @@ public class InvoiceMedicineController {
         }
         TypeOfInvoice typeOfInvoice = iTypeOfInvoiceService.getTypeOfInvoiceRetail();
         Invoice invoice = new Invoice();
+        invoice.setInvoiceTotalMoney(invoiceMedicineDto.getInvoiceTotalMoney());
         invoice.setCustomer(customer);
         invoice.setInvoiceNote(invoiceMedicineDto.getInvoiceNote());
         invoice.setTypeOfInvoice(typeOfInvoice);

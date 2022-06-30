@@ -26,6 +26,13 @@ public class InvoiceMedicineDto {
 
     /*
      * Created by DaLQA
+     * Time: 8:36 PM 30/06/2022
+     * Function: create new property invoiceCreateTime
+     * */
+    private Double invoiceTotalMoney;
+
+    /*
+     * Created by DaLQA
      * Time: 7:30 PM 29/06/2022
      * Function: create property invoiceNote for InvoiceMedicineDto
      * */
@@ -49,6 +56,15 @@ public class InvoiceMedicineDto {
     public String getInvoiceNote() {
         return invoiceNote;
     }
+
+    public Double getInvoiceTotalMoney() {
+        return invoiceTotalMoney;
+    }
+
+    public void setInvoiceTotalMoney(Double invoiceTotalMoney) {
+        this.invoiceTotalMoney = invoiceTotalMoney;
+    }
+
 
     public void setInvoiceNote(String invoiceNote) {
         this.invoiceNote = invoiceNote;
