@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.Controller;
+package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import com.c1221g1.pharmacy.dto.employee.PositionDto;

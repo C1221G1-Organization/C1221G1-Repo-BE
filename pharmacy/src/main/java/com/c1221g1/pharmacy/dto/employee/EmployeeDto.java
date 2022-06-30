@@ -56,7 +56,7 @@ public class EmployeeDto implements Validator {
 
     private PositionDto positionDto;
 
-    @NotEmpty(message = "User Name may not be empty")
+
     private UsersDto employeeUsername;
     private List<ImportInvoice> importInvoiceList;
 

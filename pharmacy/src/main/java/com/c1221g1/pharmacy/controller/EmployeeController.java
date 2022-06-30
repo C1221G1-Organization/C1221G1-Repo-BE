@@ -52,12 +52,10 @@ public class EmployeeController {
     public ResponseEntity<Employee> updateEmployee(@PathVariable String id,
                                                    @Valid @RequestBody EmployeeDto employeeDto,
                                                    BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-
-
         Employee employee = new Employee();
         Position position = new Position();
 
