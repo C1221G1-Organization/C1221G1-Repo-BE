@@ -34,11 +34,11 @@ public class Customer {
     private String customerNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-    @JsonBackReference(value = "customerUsername")
+
+
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
     private Users customerUsername;
-
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;

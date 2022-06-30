@@ -25,8 +25,13 @@ public class Users {
     @JsonBackReference(value = "userRoleList")
     @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
+
+
+    @JsonBackReference(value = "customer")
     @OneToOne(mappedBy = "customerUsername")
     private Customer customer;
+
+
 
     @OneToOne(mappedBy = "employeeUsername")
     private Employee employee;
