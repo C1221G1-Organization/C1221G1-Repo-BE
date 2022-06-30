@@ -1,63 +1,22 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
 
-import com.c1221g1.pharmacy.dto.medicine.MedicineStorageDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineStorageRepository;
+import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
+
+import java.util.Optional;
 
 @Service
 public class MedicineStorageService implements IMedicineStorageService {
     @Autowired
     private IMedicineStorageRepository iMedicineStorageRepository;
 
-
-    /**
-     * Created by: TrungTVH
-     * Date created: 30/6/2022
-     * function: check exist of medicine object in medicineStorage. if not exist then add error into bindingResult
-     *
-     * @param medicineStorageDto
-     */
-    @Override
-    public void checkExistInMedicineStorage(MedicineStorageDto medicineStorageDto, BindingResult bindingResult) {
-        MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineStorageDto.getMedicine().getMedicineId());
-        if (medicineStorage == null) {
-            bindingResult.rejectValue("medicineStorage", "medicineStorage.notfound");
-        }
-
-    }
-
-
-    /**
-     * Created by: TrungTVH
-     * Date created: 30/6/2022
-     * function: add 1 record medicine storage to database
-     *
-     * @param medicineStorage
-     */
-    @Override
-    public void addMedicineStorage(MedicineStorage medicineStorage) {
-        this.iMedicineStorageRepository.save(medicineStorage);
-    }
-
-    /**
-     * Created by: TrungTVH
-     * Date created: 30/6/2022
-     * function: update quantity of 1 record medicine storage in database.
-     *
-     * @param medicine
-     * @param medicineQuantity
-     */
-    @Override
-    public void updateStorageMedicineByMedicineId(Medicine medicine, Long medicineQuantity) {
-        this.iMedicineStorageRepository.updateMedicineStorage(medicine, medicineQuantity);
-    }
-
-
+    @Autowired
+    private IMedicineService iMedicineService;
 
     /**
      * Created by: TrungTVH
@@ -97,9 +56,9 @@ public class MedicineStorageService implements IMedicineStorageService {
      * Date created: 30/6/2022
      * function: import/export medicine in storage.
      * manipulation: meaning "thao tac"
-     *  0. -> export
-     *  1. -> import
-     *
+     * 0. -> export
+     * 1. -> import
+     * <p>
      * return false if import/export fail
      * return true if import/export success
      *
@@ -121,9 +80,16 @@ public class MedicineStorageService implements IMedicineStorageService {
             case 1:
                 if (!checkExist) {
                     MedicineStorage medicineStorage = new MedicineStorage();
-                    medicineStorage.setMedicineQuantity(quantity);
-                    this.iMedicineStorageRepository.save(medicineStorage);
-                    return true;
+                    Optional<Medicine> medicineOptional = iMedicineService.findMedicineById(medicineId);
+                    if (!medicineOptional.isPresent()) {
+                        return false;
+                    } else {
+                        Medicine medicine = medicineOptional.orElse(null);
+                        medicineStorage.setMedicine(medicine);
+                        medicineStorage.setMedicineQuantity(quantity);
+                        this.iMedicineStorageRepository.save(medicineStorage);
+                        return true;
+                    }
                 } else {
                     medicineQuantity += quantity;
                     this.iMedicineStorageRepository.changeMedicineQuantity(medicineId, medicineQuantity);

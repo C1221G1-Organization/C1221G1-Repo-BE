@@ -25,20 +25,15 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
-     * function: update quantity of medicine by medicine
+     * function: get medicine quantity in storage.
      *
-     * @param medicine
-     * @param medicineQuantity
-     * @return void
+     * @param medicineId
+     * @return medicine quantity
      */
-    @Modifying
-    @Query("update MedicineStorage ms set ms.medicineQuantity = :quantity where ms.medicine = :medicine ")
-    void updateMedicineStorage(@Param("medicine") Medicine medicine, @Param("quantity") Long medicineQuantity);
-
     @Query(value = "SELECT  medicine_quantity " +
             "FROM medicine_storage " +
             "WHERE medicine_id = :id AND flag = 1", nativeQuery = true)
-    Long getMedicineQuantityByMedicineId(String medicineId);
+    Long getMedicineQuantityByMedicineId(@Param("id") String medicineId);
 
 
     /**
@@ -53,5 +48,4 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
     @Query("update MedicineStorage ms set ms.medicineQuantity = :quantity " +
             "where ms.medicine.medicineId = :medicine_id")
     void changeMedicineQuantity(@Param("medicine_id") String medicineId, @Param("quantity") Long quantity);
-
 }

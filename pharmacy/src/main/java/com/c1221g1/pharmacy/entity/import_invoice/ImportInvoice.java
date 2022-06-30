@@ -32,10 +32,6 @@ public class ImportInvoice {
     private boolean flag;
 
     @ManyToOne
-    @JoinColumn(name = "payment_id", referencedColumnName = "paymentId")
-    private Payment payment;
-
-    @ManyToOne
     @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId")
     private Supplier supplier;
 
