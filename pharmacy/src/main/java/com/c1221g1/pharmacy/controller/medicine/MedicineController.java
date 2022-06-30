@@ -65,7 +65,7 @@ public class MedicineController {
      * Function: get list medicine
      */
 
-
+    @GetMapping("/list")
     public ResponseEntity<List<Medicine>> getList(){
       List<Medicine> medicineList = medicineService.getListMedicine();
       if (medicineList.isEmpty()){

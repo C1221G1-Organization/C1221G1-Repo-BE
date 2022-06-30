@@ -26,10 +26,10 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             "where medicine_id like :idValue" +
             "                                 and medicine_type.medicine_type_name like :medicineTypeValue" +
             "                                 and medicine_name like :medicineNameValue" +
-            "                                 and medicine_active_ingredients like :medicineActiveIngredientsValue \n" +
-            "                                 and medicine_import_price like :importPriceValue \n" +
-            "                                 and wholesale_price like :wholesalePriceValue \n" +
-            "                                 and retail_price like :retailPriceValue \n" +
+            "                                 and medicine_active_ingredients like :medicineActiveIngredientsValue" +
+            "                                 and medicine_import_price like :importPriceValue" +
+            "                                 and wholesale_price like :wholesalePriceValue" +
+            "                                 and retail_price like :retailPriceValue" +
             "                                 and flag = 1",
             countQuery = "select medicine_id,medicine_name,medicine_active_ingredients,medicine_import_price," +
                     "sum(medicine_import_price + (medicine_import_price*medicine_wholesale_profit/100)) as wholesale_price," +
@@ -42,10 +42,10 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     "where medicine_id like :idValue" +
                     "                          and medicine_type.medicine_type_name like :medicineTypeValue" +
                     "                          and medicine_name like :medicineNameValue" +
-                    "                          and medicine_active_ingredients like :medicineActiveIngredientsValue \n" +
-                    "                          and medicine_import_price like :importPriceValue \n" +
-                    "                          and wholesale_price like :wholesalePriceValue \n" +
-                    "                          and retail_price like :retailPriceValue \n" +
+                    "                          and medicine_active_ingredients like :medicineActiveIngredientsValue" +
+                    "                          and medicine_import_price like :importPriceValue" +
+                    "                          and wholesale_price like :wholesalePriceValue" +
+                    "                          and retail_price like :retailPriceValue" +
                     "                          and flag = 1", nativeQuery = true)
     Page<Medicine> getAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
                                   String medicineNameValue, String medicineActiveIngredientsValue,
