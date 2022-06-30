@@ -682,12 +682,7 @@ public class UserController_signUpUser {
                 .andExpect(status().is2xxSuccessful());
     }
 
-    private String phone;
-    private String dayOfBirth;
-    private String note;
-    private Boolean flag;
-    private Integer customerType = 1;
-    private Integer roleId = 1;
+
     @Test
     public void getSignUp_phone_13() throws Exception {
         SignUpRequest signUpRequest = new SignUpRequest();
@@ -813,5 +808,127 @@ public class UserController_signUpUser {
                 .andExpect(status().is4xxClientError());
     }
 
+    @Test
+    public void getSignUp_dayOfBirth_13() throws Exception {
+        SignUpRequest signUpRequest = new SignUpRequest();
+        signUpRequest.setName("Nguyễn Thành An");
+        signUpRequest.setEmail("nguyenvanan@gmail.com");
+        signUpRequest.setPassword("nullpointerexception");
+        signUpRequest.setConfirmPassword("nullpointerexception");
+        signUpRequest.setGender(1);
+        signUpRequest.setAddress("");
+        signUpRequest.setPhone("0901123123");
+        signUpRequest.setDayOfBirth(null);
+        signUpRequest.setNote("");
+        signUpRequest.setFlag(true);
+        signUpRequest.setCustomerType(1);
+        signUpRequest.setRoleId(1);
+        this.mockMvc
+                .perform(
+                        MockMvcRequestBuilders
+                                .post("/api/manager-security/users/sign-up")
+                                .content(this.objectMapper.writeValueAsString(signUpRequest))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    @Test
+    public void getSignUp_dayOfBirth_14() throws Exception {
+        SignUpRequest signUpRequest = new SignUpRequest();
+        signUpRequest.setName("Nguyễn Thành An");
+        signUpRequest.setEmail("nguyenvanan@gmail.com");
+        signUpRequest.setPassword("nullpointerexception");
+        signUpRequest.setConfirmPassword("nullpointerexception");
+        signUpRequest.setGender(1);
+        signUpRequest.setAddress("");
+        signUpRequest.setPhone("0901123123");
+        signUpRequest.setDayOfBirth("");
+        signUpRequest.setNote("");
+        signUpRequest.setFlag(true);
+        signUpRequest.setCustomerType(1);
+        signUpRequest.setRoleId(1);
+        this.mockMvc
+                .perform(
+                        MockMvcRequestBuilders
+                                .post("/api/manager-security/users/sign-up")
+                                .content(this.objectMapper.writeValueAsString(signUpRequest))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void getSignUp_dayOfBirth_15() throws Exception {
+        SignUpRequest signUpRequest = new SignUpRequest();
+        signUpRequest.setName("Nguyễn Thành An");
+        signUpRequest.setEmail("nguyenvanan@gmail.com");
+        signUpRequest.setPassword("nullpointerexception");
+        signUpRequest.setConfirmPassword("nullpointerexception");
+        signUpRequest.setGender(1);
+        signUpRequest.setAddress("");
+        signUpRequest.setPhone("0901123123");
+        signUpRequest.setDayOfBirth("1993/02/01");
+        signUpRequest.setNote("");
+        signUpRequest.setFlag(true);
+        signUpRequest.setCustomerType(1);
+        signUpRequest.setRoleId(1);
+        this.mockMvc
+                .perform(
+                        MockMvcRequestBuilders
+                                .post("/api/manager-security/users/sign-up")
+                                .content(this.objectMapper.writeValueAsString(signUpRequest))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    @Test
+    public void getSignUp_dayOfBirth_16() throws Exception {
+        SignUpRequest signUpRequest = new SignUpRequest();
+        signUpRequest.setName("Nguyễn Thành An");
+        signUpRequest.setEmail("nguyenvanan@gmail.com");
+        signUpRequest.setPassword("nullpointerexception");
+        signUpRequest.setConfirmPassword("nullpointerexception");
+        signUpRequest.setGender(1);
+        signUpRequest.setAddress("");
+        signUpRequest.setPhone("0901123123");
+        signUpRequest.setDayOfBirth("1993/02/013");
+        signUpRequest.setNote("");
+        signUpRequest.setFlag(true);
+        signUpRequest.setCustomerType(1);
+        signUpRequest.setRoleId(1);
+        this.mockMvc
+                .perform(
+                        MockMvcRequestBuilders
+                                .post("/api/manager-security/users/sign-up")
+                                .content(this.objectMapper.writeValueAsString(signUpRequest))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void getSignUp_dayOfBirth_17() throws Exception {
+        SignUpRequest signUpRequest = new SignUpRequest();
+        signUpRequest.setName("Nguyễn Thành An");
+        signUpRequest.setEmail("nguyenvanan@gmail.com");
+        signUpRequest.setPassword("nullpointerexception");
+        signUpRequest.setConfirmPassword("nullpointerexception");
+        signUpRequest.setGender(1);
+        signUpRequest.setAddress("");
+        signUpRequest.setPhone("0901123123");
+        signUpRequest.setDayOfBirth("199/3/2");
+        signUpRequest.setNote("");
+        signUpRequest.setFlag(true);
+        signUpRequest.setCustomerType(1);
+        signUpRequest.setRoleId(1);
+        this.mockMvc
+                .perform(
+                        MockMvcRequestBuilders
+                                .post("/api/manager-security/users/sign-up")
+                                .content(this.objectMapper.writeValueAsString(signUpRequest))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
 
 }
