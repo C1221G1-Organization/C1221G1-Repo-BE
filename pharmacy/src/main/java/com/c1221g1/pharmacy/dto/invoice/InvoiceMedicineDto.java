@@ -21,10 +21,10 @@ public class InvoiceMedicineDto {
      * Note: I just commented them back and i didn't delete them, wait for every one discuss about it
      * */
 //    private Integer invoiceMedicineQuantity;
-//    private Invoice invoice;
+
 //    private Medicine medicine;
 
-
+    private InvoiceDto invoiceDto;
     /*
      * Created by DaLQA
      * Time: 8:36 PM 30/06/2022
@@ -58,6 +58,8 @@ public class InvoiceMedicineDto {
      * Function: create property medicines for InvoiceMedicineDto
      * */
     private List<MedicineInvoiceDto> medicines;
+
+
     public InvoiceMedicineDto() {
     }
 
@@ -109,6 +111,13 @@ public class InvoiceMedicineDto {
         this.invoiceMedicineId = invoiceMedicineId;
     }
 
+    public InvoiceDto getInvoiceDto() {
+        return invoiceDto;
+    }
+
+    public void setInvoiceDto(InvoiceDto invoiceDto) {
+        this.invoiceDto = invoiceDto;
+    }
 //    public Integer getInvoiceMedicineQuantity() {
 //        return invoiceMedicineQuantity;
 //    }

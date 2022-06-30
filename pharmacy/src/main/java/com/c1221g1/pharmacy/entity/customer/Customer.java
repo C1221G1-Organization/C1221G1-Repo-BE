@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.entity.customer;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,6 +41,7 @@ public class Customer {
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
 
+    @JsonBackReference(value = "cartList")
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
 }

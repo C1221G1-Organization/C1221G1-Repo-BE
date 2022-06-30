@@ -99,7 +99,8 @@ public class InvoiceMedicineController {
      * Function: function updateQuantityMedicine
      * */
     @PatchMapping("/updateQuantityMedicine")
-    public ResponseEntity<Map<String, String>> updateQuantityMedicine(@Validated @RequestBody InvoiceMedicineDto invoiceMedicineDto,
+    public ResponseEntity<Map<String, String>> updateQuantityMedicine(@Validated @RequestBody
+                                                                              InvoiceMedicineDto invoiceMedicineDto,
                                                                       BindingResult bindingResult) {
         String errorQuantity = "";
         Map<String, String> errorMap = new HashMap<>();
@@ -108,7 +109,8 @@ public class InvoiceMedicineController {
                 errorMap = checkListMedicine(invoiceMedicineDto.getMedicines());
                 if (errorMap.isEmpty()) {
                     for (MedicineInvoiceDto medicineInvoiceDto : invoiceMedicineDto.getMedicines()) {
-                        Optional<MedicineStorage> medicineStorage = iMedicineStorageService.getStorageByIdMedicine(medicineInvoiceDto.getId());
+                        Optional<MedicineStorage> medicineStorage =
+                                iMedicineStorageService.getStorageByIdMedicine(medicineInvoiceDto.getId());
                         MedicineStorage storage = medicineStorage.orElse(null);
                         assert storage != null;
                         storage.setMedicineQuantity(storage.getMedicineQuantity() - medicineInvoiceDto.getQuantity());
@@ -141,13 +143,16 @@ public class InvoiceMedicineController {
         String errorMessage = "";
         Map<String, String> errorMap = new HashMap<>();
         for (int i = 0; i <= medicineInvoiceDtoList.size() - 1; i++) {
-            Optional<MedicineStorage> storages = iMedicineStorageService.getStorageByIdMedicine(medicineInvoiceDtoList.get(i).getId());
+            Optional<MedicineStorage> storages =
+                    iMedicineStorageService.getStorageByIdMedicine(medicineInvoiceDtoList.get(i).getId());
             MedicineStorage storage = storages.orElse(null);
             if (storage == null) {
-                errorMessage = "Số lượng thuốc " + medicineInvoiceDtoList.get(i).getMedicineName() + " đã hết. Vui lòng chọn thuốc khác thay thế!";
+                errorMessage = "Số lượng thuốc " + medicineInvoiceDtoList.get(i).getMedicineName()
+                        + " đã hết. Vui lòng chọn thuốc khác thay thế!";
                 errorMap.put(String.valueOf(i), errorMessage);
             } else if (medicineInvoiceDtoList.get(i).getQuantity() > storage.getMedicineQuantity()) {
-                errorMessage = "Số lượng thuốc " + storage.getMedicine().getMedicineName() + " trong tủ còn: " + storage.getMedicineQuantity();
+                errorMessage = "Số lượng thuốc " + storage.getMedicine().getMedicineName() +
+                        " trong tủ còn: " + storage.getMedicineQuantity();
                 errorMap.put(String.valueOf(i), errorMessage);
             }
         }

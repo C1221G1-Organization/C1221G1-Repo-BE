@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.prescription;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,8 @@ public class Prescription {
     private String prescriptionNote;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
+
+    @JsonBackReference(value = "medicinePrescriptionList")
     @OneToMany(mappedBy = "prescription")
     private List<MedicinePrescription> medicinePrescriptionList;
 }

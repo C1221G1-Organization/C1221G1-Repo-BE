@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.entity.employee;
 
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.user.Users;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,9 +37,13 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
+
+    @JsonBackReference(value = "employeeUsername")
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
+
+    @JsonBackReference(value = "importInvoiceList")
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
 }

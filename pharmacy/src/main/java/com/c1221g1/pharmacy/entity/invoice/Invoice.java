@@ -2,6 +2,8 @@ package com.c1221g1.pharmacy.entity.invoice;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -43,6 +45,7 @@ public class Invoice {
     private String invoiceCreateTime;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+    @JsonBackReference(value = "invoiceMedicineList")
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceMedicine> invoiceMedicineList;
 

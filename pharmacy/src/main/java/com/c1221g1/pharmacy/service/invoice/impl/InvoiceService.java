@@ -26,6 +26,7 @@ public class InvoiceService implements IInvoiceService {
     public void saveInvoice(Invoice invoice) {
         invoice.setInvoiceCreatedDate(LocalDate.now().toString());
         invoice.setInvoiceCreateTime(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+        invoice.setFlag(true);
         this.iInvoiceRepository.save(invoice);
     }
 
