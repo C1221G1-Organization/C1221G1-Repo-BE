@@ -6,6 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface IMedicineService {
     Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
-                                   String medicineNameValue,String medicineActiveIngredientsValue, String importPriceValue, String wholesalePriceValue,
+                                   String medicineNameValue, String medicineActiveIngredientsValue, String importPriceValue, String wholesalePriceValue,
                                    String retailPriceValue);
+
+    Medicine findMedicineById(String id);
+
+    void deleteMedicineById(String id);
 }
