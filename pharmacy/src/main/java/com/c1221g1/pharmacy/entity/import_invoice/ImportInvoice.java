@@ -24,7 +24,6 @@ public class ImportInvoice {
     private Integer importSystemCode;
     private Double paymentPrepayment;
     private Double total;
-    //    private Integer accountingVoucherNumber;
     @Column(columnDefinition = "DATE")
     private String importInvoiceDate;
     private String importInvoiceHour;
