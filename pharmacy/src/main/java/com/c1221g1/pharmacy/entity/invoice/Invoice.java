@@ -34,6 +34,18 @@ public class Invoice {
     @Column(columnDefinition = "LONGTEXT")
     private String invoiceNote;
     private String invoiceCreatedDate;
+    /*
+     * Created by DaLQA
+     * Time: 8:36 PM 30/06/2022
+     * Function: create new property invoiceCreateTime
+     * */
+    private Double invoiceTotalMoney;
+    /*
+     * Created by DaLQA
+     * Time: 4:12 PM 29/06/2022
+     * Function: create new property invoiceCreateTime
+     * */
+    private String invoiceCreateTime;
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @OneToMany(mappedBy = "invoice")

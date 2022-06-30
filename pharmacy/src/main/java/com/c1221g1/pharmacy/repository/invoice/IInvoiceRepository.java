@@ -15,15 +15,21 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
      * Function: find all invoice with all arguments in search field
      * @return invoice page
      */
-    @Query(value = "select invoice.invoice_id,customer_id,employee_id,invoice_created_date,invoice_note, " +
-            "       sum((medicine.medicine_retail_sale_profit + 1) * medicine.medicine_import_price)" +
-            " * invoice_medicine.invoice_medicine_quantity as invoice_total_money " +
-            "from medicine join invoice_medicine on medicine.medicine_id = invoice_medicine.medicine_id " +
-            "join invoice on invoice_medicine.invoice_id = invoice.invoice_id " +
+//    @Query(value = "select invoice.invoice_id,customer_id,employee_id,invoice_created_date, invoice_created_time, invoice_note, " +
+//            "       sum((medicine.medicine_retail_sale_profit + 1) * medicine.medicine_import_price)" +
+//            " * invoice_medicine.invoice_medicine_quantity as invoice_total_money " +
+//            "from medicine join invoice_medicine on medicine.medicine_id = invoice_medicine.medicine_id " +
+//            "join invoice on invoice_medicine.invoice_id = invoice.invoice_id " +
+//            "where :startDate < invoice_created_date < :endDate "+
+//            "and :startTime < invoice_created_time < :endTime "+
+//            "and typeOfInvoiceId = :typeOfInvoiceId" +
+//            "group by medicine.medicine_id", nativeQuery = true)
+//    thêm thuộc tính invoiceTotalMoney ở invoice
+    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_created_date," +
+            " invoice_created_time, invoice_note, invoice_total_money " +
             "where :startDate < invoice_created_date < :endDate "+
             "and :startTime < invoice_created_time < :endTime "+
-            "and typeOfInvoiceId = :typeOfInvoiceId" +
-            "group by medicine.medicine_id", nativeQuery = true)
+            "and typeOfInvoiceId = :typeOfInvoiceId", nativeQuery = true)
     Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
 
     /**
@@ -31,14 +37,10 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
      * Function: find all invoice without typeOfInVoiceId argument
      * @return invoice page
      */
-    @Query(value = "select invoice.invoice_id,customer_id,employee_id,invoice_created_date,invoice_note, " +
-            "      sum((medicine.medicine_retail_sale_profit + 1) * medicine.medicine_import_price)" +
-            " * invoice_medicine.invoice_medicine_quantity as invoice_total_money " +
-            "from medicine join invoice_medicine on medicine.medicine_id = invoice_medicine.medicine_id " +
-            "join invoice on invoice_medicine.invoice_id = invoice.invoice_id " +
+    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_created_date," +
+            " invoice_created_time, invoice_note, invoice_total_money " +
             "where :startDate < invoice_created_date < :endDate "+
-            "and :startTime < invoice_created_time < :endTime "+
-            "group by medicine.medicine_id", nativeQuery = true)
+            "and :startTime < invoice_created_time < :endTime ", nativeQuery = true)
     Page<Invoice> findAllWithoutInvoiceTypeArg(String startDate, String endDate, String startTime, String endTime, Pageable pageable);
 
     /**

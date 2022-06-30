@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/manager-sale/invoice")
+@RequestMapping("api/manager-sale/invoices")
 public class InvoiceController {
     @Autowired
     IInvoiceService iInvoiceService;
@@ -22,16 +22,14 @@ public class InvoiceController {
      * Function: get all invoices, search/sort invoices
      */
     @GetMapping
-    ResponseEntity<Page<Invoice>> getList(
+    ResponseEntity<Page<Invoice>> getListInvoice(
                                     @RequestParam(defaultValue = "") String startDate,
                                     @RequestParam(defaultValue = "") String endDate,
                                     @RequestParam(defaultValue = "") String startTime,
                                     @RequestParam(defaultValue = "") String endTime,
                                     @RequestParam Integer typeOfInvoiceId,
-                                    @RequestParam(defaultValue = "0") Integer page,
-                                    @RequestParam(defaultValue = "5") Integer size,
                                     @RequestParam(defaultValue = "invoiceId") String fieldSort) {
-        Pageable pageable = PageRequest.of(page,size, Sort.Direction.ASC,fieldSort);
+        Pageable pageable = PageRequest.of(0,5, Sort.Direction.ASC,fieldSort);
         Page<Invoice> invoicePage;
         if (typeOfInvoiceId == 0) {
             invoicePage = iInvoiceService.findAllWithoutInvoiceTypeArg(startDate, endDate, startTime, endTime, pageable);
