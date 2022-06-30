@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ImportInvoice {
-    
+
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")

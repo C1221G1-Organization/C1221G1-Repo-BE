@@ -57,14 +57,6 @@ public class MedicineDto {
         this.medicineActiveIngredients = medicineActiveIngredients;
     }
 
-    public Integer getMedicineQuantity() {
-        return medicineQuantity;
-    }
-
-    public void setMedicineQuantity(Integer medicineQuantity) {
-        this.medicineQuantity = medicineQuantity;
-    }
-
     public Double getMedicineImportPrice() {
         return medicineImportPrice;
     }
