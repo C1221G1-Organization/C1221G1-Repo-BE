@@ -46,4 +46,5 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "            Where ((i.invoice_created_date>=:startTime) and (i.invoice_created_date<=:endTime))\n" +
             "            Group by i.employee_id", nativeQuery = true)
     List<Revenue> getRevenueByEmployee(@Param("startTime") String startTime, @Param("endTime") String endTime);
+
 }

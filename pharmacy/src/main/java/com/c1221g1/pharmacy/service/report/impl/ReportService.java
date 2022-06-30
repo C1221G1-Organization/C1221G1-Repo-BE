@@ -35,4 +35,6 @@ public class ReportService implements IReportService {
     public List<Revenue> getRevenueByEmployee(String startTime, String endTime) {
         return this.iReportRepository.getRevenueByEmployee(startTime,endTime);
     }
+
+
 }
