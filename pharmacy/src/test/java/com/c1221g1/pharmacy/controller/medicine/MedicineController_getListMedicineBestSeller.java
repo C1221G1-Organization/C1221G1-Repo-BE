@@ -44,7 +44,7 @@ public class MedicineController_getListMedicineBestSeller {
                 MockMvcRequestBuilders
                         .get("/api/manager-medicine/medicines/best-seller"))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful())
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$[1].medicineName").value("Cam"))
                 .andExpect(jsonPath("$[1].medicinePrice").value("1385.0289"))
                 .andExpect(jsonPath("$[1].soldQuantity").value(16))
