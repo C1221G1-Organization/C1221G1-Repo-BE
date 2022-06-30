@@ -10,6 +10,8 @@ import com.c1221g1.pharmacy.service.customer.ICustomerService;
 import com.c1221g1.pharmacy.service.user.IUsersService;
 import com.c1221g1.pharmacy.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,10 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -43,6 +42,8 @@ public class UserController {
     private ICustomerService iCustomerService;
 
     @Autowired
+    MessageSource messageSource;
+    @Autowired
     private JwtUtils jwtUtils;
     /**
      * Created by HuuNQ
@@ -50,10 +51,21 @@ public class UserController {
      * Function Sign-in Account Online and when success login server will return information with JWT
      */
     @PostMapping("/sign-in")
-    public ResponseEntity<?> getSignIn(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> getSignIn(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult){
+        new LoginRequest().validate(loginRequest,bindingResult);
+        Map<String, String> errorMap = new HashMap<>();
+        if(bindingResult.hasErrors()){
+            bindingResult.getFieldErrors()
+                    .forEach(
+                            err -> errorMap.put(err.getField(),err.getDefaultMessage())
+                    );
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
+        }
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
         );
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtKey(authentication);
         User user = (User) authentication.getPrincipal();
