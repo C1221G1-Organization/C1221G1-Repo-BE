@@ -109,17 +109,19 @@ public class MedicineController {
      * @author LongNH
      * @Time 20:01 29/06/2022
      */
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     public ResponseEntity<List<FieldError>> updateMedicine(@PathVariable("id") String id,
                                                            @Valid @RequestBody MedicineDto medicineDto,
                                                            BindingResult bindingResult) {
         Medicine existMedicine = this.medicineService.findById(id).orElse(null);
+        System.out.println(existMedicine);
         if (existMedicine == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
         MedicineType medicineType = new MedicineType();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
         MedicineUnit medicineUnit = new MedicineUnit();
@@ -133,6 +135,7 @@ public class MedicineController {
         existMedicine.setMedicineUnit(medicineUnit);
         existMedicine.setMedicineConversionUnit(medicineConversionUnit);
         BeanUtils.copyProperties(medicineDto, existMedicine);
+        existMedicine.setMedicineId(id);
         this.medicineService.updateMedicine(existMedicine);
         return new ResponseEntity<>(HttpStatus.OK);
     }

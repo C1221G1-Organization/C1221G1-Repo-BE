@@ -27,4 +27,12 @@ public class MedicineType {
     @JsonBackReference
     @OneToMany(mappedBy = "medicineType")
     private List<Medicine> medicineList;
+
+    @Override
+    public String toString() {
+        return "MedicineType{" +
+                "medicineTypeId='" + medicineTypeId + '\'' +
+                ", medicineTypeName='" + medicineTypeName + '\'' +
+                '}';
+    }
 }

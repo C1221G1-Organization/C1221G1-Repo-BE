@@ -29,7 +29,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     "medicine_age_approved=:#{#medicine.medicineAgeApproved},medicine_image=:#{#medicine.medicineImage}," +
                     "medicine_description=:#{#medicine.medicineDescription},medicine_origin_id=:#{#medicine.medicineOrigin}," +
                     "medicine_type_id=:#{#medicine.medicineType},medicine_unit_id=:#{#medicine.medicineUnit}," +
-                    "medicine_conversion_unit_id=:#{#medicine.medicineConversionUnit}," +
+                    "medicine_conversion_unit_id=:#{#medicine.medicineConversionUnit}" +
                     " where medicine_id=:#{#medicine.medicineId}", nativeQuery = true)
     void updateMedicine(Medicine medicine);
     /**

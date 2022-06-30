@@ -22,4 +22,12 @@ public class MedicineOrigin {
     @JsonBackReference
     @OneToMany(mappedBy = "medicineOrigin")
     private List<Medicine> medicineList;
+
+    @Override
+    public String toString() {
+        return "MedicineOrigin{" +
+                "medicineOriginId=" + medicineOriginId +
+                ", medicineOriginName='" + medicineOriginName + '\'' +
+                '}';
+    }
 }

@@ -42,6 +42,7 @@ public class MedicineService implements IMedicineService {
      */
     @Override
     public void updateMedicine(Medicine existMedicine) {
+        System.out.println(existMedicine.getMedicineId());
         this.medicineRepository.updateMedicine(existMedicine);
     }
 }
