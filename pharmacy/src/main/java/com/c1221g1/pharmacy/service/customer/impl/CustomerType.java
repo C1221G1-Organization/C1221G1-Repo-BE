@@ -14,6 +14,12 @@ public class CustomerType implements ICustomerTypeService {
     @Autowired
     private ICustomerTypeRepository iCustomerTypeRepository;
 
+    /**
+     * create by TinBQ
+     * time: 30/06/2022
+     * This method to get customer type in database
+     */
+
     @Override
     public List<com.c1221g1.pharmacy.entity.customer.CustomerType> findAllCustomerType() {
         return iCustomerTypeRepository.getAllCustomerType();

@@ -26,7 +26,7 @@ public class CustomerController {
      * create by TinBQ
      * time: 29/06/2022
      * This method to get data from table customer have paging, searching and sorting follow field "customerId",
-     *"customerName", "customerAddress", "customerPhone", "customerType"
+     * "customerName", "customerAddress", "customerPhone", "customerType"
      */
 
     @GetMapping("")
@@ -36,17 +36,20 @@ public class CustomerController {
             @RequestParam Optional<String> customerName,
             @RequestParam Optional<String> customerAddress,
             @RequestParam Optional<String> customerPhone,
-            @RequestParam (defaultValue = "0") int page,
-            @RequestParam (defaultValue = "3") int size,
-            Pageable pageable){
+            @RequestParam Optional<String> soft,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size,
+            Pageable pageable) {
 
         String valueCustomerId = customerId.orElse("");
         String valueCustomerType = customerType.orElse("");
         String valueCustomerName = customerName.orElse("");
         String valueCustomerAddress = customerAddress.orElse("");
         String valueCustomerPhone = customerPhone.orElse("");
+        String valueSort = soft.orElse("");
 
-         Page<Customer> customerPage =  iCustomerService.findAllCustomer(pageable,valueCustomerId,valueCustomerName,valueCustomerAddress,valueCustomerPhone,valueCustomerType);
+        Page<Customer> customerPage = iCustomerService.findAllCustomer(pageable, valueCustomerId, valueCustomerName, valueCustomerAddress, valueCustomerPhone, valueCustomerType);
+
         if (!customerPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -60,8 +63,15 @@ public class CustomerController {
      */
 
     @PatchMapping("delete-customer/{customer_id}")
-    public ResponseEntity<Customer> deleteMedicine(@PathVariable("customer_id") String id) {
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable("customer_id") String id) {
+        Customer customer = this.iCustomerService.findById(id);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         try {
+            if ("".equals(id) || "null".equals(id)) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
             this.iCustomerService.deleteCustomer(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

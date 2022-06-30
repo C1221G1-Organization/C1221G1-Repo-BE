@@ -35,12 +35,12 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
-    private Users customerUsername ;
+    private Users customerUsername;
 
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
-   @JsonBackReference
+    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
 }
