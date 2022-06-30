@@ -3079,7 +3079,7 @@ public class MedicineController_createMedicine {
                 .andExpect(status().is4xxClientError());
     }
     /**
-     * this function use to test the validation of field conversionUnit more specific is null
+     * this function use to create medicine with all valid item
      *
      * @author LongNH
      * @Time 15:00 30/06/2022

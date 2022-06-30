@@ -3078,4 +3078,47 @@ public class MedicineController_updateMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+    /**
+     * this function use to update medicine with all valid item
+     *
+     * @author LongNH
+     * @Time 15:00 30/06/2022
+     */
+    @Test
+    public void updateMedicine_all_item_18() throws Exception {
+        MedicineDto medicineDto = new MedicineDto();
+        MedicineOrigin medicineOrigin = new MedicineOrigin();
+        MedicineType medicineType = new MedicineType();
+        MedicineUnit medicineUnit = new MedicineUnit();
+        MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineDto.setMedicineName("thuoc nho mat");
+        medicineDto.setMedicineActiveIngredients("vitaminC");
+        medicineDto.setMedicineImportPrice(500.0);
+        medicineDto.setMedicineDiscount(3.0);
+        medicineDto.setMedicineWholesaleProfit(2.0);
+        medicineDto.setMedicineRetailSaleProfit(2.0);
+        medicineDto.setMedicineTax(5.0);
+        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineManufacture("daphaco");
+        medicineDto.setMedicineUsage("giảm mù mắt");
+        medicineDto.setMedicineInstruction("nhỏ vào mắt");
+        medicineDto.setMedicineAgeApproved("trên 18 tuổi");
+        medicineDto.setMedicineImage("img.png");
+        medicineDto.setMedicineDescription("chống chỉ định chọt vào mắt");
+        medicineDto.setFlag(true);
+        medicineOrigin.setMedicineOriginId(1);
+        medicineDto.setMedicineOrigin(medicineOrigin);
+        medicineType.setMedicineTypeId("LT0001");
+        medicineDto.setMedicineType(medicineType);
+        medicineUnit.setMedicineUnitId(1);
+        medicineDto.setMedicineUnit(medicineUnit);
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineDto.setMedicineConversionUnit(medicineConversionUnit);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .patch("/api/manager-medicine/medicines")
+                .content(this.objectMapper.writeValueAsString(medicineDto))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
 }
