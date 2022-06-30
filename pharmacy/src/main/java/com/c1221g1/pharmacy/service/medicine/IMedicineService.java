@@ -10,4 +10,8 @@ public interface IMedicineService {
     Optional<Medicine> findMedicineById(String id);
 
     void updateMedicine(Medicine existMedicine);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5994c8197acff693e71bb33472520fe498661423

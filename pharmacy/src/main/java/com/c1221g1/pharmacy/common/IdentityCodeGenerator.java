@@ -18,7 +18,12 @@ import java.util.Properties;
 public class IdentityCodeGenerator implements IdentifierGenerator, Configurable {
 
     private String prefix;
-
+    /**
+     * this function use to custom generate id
+     *
+     * @author NghiaNTT
+     * @Time 28/06/2022
+     */
     @Override
     public Serializable generate(
             SharedSessionContractImplementor session, Object obj)
