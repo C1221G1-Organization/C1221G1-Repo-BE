@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.entity.user;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,14 @@ public class Users {
     private String password;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
+    @JsonBackReference(value = "usersRoleList")
     @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
 
     @OneToOne(mappedBy = "customerUsername")
     private Customer customer;
-
+    @JsonBackReference(value = "employee")
     @OneToOne(mappedBy = "employeeUsername")
     private Employee employee;
 }
