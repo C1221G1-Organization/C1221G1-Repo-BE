@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.employee;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,8 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer positionId;
     private String positionName;
+
+    @JsonBackReference(value = "employeeList")
     @OneToMany(mappedBy = "position")
     private List<Employee> employeeList;
 }

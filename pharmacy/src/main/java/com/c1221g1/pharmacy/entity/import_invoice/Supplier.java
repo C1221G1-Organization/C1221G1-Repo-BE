@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,8 +27,11 @@ public class Supplier {
     private String supplierEmail;
     @Column(columnDefinition = "TEXT")
     private String note;
+
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
+    @JsonBackReference(value = "importInvoiceList")
     @OneToMany(mappedBy = "supplier")
     private List<ImportInvoice> importInvoiceList;
 }

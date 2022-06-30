@@ -9,11 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
+@CrossOrigin
 @RestController
 @RequestMapping("api/manager-medicine/import-invoice")
 public class ImportInvoiceController {
@@ -21,25 +22,65 @@ public class ImportInvoiceController {
     @Autowired
     IImportInvoiceService importInvoiceService;
 
-    @GetMapping
-    ResponseEntity<Page<ImportInvoice>> getList(
-            @RequestParam(defaultValue = "") String startDate,
-            @RequestParam(defaultValue = "") String endDate,
-            @RequestParam(defaultValue = "") String startTime,
-            @RequestParam(defaultValue = "") String endTime,
-            @RequestParam Integer typeOfInvoiceId,
+    /**
+     * this function use to get all list Import Invoice
+     *
+     * @author HongHTX
+     * @Time 17:00 29/06/2022
+     */
+    @GetMapping(value = "")
+    ResponseEntity<Page<ImportInvoice>> getPageListImportInvoice(
+            @RequestParam Optional<String> startDate,
+            @RequestParam Optional<String> endDate,
+            @RequestParam Optional<String> startTime,
+            @RequestParam Optional<String> endTime,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "5") Integer size,
-            @RequestParam(defaultValue = "invoiceId") String fieldSort) {
-        Pageable pageable = PageRequest.of(page,size, Sort.Direction.ASC,fieldSort);
-        Page<ImportInvoice> importInvoicePage;
-        importInvoicePage = importInvoiceService.findAllImportInvoice(startDate, endDate, startTime, endTime, pageable);
+            @RequestParam Optional<String> fieldSort) {
+
+        String startDateVal = startDate.orElse("");
+        String endDateVal = endDate.orElse("");
+        String startTimeVal = startTime.orElse("");
+        String endTimeVal = endTime.orElse("");
+        String fieldSortVal = fieldSort.orElse("import_invoice_id");
+        Pageable pageable = PageRequest.of(page,size, Sort.by(fieldSortVal).ascending());
+        Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDateVal, endDateVal, startTimeVal, endTimeVal, pageable);
 
         if(importInvoicePage.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(importInvoicePage, HttpStatus.OK);
         }
+    }
+
+    @GetMapping(value = "ght")
+    ResponseEntity<List<ImportInvoice>> getPage1() {
+
+        List<ImportInvoice> importInvoicePage = importInvoiceService.findAll();
+
+        if(importInvoicePage.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(importInvoicePage, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to delete flag from list Import Invoice
+     *
+     * @author HongHTX
+     * @Time 17:00 29/06/2022
+     */
+
+    @PatchMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteImportInvoice(@PathVariable String id) {
+        if("null".equals(id) || "".equals(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            importInvoiceService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+
     }
 
 }

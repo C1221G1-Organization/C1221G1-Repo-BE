@@ -14,7 +14,6 @@ public class MedicineDto {
     private String medicineId;
     private String medicineName;
     private String medicineActiveIngredients;
-    private Integer medicineQuantity;
     private Double medicineImportPrice;
     private Double medicineWholesalePrice;
     private Double medicineRetailPrice;
