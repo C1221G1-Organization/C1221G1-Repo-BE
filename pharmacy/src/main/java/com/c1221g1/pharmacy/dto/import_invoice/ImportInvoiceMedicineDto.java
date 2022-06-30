@@ -1,10 +1,13 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
 
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
+import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 
-public class ImportInvoiceMedicineDto {
+public class ImportInvoiceMedicineDto implements Validator {
     private Integer importInvoiceMedicineId;
     private Integer importInvoiceMedicineDiscountRate;
     private String importInvoiceMedicineExpiry;
@@ -97,5 +100,15 @@ public class ImportInvoiceMedicineDto {
 
     public void setImportInvoice(ImportInvoice importInvoice) {
         this.importInvoice = importInvoice;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        ImportInvoiceMedicineDto importInvoiceMedicineDto = (ImportInvoiceMedicineDto) target;
     }
 }
