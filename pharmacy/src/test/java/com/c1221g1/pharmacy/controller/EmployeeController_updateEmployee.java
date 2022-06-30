@@ -160,7 +160,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -266,7 +266,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -302,7 +302,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -337,7 +337,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -374,7 +374,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -392,7 +392,7 @@ public class EmployeeController_updateEmployee {
 
         employeeDto.setEmployeeName("Nguyễn Văn A");
         employeeDto.setEmployeeImage("https://cdn.tgdd.vn/Files/2019/07/27/1182124/cac-dinh-dang-duoi-file-hinh-anh-pho-bien-hien-nay-7-760x367.jpg");
-        employeeDto.setEmployeeAddress("null");
+        employeeDto.setEmployeeAddress(null);
         employeeDto.setEmployeePhone("0905700994");
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
@@ -409,7 +409,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -444,7 +444,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -479,7 +479,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -516,7 +516,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -553,7 +553,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -588,7 +588,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -623,7 +623,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -660,7 +660,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -698,7 +698,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -733,7 +733,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -769,7 +769,7 @@ public class EmployeeController_updateEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -804,7 +804,7 @@ Function:  update test position
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/NV-00003")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
