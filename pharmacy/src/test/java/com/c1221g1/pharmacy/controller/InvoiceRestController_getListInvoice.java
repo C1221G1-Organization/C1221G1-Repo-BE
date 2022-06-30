@@ -1,7 +1,5 @@
 package com.c1221g1.pharmacy.controller;
 
-import com.c1221g1.pharmacy.entity.invoice.Invoice;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,9 +17,6 @@ public class InvoiceRestController_getListInvoice {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     /**
      * @author: TuanPA
@@ -53,7 +48,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("2"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-002"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("2"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("07:30 AM"))
@@ -161,7 +156,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("2"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-002"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("2"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("07:30 AM"))
@@ -185,7 +180,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("1"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-001"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("1"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("08:30 AM"))
@@ -209,7 +204,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("2"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-002"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("2"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("07:30 AM"))
@@ -233,7 +228,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("2"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-002"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("2"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("07:30 AM"))
@@ -257,7 +252,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("2"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-002"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("2"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("07:30 AM"))
@@ -281,7 +276,7 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("2"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-002"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("2"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("07:30 AM"))
@@ -293,7 +288,7 @@ public class InvoiceRestController_getListInvoice {
     /**
      * @author: TuanPA
      * @time: 15:09 30/12/2022
-     * function: test method with typeOfInvoice arg is out of bound
+     * function: test method with typeOfInvoice arg is invalid
      * @throws Exception
      */
     @Test
@@ -307,7 +302,7 @@ public class InvoiceRestController_getListInvoice {
     /**
      * @author: TuanPA
      * @time: 15:09 30/12/2022
-     * function: test method with fieldSort arg is out of bound
+     * function: test method with fieldSort arg is invalid
      * @throws Exception
      */
     @Test
@@ -418,22 +413,12 @@ public class InvoiceRestController_getListInvoice {
                 .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true))
-                .andExpect(jsonPath("$.content[2].id").value("1"))
+                .andExpect(jsonPath("$.content[2].id").value("HD-001"))
                 .andExpect(jsonPath("$.content[2].customer.id").value("1"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedDate").value("2022-01-02"))
                 .andExpect(jsonPath("$.content[2].invoiceCreatedTime").value("08:30 AM"))
                 .andExpect(jsonPath("$.content[2].employee.id").value("1"))
                 .andExpect(jsonPath("$.content[2].invoiceTotalMoney").value(50000))
                 .andExpect(jsonPath("$.content[2].invoiceNote").value("n/a"));
-    }
-
-    // delete by flag so patch method is used
-    @Test
-    public void deleteInvoice_25() throws Exception {
-        this.mockMvc.perform(
-                MockMvcRequestBuilders
-                        .patch("/api/manager-sale/invoices/list/{invoiceId}"))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
     }
 }
