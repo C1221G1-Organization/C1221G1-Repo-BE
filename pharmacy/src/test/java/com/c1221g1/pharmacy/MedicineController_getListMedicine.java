@@ -22,6 +22,13 @@ public class MedicineController_getListMedicine {
     @Autowired
     private MockMvc mockMvc;
 
+
+    /**
+     * Created by MyC
+     * Time: 16:00 30/06/2022
+     * Function: test getList error in medicineController
+     */
+
     @Test
     public void getListMedicine_5() throws Exception {
         this.mockMvc.perform(
@@ -29,6 +36,13 @@ public class MedicineController_getListMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
+
+    /**
+     * Created by MyC
+     * Time: 16:00 30/06/2022
+     * Function: test getList successful in medicineController
+     */
 
     @Test
     public void getListMedicine_6() throws Exception {
@@ -45,20 +59,19 @@ public class MedicineController_getListMedicine {
                 .andExpect(jsonPath("$.content[4].medicineImportPrice").value(200.000))
                 .andExpect(jsonPath("$.content[4].medicineDiscount").value(0))
                 .andExpect(jsonPath("$.content[4].medicineWholesaleProfit").value(4))
-                .andExpect(jsonPath("$.content[4].medicineRetailSaleProfit").value(3))
-                .andExpect(jsonPath("$.content[4].medicineTax").value(5))
-                .andExpect(jsonPath("$.content[4].medicineConversionRate").value(2))
-                .andExpect(jsonPath("$.content[4].medicineManufacture").value(2))
-                .andExpect(jsonPath("$.content[4].medicineUsage").value(2))
-                .andExpect(jsonPath("$.content[4].medicineInstruction").value(2))
-                .andExpect(jsonPath("$.content[4].medicineAgeApproved").value(2))
-                .andExpect(jsonPath("$.content[4].medicineImage").value(2))
-                .andExpect(jsonPath("$.content[4].medicineDescription").value(2))
+                .andExpect(jsonPath("$.content[4].medicineRetailSaleProfit").value(5))
+                .andExpect(jsonPath("$.content[4].medicineTax").value(3))
+                .andExpect(jsonPath("$.content[4].medicineConversionRate").value(10))
+                .andExpect(jsonPath("$.content[4].medicineManufacture").value("Việt á"))
+                .andExpect(jsonPath("$.content[4].medicineUsage").value("uống 2 viên 1 ngày"))
+                .andExpect(jsonPath("$.content[4].medicineInstruction").value("không sử dụng cho phụ nữ có thai"))
+                .andExpect(jsonPath("$.content[4].medicineAgeApproved").value("30-06-2023"))
+                .andExpect(jsonPath("$.content[4].medicineImage").value("img.png"))
+                .andExpect(jsonPath("$.content[4].medicineDescription").value("hộp thuốc màu vàng"))
                 .andExpect(jsonPath("$.content[4].medicineOrigin.medicineOriginId").value(1))
                 .andExpect(jsonPath("$.content[4].medicineType.medicineTypeId").value(1))
                 .andExpect(jsonPath("$.content[4].medicineUnit.medicineUnitId").value(1))
                 .andExpect(jsonPath("$.content[4].medicineConversionUnit.medicineConversionUnitId").value(1));
-
     }
 }
 

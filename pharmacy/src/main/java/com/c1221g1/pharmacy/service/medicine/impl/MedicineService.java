@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
 
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineRepository;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
@@ -17,16 +18,19 @@ public class MedicineService implements IMedicineService {
     private IMedicineRepository medicineRepository;
 
 
-
+    //    @Override
+//    public Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
+//                                          String medicineNameValue, String medicineActiveIngredientsValue,
+//                                          String importPriceValue, String wholesalePriceValue, String retailPriceValue) {
+//        return medicineRepository.getAllMedicine(pageable, "%" + idValue + "%",
+//                "%" + medicineTypeValue + "%", "%" + medicineNameValue + "%",
+//                "%" + medicineActiveIngredientsValue + "%",
+//                "%" + importPriceValue + "%", "%" + wholesalePriceValue + "%",
+//                "%" + retailPriceValue + "%");
+//    }
     @Override
-    public Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
-                                          String medicineNameValue, String medicineActiveIngredientsValue,
-                                          String importPriceValue, String wholesalePriceValue, String retailPriceValue) {
-        return medicineRepository.getAllMedicine(pageable, "%" + idValue + "%",
-                "%" + medicineTypeValue + "%", "%" + medicineNameValue + "%",
-                "%" + medicineActiveIngredientsValue + "%",
-                "%" + importPriceValue + "%", "%" + wholesalePriceValue + "%",
-                "%" + retailPriceValue + "%");
+    public List<Medicine> findAllMedicine(String columName, String condition, String keyword) {
+        return medicineRepository.getAllMedicine(columName,condition,keyword);
     }
 
     /**

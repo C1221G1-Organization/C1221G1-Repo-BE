@@ -35,24 +35,16 @@ public class MedicineController {
      * Time: 23:00 29/06/2022
      * Function: get all page medicine
      */
-    @GetMapping("/")
-    public ResponseEntity<Page<Medicine>> findAllMedicine(@PageableDefault(value = 3) Pageable pageable,
-                                                          @RequestParam Optional<String> medicineId,
-                                                          @RequestParam Optional<String> medicineType,
-                                                          @RequestParam Optional<String> medicineName,
-                                                          @RequestParam Optional<String> medicineActiveIngredients,
-                                                          @RequestParam Optional<String> importPrice,
-                                                          @RequestParam Optional<String> wholesalePrice,
-                                                          @RequestParam Optional<String> retailPrice) {
-        String idValue = medicineId.orElse("");
-        String medicineTypeValue = medicineType.orElse("");
-        String medicineNameValue = medicineName.orElse("");
-        String medicineActiveIngredientsValue = medicineActiveIngredients.orElse("");
-        String importPriceValue = importPrice.orElse("");
-        String wholesalePriceValue = wholesalePrice.orElse("");
-        String retailPriceValue = retailPrice.orElse("");
-        Page<Medicine> medicinePage = medicineService.findAllMedicine(pageable, idValue, medicineTypeValue, medicineNameValue,
-                medicineActiveIngredientsValue, importPriceValue, wholesalePriceValue, retailPriceValue);
+    @GetMapping("/search")
+    public ResponseEntity<List<Medicine>> findAllMedicine(@PageableDefault(value = 3) Pageable pageable,
+                                                          @RequestParam Optional<String> columName,
+                                                          @RequestParam Optional<String> condition,
+                                                          @RequestParam Optional<String> keyWord
+                                                          ) {
+        String columNameValue = columName.orElse("medicine.medicine_id");
+        String conditionValue = condition.orElse("like");
+        String keyWordValue = keyWord.orElse("'%%'");
+        List<Medicine> medicinePage = medicineService.findAllMedicine(columNameValue,conditionValue,keyWordValue);
         if (medicinePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

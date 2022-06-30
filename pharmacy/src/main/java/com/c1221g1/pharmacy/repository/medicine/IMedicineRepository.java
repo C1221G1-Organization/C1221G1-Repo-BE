@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.repository.medicine;
 
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.hibernate.annotations.SQLInsert;
 import org.springframework.data.domain.Page;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.persistence.Id;
 import javax.transaction.Transactional;
@@ -15,41 +17,9 @@ import java.util.List;
 public interface IMedicineRepository extends JpaRepository<Medicine, String> {
 
 
-    @Query(value = "select medicine_id,medicine_name,medicine_active_ingredients,medicine_import_price," +
-            "sum(medicine_import_price + (medicine_import_price*medicine_wholesale_profit/100)) as wholesale_price," +
-            "sum(medicine_import_price + (medicine_import_price*medicine_retail_sale_profit/100)) as retail_price," +
-            "medicine_discount,medicine_wholesale_profit,medicine_retail_sale_profit,medicine_tax,medicine_conversion_rate," +
-            "medicine_manufacture,medicine_usage,medicine_instruction,medicine_age_approved," +
-            "medicine_image,medicine_description,medicine_origin_id,medicine_type_id,medicine_type.medicine_type_name," +
-            "medicine_unit_id,medicine_conversion_unit_id,flag " +
-            "from medicine inner join medicine_type on medicine.medicine_type_id = medicine_type.medicine_type_id " +
-            "where medicine_id like :idValue" +
-            "                                 and medicine_type.medicine_type_name like :medicineTypeValue" +
-            "                                 and medicine_name like :medicineNameValue" +
-            "                                 and medicine_active_ingredients like :medicineActiveIngredientsValue" +
-            "                                 and medicine_import_price like :importPriceValue" +
-            "                                 and wholesale_price like :wholesalePriceValue" +
-            "                                 and retail_price like :retailPriceValue" +
-            "                                 and flag = 1",
-            countQuery = "select medicine_id,medicine_name,medicine_active_ingredients,medicine_import_price," +
-                    "sum(medicine_import_price + (medicine_import_price*medicine_wholesale_profit/100)) as wholesale_price," +
-                    "sum(medicine_import_price + (medicine_import_price*medicine_retail_sale_profit/100)) as retail_price," +
-                    "medicine_discount,medicine_wholesale_profit,medicine_retail_sale_profit,medicine_tax,medicine_conversion_rate," +
-                    "medicine_manufacture,medicine_usage,medicine_instruction,medicine_age_approved," +
-                    "medicine_image,medicine_description,medicine_origin_id,medicine_type_id,medicine_type.medicine_type_name," +
-                    "medicine_unit_id,medicine_conversion_unit_id,flag " +
-                    "from medicine inner join medicine_type on medicine.medicine_type_id = medicine_type.medicine_type_id " +
-                    "where medicine_id like :idValue" +
-                    "                          and medicine_type.medicine_type_name like :medicineTypeValue" +
-                    "                          and medicine_name like :medicineNameValue" +
-                    "                          and medicine_active_ingredients like :medicineActiveIngredientsValue" +
-                    "                          and medicine_import_price like :importPriceValue" +
-                    "                          and wholesale_price like :wholesalePriceValue" +
-                    "                          and retail_price like :retailPriceValue" +
-                    "                          and flag = 1", nativeQuery = true)
-    Page<Medicine> getAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
-                                  String medicineNameValue, String medicineActiveIngredientsValue,
-                                  String importPriceValue, String wholesalePriceValue, String retailPriceValue);
+    @Query(value = "call look_up (:columName, :condition, :keyWord)",nativeQuery = true)
+    List<Medicine> getAllMedicine(@Param("columName") String columName , @Param("condition") String condition,
+                                           @Param("keyWord") String keyWord);
 
     /**
      * Created by MyC
@@ -59,8 +29,8 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
 
 
     @Query(value = "select medicine_id,medicine_name,medicine_active_ingredients,medicine_import_price," +
-            "sum(medicine_import_price + (medicine_import_price*medicine_wholesale_profit/100)) as wholesale_price," +
-            "sum(medicine_import_price + (medicine_import_price*medicine_retail_sale_profit/100)) as retail_price," +
+            "(medicine_import_price + (medicine_import_price*medicine_wholesale_profit/100)) as wholesale_price," +
+            "((medicine_import_price + (medicine_import_price*medicine_retail_sale_profit/100))/medicine_conversion_rate as retail_price," +
             "medicine_discount,medicine_wholesale_profit,medicine_retail_sale_profit,medicine_tax,medicine_conversion_rate," +
             "medicine_manufacture,medicine_usage,medicine_instruction,medicine_age_approved," +
             "medicine_image,medicine_description,medicine_origin_id,medicine_type_id,medicine_unit_id," +
@@ -92,5 +62,4 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
     @Modifying
     @Query(value = "UPDATE medicine set flag = 0 where medicine_id = :id ", nativeQuery = true)
     void deleteMedicineById(String id);
-
 }
