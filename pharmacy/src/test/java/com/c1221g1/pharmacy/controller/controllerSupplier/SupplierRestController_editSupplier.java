@@ -298,4 +298,30 @@ public class SupplierRestController_editSupplier {
     }
 
 
+    /**
+     * trần ngọc luật
+     * test all valid!
+     * 19h57 30/06/2022
+     */
+    @Test
+    public void editSupplier_valid_24() throws Exception {
+
+        SupplierDto supplierDto = new SupplierDto();
+
+
+        supplierDto.setSupplierName(" Trần Ngọc Linh ");
+        supplierDto.setSupplierAddress("Tam Tiến Núi Thành Quảng Nam ");
+        supplierDto.setSupplierEmail("luatzxcv@gmail.com");
+        supplierDto.setSupplierPhone("0333167149");
+        supplierDto.setNote("Thân Thiện");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .content(this.objectMapper.writeValueAsString(supplierDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+
 }

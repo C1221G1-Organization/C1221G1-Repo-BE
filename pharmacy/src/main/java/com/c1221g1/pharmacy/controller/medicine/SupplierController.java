@@ -81,7 +81,7 @@ public class SupplierController {
     @PatchMapping("/delete/{supplier_id}")
     public ResponseEntity<Supplier> deleteSupplier(@PathVariable("supplier_id") String id) {
         try {
-            if ("null".equals(id)) {
+            if ("null".equals(id) || null == id) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             } else if ("".equals(id)) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -104,13 +104,24 @@ public class SupplierController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<Supplier> getSupplier(@PathVariable("id") String id) {
-        Supplier supplier = iSupplierService.findById(id);
-        System.err.println("ID");
-        System.err.println(supplier);
-        if (supplier == null) {
+        try {
+            if ("null".equals(id) || null == id) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            } else if ("".equals(id)) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            } else {
+                Supplier supplier = iSupplierService.findById(id);
+                System.err.println("ID");
+                System.err.println(supplier);
+                if (supplier == null) {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
+                return new ResponseEntity<>(supplier, HttpStatus.OK);
+            }
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(supplier, HttpStatus.OK);
+
     }
 
 
@@ -152,7 +163,8 @@ public class SupplierController {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
         }
-        if ("null".equals(id)) {
+        if ("null".equals(id) || null == id) {
+            System.err.println(" id Null ");
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
         } else if ("".equals(id)) {
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);

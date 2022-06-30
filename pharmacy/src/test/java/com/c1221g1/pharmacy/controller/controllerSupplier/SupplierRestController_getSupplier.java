@@ -19,11 +19,10 @@ public class SupplierRestController_getSupplier {
     private MockMvc mockMvc;
 
     /**
-     * trần ngọc luật
+     * @throws Exception
+     * @tacgia trần ngọc luật
      * test get supplier value when id = null
      * 13h56 30/06/2022
-     *
-     * @throws Exception
      */
     @Test
     public void getInfoSupplier_1() throws Exception {
@@ -74,7 +73,7 @@ public class SupplierRestController_getSupplier {
         this.mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/manager-medicine/medicines/supplier/{id}", "NCC-00019"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
 

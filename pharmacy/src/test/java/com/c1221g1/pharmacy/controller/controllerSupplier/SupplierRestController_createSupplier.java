@@ -297,5 +297,30 @@ public class SupplierRestController_createSupplier {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**
+     * trần ngọc luật
+     * test all valid!
+     * 19h57 30/06/2022
+     */
+    @Test
+    public void createSupplier_valid_18() throws Exception {
+
+        SupplierDto supplierDto = new SupplierDto();
+        supplierDto.setSupplierName("Nhà Thuốc Luật Trần ");
+        supplierDto.setSupplierAddress("63 Phạm Vinh , Núi Thành Quảng Nam ");
+        supplierDto.setSupplierEmail("tranluatzxcv@gmail.com");
+        supplierDto.setSupplierPhone("0333167149");
+        supplierDto.setNote("Tốt");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/manager-medicine/medicines/supplier/save")
+                        .content(this.objectMapper.writeValueAsString(supplierDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+
+
 
 }

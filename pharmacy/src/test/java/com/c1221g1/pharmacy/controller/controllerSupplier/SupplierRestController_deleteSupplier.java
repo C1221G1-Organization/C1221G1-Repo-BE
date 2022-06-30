@@ -59,9 +59,9 @@ public class SupplierRestController_deleteSupplier {
     @Test
     public void deleteSupplier_28() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.delete(
+                MockMvcRequestBuilders.patch(
                         "/api/manager-medicine/medicines/supplier/delete/{supplier_id}", "NCC-00021"))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
     }
 
 
