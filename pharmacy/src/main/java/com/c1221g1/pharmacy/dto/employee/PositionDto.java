@@ -4,12 +4,12 @@ import com.c1221g1.pharmacy.entity.employee.Employee;
 
 import java.util.List;
 
-public class Position {
+public class PositionDto {
     private Integer positionId;
     private String positionName;
     private List<Employee> employeeList;
 
-    public Position() {
+    public PositionDto() {
     }
 
     public Integer getPositionId() {

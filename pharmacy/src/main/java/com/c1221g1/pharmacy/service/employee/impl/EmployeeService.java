@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.service.employee.impl;
 
 import com.c1221g1.pharmacy.dto.employee.AccountEmployee;
+import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.repository.employee.IEmployeeRepository;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,16 @@ public class EmployeeService implements IEmployeeService {
         return iEmployeeRepository.findAccount(name, id, position, userName, pageable);
     }
 
-    @Override
-    public void updateAccount(AccountEmployee accountEmployee) {
 
+    @Override
+    public Employee findByEmployeeId(String employeeId) {
+        return this.iEmployeeRepository.findEmployeeById(employeeId);
     }
+
+    @Override
+    public void updateEmployeeByAccount(Integer positionId, String employeeId) {
+        this.iEmployeeRepository.updateEmployeeByAccount(positionId,employeeId);
+    }
+
+
 }
