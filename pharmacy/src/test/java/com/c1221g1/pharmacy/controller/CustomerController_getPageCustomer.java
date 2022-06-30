@@ -16,7 +16,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CustomerController_getPage {
+public class CustomerController_getPageCustomer {
+
+    /**
+     * create by TinBQ
+     * time: 30/06/2022
+     * This method to test show customer list and search
+     */
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,13 +47,264 @@ public class CustomerController_getPage {
                 .andExpect(jsonPath("$.totalPages").value(1))
                 .andExpect(jsonPath("$.totalElements").value(2))
                 .andExpect(jsonPath("$.content[1].customerId").value("KL-0002"))
-                .andExpect(jsonPath("$.content[1].customerName").value("luật"))
+                .andExpect(jsonPath("$.content[1].customerName").value("tín"))
                 .andExpect(jsonPath("$.content[1].customerBirthday").value("1999-01-25"))
-                .andExpect(jsonPath("$.content[1].customerGender").value(0))
+                .andExpect(jsonPath("$.content[1].customerGender").value(1))
                 .andExpect(jsonPath("$.content[1].customerAddress").value("đà nẵng"))
                 .andExpect(jsonPath("$.content[1].customerPhone").value("0123456789"))
                 .andExpect(jsonPath("$.content[1].customerNote").value("123"))
+                .andExpect(jsonPath("$.content[1].customerUsername.username").value("nva@gmail.com"))
                 .andExpect(jsonPath("$.content[1].flag").value(true));
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerId_7() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerId","null"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerId_8() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerId",""))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerId_9() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerId","KL-9999"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerId_10() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerId","KL-0001"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerId_11() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerId","KL-0001"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerTypeId_7() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerType","null"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerTypeId_8() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerType",""))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerTypeId_9() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerType","3"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerTypeId_10() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerType","1"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerTypeId_11() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerType","1"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerName_7() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerName","null"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerName_8() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerName",""))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerName_9() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerName","abc"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerName_10() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerName","tín"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerName_11() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerName","tín"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerAddress_7() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerAddress","null"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerAddress_8() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers?")
+                                .param("customerAddress",""))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerAddress_9() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerAddress","Huế"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerAddress_10() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerAddress","đà nẵng"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerAddress_11() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerAddress","đà nẵng"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerPhone_7() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerPhone","null"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerPhone_8() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerPhone",""))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerPhone_9() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerPhone","xyz"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerPhone_10() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerPhone","0123456789"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void getSearchAndSortCustomer_customerPhone_11() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/api/manager-customer/customers")
+                                .param("customerPhone","0123456789"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
     }
 
 
