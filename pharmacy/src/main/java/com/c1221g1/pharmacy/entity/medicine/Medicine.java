@@ -12,6 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -57,16 +58,19 @@ public class Medicine {
     @ManyToOne
     @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
-    @JsonBackReference
+    @JsonBackReference(value = "medicinePrescriptionList")
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
-    @JsonBackReference
+    @JsonBackReference(value = "importInvoiceMedicineList")
     @OneToMany(mappedBy = "medicine")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
-    @JsonBackReference
+    @JsonBackReference(value = "invoiceMedicineList")
     @OneToMany(mappedBy = "medicine")
     private List<InvoiceMedicine> invoiceMedicineList;
-    @JsonBackReference
+    @JsonBackReference(value = "cartDetailList")
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
+    @OneToMany(mappedBy = "medicine")
+    @JsonBackReference(value = "medicineStorageSet")
+    private Set<MedicineStorage> medicineStorageSet;
 }

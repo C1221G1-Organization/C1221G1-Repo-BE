@@ -7,12 +7,19 @@ import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicineDto {
     private String medicineId;
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @Length(min = 3,max = 50)
     private String medicineName;
     private String medicineActiveIngredients;
     private Double medicineImportPrice;

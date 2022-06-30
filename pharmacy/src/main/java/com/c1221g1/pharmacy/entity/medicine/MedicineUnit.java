@@ -19,7 +19,7 @@ public class MedicineUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicineUnitId;
     private String medicineUnitName;
-    @JsonBackReference
+    @JsonBackReference(value = "medicineList")
     @OneToMany(mappedBy = "medicineUnit")
     private List<Medicine> medicineList;
 

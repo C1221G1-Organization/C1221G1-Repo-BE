@@ -80,7 +80,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @PostMapping("")
-    public ResponseEntity<List<FieldError>> createNewMedicine(@Valid @RequestBody MedicineDto medicineDto,
+    public ResponseEntity<List<FieldError>> createMedicine(@Valid @RequestBody MedicineDto medicineDto,
                                                               BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

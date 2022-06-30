@@ -24,7 +24,7 @@ public class MedicineType {
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String medicineTypeId;
     private String medicineTypeName;
-    @JsonBackReference
+    @JsonBackReference(value = "medicineList")
     @OneToMany(mappedBy = "medicineType")
     private List<Medicine> medicineList;
 
