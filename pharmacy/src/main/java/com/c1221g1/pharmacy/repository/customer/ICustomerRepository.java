@@ -17,7 +17,8 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
     @Transactional
     @Modifying
     @Query(value = "update customer set customer_name = :customer_name,customer_address = :customer_address,customer_birthday = :customer_birthday" +
-            ",customer_gender = :customer_gender,customer_note = :customer_note,customer_phone = :customer_phone,customer_type_id = :customer_type_id where customer_id = :customer_id",
+            ",customer_gender = :customer_gender,customer_note = :customer_note,customer_phone = :customer_phone,customer_type_id = :customer_type_id" +
+            " where customer_id = :customer_id",
     nativeQuery = true)
 
     void updateCustomer(@Param("customer_name")String customer_name ,
@@ -30,5 +31,14 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_id")String customer_id );
 
 
+    /**
+     * Create by TruongNQ
+     * Time : 23:58 29/06/2022
+     * Function update customer by id
+     */
+    @Query(value = "select customer_id,customer_name,customer_address,customer_birthday,customer_gender,customer_note,customer_phone," +
+            "customer_type_id, flag, customer_username from customer where customer_id = :customerId",
+            nativeQuery = true)
+    Customer findByCustomerId(@Param("customerId") String customerId);
 
 }

@@ -18,14 +18,14 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findByCustomerId(String customerId) {
-        return this.iCustomerRepository.findById(customerId).orElse(null);
+        return this.iCustomerRepository.findByCustomerId(customerId);
     }
 
     @Override
     public void updateCustomer(Customer customer) {
         this.iCustomerRepository.updateCustomer(customer.getCustomerName(), customer.getCustomerAddress()
-                , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone(),
-                customer.getCustomerType().getCustomerTypeId(),customer.getCustomerId());
+                , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone()
+                ,customer.getCustomerType().getCustomerTypeId(),customer.getCustomerId());
     }
 
 }
