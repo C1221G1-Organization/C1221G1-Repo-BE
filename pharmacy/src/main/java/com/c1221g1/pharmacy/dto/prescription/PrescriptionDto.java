@@ -1,5 +1,7 @@
 package com.c1221g1.pharmacy.dto.prescription;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.validation.constraints.*;
 
 public class PrescriptionDto {

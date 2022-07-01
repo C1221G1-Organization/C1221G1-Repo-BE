@@ -25,7 +25,7 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
                     " where prescription.prescription_id like :id and prescription.prescription_name like :names" +
                     " and prescription.prescription_target_user like :target and prescription.prescription_symptom like :symptom",
             nativeQuery = true)
-    Page<Prescription> findAll(
+    Page<Prescription> findAllPage(
             @Param("id") String id,
             @Param("names") String names,
             @Param("target") String target,
@@ -67,7 +67,7 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             " prescription_target_user = :#{#prescription.prescriptionTargetUser}," +
             " prescription_note = :#{#prescription.prescriptionNote}," +
             " prescription_number_of_days = :#{#prescription.prescriptionNumberOfDays} " +
-            "where prescription_id = :#{#prescription.prescriptionId}",
+            " where prescription_id = :#{#prescription.prescriptionId}",
             nativeQuery = true)
     void editPrescription(Prescription prescription);
 

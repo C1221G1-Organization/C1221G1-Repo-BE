@@ -14,8 +14,8 @@ public class PrescriptionService implements IPrescriptionService {
     private IPrescriptionRepository prescriptionRepository;
 
     @Override
-    public Page<Prescription> findAll(String id, String name, String target, String symptom, Pageable pageable) {
-        return this.prescriptionRepository.findAll("%"+id+"%",
+    public Page<Prescription> findAllPageAndSearch(String id, String name, String target, String symptom, Pageable pageable) {
+        return this.prescriptionRepository.findAllPage("%"+id+"%",
                 "%"+ name +"%","%"+ target +"%","%"+ symptom +"%", pageable);
     }
 
