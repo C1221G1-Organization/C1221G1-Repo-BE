@@ -147,7 +147,7 @@ public class PaymentOnlineController_getPaymentOnline {
     @Test
     public void getPaymentOnline_10() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/payment-online?paymentOnlineId=HDO-0002&customerName=Khoa"))
+                .get("/api/payment-online?paymentOnlineId=HDO-0002&customerName=Khoa&page=0&size=5"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.totalPages").value(1))
