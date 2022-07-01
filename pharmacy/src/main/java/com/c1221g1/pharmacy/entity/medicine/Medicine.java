@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties
         ({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
-
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -30,7 +29,7 @@ public class Medicine {
     private Double medicineWholesaleProfit;
     private Double medicineRetailSaleProfit;
     private Double medicineTax;
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
     private String medicineManufacture;
     @Column(columnDefinition = "LONGTEXT")
     private String medicineUsage;
@@ -133,11 +132,11 @@ public class Medicine {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 
@@ -260,6 +259,7 @@ public class Medicine {
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
     }
+
 
     public Set<MedicineStorage> getMedicineStorageSet() {
         return medicineStorageSet;

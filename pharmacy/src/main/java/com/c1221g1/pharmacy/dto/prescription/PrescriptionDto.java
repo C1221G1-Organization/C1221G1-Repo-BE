@@ -11,7 +11,6 @@ public class PrescriptionDto {
     private String prescriptionObject;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-    private List<MedicinePrescription> medicinePrescriptionList;
 
     public PrescriptionDto() {
     }
@@ -64,11 +63,4 @@ public class PrescriptionDto {
         this.flag = flag;
     }
 
-    public List<MedicinePrescription> getMedicinePrescriptionList() {
-        return medicinePrescriptionList;
-    }
-
-    public void setMedicinePrescriptionList(List<MedicinePrescription> medicinePrescriptionList) {
-        this.medicinePrescriptionList = medicinePrescriptionList;
-    }
 }

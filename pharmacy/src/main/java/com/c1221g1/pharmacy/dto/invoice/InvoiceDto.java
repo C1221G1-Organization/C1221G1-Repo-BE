@@ -15,7 +15,6 @@ public class InvoiceDto {
     private String invoiceNote;
     private String invoiceCreatedDate;
     private boolean flag;
-    private List<InvoiceMedicine> invoiceMedicineList;
 
 
     public InvoiceDto() {
@@ -77,11 +76,4 @@ public class InvoiceDto {
         this.flag = flag;
     }
 
-    public List<InvoiceMedicine> getInvoiceMedicineList() {
-        return invoiceMedicineList;
-    }
-
-    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
-        this.invoiceMedicineList = invoiceMedicineList;
-    }
 }

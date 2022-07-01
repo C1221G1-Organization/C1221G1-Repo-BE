@@ -93,6 +93,4 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
             "where supplier_id = :#{#supplier.supplierId}",
             nativeQuery = true)
     void updateSupplier(Supplier supplier);
-
-
 }

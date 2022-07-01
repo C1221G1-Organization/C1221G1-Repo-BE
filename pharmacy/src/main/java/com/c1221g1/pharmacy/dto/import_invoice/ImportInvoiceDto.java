@@ -1,11 +1,9 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
-
-import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
-import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
+import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ImportInvoiceDto implements Validator {
@@ -16,9 +14,11 @@ public class ImportInvoiceDto implements Validator {
     private String importInvoiceDate;
     private String importInvoiceHour;
     private boolean flag;
-    private Supplier supplier;
-    private Employee employee;
-    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
+    @NotNull
+    private SupplierDto supplierDto;
+    @NotNull
+    private EmployeeDto employeeDto;
+    private List<ImportInvoiceMedicineDto> importInvoiceMedicineList;
 
     public ImportInvoiceDto() {
     }
@@ -79,27 +79,27 @@ public class ImportInvoiceDto implements Validator {
         this.flag = flag;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public SupplierDto getSupplierDto() {
+        return supplierDto;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSupplierDto(SupplierDto supplierDto) {
+        this.supplierDto = supplierDto;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public EmployeeDto getEmployeeDto() {
+        return employeeDto;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployeeDto(EmployeeDto employeeDto) {
+        this.employeeDto = employeeDto;
     }
 
-    public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
+    public List<ImportInvoiceMedicineDto> getImportInvoiceMedicineList() {
         return importInvoiceMedicineList;
     }
 
-    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
+    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicineDto> importInvoiceMedicineList) {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
     }
 

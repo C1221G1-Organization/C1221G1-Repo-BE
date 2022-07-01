@@ -14,9 +14,8 @@ public class CustomerDto {
     private String customerPhone;
     private String customerNote;
     private boolean flag;
-    private Users customerUsername ;
+    private Users customerUsername;
     private CustomerType customerType;
-    private List<Cart> cartList;
 
 
     public CustomerDto() {
@@ -94,11 +93,4 @@ public class CustomerDto {
         this.customerType = customerType;
     }
 
-    public List<Cart> getCartList() {
-        return cartList;
-    }
-
-    public void setCartList(List<Cart> cartList) {
-        this.cartList = cartList;
-    }
 }

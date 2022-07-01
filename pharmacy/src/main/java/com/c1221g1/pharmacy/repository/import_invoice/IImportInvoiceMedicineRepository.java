@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface IImportInvoiceMedicineRepository extends JpaRepository<ImportInvoiceMedicine,Integer> {
+public interface IImportInvoiceMedicineRepository extends JpaRepository<ImportInvoiceMedicine, Integer> {
 
 
 
