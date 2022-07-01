@@ -17,10 +17,6 @@ public class InvoiceService implements IInvoiceService {
         return iInvoiceRepository.findAll(startDate,endDate,startTime,endTime,typeOfInvoiceId,pageable);
     }
 
-    public Page<Invoice> findAllWithoutInvoiceTypeArg(String startDate, String endDate, String startTime, String endTime, Pageable pageable) {
-        return iInvoiceRepository.findAllWithoutInvoiceTypeArg(startDate, endDate, startTime, endTime, pageable);
-    }
-
     @Override
     public void delete(String id) {
         iInvoiceRepository.deleteByFlag(id);

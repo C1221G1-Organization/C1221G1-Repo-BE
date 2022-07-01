@@ -27,16 +27,10 @@ public class InvoiceController {
                                     @RequestParam(defaultValue = "") String endDate,
                                     @RequestParam(defaultValue = "") String startTime,
                                     @RequestParam(defaultValue = "") String endTime,
-                                    @RequestParam Integer typeOfInvoiceId,
+                                    @RequestParam(defaultValue = "1") Integer typeOfInvoiceId,
                                     @RequestParam(defaultValue = "invoiceId") String fieldSort) {
         Pageable pageable = PageRequest.of(0,5, Sort.Direction.ASC,fieldSort);
-        Page<Invoice> invoicePage;
-        if (typeOfInvoiceId == 0) {
-            invoicePage = iInvoiceService.findAllWithoutInvoiceTypeArg(startDate, endDate, startTime, endTime, pageable);
-        } else {
-            invoicePage = iInvoiceService.findAll(startDate, endDate, startTime, endTime, typeOfInvoiceId, pageable);
-        }
-
+        Page<Invoice> invoicePage = iInvoiceService.findAll(startDate, endDate, startTime, endTime, typeOfInvoiceId, pageable);
         if(invoicePage.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -48,7 +42,7 @@ public class InvoiceController {
      * Created by TuanPA
      * Function: Delete invoice(set invoice flag 1->0)
      */
-    @PatchMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Invoice> deleteInvoice(@PathVariable String id) {
         Invoice invoice = iInvoiceService.findById(id);
         if (invoice == null) {

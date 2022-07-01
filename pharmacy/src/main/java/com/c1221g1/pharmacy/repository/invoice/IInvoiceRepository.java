@@ -25,23 +25,13 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
 //            "and typeOfInvoiceId = :typeOfInvoiceId" +
 //            "group by medicine.medicine_id", nativeQuery = true)
 //    thêm thuộc tính invoiceTotalMoney ở invoice
-    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_created_date," +
+    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_create_date," +
             " invoice_created_time, invoice_note, invoice_total_money " +
+            "from invoice" +
             "where :startDate < invoice_created_date < :endDate "+
             "and :startTime < invoice_created_time < :endTime "+
             "and typeOfInvoiceId = :typeOfInvoiceId", nativeQuery = true)
     Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
-
-    /**
-     * @author TuanPA
-     * Function: find all invoice without typeOfInVoiceId argument
-     * @return invoice page
-     */
-    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_created_date," +
-            " invoice_created_time, invoice_note, invoice_total_money " +
-            "where :startDate < invoice_created_date < :endDate "+
-            "and :startTime < invoice_created_time < :endTime ", nativeQuery = true)
-    Page<Invoice> findAllWithoutInvoiceTypeArg(String startDate, String endDate, String startTime, String endTime, Pageable pageable);
 
     /**
      * @author TuanPA
