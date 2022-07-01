@@ -8,9 +8,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"userRoleList","customer","employee"})
+@JsonIgnoreProperties({"userRoleList", "customer", "employee"})
 public class Users {
-    @Id @Column(columnDefinition = "VARCHAR(30)")
+    @Id
+    @Column(columnDefinition = "VARCHAR(30)")
     private String username;
     private String password;
     @Column(columnDefinition = "BIT")

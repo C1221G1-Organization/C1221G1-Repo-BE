@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @JsonIgnoreProperties({"importInvoiceMedicineList"})
 public class ImportInvoice {
+
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")

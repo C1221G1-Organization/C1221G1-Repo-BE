@@ -11,6 +11,7 @@ import java.util.List;
 public interface IImportInvoiceMedicineRepository extends JpaRepository<ImportInvoiceMedicine,Integer> {
 
 
+
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -25,4 +26,5 @@ public interface IImportInvoiceMedicineRepository extends JpaRepository<ImportIn
             "FROM import_invoice_medicine iim " +
             "WHERE import_invoice_id = :id AND flag = 1", nativeQuery = true)
     List<MedicineImportDto> findImportMedicineByImportInvoiceId(@Param("id") String importInvoiceId);
+
 }
