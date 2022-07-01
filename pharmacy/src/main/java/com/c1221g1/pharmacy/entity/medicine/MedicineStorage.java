@@ -14,7 +14,6 @@ public class MedicineStorage {
     @Column(columnDefinition = "BIT")
     private boolean flag;
 
-
     public MedicineStorage() {
     }
 

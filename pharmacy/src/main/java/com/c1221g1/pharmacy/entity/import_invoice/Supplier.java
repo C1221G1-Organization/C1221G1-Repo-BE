@@ -27,7 +27,6 @@ public class Supplier {
     @OneToMany(mappedBy = "supplier")
     private List<ImportInvoice> importInvoiceList;
 
-
     public Supplier() {
     }
 
