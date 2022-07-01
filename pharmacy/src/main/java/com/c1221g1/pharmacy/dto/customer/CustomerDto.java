@@ -17,12 +17,22 @@ public class CustomerDto {
     private String customerBirthday;
     @NotNull(message = "Name may not be null")
     private Integer customerGender;
+
+    @Size(max = 20, message = "\n" +
+            "Do not exceed 20 characters")
+    @Size(min = 2, message = "\n" +
+            "No less than 2 character")
     private String customerAddress;
 
     @NotNull(message = "Name may not be null")
     @NotEmpty(message = "Name may not be empty")
     @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})$")
     private String customerPhone;
+
+    @Size(max = 20, message = "\n" +
+            "Do not exceed 20 characters")
+    @Size(min = 1, message = "\n" +
+            "No less than 2 character")
     private String customerNote;
     private boolean flag;
     private Users customerUsername;
