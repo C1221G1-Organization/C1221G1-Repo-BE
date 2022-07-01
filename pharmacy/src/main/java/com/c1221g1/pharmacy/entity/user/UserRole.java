@@ -1,7 +1,4 @@
 package com.c1221g1.pharmacy.entity.user;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,11 +9,9 @@ public class UserRole {
 
     @ManyToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
-    @JsonBackReference
     private Users users;
     @ManyToOne
     @JoinColumn(name = "role", referencedColumnName = "roleId")
-    @JsonBackReference
     private Roles roles;
 
     public UserRole() {

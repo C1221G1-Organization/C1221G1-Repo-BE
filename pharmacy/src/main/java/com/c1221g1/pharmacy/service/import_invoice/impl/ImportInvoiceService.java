@@ -8,12 +8,16 @@ import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceMedicineService
 import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ImportInvoiceService implements IImportInvoiceService {
+
+
     @Autowired
-    private IImportInvoiceRepository iImportInvoiceRepository;
+    private IImportInvoiceRepository importInvoiceRepository;
     @Autowired
     private IImportInvoiceMedicineService importInvoiceMedicineService;
     @Autowired
@@ -29,8 +33,31 @@ public class ImportInvoiceService implements IImportInvoiceService {
      */
     @Override
     public ImportInvoice saveImportInvoice(ImportInvoice importInvoice) {
-        return this.iImportInvoiceRepository.save(importInvoice);
+        return this.importInvoiceRepository.save(importInvoice);
     }
+
+    /**
+     * this function use to get all list Import Invoice
+     *
+     * @author HongHTX
+     * @Time 17:00 29/06/2022
+     */
+    @Override
+    public Page<ImportInvoice> findAllImportInvoice(String startDate, String endDate, String startTime, String endTime, Pageable pageable) {
+        return importInvoiceRepository.findAllImportInvoice(startDate, endDate, startTime, endTime, pageable);
+    }
+
+    /**
+     * this function use to delete flag from list Import Invoice
+     *
+     * @author HongHTX
+     * @Time 17:00 29/06/2022
+     */
+    @Override
+    public void deleteById(String id) {
+        importInvoiceRepository.deleteImportInvoice(id);
+    }
+
 
     /**
      * Created by: TrungTVH

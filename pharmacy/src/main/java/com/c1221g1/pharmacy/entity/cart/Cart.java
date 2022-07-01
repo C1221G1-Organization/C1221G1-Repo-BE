@@ -1,11 +1,12 @@
 package com.c1221g1.pharmacy.entity.cart;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"paymentOnlineList", "cartDetailList"})
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

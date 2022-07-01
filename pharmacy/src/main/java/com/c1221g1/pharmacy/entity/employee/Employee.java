@@ -2,12 +2,14 @@ package com.c1221g1.pharmacy.entity.employee;
 
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.user.Users;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"importInvoiceList"})
 public class Employee {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -26,12 +28,15 @@ public class Employee {
     private String employeeNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
+
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
+
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
 

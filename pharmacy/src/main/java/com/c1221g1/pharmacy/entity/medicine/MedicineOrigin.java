@@ -1,15 +1,17 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"medicineList"})
 public class MedicineOrigin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicineOriginId;
     private String medicineOriginName;
-
     @OneToMany(mappedBy = "medicineOrigin")
     private List<Medicine> medicineList;
 

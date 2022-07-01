@@ -28,7 +28,6 @@ public class ImportInvoiceMedicine {
     public ImportInvoiceMedicine() {
     }
 
-
     public Integer getImportInvoiceMedicineId() {
         return importInvoiceMedicineId;
     }

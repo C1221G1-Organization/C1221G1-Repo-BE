@@ -1,9 +1,12 @@
 package com.c1221g1.pharmacy.entity.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"customerList"})
 public class CustomerType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

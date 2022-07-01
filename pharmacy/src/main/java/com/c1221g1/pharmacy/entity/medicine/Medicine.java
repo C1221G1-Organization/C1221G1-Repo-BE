@@ -4,7 +4,7 @@ import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties
+        ({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
+
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -61,7 +64,6 @@ public class Medicine {
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
-    @JsonBackReference(value = "medicineStorageSet")
     private Set<MedicineStorage> medicineStorageSet;
 
     public Medicine() {

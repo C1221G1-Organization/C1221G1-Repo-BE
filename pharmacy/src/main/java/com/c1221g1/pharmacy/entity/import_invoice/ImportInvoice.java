@@ -1,13 +1,14 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
-
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"importInvoiceMedicineList"})
 public class ImportInvoice {
+
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")

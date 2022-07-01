@@ -1,11 +1,13 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"importInvoiceList"})
 public class Supplier {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -20,8 +22,10 @@ public class Supplier {
     private String supplierEmail;
     @Column(columnDefinition = "TEXT")
     private String note;
+
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
     @OneToMany(mappedBy = "supplier")
     private List<ImportInvoice> importInvoiceList;
 
