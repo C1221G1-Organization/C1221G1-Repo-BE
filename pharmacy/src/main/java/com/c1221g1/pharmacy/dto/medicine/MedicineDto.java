@@ -47,7 +47,7 @@ public class MedicineDto {
     @NotNull
     @Positive
     @Max(100)
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
 
     @NotEmpty
     @Length(min = 2, max = 50)
@@ -90,7 +90,7 @@ public class MedicineDto {
                        @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
                        @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
                        @NotNull @Positive @Max(100) Double medicineTax,
-                       @NotNull @Positive @Max(100) Double medicineConversionRate,
+                       @NotNull @Positive @Max(100) Integer medicineConversionRate,
                        @NotEmpty @Length(min = 2, max = 50) String medicineManufacture,
                        @NotEmpty @Length(min = 2, max = 50) String medicineUsage,
                        @NotEmpty @Length(min = 2, max = 50) String medicineInstruction,
@@ -187,11 +187,11 @@ public class MedicineDto {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 

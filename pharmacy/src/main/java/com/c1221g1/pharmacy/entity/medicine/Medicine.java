@@ -30,7 +30,7 @@ public class Medicine {
     private Double medicineWholesaleProfit;
     private Double medicineRetailSaleProfit;
     private Double medicineTax;
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
     private String medicineManufacture;
     @Column(columnDefinition = "LONGTEXT")
     private String medicineUsage;
@@ -133,11 +133,11 @@ public class Medicine {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 
