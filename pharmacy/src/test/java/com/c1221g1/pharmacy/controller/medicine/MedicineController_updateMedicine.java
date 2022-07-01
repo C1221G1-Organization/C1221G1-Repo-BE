@@ -47,7 +47,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -57,7 +57,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -103,7 +103,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -114,7 +114,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -160,7 +160,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -171,7 +171,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -217,7 +217,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -228,7 +228,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -274,7 +274,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -294,7 +294,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -340,7 +340,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -350,7 +350,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -396,7 +396,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -407,7 +407,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -453,7 +453,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -464,7 +464,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -510,7 +510,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -521,7 +521,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -567,7 +567,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -590,7 +590,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -636,7 +636,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -646,7 +646,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -692,7 +692,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -703,7 +703,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -749,7 +749,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -760,7 +760,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -806,7 +806,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -817,7 +817,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -863,7 +863,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -873,7 +873,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -919,7 +919,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -930,7 +930,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -976,7 +976,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -987,7 +987,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1033,7 +1033,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1044,7 +1044,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1090,7 +1090,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1100,7 +1100,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineDiscount(3.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1146,7 +1146,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1157,7 +1157,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(null);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1203,7 +1203,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1214,7 +1214,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(-2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1260,7 +1260,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1271,7 +1271,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(122.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1317,7 +1317,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1327,7 +1327,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineDiscount(3.0);
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1373,7 +1373,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1384,7 +1384,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(null);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1430,7 +1430,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1441,7 +1441,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(-2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1487,7 +1487,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1498,7 +1498,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(122.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1544,7 +1544,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1554,7 +1554,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineDiscount(3.0);
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1600,7 +1600,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1611,7 +1611,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(null);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1657,7 +1657,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1668,7 +1668,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(-2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1714,7 +1714,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1725,7 +1725,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(122.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1771,7 +1771,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1827,7 +1827,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1838,7 +1838,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(1.0);
-        medicineDto.setMedicineConversionRate(null);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1884,7 +1884,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1895,7 +1895,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(-2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(-10.0);
+        medicineDto.setMedicineConversionRate(-10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1941,7 +1941,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -1952,7 +1952,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(122.0);
         medicineDto.setMedicineTax(513.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -1998,7 +1998,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2009,7 +2009,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
         medicineDto.setMedicineAgeApproved("trên 18 tuổi");
@@ -2054,7 +2054,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2065,7 +2065,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2111,7 +2111,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2122,7 +2122,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco#%");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2168,7 +2168,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2179,7 +2179,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("d");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2225,7 +2225,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2236,7 +2236,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" +\n" +
                 "                \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" +\n" +
                 "                \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" +\n" +
@@ -2291,7 +2291,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2302,7 +2302,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
         medicineDto.setMedicineAgeApproved("trên 18 tuổi");
@@ -2347,7 +2347,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2358,7 +2358,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aa");
         medicineDto.setMedicineUsage("");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2404,7 +2404,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2415,7 +2415,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt$#");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2461,7 +2461,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2472,7 +2472,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("d");
         medicineDto.setMedicineUsage("a");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2518,7 +2518,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2529,7 +2529,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aaa");
         medicineDto.setMedicineUsage("giảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắt" +
                 "giảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắtgiảm mù mắt" +
@@ -2585,7 +2585,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2596,7 +2596,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineAgeApproved("trên 18 tuổi");
@@ -2641,7 +2641,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2652,7 +2652,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aa");
         medicineDto.setMedicineUsage("aaaaa");
         medicineDto.setMedicineInstruction("");
@@ -2698,7 +2698,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2709,7 +2709,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt$#");
         medicineDto.setMedicineInstruction("nhỏ vào mắt#@#");
@@ -2755,7 +2755,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2766,7 +2766,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("dddd");
         medicineDto.setMedicineUsage("add");
         medicineDto.setMedicineInstruction("a");
@@ -2812,7 +2812,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2823,7 +2823,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aaa");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắtnhỏ vào mắtnhỏ vào mắtnhỏ vào mắtnhỏ vào mắtnhỏ vào mắtnhỏ vào mắt" +
@@ -2881,7 +2881,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2892,7 +2892,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -2937,7 +2937,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -2948,7 +2948,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aa");
         medicineDto.setMedicineUsage("aaaaa");
         medicineDto.setMedicineInstruction("trên 18 tuổi");
@@ -2994,7 +2994,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3005,7 +3005,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt$#");
         medicineDto.setMedicineInstruction("nhỏ vào mắt#@#");
@@ -3051,7 +3051,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3062,7 +3062,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("dddd");
         medicineDto.setMedicineUsage("add");
         medicineDto.setMedicineInstruction("aedase");
@@ -3108,7 +3108,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3119,7 +3119,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aaa");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắtnhỏ vào mắtnhỏ vào");
@@ -3176,7 +3176,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3187,7 +3187,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -3232,7 +3232,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3243,7 +3243,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aa");
         medicineDto.setMedicineUsage("aaaaa");
         medicineDto.setMedicineInstruction("trên 18 tuổi");
@@ -3289,7 +3289,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3300,7 +3300,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt$#");
         medicineDto.setMedicineInstruction("nhỏ vào mắt#@#");
@@ -3346,7 +3346,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3357,7 +3357,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("dddd");
         medicineDto.setMedicineUsage("add");
         medicineDto.setMedicineInstruction("aedase");
@@ -3403,7 +3403,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3414,7 +3414,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aaa");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắtnhỏ vào mắtnhỏ vào");
@@ -3471,7 +3471,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3482,7 +3482,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -3527,7 +3527,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3538,7 +3538,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aa");
         medicineDto.setMedicineUsage("aaaaa");
         medicineDto.setMedicineInstruction("trên 18 tuổi");
@@ -3584,7 +3584,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3595,7 +3595,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt$#");
         medicineDto.setMedicineInstruction("nhỏ vào mắt#@#");
@@ -3641,7 +3641,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3652,7 +3652,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("dddd");
         medicineDto.setMedicineUsage("add");
         medicineDto.setMedicineInstruction("aedase");
@@ -3698,7 +3698,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3709,7 +3709,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("aaa");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắtnhỏ vào mắtnhỏ vào");
@@ -3763,7 +3763,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3774,7 +3774,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -3819,7 +3819,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3830,7 +3830,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -3875,7 +3875,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3886,7 +3886,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -3931,7 +3931,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3942,7 +3942,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
@@ -3987,7 +3987,7 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
                 ("T-00010", "thuoc ca", "omega3", 5000.0,
-                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        5.0, 3.0, 2.0, 5.0, 10,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
                         "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
@@ -3998,7 +3998,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(5.0);
-        medicineDto.setMedicineConversionRate(10.0);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");
