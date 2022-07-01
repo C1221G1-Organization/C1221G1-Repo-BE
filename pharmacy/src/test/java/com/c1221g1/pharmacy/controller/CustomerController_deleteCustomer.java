@@ -17,7 +17,7 @@ public class CustomerController_deleteCustomer {
     /**
      * create by TinBQ
      * time: 30/06/2022
-     * This method to test delete customer by update flag 1'b1 to 1'b0. So use method patch
+     * This method to test delete customer by update flag 1'b1 to 1'b0
      */
 
     @Autowired
@@ -27,28 +27,31 @@ public class CustomerController_deleteCustomer {
     @Test
     public void deleteCustomer_25() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.patch("/api/manager-customer/customers/delete-customer/{customer_id}","null"))
+                        MockMvcRequestBuilders.delete("/api/manager-customer/customers")
+                                .param("customer_id","null"))
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
     public void deleteCustomer_26() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.patch("/api/manager-customer/customers/delete-customer/{customer_id}",""))
+                        MockMvcRequestBuilders.delete("/api/manager-customer/customers")
+                                .param("customer_id",""))
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
     public void deleteCustomer_27() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.patch("/api/manager-customer/customers/delete-customer/{customer_id}","KL-0099"))
+                        MockMvcRequestBuilders.delete("/api/manager-customer/customers")
+                                .param("customer_id","KL-9999"))
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
     public void deleteCustomer_28() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.patch("/api/manager-customer/customers/delete-customer/{customer_id}","KL-0001"))
+                        MockMvcRequestBuilders.delete("/api/manager-customer/customers/{customer_id}","KL-0001"))
                 .andExpect(status().isOk());
     }
 }

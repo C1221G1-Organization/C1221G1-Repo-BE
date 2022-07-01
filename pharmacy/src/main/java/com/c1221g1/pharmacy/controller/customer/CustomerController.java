@@ -62,7 +62,7 @@ public class CustomerController {
      * This method to set field flag in Database from 1 to 0
      */
 
-    @PatchMapping("delete-customer/{customer_id}")
+    @DeleteMapping("/{customer_id}")
     public ResponseEntity<Customer> deleteCustomer(@PathVariable("customer_id") String id) {
         Customer customer = this.iCustomerService.findById(id);
         if (customer == null) {
