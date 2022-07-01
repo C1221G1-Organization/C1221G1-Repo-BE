@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.dto.employee;
 
+import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.user.Users;
 
@@ -14,7 +15,7 @@ public class EmployeeDto {
     private String employeeDateStart;
     private String employeeNote;
     private boolean flag;
-    private PositionDto position;
+    private Position position;
     private Users employeeUsername ;
     private List<ImportInvoice> importInvoiceList;
 
@@ -93,11 +94,11 @@ public class EmployeeDto {
         this.flag = flag;
     }
 
-    public PositionDto getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(PositionDto position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 

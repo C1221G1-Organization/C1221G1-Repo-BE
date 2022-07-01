@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PositionService implements IPositionService {
-    @Autowired
-    IPositionRepository iPositionRepository;
+
 
 }
