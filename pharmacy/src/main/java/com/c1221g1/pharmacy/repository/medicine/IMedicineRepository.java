@@ -45,5 +45,4 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             "medicine_conversion_unit_id,flag " +
             "from medicine where flag = 1 and medicine_id =:id ",nativeQuery = true)
     Optional<Medicine> findMedicineById(@Param("id") String id);
-
 }

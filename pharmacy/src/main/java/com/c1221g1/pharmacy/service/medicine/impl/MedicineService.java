@@ -44,6 +44,5 @@ public class MedicineService implements IMedicineService {
     public void updateMedicine(Medicine existMedicine) {
         this.medicineRepository.updateMedicine(existMedicine);
     }
-
 }
 

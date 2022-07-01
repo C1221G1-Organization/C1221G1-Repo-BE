@@ -10,6 +10,4 @@ public interface IMedicineService {
     Optional<Medicine> findMedicineById(String id);
 
     void updateMedicine(Medicine existMedicine);
-
 }
-

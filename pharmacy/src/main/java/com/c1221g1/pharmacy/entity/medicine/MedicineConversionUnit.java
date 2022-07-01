@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-
 @JsonIgnoreProperties("medicineList")
 public class MedicineConversionUnit {
     @Id

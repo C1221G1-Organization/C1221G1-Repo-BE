@@ -1,6 +1,5 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,7 +17,6 @@ public class MedicineType {
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String medicineTypeId;
     private String medicineTypeName;
-    @JsonBackReference(value = "medicineList")
     @OneToMany(mappedBy = "medicineType")
     private List<Medicine> medicineList;
 

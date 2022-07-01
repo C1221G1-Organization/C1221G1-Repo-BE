@@ -12,7 +12,9 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
+@JsonIgnoreProperties
+        ({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
+
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")

@@ -1,6 +1,5 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -13,7 +12,6 @@ public class MedicineOrigin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicineOriginId;
     private String medicineOriginName;
-    @JsonBackReference(value = "medicineList")
     @OneToMany(mappedBy = "medicineOrigin")
     private List<Medicine> medicineList;
 
