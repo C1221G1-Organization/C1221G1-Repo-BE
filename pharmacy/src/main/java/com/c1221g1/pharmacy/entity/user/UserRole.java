@@ -18,7 +18,6 @@ public class UserRole {
     @JoinColumn(name = "role", referencedColumnName = "roleId")
     private Roles roles;
 
-
     public UserRole() {
     }
 

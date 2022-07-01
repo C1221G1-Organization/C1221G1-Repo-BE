@@ -55,8 +55,5 @@ public class EmployeeController {
         BeanUtils.copyProperties(employeeDto, employee);
         this.iEmployeeService.updateEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
-
-
 }

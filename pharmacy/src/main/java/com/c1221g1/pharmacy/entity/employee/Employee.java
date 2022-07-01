@@ -36,11 +36,8 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
-
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
-
-
     public Employee() {
     }
 
