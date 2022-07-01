@@ -44,7 +44,6 @@ public class SupplierController {
                                                           @RequestParam Optional<String> sort,
                                                           @RequestParam Optional<String> dir
     ) {
-
         Pageable pageable;
         String sortVal = sort.orElse("");
         String dirVal = dir.orElse("");
@@ -76,7 +75,8 @@ public class SupplierController {
      * and assign it to a variable id
      * call removeSupplierById method to set 'flag' to 0 in repository
      * <p>
-     * 18h 29/06/2022  trần ngọc luật
+     *
+     * @18h 29/06/2022  trần ngọc luật
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Supplier> deleteSupplier(@PathVariable("id") String id) {
@@ -88,7 +88,6 @@ public class SupplierController {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             } else {
                 Supplier supplier = iSupplierService.findById(id);
-
                 if (supplier == null) {
                     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                 }
