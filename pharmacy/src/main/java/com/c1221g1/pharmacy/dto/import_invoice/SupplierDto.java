@@ -1,18 +1,30 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
 
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
-
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class SupplierDto {
     private String supplierId;
+    @NotEmpty
+    @NotNull
     private String supplierName;
+
     private String supplierAddress;
+
+    @NotNull
+    @NotEmpty
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
     private String supplierPhone;
+
+    @NotNull
+    @NotEmpty
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String supplierEmail;
+
     private String note;
     private boolean flag;
-    private List<ImportInvoice> importInvoiceList;
+
 
     public SupplierDto() {
     }
@@ -73,12 +85,5 @@ public class SupplierDto {
         return flag;
     }
 
-    public List<ImportInvoice> getImportInvoiceList() {
-        return importInvoiceList;
-    }
 
-    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
-        this.importInvoiceList = importInvoiceList;
-    }
 }
-
