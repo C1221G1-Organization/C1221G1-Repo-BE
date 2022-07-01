@@ -62,20 +62,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        /**
+         * manager-cart
+         * manager-account
+         * manager-customer
+         * manager-employee
+         * manager-medicine
+         * manager-prescription
+         * manager-report
+         * manager-sale
+         * manager-security
+         * */
+
+
         http.cors()
                 .and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        ,"/api/manager-security/users/sign-up","/api/pharmacy","/api/pharmacy/cart"
+                        ,"/api/manager-security/users/sign-up","/api/manager-cart/cart"
                     )
                 .permitAll()
-                .antMatchers("/api/manager-employee/**")
+                .antMatchers("/api/manager-cart**")
                 .hasRole("USER")
-                .antMatchers("/api/pharmacy/employee-page/**")
+                .antMatchers("/api/manager-customer/**","/api/manager-prescription","/api/manager-sale/**")
                 .hasAnyRole("EMPLOYEE","MANAGER")
-                .antMatchers("/api/pharmacy/manager-page/**")
+                .antMatchers("/api/manager-account/**","/api/manager-medicine/**","/api/manager-employee/**","/api/manager-report/**")
                 .hasRole("MANAGER")
                 .anyRequest()
                 .authenticated()
