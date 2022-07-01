@@ -1,9 +1,7 @@
 package com.c1221g1.pharmacy.repository.medicine;
 
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -20,7 +18,7 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
     @Query(value = "SELECT medicine_storage_id, medicine_id , medicine_quantity " +
             "FROM medicine_storage " +
             "WHERE medicine_id = :id AND flag = 1", nativeQuery = true)
-            MedicineStorage findMedicineStorageById(@Param("id") String medicineId);
+    MedicineStorage findMedicineStorageById(@Param("id") String medicineId);
 
     /**
      * Created by: TrungTVH

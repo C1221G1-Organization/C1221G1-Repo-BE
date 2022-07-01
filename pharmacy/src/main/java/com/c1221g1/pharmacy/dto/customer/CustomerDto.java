@@ -14,7 +14,7 @@ public class CustomerDto {
     private String customerPhone;
     private String customerNote;
     private boolean flag;
-    private Users customerUsername ;
+    private Users customerUsername;
     private CustomerType customerType;
     private List<Cart> cartList;
 

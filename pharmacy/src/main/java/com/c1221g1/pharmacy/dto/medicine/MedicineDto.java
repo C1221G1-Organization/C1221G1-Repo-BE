@@ -5,7 +5,6 @@ import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
 import com.c1221g1.pharmacy.entity.medicine.MedicineType;
 import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.*;
 
 public class MedicineDto {
@@ -148,7 +147,6 @@ public class MedicineDto {
     public void setMedicineActiveIngredients(String medicineActiveIngredients) {
         this.medicineActiveIngredients = medicineActiveIngredients;
     }
-
     public Double getMedicineImportPrice() {
         return medicineImportPrice;
     }

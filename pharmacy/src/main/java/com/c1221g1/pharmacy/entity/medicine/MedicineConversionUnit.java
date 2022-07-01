@@ -12,7 +12,6 @@ public class MedicineConversionUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicineConversionUnitId;
     private String medicineConversionUnitName;
-
     @OneToMany(mappedBy = "medicineConversionUnit")
     private List<Medicine> medicineList;
 

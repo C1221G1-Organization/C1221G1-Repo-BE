@@ -49,3 +49,4 @@ public class MedicineStorage {
         this.flag = flag;
     }
 }
+
