@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class Position {
-    @NotNull(message = "Position may not be null")
     private Integer positionId;
     private String positionName;
     private List<Employee> employeeList;

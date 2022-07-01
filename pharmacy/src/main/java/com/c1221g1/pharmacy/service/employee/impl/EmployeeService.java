@@ -65,11 +65,21 @@ public class EmployeeService implements IEmployeeService {
     public List<Employee> getListEmployee() {
         return this.iEmployeeRepository.getListEmployee();
     }
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function: Save Emoloyee
+*/
 
     @Override
     public void saveEmployee(Employee employee) {
         this.iEmployeeRepository.save(employee);
     }
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function:  Update Emoloyee
+*/
 
     @Override
     public void updateEmployee(Employee employee) {
