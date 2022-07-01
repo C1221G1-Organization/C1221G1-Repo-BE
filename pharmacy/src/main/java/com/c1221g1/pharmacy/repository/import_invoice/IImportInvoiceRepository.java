@@ -9,9 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.List;
-
 public interface IImportInvoiceRepository extends JpaRepository<ImportInvoice, String> {
 
     /**
@@ -23,14 +20,14 @@ public interface IImportInvoiceRepository extends JpaRepository<ImportInvoice, S
     @Query(value = "select import_invoice_id, import_system_code, import_invoice_date," +
                    "import_invoice_hour, payment_prepayment, total, flag, supplier_id," +
                    "employee_id" +
-                   "from import_invoice " +
+                   "from import_invoice" +
                    "where (import_invoice_date between :startDate and :endDate)" +
                    "and (import_invoice_hour between :startTime and :endTime) and flag = 1",
 
       countQuery ="select import_invoice_id, import_system_code, import_invoice_date," +
                    "import_invoice_hour, payment_prepayment, total, flag, supplier_id," +
                    "employee_id" +
-                   "from import_invoice " +
+                   "from import_invoice" +
                    "where (import_invoice_date between :startDate and :endDate)" +
                    "and (import_invoice_hour between :startTime and :endTime) and flag = 1",
 

@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -44,7 +43,7 @@ public class ImportInvoiceController {
         Pageable pageable = PageRequest.of(0, 5, Sort.by(fieldSortVal).ascending());
         Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDateVal, endDateVal, startTimeVal, endTimeVal, pageable);
 
-        if(importInvoicePage.isEmpty()){
+        if (importInvoicePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(importInvoicePage, HttpStatus.OK);
@@ -58,9 +57,9 @@ public class ImportInvoiceController {
      * @Time 17:00 29/06/2022
      */
 
-    @PatchMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteImportInvoice(@PathVariable String id) {
-        if("null".equals(id) || "".equals(id)) {
+        if ("null".equals(id) || "".equals(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             importInvoiceService.deleteById(id);

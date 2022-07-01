@@ -114,7 +114,6 @@ public class MedicineController {
                                                            @Valid @RequestBody MedicineDto medicineDto,
                                                            BindingResult bindingResult) {
         Medicine existMedicine = this.medicineService.findMedicineById(id).orElse(null);
-        System.out.println(existMedicine);
         if (existMedicine == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
