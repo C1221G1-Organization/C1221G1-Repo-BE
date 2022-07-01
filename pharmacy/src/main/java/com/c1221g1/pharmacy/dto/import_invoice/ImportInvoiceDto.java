@@ -3,14 +3,18 @@ package com.c1221g1.pharmacy.dto.import_invoice;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import java.util.List;
 
-public class ImportInvoiceDto {
-    private Integer importInvoiceId;
+public class ImportInvoiceDto implements Validator {
+    private String importInvoiceId;
     private Integer importSystemCode;
-    private Integer accountingVoucherNumber;
+    private Double paymentPrepayment;
+    private Double total;
     private String importInvoiceDate;
+    private String importInvoiceHour;
     private boolean flag;
     private Supplier supplier;
     private Employee employee;
@@ -19,11 +23,11 @@ public class ImportInvoiceDto {
     public ImportInvoiceDto() {
     }
 
-    public Integer getImportInvoiceId() {
+    public String getImportInvoiceId() {
         return importInvoiceId;
     }
 
-    public void setImportInvoiceId(Integer importInvoiceId) {
+    public void setImportInvoiceId(String importInvoiceId) {
         this.importInvoiceId = importInvoiceId;
     }
 
@@ -35,12 +39,20 @@ public class ImportInvoiceDto {
         this.importSystemCode = importSystemCode;
     }
 
-    public Integer getAccountingVoucherNumber() {
-        return accountingVoucherNumber;
+    public Double getPaymentPrepayment() {
+        return paymentPrepayment;
     }
 
-    public void setAccountingVoucherNumber(Integer accountingVoucherNumber) {
-        this.accountingVoucherNumber = accountingVoucherNumber;
+    public void setPaymentPrepayment(Double paymentPrepayment) {
+        this.paymentPrepayment = paymentPrepayment;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public String getImportInvoiceDate() {
@@ -49,6 +61,14 @@ public class ImportInvoiceDto {
 
     public void setImportInvoiceDate(String importInvoiceDate) {
         this.importInvoiceDate = importInvoiceDate;
+    }
+
+    public String getImportInvoiceHour() {
+        return importInvoiceHour;
+    }
+
+    public void setImportInvoiceHour(String importInvoiceHour) {
+        this.importInvoiceHour = importInvoiceHour;
     }
 
     public boolean isFlag() {
@@ -81,5 +101,15 @@ public class ImportInvoiceDto {
 
     public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }

@@ -47,7 +47,7 @@ public class MedicineDto {
     @NotNull
     @Positive
     @Max(100)
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
 
     @NotEmpty
     @Length(min = 2, max = 50)
@@ -78,6 +78,29 @@ public class MedicineDto {
     private MedicineConversionUnit medicineConversionUnit;
 
     public MedicineDto() {
+    }
+
+    public MedicineDto(String medicineId, String medicineName, String medicineActiveIngredients, Double medicineImportPrice, Double medicineDiscount, Double medicineWholesaleProfit, Double medicineRetailSaleProfit, Double medicineTax, Integer medicineConversionRate, String medicineManufacture, String medicineUsage, String medicineInstruction, String medicineAgeApproved, String medicineImage, String medicineDescription, boolean flag, MedicineOrigin medicineOrigin, MedicineType medicineType, MedicineUnit medicineUnit, MedicineConversionUnit medicineConversionUnit) {
+        this.medicineId = medicineId;
+        this.medicineName = medicineName;
+        this.medicineActiveIngredients = medicineActiveIngredients;
+        this.medicineImportPrice = medicineImportPrice;
+        this.medicineDiscount = medicineDiscount;
+        this.medicineWholesaleProfit = medicineWholesaleProfit;
+        this.medicineRetailSaleProfit = medicineRetailSaleProfit;
+        this.medicineTax = medicineTax;
+        this.medicineConversionRate = medicineConversionRate;
+        this.medicineManufacture = medicineManufacture;
+        this.medicineUsage = medicineUsage;
+        this.medicineInstruction = medicineInstruction;
+        this.medicineAgeApproved = medicineAgeApproved;
+        this.medicineImage = medicineImage;
+        this.medicineDescription = medicineDescription;
+        this.flag = flag;
+        this.medicineOrigin = medicineOrigin;
+        this.medicineType = medicineType;
+        this.medicineUnit = medicineUnit;
+        this.medicineConversionUnit = medicineConversionUnit;
     }
 
     public String getMedicineId() {
@@ -144,11 +167,11 @@ public class MedicineDto {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 
