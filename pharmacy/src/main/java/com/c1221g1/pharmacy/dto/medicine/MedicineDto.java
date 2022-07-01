@@ -47,7 +47,7 @@ public class MedicineDto {
     @NotNull
     @Positive
     @Max(100)
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
 
     @NotEmpty
     @Length(min = 2, max = 50)
@@ -78,6 +78,50 @@ public class MedicineDto {
     private MedicineConversionUnit medicineConversionUnit;
 
     public MedicineDto() {
+    }
+
+    public MedicineDto(String medicineId,
+                       @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$")
+                        @Length(min = 3, max = 50) String medicineName,
+                       @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$")
+                       @Length(min = 3, max = 50) String medicineActiveIngredients,
+                       @NotNull @Positive @Max(999999999) Double medicineImportPrice,
+                       @NotNull @Positive @Max(100) Double medicineDiscount,
+                       @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
+                       @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
+                       @NotNull @Positive @Max(100) Double medicineTax,
+                       @NotNull @Positive @Max(100) Integer medicineConversionRate,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineManufacture,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineUsage,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineInstruction,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineAgeApproved,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineImage,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineDescription,
+                       boolean flag,
+                       @NotNull MedicineOrigin medicineOrigin,
+                       @NotNull MedicineType medicineType,
+                       @NotNull MedicineUnit medicineUnit,
+                       @NotNull MedicineConversionUnit medicineConversionUnit) {
+        this.medicineId = medicineId;
+        this.medicineName = medicineName;
+        this.medicineActiveIngredients = medicineActiveIngredients;
+        this.medicineImportPrice = medicineImportPrice;
+        this.medicineDiscount = medicineDiscount;
+        this.medicineWholesaleProfit = medicineWholesaleProfit;
+        this.medicineRetailSaleProfit = medicineRetailSaleProfit;
+        this.medicineTax = medicineTax;
+        this.medicineConversionRate = medicineConversionRate;
+        this.medicineManufacture = medicineManufacture;
+        this.medicineUsage = medicineUsage;
+        this.medicineInstruction = medicineInstruction;
+        this.medicineAgeApproved = medicineAgeApproved;
+        this.medicineImage = medicineImage;
+        this.medicineDescription = medicineDescription;
+        this.flag = flag;
+        this.medicineOrigin = medicineOrigin;
+        this.medicineType = medicineType;
+        this.medicineUnit = medicineUnit;
+        this.medicineConversionUnit = medicineConversionUnit;
     }
 
     public String getMedicineId() {
@@ -143,11 +187,11 @@ public class MedicineDto {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 
