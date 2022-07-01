@@ -1,6 +1,6 @@
 package com.c1221g1.pharmacy.dto.employee;
 
-import com.c1221g1.pharmacy.dto.user.Users;
+import com.c1221g1.pharmacy.entity.user.Users;
 import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import org.springframework.validation.Errors;
