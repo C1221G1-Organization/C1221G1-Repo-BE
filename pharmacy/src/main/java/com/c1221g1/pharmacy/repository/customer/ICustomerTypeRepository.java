@@ -9,7 +9,12 @@ import java.util.List;
 
 public interface ICustomerTypeRepository extends JpaRepository<CustomerType, Integer> {
 
+    /**
+     * Create by TruongNQ
+     * Time : 23:59 29/06/2022
+     * Function this method to get customer type in database
+     */
     @Query(value = "SELECT customer_type_id, customer_type_name FROM customer_type", nativeQuery = true)
-    List<CustomerType> findAllCustomerType();
+    List<CustomerType> getAllCustomerType();
 
 }

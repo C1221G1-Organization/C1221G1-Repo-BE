@@ -1,8 +1,7 @@
 package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.customer.CustomerDto;
-import com.c1221g1.pharmacy.dto.customer.CustomerTypeDto;
-import com.c1221g1.pharmacy.entity.user.Users;
+import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerName_19() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName(null);
         customerDto.setCustomerBirthday("1999-04-22");
         customerDto.setCustomerGender(1);
@@ -40,11 +38,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Không ");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -58,7 +57,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerName_20() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("");
         customerDto.setCustomerBirthday("1999-04-22");
         customerDto.setCustomerGender(1);
@@ -67,11 +65,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Không ");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -86,7 +85,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerName_22() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("a");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -95,11 +93,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -116,7 +115,6 @@ public class CustomerController_editCustomer {
 
 
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn Quang Trường Hải Tín");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -125,11 +123,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -144,7 +143,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerName_24() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Quang Trường");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -153,11 +151,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -173,7 +172,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerPhone_19() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -182,11 +180,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -201,7 +200,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerPhone_20() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -210,11 +208,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -229,7 +228,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerPhone_21() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -238,11 +236,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -258,7 +257,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerPhone_24() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -267,11 +265,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -286,7 +285,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerType_19() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -295,11 +293,12 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(null);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -314,7 +313,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerType_24() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -323,20 +321,17 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(1);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
-
-
-
-
     /**
      * Create by TruongNQ
      * Time : 20:35 30/06/2022
@@ -345,7 +340,6 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerGender_19() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(null);
@@ -354,19 +348,18 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
     }
-
-
     /**
      * Create by TruongNQ
      * Time : 20:37 30/06/2022
@@ -375,7 +368,8 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerGender_24() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerTypeDto customerTypeDto = new CustomerTypeDto();
+        CustomerType customerType= new CustomerType();
+        customerDto.setCustomerId("KH-00001");
         customerDto.setCustomerName("Nguyễn Văn T");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
@@ -384,11 +378,11 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
-        customerTypeDto.setCustomerTypeId(2);
-        customerDto.setCustomerTypeDto(customerTypeDto);
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/edit/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
