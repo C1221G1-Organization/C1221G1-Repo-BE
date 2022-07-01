@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.service.report;
 
-import com.c1221g1.pharmacy.dto.report.MedicineBeAboutExpired;
-import com.c1221g1.pharmacy.dto.report.MedicineNeedToImport;
-import com.c1221g1.pharmacy.dto.report.Revenue;
-import com.c1221g1.pharmacy.dto.report.SupplierHaveReceivable;
+import com.c1221g1.pharmacy.dto.report.*;
 
 import java.util.List;
 
@@ -46,4 +43,11 @@ public interface IReportService {
      * @Time 20:30 30/06/2022
      */
     List<MedicineBeAboutExpired> getMedicineBeAboutExpired();
+
+    /**
+     * this method to get list revenue and profit to show static on angular
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    List<Static> getStatic();
 }

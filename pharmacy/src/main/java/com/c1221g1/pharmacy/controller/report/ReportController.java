@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.controller.report;
 
-import com.c1221g1.pharmacy.dto.report.MedicineBeAboutExpired;
-import com.c1221g1.pharmacy.dto.report.MedicineNeedToImport;
-import com.c1221g1.pharmacy.dto.report.Revenue;
-import com.c1221g1.pharmacy.dto.report.SupplierHaveReceivable;
+import com.c1221g1.pharmacy.dto.report.*;
 import com.c1221g1.pharmacy.service.report.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -130,5 +127,19 @@ public class ReportController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicineBeAboutExpired, HttpStatus.OK);
+    }
+
+    /**
+     * this method to get list revenue and profit to show static on angular
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @GetMapping("/static")
+    public ResponseEntity<List<Static>> getStatic(){
+        List<Static> statics = this.iReportService.getStatic();
+        if (statics.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(statics, HttpStatus.OK);
     }
 }

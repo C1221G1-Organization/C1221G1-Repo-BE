@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.service.report.impl;
 
-import com.c1221g1.pharmacy.dto.report.MedicineBeAboutExpired;
-import com.c1221g1.pharmacy.dto.report.MedicineNeedToImport;
-import com.c1221g1.pharmacy.dto.report.Revenue;
-import com.c1221g1.pharmacy.dto.report.SupplierHaveReceivable;
+import com.c1221g1.pharmacy.dto.report.*;
 import com.c1221g1.pharmacy.repository.report.IReportRepository;
 import com.c1221g1.pharmacy.service.report.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +63,15 @@ public class ReportService implements IReportService {
     @Override
     public List<MedicineBeAboutExpired> getMedicineBeAboutExpired() {
         return this.iReportRepository.getMedicineBeAboutExpired();
+    }
+
+    /**
+     * this method to get list revenue and profit to show static on angular
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Override
+    public List<Static> getStatic() {
+        return this.iReportRepository.getStatic();
     }
 }
