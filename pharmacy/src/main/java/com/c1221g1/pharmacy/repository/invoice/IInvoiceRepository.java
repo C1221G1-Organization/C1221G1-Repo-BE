@@ -29,8 +29,8 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
             " invoice_created_time, invoice_note, invoice_total_money " +
             "from invoice" +
             "where :startDate < invoice_created_date < :endDate "+
-            "and :startTime < invoice_created_time < :endTime "+
-            "and typeOfInvoiceId = :typeOfInvoiceId", nativeQuery = true)
+            "and :startTime < invoice_create_time < :endTime "+
+            "and type_of_invoice_id = :typeOfInvoiceId", nativeQuery = true)
     Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
 
     /**
