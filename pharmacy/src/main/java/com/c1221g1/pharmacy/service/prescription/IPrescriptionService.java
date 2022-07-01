@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IPrescriptionService {
-    Page<Prescription> findAll(String id, String name, String target, String symptom, Pageable pageable);
+    Page<Prescription> findAllPageAndSearch(String id, String name, String target, String symptom, Pageable pageable);
 
     void save(Prescription prescription);
 

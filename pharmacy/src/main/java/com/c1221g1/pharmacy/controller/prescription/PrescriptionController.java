@@ -33,7 +33,7 @@ public class PrescriptionController {
      * 16:00 29/06/2022
      */
     @GetMapping("")
-    public ResponseEntity<Page<Prescription>> getPagePrescription(@RequestParam Optional<String> id,
+    public ResponseEntity<Page<Prescription>> getPageAndSearchPrescription(@RequestParam Optional<String> id,
                                                                   @RequestParam Optional<String> names,
                                                                   @RequestParam Optional<String> target,
                                                                   @RequestParam Optional<String> symptom,
@@ -43,7 +43,7 @@ public class PrescriptionController {
         String targetVal = target.orElse("");
         String symptomVal = symptom.orElse("");
 
-        Page<Prescription> prescriptionPage = this.prescriptionService.findAll(idVal, nameVal, targetVal, symptomVal, pageable);
+        Page<Prescription> prescriptionPage = this.prescriptionService.findAllPageAndSearch(idVal, nameVal, targetVal, symptomVal, pageable);
 
         if (!prescriptionPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -57,7 +57,7 @@ public class PrescriptionController {
      * Thêm mới toa thuốc
      * 16:30 29/06/2022
      */
-    @PostMapping(value = "/create")
+    @PostMapping(value = "")
     public ResponseEntity<List<FieldError>> createPrescription(@Validated @RequestBody PrescriptionDto prescriptionDto,
                                                                BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
@@ -78,7 +78,7 @@ public class PrescriptionController {
      * Xoá toa thuốc (xoá theo cờ 'flag')
      * 16:00 29/06/2022
      */
-    @PatchMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Prescription> deletePrescription(@PathVariable("id") String id) {
         try {
             this.prescriptionService.deleteById(id);
@@ -94,7 +94,7 @@ public class PrescriptionController {
      * Sửa toa thuốc (xoá theo cờ 'flag')
      * update 11:18 30/06/2022
      */
-    @PatchMapping("/edit/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<List<FieldError>> editSmartPhone(@Validated @RequestBody PrescriptionDto prescriptionDto,
                                                            BindingResult bindingResult,
                                                            @PathVariable String id) throws NotEmpty {
