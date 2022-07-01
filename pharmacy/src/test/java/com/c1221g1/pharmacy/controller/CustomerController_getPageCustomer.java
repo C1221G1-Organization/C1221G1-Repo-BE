@@ -46,13 +46,13 @@ public class CustomerController_getPageCustomer {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.totalPages").value(1))
                 .andExpect(jsonPath("$.totalElements").value(2))
-                .andExpect(jsonPath("$.content[1].customerId").value("KL-0002"))
-                .andExpect(jsonPath("$.content[1].customerName").value("tín"))
-                .andExpect(jsonPath("$.content[1].customerBirthday").value("1999-01-25"))
+                .andExpect(jsonPath("$.content[1].customerId").value("KH-00003"))
+                .andExpect(jsonPath("$.content[1].customerName").value("Nguyễn Văn A"))
+                .andExpect(jsonPath("$.content[1].customerBirthday").value("1991-05-24"))
                 .andExpect(jsonPath("$.content[1].customerGender").value(1))
-                .andExpect(jsonPath("$.content[1].customerAddress").value("đà nẵng"))
-                .andExpect(jsonPath("$.content[1].customerPhone").value("0123456789"))
-                .andExpect(jsonPath("$.content[1].customerNote").value("123"))
+                .andExpect(jsonPath("$.content[1].customerAddress").value("Quảng Nam"))
+                .andExpect(jsonPath("$.content[1].customerPhone").value("0905386737"))
+                .andExpect(jsonPath("$.content[1].customerNote").value("Không có"))
                 .andExpect(jsonPath("$.content[1].customerUsername.username").value("nva@gmail.com"))
                 .andExpect(jsonPath("$.content[1].flag").value(true));
     }
@@ -82,7 +82,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerId","KL-9999"))
+                                .param("customerId","KH-99999"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -92,7 +92,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerId","KL-0001"))
+                                .param("customerId","KH-00002"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -102,7 +102,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerId","KL-0001"))
+                                .param("customerId","KH-00002"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
@@ -192,7 +192,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerName","tín"))
+                                .param("customerName","Nguyễn Văn A"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -202,7 +202,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerName","tín"))
+                                .param("customerName","Nguyễn Văn A"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
@@ -242,7 +242,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerAddress","đà nẵng"))
+                                .param("customerAddress","Quảng Nam"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -252,7 +252,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerAddress","đà nẵng"))
+                                .param("customerAddress","Quảng Nam"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
@@ -282,7 +282,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerPhone","xyz"))
+                                .param("customerPhone","0123456789"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -292,7 +292,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerPhone","0123456789"))
+                                .param("customerPhone","0905386737"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -302,7 +302,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerPhone","0123456789"))
+                                .param("customerPhone","0905386737"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

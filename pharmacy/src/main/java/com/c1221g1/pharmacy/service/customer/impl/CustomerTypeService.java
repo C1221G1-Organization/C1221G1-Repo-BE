@@ -6,17 +6,17 @@ import com.c1221g1.pharmacy.service.customer.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 
 @Service
 public class CustomerTypeService implements ICustomerTypeService {
 
+
     @Autowired
     private ICustomerTypeRepository iCustomerTypeRepository;
 
     /**
-     * create by TinBQ
+     * create by TinBQ and TruongNQ
      * time: 30/06/2022
      * This method to get customer type in database
      */
@@ -25,4 +25,6 @@ public class CustomerTypeService implements ICustomerTypeService {
     public List<CustomerType> findAllCustomerType() {
         return iCustomerTypeRepository.getAllCustomerType();
     }
+
+
 }

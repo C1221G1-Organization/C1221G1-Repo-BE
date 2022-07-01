@@ -44,14 +44,14 @@ public class CustomerController_deleteCustomer {
     public void deleteCustomer_27() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders.delete("/api/manager-customer/customers")
-                                .param("customer_id","KL-9999"))
+                                .param("customer_id","KH-99999"))
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
     public void deleteCustomer_28() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.delete("/api/manager-customer/customers/{customer_id}","KL-0001"))
+                        MockMvcRequestBuilders.delete("/api/manager-customer/customers/{customerId}","KH-00002"))
                 .andExpect(status().isOk());
     }
 }

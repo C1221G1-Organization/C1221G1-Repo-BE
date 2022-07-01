@@ -10,7 +10,8 @@ import java.util.List;
 @Entity
 @JsonIgnoreProperties({"userRoleList","customer","employee"})
 public class Users {
-    @Id @Column(columnDefinition = "VARCHAR(30)")
+    @Id
+    @Column(columnDefinition = "VARCHAR(30)")
     private String username;
     private String password;
     @Column(columnDefinition = "BIT")
@@ -18,10 +19,8 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
 
-
     @OneToOne(mappedBy = "customerUsername")
     private Customer customer;
-
     @OneToOne(mappedBy = "employeeUsername")
     private Employee employee;
 

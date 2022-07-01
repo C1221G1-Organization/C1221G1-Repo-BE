@@ -28,8 +28,16 @@ public class CustomerDto {
     private Users customerUsername;
     private CustomerType customerType;
 
-
     public CustomerDto() {
+    }
+
+
+    public Integer getCustomerGender() {
+        return customerGender;
+    }
+
+    public void setCustomerGender(Integer customerGender) {
+        this.customerGender = customerGender;
     }
 
     public String getCustomerId() {

@@ -8,10 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class CustomerService implements ICustomerService {
+
 
     @Autowired
     private ICustomerRepository iCustomerRepository;
@@ -47,7 +46,24 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findById(String id) {
-        return iCustomerRepository.findByCustomerId(id).orElse(null);
+        return iCustomerRepository.findByCustomerIdOptional(id).orElse(null);
     }
 
+    @Override
+    public Customer save(Customer customer) {
+        return this.iCustomerRepository.save(customer);
+    }
+
+    @Override
+    public Customer findByCustomerId(String customerId) {
+        return this.iCustomerRepository.findByCustomerId(customerId);
+
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        this.iCustomerRepository.updateCustomer(customer.getCustomerName(), customer.getCustomerAddress()
+                , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone()
+                , customer.getCustomerType().getCustomerTypeId(), customer.getCustomerId());
+    }
 }

@@ -25,7 +25,6 @@ public class Employee {
     private String employeePhone;
     @Column(columnDefinition = "DATE")
     private String employeeDateStart;
-
     private String employeeNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
