@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.customer;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
