@@ -12,6 +12,12 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function:  Validate EmployeeDto
+*/
+
 public class EmployeeDto implements Validator {
     private String employeeId;
     @NotNull(message = "Name may not be null")
@@ -51,10 +57,7 @@ public class EmployeeDto implements Validator {
     private String employeeDateStart;
     private String employeeNote;
     private boolean flag;
-
     private Position position;
-
-
     private Users employeeUsername;
     private List<ImportInvoice> importInvoiceList;
 

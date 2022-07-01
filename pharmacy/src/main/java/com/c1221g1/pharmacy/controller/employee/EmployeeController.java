@@ -3,6 +3,8 @@ package com.c1221g1.pharmacy.controller.employee;
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.c1221g1.pharmacy.entity.employee.Position;
+import com.c1221g1.pharmacy.entity.user.Users;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.employee.IPositionService;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,25 +24,32 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("**")
 @RequestMapping(value = "api/manager-employee/employees")
 public class EmployeeController {
     @Autowired
     IEmployeeService iEmployeeService;
     @Autowired
     IPositionService iPositionService;
+
     /*
       Created by TamNA
       Time: 5:50:00 29/06/2022
       Function:  Create Employee
  */
     @PostMapping(value = "")
-    public ResponseEntity<Employee> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
-                                                   BindingResult bindingResult) {
+    public ResponseEntity<?> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
+                                                           BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         Employee employee = new Employee();
+        Position position = new Position();
+        Users users = new Users();
+        position.setPositionId(employeeDto.getPosition().getPositionId());
+        users.setUsername(employeeDto.getEmployeeUsername().getUsername());
+        employee.setPosition(position);
+        employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -51,13 +61,24 @@ public class EmployeeController {
       Function:  Update Employee
  */
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable String id,
-                                                   @Valid @RequestBody EmployeeDto employeeDto,
-                                                   BindingResult bindingResult) {
+    public ResponseEntity<List<FieldError>> updateEmployee(@PathVariable String id,
+                                                           @Valid @RequestBody EmployeeDto employeeDto,
+                                                           BindingResult bindingResult) {
+        Employee employeeById = this.iEmployeeService.findEmployeeById(id);
+
+        if (employeeById == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Employee employee = new Employee();
+        Position position = new Position();
+        Users users = new Users();
+        position.setPositionId(employeeDto.getPosition().getPositionId());
+        users.setUsername(employeeDto.getEmployeeUsername().getUsername());
+        employee.setPosition(position);
+        employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
         this.iEmployeeService.updateEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -77,21 +98,21 @@ public class EmployeeController {
                                                          @RequestParam Optional<String> employeePhone,
                                                          @RequestParam(defaultValue = "0") Integer page,
                                                          @RequestParam(defaultValue = "5") Integer size,
-                                                         @RequestParam(defaultValue = "employee_id") Optional<String> sort){
-        String employeeIdVal= employeeId.orElse("");
-        String employeeNameVal= employeeName.orElse("");
-        String positionVal= position.orElse("");
-        String employeeAddressVal= employeeAddress.orElse("");
-        String employeePhoneVal= employeePhone.orElse("");
-        String sortBy= sort.orElse("employee_id");
-        Pageable pageable = PageRequest.of(page,size, Sort.by(sortBy));
+                                                         @RequestParam(defaultValue = "employee_id") Optional<String> sort) {
+        String employeeIdVal = employeeId.orElse("");
+        String employeeNameVal = employeeName.orElse("");
+        String positionVal = position.orElse("");
+        String employeeAddressVal = employeeAddress.orElse("");
+        String employeePhoneVal = employeePhone.orElse("");
+        String sortBy = sort.orElse("employee_id");
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         Page<Employee> employeePage =
                 this.iEmployeeService.getAllEmployee(employeeIdVal,
-                        employeeNameVal,positionVal,employeeAddressVal,employeePhoneVal,pageable);
-        if(!employeePage.hasContent()){
+                        employeeNameVal, positionVal, employeeAddressVal, employeePhoneVal, pageable);
+        if (!employeePage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(employeePage,HttpStatus.OK);
+        return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
 
     /**
@@ -101,12 +122,12 @@ public class EmployeeController {
      * @Time 16:00 29/06/2022
      */
     @GetMapping(value = "/list")
-    public ResponseEntity<List<Employee>> getList(){
+    public ResponseEntity<List<Employee>> getList() {
         List<Employee> employeeList = this.iEmployeeService.getListEmployee();
-        if(employeeList.isEmpty()){
+        if (employeeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(employeeList,HttpStatus.OK);
+        return new ResponseEntity<>(employeeList, HttpStatus.OK);
     }
 
     /**
@@ -116,9 +137,9 @@ public class EmployeeController {
      * @Time 17:00 29/06/2022
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable String id){
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable String id) {
         Employee employee = this.iEmployeeService.findEmployeeById(id);
-        if (employee == null){
+        if (employee == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         this.iEmployeeService.deleteEmployeeById(id);
