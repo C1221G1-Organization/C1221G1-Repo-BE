@@ -78,6 +78,13 @@ public interface IEmployeeRepository extends JpaRepository<Employee,String> {
             "employee_address,position_id,username,flag from employee",nativeQuery=true)
     List<Employee> getListEmployee();
 
+    
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function:  SQL Update Emoloyee
+*/
+
     @Transactional
     @Modifying
     @Query(value = "update employee set employee_name = :employeeName, employee_image = :employeeImage ,employee_address = :employeeAddress," +

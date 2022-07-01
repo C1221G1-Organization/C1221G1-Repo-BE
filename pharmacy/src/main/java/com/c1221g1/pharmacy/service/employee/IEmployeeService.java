@@ -39,8 +39,17 @@ public interface IEmployeeService {
      */
     List<Employee> getListEmployee();
 
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function: Save Emoloyee
+*/
     void saveEmployee(Employee employee);
 
-
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function: Update Emoloyee
+*/
     void updateEmployee(Employee employee);
 }
