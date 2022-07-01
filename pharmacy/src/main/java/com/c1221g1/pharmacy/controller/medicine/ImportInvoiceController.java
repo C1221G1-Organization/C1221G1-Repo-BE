@@ -38,7 +38,7 @@ public class ImportInvoiceController {
      * @param importInvoiceDto
      * @return ResponseEntity
      */
-    @PostMapping(value = "/createImportInvoice")
+    @PostMapping(value = "/importInvoice")
     public ResponseEntity<?> createImportInvoice(@Validated @RequestBody ImportInvoiceDto importInvoiceDto,
                                                  BindingResult bindingResult) {
         new ImportInvoiceDto().validate(importInvoiceDto, bindingResult);
@@ -90,6 +90,4 @@ public class ImportInvoiceController {
         }
         return new ResponseEntity<>(importInvoiceDto, HttpStatus.OK);
     }
-
-
 }

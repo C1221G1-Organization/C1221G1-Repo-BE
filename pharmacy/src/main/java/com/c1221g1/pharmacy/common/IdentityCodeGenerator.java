@@ -32,12 +32,12 @@ public class IdentityCodeGenerator implements IdentifierGenerator, Configurable 
         List<Long> longs = new ArrayList<>();
         longs.add(0L);
         Query query = session.createQuery(queryString);
-        for(Object o : query.list()) {
+        for (Object o : query.list()) {
             longs.add(Long.parseLong(((String) o).replace(prefix + "-", "")));
         }
         Long max = Collections.max(longs);
 
-        return prefix + "-" + String.format("%05d",(max + 1));
+        return prefix + "-" + String.format("%05d", (max + 1));
     }
 
     @Override

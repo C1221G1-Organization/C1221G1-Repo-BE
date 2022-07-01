@@ -32,17 +32,18 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     "medicine_conversion_unit_id=:#{#medicine.medicineConversionUnit}" +
                     " where medicine_id=:#{#medicine.medicineId}", nativeQuery = true)
     void updateMedicine(Medicine medicine);
+
     /**
      * this function use to find exist medicine in db if not exist return null
      *
      * @author LongNH
      * @Time 20:50 29/06/2022
      */
-    @Query(value ="select medicine_id,medicine_name,medicine_active_ingredients,medicine_import_price,medicine_discount," +
+    @Query(value = "select medicine_id,medicine_name,medicine_active_ingredients,medicine_import_price,medicine_discount," +
             "medicine_wholesale_profit,medicine_retail_sale_profit,medicine_tax,medicine_conversion_rate," +
             "medicine_manufacture,medicine_usage,medicine_instruction,medicine_age_approved," +
             "medicine_image,medicine_description,medicine_origin_id,medicine_type_id,medicine_unit_id," +
             "medicine_conversion_unit_id,flag " +
-            "from medicine where flag = 1 and medicine_id =:id ",nativeQuery = true)
+            "from medicine where flag = 1 and medicine_id =:id ", nativeQuery = true)
     Optional<Medicine> findMedicineById(@Param("id") String id);
 }

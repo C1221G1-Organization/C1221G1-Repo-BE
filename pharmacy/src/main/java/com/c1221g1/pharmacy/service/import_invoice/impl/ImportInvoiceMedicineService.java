@@ -20,7 +20,7 @@ public class ImportInvoiceMedicineService implements IImportInvoiceMedicineServi
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
-     * function: get list medicine_id and quantity in import_invoice_medicine table
+     * function: get list medicie_id and quantity in import_invoice_medicine table
      * by importInvoiceId
      *
      * @param importInvoiceId
@@ -64,6 +64,4 @@ public class ImportInvoiceMedicineService implements IImportInvoiceMedicineServi
     public void saveImportInvoiceMedicine(ImportInvoiceMedicine importInvoiceMedicine) {
         this.importInvoiceMedicineRepository.save(importInvoiceMedicine);
     }
-
-
 }

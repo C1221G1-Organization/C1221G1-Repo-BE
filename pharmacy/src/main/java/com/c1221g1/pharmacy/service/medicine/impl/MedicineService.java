@@ -24,6 +24,7 @@ public class MedicineService implements IMedicineService {
         medicine.setFlag(true);
         this.medicineRepository.save(medicine);
     }
+
     /**
      * this function use to find medicine in db and return medicine
      *
@@ -34,6 +35,7 @@ public class MedicineService implements IMedicineService {
     public Optional<Medicine> findMedicineById(String id) {
         return this.medicineRepository.findMedicineById(id);
     }
+
     /**
      * this function use to create exist medicine
      *
