@@ -2,7 +2,6 @@ package com.c1221g1.pharmacy.dto.import_invoice;
 
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
-import com.c1221g1.pharmacy.entity.import_invoice.Payment;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class ImportInvoiceDto {
     private Integer accountingVoucherNumber;
     private String importInvoiceDate;
     private boolean flag;
-    private Payment payment;
     private Supplier supplier;
     private Employee employee;
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
@@ -59,14 +57,6 @@ public class ImportInvoiceDto {
 
     public void setFlag(boolean flag) {
         this.flag = flag;
-    }
-
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
     }
 
     public Supplier getSupplier() {
