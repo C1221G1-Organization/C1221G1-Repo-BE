@@ -1,12 +1,14 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
 
+import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineRepository;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class MedicineService implements IMedicineService {
@@ -45,6 +47,33 @@ public class MedicineService implements IMedicineService {
     @Override
     public void updateMedicine(Medicine existMedicine) {
         this.medicineRepository.updateMedicine(existMedicine);
+    }
+
+    /**
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
+     * @return MedicineDetailDto contain properties to show customers
+     */
+    @Override
+    public MedicineDetailDto getMedicineDetailDtoById(String medicineId) {
+        return medicineRepository.getMedicineDetailDtoById(medicineId)
+            .orElse(null);
+    }
+
+    /**
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
+     * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
+     */
+    @Override
+    public List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId) {
+        Integer medicineTypeId = medicineRepository.findMedicineTypeById(medicineId);
+        if (medicineTypeId == null) {
+            return null;
+        }
+        return medicineRepository.get5RelativeMedicinesOf(medicineId, medicineTypeId);
     }
 }
 

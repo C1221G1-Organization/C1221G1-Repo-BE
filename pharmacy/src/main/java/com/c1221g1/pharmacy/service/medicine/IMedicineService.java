@@ -1,7 +1,10 @@
 package com.c1221g1.pharmacy.service.medicine;
 
+
+import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IMedicineService {
@@ -10,4 +13,8 @@ public interface IMedicineService {
     Optional<Medicine> findMedicineById(String id);
 
     void updateMedicine(Medicine existMedicine);
+
+    MedicineDetailDto getMedicineDetailDtoById(String medicineId);
+
+    List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId);
 }

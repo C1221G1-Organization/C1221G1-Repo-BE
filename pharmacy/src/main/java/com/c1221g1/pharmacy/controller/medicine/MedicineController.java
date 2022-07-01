@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.controller.medicine;
 
+import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
 import com.c1221g1.pharmacy.entity.medicine.*;
 import com.c1221g1.pharmacy.service.medicine.*;
@@ -137,5 +138,35 @@ public class MedicineController {
         existMedicine.setMedicineId(id);
         this.medicineService.updateMedicine(existMedicine);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
+     * @return MedicineDetailDto contain properties to show customers
+     */
+    @GetMapping("detail/{medicineId}")
+    public ResponseEntity<MedicineDetailDto> getMedicineDetailDtoById(@PathVariable("medicineId") String medicineId) {
+        MedicineDetailDto medicineDetailDto = medicineService.getMedicineDetailDtoById(medicineId);
+        if (medicineDetailDto == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(medicineDetailDto, HttpStatus.OK);
+    }
+
+    /**
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
+     * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
+     */
+    @GetMapping("get-5-relative-medicines-type/{medicineId}")
+    public ResponseEntity<List<MedicineDetailDto>> get5RelativeMedicinesOf(@PathVariable("medicineId") String medicineId) {
+        List<MedicineDetailDto> medicineDetailDtoList = medicineService.get5RelativeMedicinesOf(medicineId);
+        if (medicineDetailDtoList == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(medicineDetailDtoList, HttpStatus.OK);
     }
 }
