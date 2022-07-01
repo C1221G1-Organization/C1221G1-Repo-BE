@@ -2,18 +2,13 @@ package com.c1221g1.pharmacy.entity.employee;
 
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.user.Users;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties({"importInvoiceList"})
 public class Employee {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -41,7 +36,97 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
-    @JsonBackReference(value = "employeeImportInvoiceList")
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
+
+    public Employee() {
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getEmployeeImage() {
+        return employeeImage;
+    }
+
+    public void setEmployeeImage(String employeeImage) {
+        this.employeeImage = employeeImage;
+    }
+
+    public String getEmployeeAddress() {
+        return employeeAddress;
+    }
+
+    public void setEmployeeAddress(String employeeAddress) {
+        this.employeeAddress = employeeAddress;
+    }
+
+    public String getEmployeePhone() {
+        return employeePhone;
+    }
+
+    public void setEmployeePhone(String employeePhone) {
+        this.employeePhone = employeePhone;
+    }
+
+    public String getEmployeeDateStart() {
+        return employeeDateStart;
+    }
+
+    public void setEmployeeDateStart(String employeeDateStart) {
+        this.employeeDateStart = employeeDateStart;
+    }
+
+    public String getEmployeeNote() {
+        return employeeNote;
+    }
+
+    public void setEmployeeNote(String employeeNote) {
+        this.employeeNote = employeeNote;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Users getEmployeeUsername() {
+        return employeeUsername;
+    }
+
+    public void setEmployeeUsername(Users employeeUsername) {
+        this.employeeUsername = employeeUsername;
+    }
+
+    public List<ImportInvoice> getImportInvoiceList() {
+        return importInvoiceList;
+    }
+
+    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
+        this.importInvoiceList = importInvoiceList;
+    }
 }

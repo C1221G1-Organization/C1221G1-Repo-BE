@@ -11,9 +11,16 @@ import java.util.List;
 @Service
 public class PositionService implements IPositionService {
     @Autowired
-    IPositionRepository iPositionRepository;
+    private IPositionRepository iPositionRepository;
+
+    /**
+     * this function use to get all list Employee
+     *
+     * @author GiangTB
+     * @Time 16:30 29/06/2022
+     */
     @Override
-    public List<Position> findAll() {
-        return iPositionRepository.findAll();
+    public List<Position> getAllPosition() {
+        return this.iPositionRepository.getAllPosition();
     }
 }
