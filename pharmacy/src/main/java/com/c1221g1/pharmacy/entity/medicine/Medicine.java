@@ -137,7 +137,6 @@ public class Medicine {
     }
 
     public void setMedicineConversionRate(Integer medicineConversionRate) {
-
         this.medicineConversionRate = medicineConversionRate;
     }
 
@@ -269,5 +268,4 @@ public class Medicine {
     public void setMedicineStorageSet(Set<MedicineStorage> medicineStorageSet) {
         this.medicineStorageSet = medicineStorageSet;
     }
-
 }

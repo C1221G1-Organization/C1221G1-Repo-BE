@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
@@ -35,6 +36,7 @@ public class ImportInvoice {
 
     public ImportInvoice() {
     }
+
 
     public String getImportInvoiceId() {
         return importInvoiceId;
