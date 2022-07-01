@@ -1,21 +1,21 @@
 package com.c1221g1.pharmacy.controller.medicine;
 
-        import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
-        import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
-        import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
-        import com.c1221g1.pharmacy.entity.medicine.MedicineType;
-        import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
-        import com.fasterxml.jackson.databind.ObjectMapper;
-        import org.junit.jupiter.api.Test;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-        import org.springframework.boot.test.context.SpringBootTest;
-        import org.springframework.http.MediaType;
-        import org.springframework.test.web.servlet.MockMvc;
-        import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
+import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
+import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
+import com.c1221g1.pharmacy.entity.medicine.MedicineType;
+import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-        import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-        import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -33,11 +33,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_name_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
         medicineDto.setMedicineDiscount(3.0);
@@ -76,11 +89,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_name_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -120,11 +146,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_name_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -164,11 +203,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_name_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -208,11 +260,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_name_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
@@ -261,11 +326,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_activeIngredients_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineImportPrice(500.0);
         medicineDto.setMedicineDiscount(3.0);
@@ -304,11 +382,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_activeIngredients_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("");
         medicineDto.setMedicineImportPrice(500.0);
@@ -348,11 +439,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_activeIngredients_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC#%");
         medicineDto.setMedicineImportPrice(500.0);
@@ -392,11 +496,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_activeIngredients_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("cc");
         medicineDto.setMedicineImportPrice(500.0);
@@ -436,11 +553,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_activeIngredients_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("cccccccccccccccccccccccccccc" +
                 "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" +
@@ -492,11 +622,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_importPrice_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineDiscount(3.0);
@@ -535,11 +678,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_importPrice_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(null);
@@ -579,11 +735,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_importPrice_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC#%");
         medicineDto.setMedicineImportPrice(-500.0);
@@ -623,11 +792,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_importPrice_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(10.0);
@@ -667,11 +849,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_discount_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -710,11 +905,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_discount_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -754,11 +962,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_discount_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -798,11 +1019,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_discount_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(10.0);
@@ -842,11 +1076,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_wholesaleProfit_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -885,11 +1132,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_wholesaleProfit_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -929,11 +1189,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_wholesaleProfit_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -973,11 +1246,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_wholesaleProfit_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(10.0);
@@ -1017,11 +1303,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_retailSaleProfit_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1060,11 +1359,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_retailSaleProfit_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1104,11 +1416,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_retailSaleProfit_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1148,11 +1473,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_retailSaleProfit_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(10.0);
@@ -1192,11 +1530,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_tax_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1235,11 +1586,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_tax_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1279,11 +1643,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_tax_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1323,11 +1700,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_tax_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(10.0);
@@ -1367,11 +1757,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_conversionRate_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1410,11 +1813,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_conversionRate_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1454,11 +1870,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_conversionRate_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1498,11 +1927,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_conversionRate_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(10.0);
@@ -1542,11 +1984,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_manufacture_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1585,11 +2040,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_manufacture_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("ádsad");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1629,11 +2097,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_manufacture_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1673,11 +2154,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_manufacture_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1717,11 +2211,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_manufacture_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1770,11 +2277,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_usage_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1813,11 +2333,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_usage_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("ádads");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1857,11 +2390,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_usage_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1901,11 +2447,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_usage_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1945,11 +2504,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_usage_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -1999,11 +2571,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_instruction_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2042,11 +2627,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_instruction_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("dsadadsa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2086,11 +2684,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_instruction_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2130,11 +2741,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_instruction_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2174,11 +2798,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_instruction_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2230,11 +2867,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_ageApproved_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2273,11 +2923,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_ageApproved_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("dsads");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2317,11 +2980,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_ageApproved_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2361,11 +3037,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_ageApproved_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2405,11 +3094,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_ageApproved_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2460,11 +3162,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_image_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2503,11 +3218,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_image_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aaa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2547,11 +3275,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_image_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2591,11 +3332,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_image_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2635,11 +3389,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_image_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2690,11 +3457,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_description_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2733,11 +3513,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_description_14() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aaa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2777,11 +3570,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_description_15() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2821,11 +3627,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_description_16() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2865,11 +3684,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_description_17() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2917,11 +3749,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_origin_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2960,11 +3805,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_type_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -2994,6 +3852,7 @@ public class MedicineController_updateMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * this function use to test the validation of field unit more specific is null
      *
@@ -3002,11 +3861,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_unit_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -3036,6 +3908,7 @@ public class MedicineController_updateMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * this function use to test the validation of field conversionUnit more specific is null
      *
@@ -3044,11 +3917,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_conversionUnit_13() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -3078,6 +3964,7 @@ public class MedicineController_updateMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * this function use to update medicine with all valid item
      *
@@ -3086,11 +3973,24 @@ public class MedicineController_updateMedicine {
      */
     @Test
     public void updateMedicine_all_item_18() throws Exception {
-        MedicineDto medicineDto = new MedicineDto();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
+        medicineOrigin.setMedicineOriginId(1);
+        medicineOrigin.setMedicineOriginName("TQ");
         MedicineType medicineType = new MedicineType();
+        medicineType.setMedicineTypeId("LT0001");
+        medicineType.setMedicineTypeName("Thuốc bổ");
         MedicineUnit medicineUnit = new MedicineUnit();
+        medicineUnit.setMedicineUnitId(1);
+        medicineUnit.setMedicineUnitName("hộp");
         MedicineConversionUnit medicineConversionUnit = new MedicineConversionUnit();
+        medicineConversionUnit.setMedicineConversionUnitId(1);
+        medicineConversionUnit.setMedicineConversionUnitName("viên");
+        MedicineDto medicineDto = new MedicineDto
+                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                        5.0, 3.0, 2.0, 5.0, 10.0,
+                        "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
