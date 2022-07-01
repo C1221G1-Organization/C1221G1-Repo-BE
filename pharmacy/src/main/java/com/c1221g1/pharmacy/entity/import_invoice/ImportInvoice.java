@@ -24,15 +24,12 @@ public class ImportInvoice {
     private String importInvoiceHour;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
     @ManyToOne
     @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId")
     private Supplier supplier;
-
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
     private Employee employee;
-
     @OneToMany(mappedBy = "importInvoice")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
 

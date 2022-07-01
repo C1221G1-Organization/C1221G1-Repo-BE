@@ -10,7 +10,6 @@ public class UserRole {
     @ManyToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users users;
-
     @ManyToOne
     @JoinColumn(name = "role", referencedColumnName = "roleId")
     private Roles roles;

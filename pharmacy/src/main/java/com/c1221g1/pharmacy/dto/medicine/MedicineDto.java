@@ -103,7 +103,6 @@ public class MedicineDto {
     public void setMedicineActiveIngredients(String medicineActiveIngredients) {
         this.medicineActiveIngredients = medicineActiveIngredients;
     }
-
     public Double getMedicineImportPrice() {
         return medicineImportPrice;
     }

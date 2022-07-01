@@ -14,11 +14,9 @@ public class MedicinePrescription {
     private Integer medicinePrescriptionId;
     private Integer medicinePrescriptionTimes;
     private Integer medicinePrescriptionNumberPerTime;
-
     @ManyToOne
     @JoinColumn(name = "prescription_id", referencedColumnName = "prescriptionId")
     private Prescription prescription;
-
     @ManyToOne
     @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
     private Medicine medicine;
