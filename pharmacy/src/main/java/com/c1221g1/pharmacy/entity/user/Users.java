@@ -16,7 +16,6 @@ public class Users {
     private String password;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
     @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
     @OneToOne(mappedBy = "customerUsername")

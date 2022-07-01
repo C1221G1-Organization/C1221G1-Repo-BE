@@ -1,8 +1,8 @@
-package com.c1221g1.pharmacy.Controller;
+package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.PositionDto;
-import com.c1221g1.pharmacy.dto.user.UsersDto;
+import com.c1221g1.pharmacy.dto.employee.Position;
+import com.c1221g1.pharmacy.dto.user.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,26 +34,25 @@ public class EmployeeController_updateEmployee {
 
         EmployeeDto employeeDto = new EmployeeDto();
 //        employeeDto.setEmployeeId("NV-00004");
-        employeeDto.setEmployeeName("null");
+        employeeDto.setEmployeeName(null);
         employeeDto.setEmployeeImage("https://cdn.tgdd.vn/Files/2019/07/27/1182124/cac-dinh-dang-duoi-file-hinh-anh-pho-bien-hien-nay-7-760x367.jpg");
         employeeDto.setEmployeeAddress("Quảng Nam");
         employeeDto.setEmployeePhone("0905700994");
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/update/{id}","NV-00004")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -77,19 +76,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -112,19 +110,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -148,19 +144,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -184,18 +179,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        ;com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -219,18 +213,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/update/update{id}")
+                        .patch("/api/manager-employee/employees/update/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -255,18 +249,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -291,18 +284,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -326,18 +318,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -363,18 +355,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -392,24 +383,24 @@ public class EmployeeController_updateEmployee {
 
         employeeDto.setEmployeeName("Nguyễn Văn A");
         employeeDto.setEmployeeImage("https://cdn.tgdd.vn/Files/2019/07/27/1182124/cac-dinh-dang-duoi-file-hinh-anh-pho-bien-hien-nay-7-760x367.jpg");
-        employeeDto.setEmployeeAddress("null");
+        employeeDto.setEmployeeAddress(null);
         employeeDto.setEmployeePhone("0905700994");
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -433,18 +424,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -467,19 +458,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -505,18 +495,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -541,19 +531,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees//{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -577,18 +565,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -611,19 +598,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -649,18 +635,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -687,18 +673,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -722,18 +707,18 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -758,18 +743,17 @@ public class EmployeeController_updateEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -793,59 +777,23 @@ Function:  update test position
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(0);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
+                        .patch("/api/manager-employee/employees/update/NV-00003")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
-    }
-
-    /*
-Created by TamNA
-Time: 16:27:00 30/06/2022
-Function:  update test userName
-*/
-    @Test
-    public void updateEmployee_userName_14() throws Exception {
-
-        EmployeeDto employeeDto = new EmployeeDto();
-
-        employeeDto.setEmployeeName("Nguyễn Văn A");
-        employeeDto.setEmployeeImage("https://cdn.tgdd.vn/Files/2019/07/27/1182124/cac-dinh-dang-duoi-file-hinh-anh-pho-bien-hien-nay-7-760x367.jpg");
-        employeeDto.setEmployeeAddress("Quảng nam");
-        employeeDto.setEmployeePhone("0905700994");
-        employeeDto.setEmployeeDateStart("2002/09/29");
-        employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
 
-        UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("");
-        employeeDto.setEmployeeUsername(usersDto);
-
-
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/update/{id}")
-                        .content(this.objectMapper.writeValueAsString(employeeDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
-
-
+}
 }

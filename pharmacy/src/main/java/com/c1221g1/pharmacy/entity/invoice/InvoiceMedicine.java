@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "invoice_medicine", //
-        uniqueConstraints = { //
+@Table(name = "invoice_medicine",
+        uniqueConstraints = {
                 @UniqueConstraint(name = "INVOICE_MEDICINE_UK", columnNames = {"invoice_id", "medicine_id"})})
 public class InvoiceMedicine {
     @Id

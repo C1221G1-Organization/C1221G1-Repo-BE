@@ -1,9 +1,8 @@
 package com.c1221g1.pharmacy.dto.employee;
 
-import com.c1221g1.pharmacy.dto.user.UsersDto;
+import com.c1221g1.pharmacy.dto.user.Users;
 import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
-import com.c1221g1.pharmacy.entity.user.Users;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -53,11 +52,10 @@ public class EmployeeDto implements Validator {
     private String employeeNote;
     private boolean flag;
 
+    private Position position;
 
-    private PositionDto positionDto;
 
-    @NotEmpty(message = "User Name may not be empty")
-    private UsersDto employeeUsername;
+    private Users employeeUsername;
     private List<ImportInvoice> importInvoiceList;
 
     public EmployeeDto() {
@@ -111,11 +109,11 @@ public class EmployeeDto implements Validator {
         this.employeeDateStart = employeeDateStart;
     }
 
-    public UsersDto getEmployeeUsername() {
+    public Users getEmployeeUsername() {
         return employeeUsername;
     }
 
-    public void setEmployeeUsername(UsersDto employeeUsername) {
+    public void setEmployeeUsername(Users employeeUsername) {
         this.employeeUsername = employeeUsername;
     }
 
@@ -135,12 +133,12 @@ public class EmployeeDto implements Validator {
         this.flag = flag;
     }
 
-    public PositionDto getPositionDto() {
-        return positionDto;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPositionDto(PositionDto positionDto) {
-        this.positionDto = positionDto;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public List<ImportInvoice> getImportInvoiceList() {

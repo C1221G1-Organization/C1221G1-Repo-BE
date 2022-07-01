@@ -38,7 +38,6 @@ public class Employee {
     private Users employeeUsername;
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
-
     public Employee() {
     }
 

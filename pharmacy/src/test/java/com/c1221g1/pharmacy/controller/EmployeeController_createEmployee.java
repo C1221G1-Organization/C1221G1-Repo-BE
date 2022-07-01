@@ -1,8 +1,8 @@
-package com.c1221g1.pharmacy.Controller;
+package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.PositionDto;
-import com.c1221g1.pharmacy.dto.user.UsersDto;
+import com.c1221g1.pharmacy.dto.employee.Position;
+import com.c1221g1.pharmacy.dto.user.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +42,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -78,11 +78,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -113,11 +113,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -149,11 +149,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -184,14 +184,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -219,14 +218,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -254,12 +252,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -291,11 +288,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -325,12 +322,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -363,11 +359,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -398,11 +394,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -433,14 +429,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -467,12 +462,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -505,11 +499,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -541,15 +535,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -577,14 +569,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -612,14 +603,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -648,12 +638,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeDateStart("2000-12-01");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -687,14 +676,13 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -721,12 +709,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeDateStart("");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -758,11 +745,11 @@ public class EmployeeController_createEmployee {
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 
@@ -792,15 +779,13 @@ Function:  create test position
         employeeDto.setEmployeeDateStart("2002/09/29");
         employeeDto.setEmployeeNote("aaaa");
 
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(0);
-        employeeDto.setPositionDto(positionDto);
-
-        UsersDto usersDto = new UsersDto();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -829,15 +814,13 @@ Function:  create test userName
         employeeDto.setEmployeeNote("aaaa");
 
 
-        PositionDto positionDto = new PositionDto();
-        positionDto.setPositionId(1);
-        employeeDto.setPositionDto(positionDto);
+        com.c1221g1.pharmacy.entity.employee.Position position = new com.c1221g1.pharmacy.entity.employee.Position();
+        position.setPositionId(1);
+        employeeDto.setPosition(position);
 
-        UsersDto usersDto = new UsersDto();
-        usersDto.setUsername("");
+        Users usersDto = new Users();
+        usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
-
-
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/api/manager-employee/employees/create")

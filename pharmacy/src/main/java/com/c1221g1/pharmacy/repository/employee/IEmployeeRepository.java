@@ -1,11 +1,14 @@
 package com.c1221g1.pharmacy.repository.employee;
 
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.c1221g1.pharmacy.entity.employee.Position;
+import com.c1221g1.pharmacy.entity.user.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -75,4 +78,19 @@ public interface IEmployeeRepository extends JpaRepository<Employee,String> {
             "employee_address,position_id,username,flag from employee",nativeQuery=true)
     List<Employee> getListEmployee();
 
+    @Transactional
+    @Modifying
+    @Query(value = "update employee set employee_name = :employeeName, employee_image = :employeeImage ,employee_address = :employeeAddress," +
+            "employee_phone = :employeePhone , employee_date_start = :employeeDateStart,employee_note = :employeeNote," +
+            "position_id = :position,username = :employeeUsername where employee_id = :employeeId", nativeQuery = true)
+    void updateEmployee(
+            @Param("employeeName") String employeeName,
+            @Param("employeeImage") String employeeImage,
+            @Param("employeeAddress") String employeeAddress,
+            @Param("employeePhone") String employeePhone,
+            @Param("employeeDateStart") String employeeDateStart,
+            @Param("employeeNote") String employeeNote,
+            @Param("position") Position position,
+            @Param("employeeUsername") Users employeeUsername,
+            @Param("employeeId") String employeeId);
 }
