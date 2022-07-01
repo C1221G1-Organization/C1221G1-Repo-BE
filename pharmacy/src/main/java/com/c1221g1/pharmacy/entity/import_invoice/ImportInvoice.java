@@ -35,7 +35,6 @@ public class ImportInvoice {
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
     private Employee employee;
-    @JsonBackReference
     @OneToMany(mappedBy = "importInvoice")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
 }

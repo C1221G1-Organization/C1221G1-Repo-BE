@@ -58,10 +58,8 @@ public class Medicine {
     @ManyToOne
     @JoinColumn (name = "medicine_conversion_unit_id",referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
-    @JsonBackReference
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
-    @JsonBackReference
     @OneToMany(mappedBy = "medicine")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
     @OneToMany(mappedBy = "medicine")

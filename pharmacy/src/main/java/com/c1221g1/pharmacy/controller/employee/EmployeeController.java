@@ -73,7 +73,7 @@ public class EmployeeController {
      * @author GiangTB
      * @Time 17:00 29/06/2022
      */
-    @PatchMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Employee> deleteEmployeeById(@PathVariable String id){
         Employee employee = this.iEmployeeService.findEmployeeById(id);
         if (employee == null){

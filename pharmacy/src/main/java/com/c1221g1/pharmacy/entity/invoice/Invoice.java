@@ -37,7 +37,6 @@ public class Invoice {
     private String invoiceCreatedDate;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-    @JsonBackReference
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceMedicine> invoiceMedicineList;
 }

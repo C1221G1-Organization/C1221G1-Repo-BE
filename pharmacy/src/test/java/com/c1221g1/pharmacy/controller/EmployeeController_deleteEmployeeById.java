@@ -9,7 +9,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-// Ở đây tụi em sử dụng xoá logic (xoá bằng cờ flag) nên sử dụng phương thức patch
 @SpringBootTest
 @AutoConfigureMockMvc
 public class EmployeeController_deleteEmployeeById {
@@ -25,7 +24,7 @@ public class EmployeeController_deleteEmployeeById {
     @Test
     public void deleteEmployeeById_25() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/api/manager-employee/employees/delete/{}","null"))
+                MockMvcRequestBuilders.delete("/api/manager-employee/employees/{}","null"))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -38,7 +37,7 @@ public class EmployeeController_deleteEmployeeById {
     @Test
     public void deleteEmployeeById_26() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/api/manager-employee/employees/delete/{id}",""))
+                MockMvcRequestBuilders.delete("/api/manager-employee/employees/{id}",""))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -51,7 +50,7 @@ public class EmployeeController_deleteEmployeeById {
     @Test
     public void deleteEmployeeById_27() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/api/manager-employee/employees/delete/{id}","NV0099"))
+                MockMvcRequestBuilders.delete("/api/manager-employee/employees/{id}","NV0099"))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -64,7 +63,7 @@ public class EmployeeController_deleteEmployeeById {
     @Test
     public void deleteCustomer_28() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch("/api/manager-employee/employees/delete/{id}","NV001"))
+                MockMvcRequestBuilders.delete("/api/manager-employee/employees/{id}","NV001"))
                 .andExpect(status().isOk());
     }
 }

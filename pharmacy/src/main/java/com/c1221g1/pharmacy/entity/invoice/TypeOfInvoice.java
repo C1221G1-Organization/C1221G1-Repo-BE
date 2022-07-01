@@ -17,7 +17,6 @@ public class TypeOfInvoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer typeOfInvoiceId;
     private String typeOfInvoiceName;
-    @JsonBackReference
     @OneToMany(mappedBy = "typeOfInvoice")
     private List<Invoice> invoiceList;
 }

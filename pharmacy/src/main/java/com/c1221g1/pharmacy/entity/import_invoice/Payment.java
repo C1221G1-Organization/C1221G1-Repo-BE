@@ -18,7 +18,6 @@ public class Payment {
     private Integer paymentId;
     private Integer paymentDiscount;
     private Double paymentPrepayment;
-    @JsonBackReference
     @OneToMany(mappedBy = "payment")
     private List<ImportInvoice> importInvoiceList;
 }

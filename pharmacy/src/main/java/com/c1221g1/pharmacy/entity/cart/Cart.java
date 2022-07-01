@@ -24,15 +24,11 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customerId")
     private Customer customer;
-
     @ManyToOne
     @JoinColumn(name = "discount_id", referencedColumnName = "discountId")
     private Discount discount;
-    @JsonBackReference
     @OneToMany(mappedBy = "cart")
     private List<PaymentOnline> paymentOnlineList;
-    @JsonBackReference
-
     @OneToMany(mappedBy = "cart")
     private List<CartDetail> cartDetailList;
 }

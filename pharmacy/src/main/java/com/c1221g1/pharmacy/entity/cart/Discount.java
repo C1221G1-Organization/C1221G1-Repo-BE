@@ -17,7 +17,6 @@ public class Discount {
     @Column(columnDefinition = "VARCHAR(20)")
     private String discountId;
     private Double discountValue;
-    @JsonBackReference
     @OneToMany(mappedBy = "discount")
     private List<Cart> cartList;
 

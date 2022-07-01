@@ -29,7 +29,6 @@ public class Supplier {
     private String note;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-    @JsonBackReference
     @OneToMany(mappedBy = "supplier")
     private List<ImportInvoice> importInvoiceList;
 }
