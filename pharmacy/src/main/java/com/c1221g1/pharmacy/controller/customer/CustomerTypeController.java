@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.customer;
 
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.service.customer.ICustomerTypeService;

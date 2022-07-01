@@ -18,6 +18,7 @@ public class Users {
     private boolean flag;
     @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
+
     @OneToOne(mappedBy = "customerUsername")
     private Customer customer;
     @OneToOne(mappedBy = "employeeUsername")

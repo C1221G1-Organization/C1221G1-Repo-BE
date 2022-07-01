@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.service.customer;
-
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 
 import java.util.List;
