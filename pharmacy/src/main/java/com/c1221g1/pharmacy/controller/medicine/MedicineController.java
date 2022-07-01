@@ -1,11 +1,9 @@
 package com.c1221g1.pharmacy.controller.medicine;
 
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.service.medicine.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,16 +17,6 @@ import java.util.Optional;
 public class MedicineController {
     @Autowired
     private IMedicineService medicineService;
-    @Autowired
-    private IMedicineOriginService medicineOriginService;
-    @Autowired
-    private IMedicineConversionUnitService medicineConversionUnitService;
-    @Autowired
-    private IMedicineTypeService medicineTypeService;
-    @Autowired
-    private IMedicineUnitService medicineUnitService;
-
-
 
     /**
      * Created by MyC
@@ -36,15 +24,15 @@ public class MedicineController {
      * Function: get all page medicine
      */
     @GetMapping("/search")
-    public ResponseEntity<List<Medicine>> findAllMedicine(@PageableDefault(value = 3) Pageable pageable,
+    public ResponseEntity<List<MedicineLookUpDto>> findAllMedicine(
                                                           @RequestParam Optional<String> columName,
                                                           @RequestParam Optional<String> condition,
                                                           @RequestParam Optional<String> keyWord
                                                           ) {
-        String columNameValue = columName.orElse("medicine.medicine_id");
-        String conditionValue = condition.orElse("like");
-        String keyWordValue = keyWord.orElse("'%%'");
-        List<Medicine> medicinePage = medicineService.findAllMedicine(columNameValue,conditionValue,keyWordValue);
+        String columNameValue = columName.orElse("wholesale_price");
+        String conditionValue = condition.orElse(">");
+        String keyWordValue = keyWord.orElse("200000");
+        List<MedicineLookUpDto> medicinePage = medicineService.findAllMedicine(columNameValue,conditionValue,keyWordValue);
         if (medicinePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -57,7 +45,7 @@ public class MedicineController {
      * Function: get list medicine
      */
 
-    @GetMapping("/list")
+    @GetMapping("/")
     public ResponseEntity<List<Medicine>> getList(){
       List<Medicine> medicineList = medicineService.getListMedicine();
       if (medicineList.isEmpty()){
@@ -74,7 +62,7 @@ public class MedicineController {
      * Function: delete medicine by medicineId
      */
 
-    @PatchMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Medicine> deleteMedicineById(@PathVariable String id) {
         Medicine medicine = this.medicineService.findMedicineById(id);
         if (medicine == null) {

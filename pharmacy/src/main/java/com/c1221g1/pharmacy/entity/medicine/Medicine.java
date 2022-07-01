@@ -5,6 +5,7 @@ import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,8 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList",
+        "cartDetailList", "medicineStorageSet"})
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -47,16 +50,16 @@ public class Medicine {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "medicine_origin_id",referencedColumnName = "medicineOriginId")
+    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId")
     private MedicineOrigin medicineOrigin;
     @ManyToOne
-    @JoinColumn(name = "medicine_type_id",referencedColumnName = "medicineTypeId")
+    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId")
     private MedicineType medicineType;
     @ManyToOne
-    @JoinColumn (name = "medicine_unit_id",referencedColumnName = "medicineUnitId")
+    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId")
     private MedicineUnit medicineUnit;
     @ManyToOne
-    @JoinColumn (name = "medicine_conversion_unit_id",referencedColumnName = "medicineConversionUnitId")
+    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
@@ -67,6 +70,6 @@ public class Medicine {
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
-    @JsonBackReference(value = "medicineStorageSet")
+//    @JsonBackReference(value = "medicineStorageSet")
     private Set<MedicineStorage> medicineStorageSet;
 }

@@ -29,7 +29,7 @@ public class MedicineService implements IMedicineService {
 //                "%" + retailPriceValue + "%");
 //    }
     @Override
-    public List<Medicine> findAllMedicine(String columName, String condition, String keyword) {
+    public List<MedicineLookUpDto> findAllMedicine(String columName, String condition, String keyword) {
         return medicineRepository.getAllMedicine(columName,condition,keyword);
     }
 

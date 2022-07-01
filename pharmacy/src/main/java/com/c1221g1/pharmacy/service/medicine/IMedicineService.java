@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IMedicineService {
-    List<Medicine> findAllMedicine(String columName, String condition,
+    List<MedicineLookUpDto> findAllMedicine(String columName, String condition,
                                             String keyword);
 
     Medicine findMedicineById(String id);
