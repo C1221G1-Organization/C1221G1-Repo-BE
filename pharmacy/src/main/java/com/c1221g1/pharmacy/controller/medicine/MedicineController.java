@@ -140,4 +140,3 @@ public class MedicineController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
-harmacy/src/main/java
