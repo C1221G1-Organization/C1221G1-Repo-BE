@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.controller.cart;
 
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
+import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.service.cart.ICartDetailService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -60,6 +62,27 @@ public class CartController {
         BeanUtils.copyProperties(cartDetailDto, cartDetail);
         this.iCartDetailService.updateItemCartDetail(cartDetail);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 1/7/2022
+     * function: Get list cart detail of customer by customer id
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/details/{id}")
+    public ResponseEntity<?> getListDetail(@PathVariable String id) {
+        Cart cart = this.iCartService.findCartByCustomerId(id);
+        if (cart == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<CartDtoForList> cartDetails = this.iCartDetailService.getListByCartId(cart.getCartId());
+        if (cartDetails.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(cartDetails, HttpStatus.OK);
     }
 
     /**

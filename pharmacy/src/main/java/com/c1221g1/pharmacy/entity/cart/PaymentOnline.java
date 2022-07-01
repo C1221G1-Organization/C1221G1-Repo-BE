@@ -8,9 +8,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PaymentOnline {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -25,4 +22,39 @@ public class PaymentOnline {
     @ManyToOne
     @JoinColumn(name = "cart_id", referencedColumnName = "cartId")
     private Cart cart;
+
+    public PaymentOnline() {
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
+    }
+
+    public String getTimeCreate() {
+        return timeCreate;
+    }
+
+    public void setTimeCreate(String timeCreate) {
+        this.timeCreate = timeCreate;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 }

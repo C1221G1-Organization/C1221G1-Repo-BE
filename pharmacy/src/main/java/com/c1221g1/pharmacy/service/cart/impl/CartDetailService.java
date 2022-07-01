@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.service.cart.impl;
 
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
+import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
@@ -11,6 +12,8 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
+
+import java.util.List;
 
 @Service
 public class CartDetailService implements ICartDetailService {
@@ -65,5 +68,10 @@ public class CartDetailService implements ICartDetailService {
     @Override
     public void updateItemCartDetail(CartDetail cartDetail) {
 
+    }
+
+    @Override
+    public List<CartDtoForList> getListByCartId(Integer cartId) {
+        return this.iCartDetailRepository.findCartDetailByCartId(cartId,false);
     }
 }

@@ -1,8 +1,11 @@
 package com.c1221g1.pharmacy.service.cart;
 
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
+import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import org.springframework.validation.BindingResult;
+
+import java.util.List;
 
 public interface ICartDetailService {
     /**
@@ -32,4 +35,6 @@ public interface ICartDetailService {
      * @param cartDetail
      */
     void updateItemCartDetail(CartDetail cartDetail);
+
+    List<CartDtoForList> getListByCartId(Integer cartId);
 }
