@@ -1,19 +1,12 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@JsonIgnoreProperties({"medicineList"})
+@JsonIgnoreProperties("medicineList")
 public class MedicineConversionUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +14,31 @@ public class MedicineConversionUnit {
     private String medicineConversionUnitName;
     @OneToMany(mappedBy = "medicineConversionUnit")
     private List<Medicine> medicineList;
+
+    public MedicineConversionUnit() {
+    }
+
+    public Integer getMedicineConversionUnitId() {
+        return medicineConversionUnitId;
+    }
+
+    public void setMedicineConversionUnitId(Integer medicineConversionUnitId) {
+        this.medicineConversionUnitId = medicineConversionUnitId;
+    }
+
+    public String getMedicineConversionUnitName() {
+        return medicineConversionUnitName;
+    }
+
+    public void setMedicineConversionUnitName(String medicineConversionUnitName) {
+        this.medicineConversionUnitName = medicineConversionUnitName;
+    }
+
+    public List<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(List<Medicine> medicineList) {
+        this.medicineList = medicineList;
+    }
 }

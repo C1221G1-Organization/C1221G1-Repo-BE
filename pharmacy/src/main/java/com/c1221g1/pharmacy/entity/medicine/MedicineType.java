@@ -1,18 +1,12 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties({"medicineList"})
 public class MedicineType {
     @Id
@@ -23,7 +17,33 @@ public class MedicineType {
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String medicineTypeId;
     private String medicineTypeName;
-
     @OneToMany(mappedBy = "medicineType")
     private List<Medicine> medicineList;
+
+    public MedicineType() {
+    }
+
+    public String getMedicineTypeId() {
+        return medicineTypeId;
+    }
+
+    public void setMedicineTypeId(String medicineTypeId) {
+        this.medicineTypeId = medicineTypeId;
+    }
+
+    public String getMedicineTypeName() {
+        return medicineTypeName;
+    }
+
+    public void setMedicineTypeName(String medicineTypeName) {
+        this.medicineTypeName = medicineTypeName;
+    }
+
+    public List<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(List<Medicine> medicineList) {
+        this.medicineList = medicineList;
+    }
 }
