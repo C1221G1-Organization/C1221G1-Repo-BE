@@ -28,7 +28,7 @@ public class MedicineController_getMedicineDetailDtoById {
     @Test
     public void getMedicineDetailDtoById_medicineId_1() throws Exception {
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/{medicineId}", "null"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/detail/{medicineId}", "null"))
             .andDo(print())
             .andExpect(status().is4xxClientError());
     }
@@ -36,7 +36,7 @@ public class MedicineController_getMedicineDetailDtoById {
     @Test
     public void getMedicineDetailDtoById_medicineId_2() throws Exception {
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/{medicineId}", ""))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/detail/{medicineId}", ""))
             .andDo(print())
             .andExpect(status().is4xxClientError());
     }
@@ -44,7 +44,7 @@ public class MedicineController_getMedicineDetailDtoById {
     @Test
     public void getMedicineDetailDtoById_medicineId_3() throws Exception {
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/{medicineId}", "INVALID_ID"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/detail/{medicineId}", "INVALID_ID"))
             .andDo(print())
             .andExpect(status().is4xxClientError());
     }
@@ -52,7 +52,7 @@ public class MedicineController_getMedicineDetailDtoById {
     @Test
     public void getMedicineDetailDtoById_medicineId_4() throws Exception {
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/{medicineId}", "T-00005"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-medicine/medicines/detail/{medicineId}", "T-00005"))
             .andDo(print())
             .andExpect(status().is2xxSuccessful())
             .andExpect(jsonPath("$.medicineId").value("T-00005"))
