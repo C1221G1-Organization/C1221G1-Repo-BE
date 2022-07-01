@@ -10,12 +10,21 @@ import java.util.List;
 
 @Service
 public class CustomerTypeService implements ICustomerTypeService {
+
+
     @Autowired
     private ICustomerTypeRepository iCustomerTypeRepository;
 
+    /**
+     * create by TinBQ and TruongNQ
+     * time: 30/06/2022
+     * This method to get customer type in database
+     */
+
     @Override
     public List<CustomerType> findAllCustomerType() {
-        return this.iCustomerTypeRepository.getAllCustomerType();
+        return iCustomerTypeRepository.getAllCustomerType();
     }
+
 
 }
