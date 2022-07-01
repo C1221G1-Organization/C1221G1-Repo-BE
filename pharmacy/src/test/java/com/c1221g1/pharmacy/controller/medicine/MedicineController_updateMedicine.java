@@ -46,10 +46,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineActiveIngredients("vitaminC");
         medicineDto.setMedicineImportPrice(500.0);
@@ -102,10 +102,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -159,10 +159,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -216,10 +216,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -273,10 +273,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
@@ -339,10 +339,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineImportPrice(500.0);
@@ -395,10 +395,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("");
@@ -452,10 +452,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC#%");
@@ -509,10 +509,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("cc");
@@ -566,10 +566,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("cccccccccccccccccccccccccccc" +
@@ -635,10 +635,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -691,10 +691,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -748,10 +748,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC#%");
@@ -805,10 +805,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -862,10 +862,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -918,10 +918,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -975,10 +975,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1032,10 +1032,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1089,10 +1089,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1145,10 +1145,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1202,10 +1202,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1259,10 +1259,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1316,10 +1316,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1372,10 +1372,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1429,10 +1429,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1486,10 +1486,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1543,10 +1543,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1599,10 +1599,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1656,10 +1656,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1713,10 +1713,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1770,10 +1770,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1826,10 +1826,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1883,10 +1883,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1940,10 +1940,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -1997,10 +1997,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2053,10 +2053,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("ádsad");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2110,10 +2110,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2167,10 +2167,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2224,10 +2224,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2290,10 +2290,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2346,10 +2346,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("ádads");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2403,10 +2403,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2460,10 +2460,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2517,10 +2517,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2584,10 +2584,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2640,10 +2640,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("dsadadsa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2697,10 +2697,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2754,10 +2754,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2811,10 +2811,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2880,10 +2880,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2936,10 +2936,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("dsads");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -2993,10 +2993,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3050,10 +3050,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3107,10 +3107,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3175,10 +3175,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3231,10 +3231,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aaa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3288,10 +3288,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3345,10 +3345,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3402,10 +3402,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3470,10 +3470,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3526,10 +3526,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aaa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3583,10 +3583,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc bo t1#%$");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3640,10 +3640,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3697,10 +3697,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("aa");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3762,10 +3762,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3818,10 +3818,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3874,10 +3874,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3930,10 +3930,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thốc nhỏ mắt");
         medicineDto.setMedicineActiveIngredients("vitaminC");
@@ -3986,10 +3986,10 @@ public class MedicineController_updateMedicine {
         medicineConversionUnit.setMedicineConversionUnitId(1);
         medicineConversionUnit.setMedicineConversionUnitName("viên");
         MedicineDto medicineDto = new MedicineDto
-                ("T-00010", "thuoc ca", "omega3", 5000.0, 
+                ("T-00010", "thuoc ca", "omega3", 5000.0,
                         5.0, 3.0, 2.0, 5.0, 10.0,
                         "daphaco", "bo sung mat", "uong", "tren 18 tuoi",
-                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin, 
+                        "thuocca.png", "la thuoc bo tro mat", true, medicineOrigin,
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");

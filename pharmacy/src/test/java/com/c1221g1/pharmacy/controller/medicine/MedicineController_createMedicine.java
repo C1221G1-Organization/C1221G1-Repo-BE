@@ -2994,6 +2994,7 @@ public class MedicineController_createMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * this function use to test the validation of field unit more specific is null
      *
@@ -3036,6 +3037,7 @@ public class MedicineController_createMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * this function use to test the validation of field conversionUnit more specific is null
      *
@@ -3078,6 +3080,7 @@ public class MedicineController_createMedicine {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * this function use to create medicine with all valid item
      *
