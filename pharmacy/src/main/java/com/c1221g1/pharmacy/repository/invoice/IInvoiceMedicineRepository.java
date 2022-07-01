@@ -14,7 +14,7 @@ public interface IInvoiceMedicineRepository extends JpaRepository<InvoiceMedicin
      * */
     @Transactional
     @Modifying
-    @Query(value = "insert into invoice_medicine (invoice_medicine_quantity,invoice_medicine_id ,invoice_id)" +
+    @Query(value = "insert into invoice_medicine (invoice_medicine_quantity, medicine_id ,invoice_id)" +
             " value (?1,?2,?3)", nativeQuery = true)
-    void createInvoiceMedicine(Integer quantity, Integer medicineInvoiceId, String invoiceId);
+    void createInvoiceMedicine(Integer quantity, String medicineId, String invoiceId);
 }

@@ -17,7 +17,7 @@ public interface IMedicineStorageService {
      * Time: 11:49 AM 30/06/2022
      * Function: function getStorageByIdMedicine
      * */
-    Optional<MedicineStorage> getStorageByIdMedicine(Integer id);
+    Optional<MedicineStorage> getStorageByIdMedicine(String id);
 
     /*
      * Created by DaLQA

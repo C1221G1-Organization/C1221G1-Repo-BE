@@ -1,6 +1,5 @@
 package com.c1221g1.pharmacy.service.invoice.impl;
 
-import com.c1221g1.pharmacy.dto.invoice.MedicineInvoiceDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.repository.invoice.IInvoiceRepository;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @Service
 public class InvoiceService implements IInvoiceService {

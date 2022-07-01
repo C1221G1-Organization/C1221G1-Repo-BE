@@ -2,8 +2,12 @@ package com.c1221g1.pharmacy.dto.invoice;
 
 import com.c1221g1.pharmacy.dto.customer.CustomerDto;
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import java.util.List;
 /*
@@ -14,93 +18,11 @@ import java.util.List;
 
 public class InvoiceMedicineDto {
     private Integer invoiceMedicineId;
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: remove properties from InvoiceMedicineDto: invoiceMedicineQuantity,invoice,medicine
-     * Note: I just commented them back and i didn't delete them, wait for every one discuss about it
-     * */
-//    private Integer invoiceMedicineQuantity;
-
-//    private Medicine medicine;
-
-    private InvoiceDto invoiceDto;
-    /*
-     * Created by DaLQA
-     * Time: 8:36 PM 30/06/2022
-     * Function: create new property invoiceCreateTime
-     * */
-    private Double invoiceTotalMoney;
-
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: create property invoiceNote for InvoiceMedicineDto
-     * */
-    private String invoiceNote;
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: create property customerDto for InvoiceMedicineDto
-     * */
-    @Valid
-    private CustomerDto customerDto;
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: create property customerDto for InvoiceMedicineDto
-     * */
-    @Valid
-    private EmployeeDto employeeDto;
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: create property medicines for InvoiceMedicineDto
-     * */
-    private List<MedicineInvoiceDto> medicines;
-
+    private Integer invoiceMedicineQuantity;
+    private InvoiceDto invoice;
+    private MedicineDto medicine;
 
     public InvoiceMedicineDto() {
-    }
-
-    public String getInvoiceNote() {
-        return invoiceNote;
-    }
-
-    public Double getInvoiceTotalMoney() {
-        return invoiceTotalMoney;
-    }
-
-    public void setInvoiceTotalMoney(Double invoiceTotalMoney) {
-        this.invoiceTotalMoney = invoiceTotalMoney;
-    }
-
-    public EmployeeDto getEmployeeDto() {
-        return employeeDto;
-    }
-
-    public void setEmployeeDto(EmployeeDto employeeDto) {
-        this.employeeDto = employeeDto;
-    }
-
-    public void setInvoiceNote(String invoiceNote) {
-        this.invoiceNote = invoiceNote;
-    }
-
-    public CustomerDto getCustomerDto() {
-        return customerDto;
-    }
-
-    public void setCustomerDto(CustomerDto customerDto) {
-        this.customerDto = customerDto;
-    }
-
-    public List<MedicineInvoiceDto> getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(List<MedicineInvoiceDto> medicines) {
-        this.medicines = medicines;
     }
 
     public Integer getInvoiceMedicineId() {
@@ -111,34 +33,27 @@ public class InvoiceMedicineDto {
         this.invoiceMedicineId = invoiceMedicineId;
     }
 
-    public InvoiceDto getInvoiceDto() {
-        return invoiceDto;
+    public Integer getInvoiceMedicineQuantity() {
+        return invoiceMedicineQuantity;
     }
 
-    public void setInvoiceDto(InvoiceDto invoiceDto) {
-        this.invoiceDto = invoiceDto;
+    public void setInvoiceMedicineQuantity(Integer invoiceMedicineQuantity) {
+        this.invoiceMedicineQuantity = invoiceMedicineQuantity;
     }
-//    public Integer getInvoiceMedicineQuantity() {
-//        return invoiceMedicineQuantity;
-//    }
-//
-//    public void setInvoiceMedicineQuantity(Integer invoiceMedicineQuantity) {
-//        this.invoiceMedicineQuantity = invoiceMedicineQuantity;
-//    }
-//
-//    public Invoice getInvoice() {
-//        return invoice;
-//    }
-//
-//    public void setInvoice(Invoice invoice) {
-//        this.invoice = invoice;
-//    }
-//
-//    public Medicine getMedicine() {
-//        return medicine;
-//    }
-//
-//    public void setMedicine(Medicine medicine) {
-//        this.medicine = medicine;
-//    }
+
+    public InvoiceDto getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(InvoiceDto invoice) {
+        this.invoice = invoice;
+    }
+
+    public MedicineDto getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(MedicineDto medicine) {
+        this.medicine = medicine;
+    }
 }

@@ -1,10 +1,11 @@
 package com.c1221g1.pharmacy.controller.invoice;
 
+import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
 import com.c1221g1.pharmacy.dto.invoice.InvoiceMedicineDto;
-import com.c1221g1.pharmacy.dto.invoice.MedicineInvoiceDto;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
+import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import com.c1221g1.pharmacy.service.customer.ICustomerService;
@@ -21,10 +22,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -42,57 +40,40 @@ public class InvoiceMedicineController {
     @Autowired
     private IInvoiceService iInvoiceService;
     @Autowired
-    private ITypeOfInvoiceService iTypeOfInvoiceService;
-    @Autowired
-    private ICustomerService iCustomerService;
-    @Autowired
-    private IEmployeeService iEmployeeService;
-    @Autowired
     private IMedicineStorageService iMedicineStorageService;
-
     /*
      * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
+     * Time: 00:50 PM 30/06/2022
      * Function: function createRetailInvoice
      * */
     @PostMapping("/createRetail")
-    public ResponseEntity<Map<String, String>> createRetailInvoice(@Validated @RequestBody InvoiceMedicineDto invoiceMedicineDto,
+    public ResponseEntity<Map<String, String>> createRetailInvoice(@Validated @RequestBody
+                                                                           InvoiceDto invoiceDto,
                                                                    BindingResult bindingResult) {
-        System.out.println(invoiceMedicineDto);
+        System.out.println(invoiceDto);
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getFieldError());
             Map<String, String> errorMap = bindingResult.getFieldErrors()
                     .stream().collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
             return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
-        Customer customer = new Customer();
-        BeanUtils.copyProperties(invoiceMedicineDto.getCustomerDto(), customer);
-        if (invoiceMedicineDto.getCustomerDto().getCustomerId() == null) {
-            customer = iCustomerService.getRetailCustomer();
-        }
-        Employee employee = new Employee();
-        BeanUtils.copyProperties(invoiceMedicineDto.getEmployeeDto(), employee);
-        if (invoiceMedicineDto.getEmployeeDto().getEmployeeId() == null) {
-            employee = iEmployeeService.getEmployeeCreate();
-        }
-        TypeOfInvoice typeOfInvoice = iTypeOfInvoiceService.getTypeOfInvoiceRetail();
         Invoice invoice = new Invoice();
-        invoice.setInvoiceTotalMoney(invoiceMedicineDto.getInvoiceTotalMoney());
-        invoice.setCustomer(customer);
-        invoice.setEmployee(employee);
-        invoice.setInvoiceNote(invoiceMedicineDto.getInvoiceNote());
-        invoice.setTypeOfInvoice(typeOfInvoice);
+        invoice.setEmployee(invoiceDto.getEmployee());
+        invoice.setCustomer(invoiceDto.getCustomer());
+        invoice.setTypeOfInvoice(invoiceDto.getTypeOfInvoice());
+        invoice.setInvoiceNote(invoiceDto.getInvoiceNote());
+        invoice.setInvoiceTotalMoney(invoiceDto.getInvoiceTotalMoney());
         iInvoiceService.saveInvoice(invoice);
         Invoice newInvoice = iInvoiceService.getNewInvoice();
-        List<MedicineInvoiceDto> list = invoiceMedicineDto.getMedicines();
-        for (int i = 0; i < list.size(); i++) {
-            Integer quantity = list.get(i).getQuantity();
-            Integer medicineInvoiceId = list.get(i).getId();
-            iInvoiceMedicineService.createInvoiceMedicine(quantity, medicineInvoiceId, newInvoice.getInvoiceId());
+        List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
+        for (int i = 0; i < invoiceMedicineList.size(); i++) {
+            Integer quantity = invoiceMedicineList.get(i).getInvoiceMedicineQuantity();
+            String medicineId = invoiceMedicineList.get(i).getMedicine().getMedicineId();
+            iInvoiceMedicineService.createInvoiceMedicine(quantity, medicineId, newInvoice.getInvoiceId());
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+//
     /*
      * Created by DaLQA
      * Time: 00:50 PM 30/06/2022
@@ -100,20 +81,21 @@ public class InvoiceMedicineController {
      * */
     @PatchMapping("/updateQuantityMedicine")
     public ResponseEntity<Map<String, String>> updateQuantityMedicine(@Validated @RequestBody
-                                                                              InvoiceMedicineDto invoiceMedicineDto,
+                                                                              InvoiceDto invoiceDto,
                                                                       BindingResult bindingResult) {
         String errorQuantity = "";
         Map<String, String> errorMap = new HashMap<>();
         if (!bindingResult.hasErrors()) {
-            if (!invoiceMedicineDto.getMedicines().isEmpty()) {
-                errorMap = checkListMedicine(invoiceMedicineDto.getMedicines());
+            if (!invoiceDto.getInvoiceMedicineList().isEmpty()) {
+                errorMap = checkListMedicine(invoiceDto.getInvoiceMedicineList());
                 if (errorMap.isEmpty()) {
-                    for (MedicineInvoiceDto medicineInvoiceDto : invoiceMedicineDto.getMedicines()) {
-                        Optional<MedicineStorage> medicineStorage =
-                                iMedicineStorageService.getStorageByIdMedicine(medicineInvoiceDto.getId());
+                    for (InvoiceMedicineDto invoiceMedicineDto : invoiceDto.getInvoiceMedicineList()) {
+                        Optional<MedicineStorage> medicineStorage = iMedicineStorageService
+                                .getStorageByIdMedicine(invoiceMedicineDto.getMedicine().getMedicineId());
                         MedicineStorage storage = medicineStorage.orElse(null);
                         assert storage != null;
-                        storage.setMedicineQuantity(storage.getMedicineQuantity() - medicineInvoiceDto.getQuantity());
+                        storage.setMedicineQuantity
+                                (storage.getMedicineQuantity() - invoiceMedicineDto.getInvoiceMedicineQuantity());
                         iMedicineStorageService.updateMedicineQuantity(storage);
                     }
                     return new ResponseEntity<>(HttpStatus.OK);
@@ -139,18 +121,18 @@ public class InvoiceMedicineController {
      * Time: 11:40 AM 30/06/2022
      * Function: function checkListMedicine
      * */
-    public Map<String, String> checkListMedicine(List<MedicineInvoiceDto> medicineInvoiceDtoList) {
+    public Map<String, String> checkListMedicine(List<InvoiceMedicineDto> invoiceMedicineDtoList) {
         String errorMessage = "";
         Map<String, String> errorMap = new HashMap<>();
-        for (int i = 0; i <= medicineInvoiceDtoList.size() - 1; i++) {
-            Optional<MedicineStorage> storages =
-                    iMedicineStorageService.getStorageByIdMedicine(medicineInvoiceDtoList.get(i).getId());
+        for (int i = 0; i <= invoiceMedicineDtoList.size() - 1; i++) {
+            Optional<MedicineStorage> storages = iMedicineStorageService.getStorageByIdMedicine(invoiceMedicineDtoList
+                                                                             .get(i).getMedicine().getMedicineId());
             MedicineStorage storage = storages.orElse(null);
             if (storage == null) {
-                errorMessage = "Số lượng thuốc " + medicineInvoiceDtoList.get(i).getMedicineName()
+                errorMessage = "Số lượng thuốc " + invoiceMedicineDtoList.get(i).getMedicine().getMedicineName()
                         + " đã hết. Vui lòng chọn thuốc khác thay thế!";
                 errorMap.put(String.valueOf(i), errorMessage);
-            } else if (medicineInvoiceDtoList.get(i).getQuantity() > storage.getMedicineQuantity()) {
+            } else if (invoiceMedicineDtoList.get(i).getInvoiceMedicineQuantity() > storage.getMedicineQuantity()) {
                 errorMessage = "Số lượng thuốc " + storage.getMedicine().getMedicineName() +
                         " trong tủ còn: " + storage.getMedicineQuantity();
                 errorMap.put(String.valueOf(i), errorMessage);

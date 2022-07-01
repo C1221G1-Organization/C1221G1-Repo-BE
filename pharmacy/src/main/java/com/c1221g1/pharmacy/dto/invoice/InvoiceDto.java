@@ -14,22 +14,11 @@ public class InvoiceDto {
     private TypeOfInvoice typeOfInvoice;
     private String invoiceNote;
     private String invoiceCreatedDate;
-
-    /*
-    * Created by DaLQA
-    * Time: 4:12 PM 29/06/2022
-    * Function: create new property invoiceCreateTime
-    * */
     private String invoiceCreateTime;
     private boolean flag;
-    private List<InvoiceMedicine> invoiceMedicineList;
-
-    /*
-     * Created by DaLQA
-     * Time: 8:36 PM 30/06/2022
-     * Function: create new property invoiceCreateTime
-     * */
     private Double invoiceTotalMoney;
+    private List<InvoiceMedicineDto> invoiceMedicineList;
+
     public InvoiceDto() {
     }
 
@@ -105,11 +94,11 @@ public class InvoiceDto {
         this.flag = flag;
     }
 
-    public List<InvoiceMedicine> getInvoiceMedicineList() {
+    public List<InvoiceMedicineDto> getInvoiceMedicineList() {
         return invoiceMedicineList;
     }
 
-    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
+    public void setInvoiceMedicineList(List<InvoiceMedicineDto> invoiceMedicineList) {
         this.invoiceMedicineList = invoiceMedicineList;
     }
 }

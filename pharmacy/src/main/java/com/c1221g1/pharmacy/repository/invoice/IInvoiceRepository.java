@@ -13,8 +13,8 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
     @Query(value = "select invoice_id, flag, invoice_create_time, invoice_created_date," +
             " invoice_note, customer_id,employee_id, type_of_invoice_id" +
             " from invoice " +
-            "order by invoice.invoice_id " +
-            "desc limit 1;",
+            " order by invoice.invoice_id " +
+            " desc limit 1;",
             nativeQuery = true)
     Invoice getNewInvoice();
 }
