@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 
@@ -25,14 +26,26 @@ public interface IInvoiceRepository extends JpaRepository<Invoice,String> {
 //            "and typeOfInvoiceId = :typeOfInvoiceId" +
 //            "group by medicine.medicine_id", nativeQuery = true)
 //    thêm thuộc tính invoiceTotalMoney ở invoice
-    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_create_date," +
-            " invoice_created_time, invoice_note, invoice_total_money " +
-            "from invoice" +
-            "where :startDate < invoice_created_date < :endDate "+
-            "and :startTime < invoice_create_time < :endTime "+
-            "and type_of_invoice_id = :typeOfInvoiceId", nativeQuery = true)
-    Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
-
+    @Query(value = "select invoice.invoice_id,customer_id, employee_id, invoice_created_date, " +
+            "             invoice_create_time, invoice_note, invoice_total_money,flag,type_of_invoice_id " +
+            "            from invoice " +
+            "            where (invoice_created_date between :startDate and :endDate) " +
+            "            and (invoice_create_time between :startTime and :endTime )" +
+            "            and type_of_invoice_id = :typeOfInvoiceId " +
+            "            and flag = true",
+            countQuery = "select invoice.invoice_id,customer_id, employee_id, invoice_created_date, " +
+            "             invoice_create_time, invoice_note, invoice_total_money,flag,type_of_invoice_id " +
+            "            from invoice " +
+            "            where (invoice_created_date between :startDate and :endDate) " +
+            "            and (invoice_create_time between :startTime and :endTime )" +
+            "            and type_of_invoice_id = :typeOfInvoiceId " +
+            "            and flag = true", nativeQuery = true)
+    Page<Invoice> findAllInvoice(@Param("startDate") String startDate,
+                                 @Param("endDate") String endDate,
+                                 @Param("startTime") String startTime,
+                                 @Param("endTime") String endTime,
+                                 @Param("typeOfInvoiceId") Integer typeOfInvoiceId,
+                                 Pageable pageable);
     /**
      * @author TuanPA
      * function: find invoice by id

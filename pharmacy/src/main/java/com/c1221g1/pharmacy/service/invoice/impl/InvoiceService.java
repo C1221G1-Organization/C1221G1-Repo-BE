@@ -13,8 +13,8 @@ public class InvoiceService implements IInvoiceService {
     @Autowired
     private IInvoiceRepository iInvoiceRepository;
     @Override
-    public Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable) {
-        return iInvoiceRepository.findAll(startDate,endDate,startTime,endTime,typeOfInvoiceId,pageable);
+    public Page<Invoice> findAllInvoice(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable) {
+        return iInvoiceRepository.findAllInvoice(startDate,endDate,startTime,endTime,typeOfInvoiceId,pageable);
     }
 
     @Override

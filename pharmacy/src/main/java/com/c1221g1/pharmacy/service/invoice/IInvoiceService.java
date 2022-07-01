@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IInvoiceService {
-    Page<Invoice> findAll(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
+    Page<Invoice> findAllInvoice(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable);
 
     void delete(String id);
 
