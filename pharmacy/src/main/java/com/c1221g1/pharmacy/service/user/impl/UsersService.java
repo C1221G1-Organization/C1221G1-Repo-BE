@@ -8,6 +8,7 @@ import com.c1221g1.pharmacy.entity.user.Roles;
 import com.c1221g1.pharmacy.entity.user.UserRole;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.c1221g1.pharmacy.repository.customer.ICustomerRepository;
+import com.c1221g1.pharmacy.repository.user.IRoleRepository;
 import com.c1221g1.pharmacy.repository.user.IUserRoleRepository;
 import com.c1221g1.pharmacy.repository.user.IUsersRepository;
 import com.c1221g1.pharmacy.service.user.IUsersService;
@@ -32,39 +33,45 @@ public class UsersService implements IUsersService {
     @Autowired
     private IUserRoleRepository iUserRoleRepository;
 
-    /**
-     * Created by HuuNQ
-     * Time 12:00 30/06/2022
-     * Function find User when submit Login form
-     */
-    @Override
-    public Users findUsersByUsernameAndPassword(String username, String password) {
-        Users users = new Users();
-        users = (Users) this.iUsersRepository.getUsersByUsernameAndPassword(username,password);
-        return users;
-    }
+    @Autowired
+    private IRoleRepository iRoleRepository;
+
+
     /**
      * Created by HuuNQ
      * Time 12:00 30/06/2022
      * Function format Date, and save data for customer when sign up
      */
     @Override
-    public void saveUsers(SignUpRequest signUpRequest) {
-        String id = String.valueOf(Math.random()*8999+1000);
-        String[] dateSplit = signUpRequest.getDayOfBirth().split("/");
-        String dateFormat = dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
+    public void saveUsers(SignUpRequest signUpRequest) throws Exception {
         try{
-            this.iUsersRepository.saveUser(signUpRequest.getEmail(),passwordEncoder.encode(signUpRequest.getPassword()),true);
-            this.iCustomerRepository.saveCustomer(id,signUpRequest.getName(),
-                    signUpRequest.getAddress(),
-                    dateFormat,
-                    signUpRequest.getGender(),
-                    signUpRequest.getPhone(),
-                    signUpRequest.getNote(),signUpRequest.getFlag(),signUpRequest.getCustomerType(),signUpRequest.getEmail());
-            this.iUserRoleRepository.saveUserRole(signUpRequest.getEmail(),1);
+            String[] dateSplit = signUpRequest.getDayOfBirth().split("/");
+            String dateFormat = dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
+
+            Users users = new Users(signUpRequest.getEmail(),passwordEncoder.encode(signUpRequest.getPassword()));
+            users.setFlag(true);
+            CustomerType customerType = new CustomerType();
+            customerType.setCustomerTypeId(2);
+            customerType.setCustomerTypeName("Khách lẻ");
+            Customer customer = new Customer();
+            customer.setCustomerName(signUpRequest.getName());
+            customer.setCustomerBirthday(dateFormat);
+            customer.setCustomerAddress(signUpRequest.getAddress());
+            customer.setCustomerNote(signUpRequest.getNote());
+            customer.setCustomerPhone(signUpRequest.getPhone());
+            customer.setCustomerGender(signUpRequest.getGender());
+            customer.setCustomerUsername(users);
+            customer.setCustomerType(customerType);
+            customer.setFlag(true);
+            Roles roles = this.iRoleRepository.findRolesByRoleName("ROLE_USER");
+            UserRole userRole = new UserRole(users,roles);
+            this.iUsersRepository.save(users);
+            this.iUserRoleRepository.save(userRole);
+            this.iCustomerRepository.save(customer);
         }catch (Exception e){
-            e.getMessage();
+            throw new Exception("lỗi");
         }
+
 
     }
 

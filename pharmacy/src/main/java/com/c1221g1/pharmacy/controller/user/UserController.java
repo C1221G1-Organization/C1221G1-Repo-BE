@@ -39,10 +39,8 @@ public class UserController {
     private IUsersService iUsersService;
 
     @Autowired
-    private ICustomerService iCustomerService;
-
-    @Autowired
     MessageSource messageSource;
+
     @Autowired
     private JwtUtils jwtUtils;
     /**
@@ -96,7 +94,11 @@ public class UserController {
             errorMap.put("email","Email đã được sử dụng!");
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
         }
-        this.iUsersService.saveUsers(signUpRequest);
+        try {
+            this.iUsersService.saveUsers(signUpRequest);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Có lỗi xảy ra");
+        }
         return ResponseEntity.ok().body("Đăng ký thành công");
     }
 }

@@ -68,10 +68,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        ,"/api/manager-security/users/sign-up","/api/pharmacy/","/api/pharmacy/cart"
+                        ,"/api/manager-security/users/sign-up","/api/pharmacy","/api/pharmacy/cart"
                     )
                 .permitAll()
-                .antMatchers("/api/pharmacy/user-page/**")
+                .antMatchers("/api/manager-employee/**")
                 .hasRole("USER")
                 .antMatchers("/api/pharmacy/employee-page/**")
                 .hasAnyRole("EMPLOYEE","MANAGER")
@@ -88,9 +88,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                 .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(60 * 60 * 24)
-                .and()
-                .logout().logoutSuccessUrl("/api/");
+                .tokenValiditySeconds(60 * 60 * 24);
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
     }

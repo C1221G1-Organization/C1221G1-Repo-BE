@@ -10,9 +10,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Users {
     @Id @Column(columnDefinition = "VARCHAR(30)")
     private String username;
@@ -22,7 +19,7 @@ public class Users {
     /**
      * Created by HuuNQ
      * Time 12:00 30/06/2022
-     * Function: this provider use for some one login by social
+     * Function: this provider use for some one login by social net work
      */
     @Enumerated(EnumType.STRING)
     private Provider provider;
@@ -34,4 +31,68 @@ public class Users {
 
     @OneToOne(mappedBy = "employeeUsername")
     private Employee employee;
+
+    public Users() {
+    }
+
+    public Users(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
+    public List<UserRole> getUserRoleList() {
+        return userRoleList;
+    }
+
+    public void setUserRoleList(List<UserRole> userRoleList) {
+        this.userRoleList = userRoleList;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

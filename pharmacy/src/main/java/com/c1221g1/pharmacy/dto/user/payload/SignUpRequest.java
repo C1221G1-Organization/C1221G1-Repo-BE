@@ -24,15 +24,11 @@ public class SignUpRequest implements Validator {
     private String phone;
     private String dayOfBirth;
     private String note;
-    private Boolean flag;
-    private Integer customerType = 1;
-    private Integer roleId = 1;
-
 
     public SignUpRequest() {
     }
 
-    public SignUpRequest(String name, String email, String password, String confirmPassword, Integer gender, String address, String phone, String dayOfBirth, String note, Boolean flag, Integer customerType, Integer roleId) {
+    public SignUpRequest(String name, String email, String password, String confirmPassword, Integer gender, String address, String phone, String dayOfBirth, String note) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -42,9 +38,6 @@ public class SignUpRequest implements Validator {
         this.phone = phone;
         this.dayOfBirth = dayOfBirth;
         this.note = note;
-        this.flag = flag;
-        this.customerType = customerType;
-        this.roleId = roleId;
     }
 
     public String getName() {
@@ -119,29 +112,6 @@ public class SignUpRequest implements Validator {
         this.note = note;
     }
 
-    public Boolean getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Boolean flag) {
-        this.flag = flag;
-    }
-
-    public Integer getCustomerType() {
-        return customerType;
-    }
-
-    public void setCustomerType(Integer customerType) {
-        this.customerType = customerType;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -187,7 +157,7 @@ public class SignUpRequest implements Validator {
             errors.rejectValue("dayOfBirth","date.invalid.pattern","Sai định dạng ngày/tháng/năm");
         }
         if(!signUpRequest.getConfirmPassword().matches(signUpRequest.getPassword())){
-            errors.rejectValue("confirmPassword","confirmPassword.invalid","Xác nhận mật khẩu chính xác");
+            errors.rejectValue("confirmPassword","confirmPassword.invalid","Xác nhận mật khẩu không chính xác");
         }
     }
 }

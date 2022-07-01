@@ -6,19 +6,13 @@ import com.c1221g1.pharmacy.entity.user.Users;
 import java.util.List;
 
 public interface IUsersService {
-    /**
-     * Created by HuuNQ
-     * Time 12:00 30/06/2022
-     *
-     */
-    Users findUsersByUsernameAndPassword(String username, String password);
 
     /**
      * Created by HuuNQ
      * Time 12:00 30/06/2022
      *
      */
-    void saveUsers(SignUpRequest signUpRequest);
+    void saveUsers(SignUpRequest signUpRequest) throws Exception;
 
     /**
      * Created by HuuNQ
