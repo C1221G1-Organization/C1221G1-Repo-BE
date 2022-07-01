@@ -45,4 +45,3 @@ public class MedicineService implements IMedicineService {
         this.medicineRepository.updateMedicine(existMedicine);
     }
 }
-

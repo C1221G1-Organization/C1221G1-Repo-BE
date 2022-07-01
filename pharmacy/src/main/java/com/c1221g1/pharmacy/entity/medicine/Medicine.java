@@ -54,16 +54,12 @@ public class Medicine {
     @ManyToOne
     @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
-
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
-
     @OneToMany(mappedBy = "medicine")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
-
     @OneToMany(mappedBy = "medicine")
     private List<InvoiceMedicine> invoiceMedicineList;
-
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
