@@ -78,14 +78,20 @@ public class SupplierController {
      * <p>
      * 18h 29/06/2022  trần ngọc luật
      */
-    @PatchMapping("/delete/{supplier_id}")
-    public ResponseEntity<Supplier> deleteSupplier(@PathVariable("supplier_id") String id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Supplier> deleteSupplier(@PathVariable("id") String id) {
         try {
+
             if ("null".equals(id) || null == id) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             } else if ("".equals(id)) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             } else {
+                Supplier supplier = iSupplierService.findById(id);
+
+                if (supplier == null) {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
                 this.iSupplierService.removeSupplierById(id);
                 return new ResponseEntity<>(HttpStatus.OK);
             }
@@ -104,12 +110,6 @@ public class SupplierController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<Supplier> getSupplier(@PathVariable("id") String id) {
-        try {
-            if ("null".equals(id) || null == id) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            } else if ("".equals(id)) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            } else {
                 Supplier supplier = iSupplierService.findById(id);
                 System.err.println("ID");
                 System.err.println(supplier);
@@ -117,10 +117,6 @@ public class SupplierController {
                     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                 }
                 return new ResponseEntity<>(supplier, HttpStatus.OK);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
 
     }
 
@@ -132,7 +128,7 @@ public class SupplierController {
      * and call method save in service
      * 18h 29/06/2022
      */
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/")
     public ResponseEntity<?> saveSupplier(@Validated @RequestBody SupplierDto supplierDto,
                                           BindingResult bindingResult) {
 
@@ -155,10 +151,10 @@ public class SupplierController {
      * call method update() in supplierService
      * 20h 29/06/2022 trần ngọc luật
      */
-    @PatchMapping("/update/{id}")
-    public ResponseEntity<?> updateCar(@Validated @RequestBody SupplierDto supplierDto,
-                                       @PathVariable("id") String id,
-                                       BindingResult bindingResult) {
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateSupplier(@Validated @RequestBody SupplierDto supplierDto,
+                                            @PathVariable("id") String id,
+                                            BindingResult bindingResult) {
 
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);

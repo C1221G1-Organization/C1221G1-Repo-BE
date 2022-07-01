@@ -85,12 +85,6 @@ public class SupplierDto {
         return flag;
     }
 
-//    public List<ImportInvoice> getImportInvoiceList() {
-//        return importInvoiceList;
-//    }
-//
-//    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
-//        this.importInvoiceList = importInvoiceList;
-//    }
+
 }
 
