@@ -160,10 +160,10 @@ public class MedicineController_getAllMedicineAndSearch {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.totalPages").value(1))
-                .andExpect(jsonPath("$.totalElements").value(1))
-                .andExpect(jsonPath("$.content[0].medicineName").value("Cam"))
-                .andExpect(jsonPath("$.content[0].medicinePrice").value("1385.0289"))
-                .andExpect(jsonPath("$.content[0].medicineTypeName").hasJsonPath())
-                .andExpect(jsonPath("$.content[0].medicineImage").value("mana"));
+                .andExpect(jsonPath("$.totalElements").value(2))
+                .andExpect(jsonPath("$.content[1].medicineName").value("Saferon Drop 15ml"))
+                .andExpect(jsonPath("$.content[1].medicinePrice").value("150000.0"))
+                .andExpect(jsonPath("$.content[1].medicineTypeName").hasJsonPath())
+                .andExpect(jsonPath("$.content[1].medicineImage").value("https://data-service.pharmacity.io/pmc-upload-media/production/pmc-ecm-core/__sized__/products/P02072_1_l-thumbnail-255x255.webp"));
     }
 }
