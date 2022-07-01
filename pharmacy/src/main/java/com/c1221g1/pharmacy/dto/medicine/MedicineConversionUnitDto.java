@@ -7,7 +7,6 @@ import java.util.List;
 public class MedicineConversionUnitDto {
     private Integer medicineConversionUnitId;
     private String medicineConversionUnitName;
-    private List<Medicine> medicineList;
 
     public MedicineConversionUnitDto() {
     }
@@ -26,14 +25,6 @@ public class MedicineConversionUnitDto {
 
     public void setMedicineConversionUnitName(String medicineConversionUnitName) {
         this.medicineConversionUnitName = medicineConversionUnitName;
-    }
-
-    public List<Medicine> getMedicineList() {
-        return medicineList;
-    }
-
-    public void setMedicineList(List<Medicine> medicineList) {
-        this.medicineList = medicineList;
     }
 
 }

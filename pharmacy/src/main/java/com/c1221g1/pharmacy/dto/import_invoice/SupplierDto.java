@@ -12,7 +12,6 @@ public class SupplierDto {
     private String supplierEmail;
     private String note;
     private boolean flag;
-    private List<ImportInvoice> importInvoiceList;
 
     public SupplierDto() {
     }
@@ -73,12 +72,5 @@ public class SupplierDto {
         return flag;
     }
 
-    public List<ImportInvoice> getImportInvoiceList() {
-        return importInvoiceList;
-    }
-
-    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
-        this.importInvoiceList = importInvoiceList;
-    }
 }
 

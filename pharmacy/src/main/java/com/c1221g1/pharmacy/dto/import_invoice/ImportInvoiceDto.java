@@ -16,7 +16,6 @@ public class ImportInvoiceDto {
     private Payment payment;
     private Supplier supplier;
     private Employee employee;
-    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
 
     public ImportInvoiceDto() {
     }
@@ -85,11 +84,4 @@ public class ImportInvoiceDto {
         this.employee = employee;
     }
 
-    public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
-        return importInvoiceMedicineList;
-    }
-
-    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
-        this.importInvoiceMedicineList = importInvoiceMedicineList;
-    }
 }

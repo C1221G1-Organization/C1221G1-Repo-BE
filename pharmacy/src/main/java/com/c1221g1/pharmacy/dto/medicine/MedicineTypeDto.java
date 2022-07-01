@@ -7,7 +7,6 @@ import java.util.List;
 public class MedicineTypeDto {
     private String medicineTypeId;
     private String medicineTypeName;
-    private List<Medicine> medicineList;
 
     public MedicineTypeDto() {
     }

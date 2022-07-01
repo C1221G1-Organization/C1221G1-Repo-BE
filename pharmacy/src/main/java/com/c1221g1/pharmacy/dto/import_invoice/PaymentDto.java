@@ -8,7 +8,6 @@ public class PaymentDto {
     private Integer paymentId;
     private Integer paymentDiscount;
     private Double paymentPrepayment;
-    private List<ImportInvoice> importInvoiceList;
 
     public PaymentDto() {
     }
@@ -37,11 +36,4 @@ public class PaymentDto {
         this.paymentPrepayment = paymentPrepayment;
     }
 
-    public List<ImportInvoice> getImportInvoiceList() {
-        return importInvoiceList;
-    }
-
-    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
-        this.importInvoiceList = importInvoiceList;
-    }
 }

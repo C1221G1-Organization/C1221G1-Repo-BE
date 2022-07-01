@@ -17,7 +17,6 @@ public class EmployeeDto {
     private boolean flag;
     private Position position;
     private Users employeeUsername ;
-    private List<ImportInvoice> importInvoiceList;
 
     public EmployeeDto() {
     }
@@ -102,11 +101,4 @@ public class EmployeeDto {
         this.position = position;
     }
 
-    public List<ImportInvoice> getImportInvoiceList() {
-        return importInvoiceList;
-    }
-
-    public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
-        this.importInvoiceList = importInvoiceList;
-    }
 }
