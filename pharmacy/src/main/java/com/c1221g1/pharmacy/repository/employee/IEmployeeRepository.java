@@ -74,4 +74,5 @@ public interface IEmployeeRepository extends JpaRepository<Employee,String> {
             "employee_note,employee_name,employee_name,employee_phone," +
             "employee_address,position_id,username,flag from employee",nativeQuery=true)
     List<Employee> getListEmployee();
+
 }

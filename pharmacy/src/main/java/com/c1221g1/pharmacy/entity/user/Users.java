@@ -2,20 +2,21 @@ package com.c1221g1.pharmacy.entity.user;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"userRoleList","employee","customer"})
+@JsonIgnoreProperties({"userRoleList","customer","employee"})
 public class Users {
     @Id @Column(columnDefinition = "VARCHAR(30)")
     private String username;
     private String password;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
     @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
     @OneToOne(mappedBy = "customerUsername")

@@ -12,7 +12,6 @@ public class UserRole {
 
     @ManyToOne
     @JoinColumn(name = "username",referencedColumnName = "username")
-
     private Users users;
 
     @ManyToOne

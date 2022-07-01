@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IPositionRepository extends JpaRepository<Position,Integer> {
+import java.util.List;
 
+public interface IPositionRepository extends JpaRepository<Position,Integer> {
     /**
      * this function use to get all list Employee
      *
@@ -16,4 +17,6 @@ public interface IPositionRepository extends JpaRepository<Position,Integer> {
      */
     @Query(value = "select position_id,position_name from position",nativeQuery=true)
     List<Position> getAllPosition();
+    @Override
+    List<Position> findAll();
 }
