@@ -1,9 +1,8 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.employee;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.PositionDto;
+
 import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.employee.IPositionService;
 import org.springframework.beans.BeanUtils;
@@ -19,19 +18,16 @@ import javax.validation.Valid;
 @CrossOrigin
 @RequestMapping(value = "api/manager-employee/employees")
 public class EmployeeController {
-
     @Autowired
     IEmployeeService iEmployeeService;
     @Autowired
     IPositionService iPositionService;
-
-
     /*
       Created by TamNA
       Time: 5:50:00 29/06/2022
       Function:  Create Employee
  */
-    @PostMapping(value = "/create")
+    @PostMapping(value = "")
     public ResponseEntity<Employee> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
                                                    BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -48,20 +44,15 @@ public class EmployeeController {
       Time: 9:50:00 29/06/2022
       Function:  Update Employee
  */
-    @PatchMapping(value = "/update/{id}")
+    @PatchMapping(value = "/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable String id,
                                                    @Valid @RequestBody EmployeeDto employeeDto,
                                                    BindingResult bindingResult) {
-
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Employee employee = new Employee();
-        Position position = new Position();
-
         BeanUtils.copyProperties(employeeDto, employee);
-//        BeanUtils.copyProperties(employeeDto.getPositionDto(), position);
-//
         this.iEmployeeService.updateEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
 
