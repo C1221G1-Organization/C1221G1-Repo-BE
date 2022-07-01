@@ -1,10 +1,5 @@
 package com.c1221g1.pharmacy.entity.user;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity

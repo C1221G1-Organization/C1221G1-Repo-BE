@@ -1,11 +1,6 @@
 package com.c1221g1.pharmacy.entity.customer;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +11,6 @@ public class CustomerType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerTypeId;
     private String customerTypeName;
-
     @OneToMany(mappedBy = "customerType")
     private List<Customer> customerList;
 
