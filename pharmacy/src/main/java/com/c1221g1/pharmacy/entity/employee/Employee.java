@@ -25,16 +25,18 @@ public class Employee {
     private String employeePhone;
     @Column(columnDefinition = "DATE")
     private String employeeDateStart;
-
     private String employeeNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
+
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
+
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
 

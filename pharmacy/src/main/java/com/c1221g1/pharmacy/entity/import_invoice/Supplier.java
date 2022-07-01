@@ -22,8 +22,10 @@ public class Supplier {
     private String supplierEmail;
     @Column(columnDefinition = "TEXT")
     private String note;
+
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
     @OneToMany(mappedBy = "supplier")
     private List<ImportInvoice> importInvoiceList;
 

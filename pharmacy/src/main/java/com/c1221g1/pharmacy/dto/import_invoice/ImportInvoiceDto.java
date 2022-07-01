@@ -1,21 +1,26 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
 
-import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
-import com.c1221g1.pharmacy.entity.import_invoice.Payment;
-import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
+import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class ImportInvoiceDto {
+public class ImportInvoiceDto implements Validator {
+
     private Integer importInvoiceId;
+    @NotNull
     private Integer importSystemCode;
-    private Integer accountingVoucherNumber;
+    @NotNull
     private String importInvoiceDate;
+    @NotNull
     private boolean flag;
-    private Payment payment;
-    private Supplier supplier;
-    private Employee employee;
+    @NotNull
+    private SupplierDto supplierDto;
+    @NotNull
+    private EmployeeDto employeeDto;
+    private List<ImportInvoiceMedicineDto> importInvoiceMedicineList;
 
     public ImportInvoiceDto() {
     }
@@ -36,13 +41,6 @@ public class ImportInvoiceDto {
         this.importSystemCode = importSystemCode;
     }
 
-    public Integer getAccountingVoucherNumber() {
-        return accountingVoucherNumber;
-    }
-
-    public void setAccountingVoucherNumber(Integer accountingVoucherNumber) {
-        this.accountingVoucherNumber = accountingVoucherNumber;
-    }
 
     public String getImportInvoiceDate() {
         return importInvoiceDate;
@@ -56,32 +54,41 @@ public class ImportInvoiceDto {
         return flag;
     }
 
-    public void setFlag(boolean flag) {
+    public void setFlag(Boolean flag) {
         this.flag = flag;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public SupplierDto getSupplierDto() {
+        return supplierDto;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setSupplierDto(SupplierDto supplierDto) {
+        this.supplierDto = supplierDto;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public EmployeeDto getEmployeeDto() {
+        return employeeDto;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setEmployeeDto(EmployeeDto employeeDto) {
+        this.employeeDto = employeeDto;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public List<ImportInvoiceMedicineDto> getImportInvoiceMedicineList() {
+        return importInvoiceMedicineList;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicineDto> importInvoiceMedicineList) {
+        this.importInvoiceMedicineList = importInvoiceMedicineList;
     }
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        ImportInvoiceDto importInvoiceDto = (ImportInvoiceDto) target;
+    }
 }

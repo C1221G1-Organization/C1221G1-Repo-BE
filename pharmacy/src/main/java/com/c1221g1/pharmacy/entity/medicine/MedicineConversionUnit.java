@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"medicineList"})
+@JsonIgnoreProperties("medicineList")
 public class MedicineConversionUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

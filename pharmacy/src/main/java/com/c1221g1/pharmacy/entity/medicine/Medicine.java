@@ -9,26 +9,27 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"medicinePrescriptionList","importInvoiceMedicineList","invoiceMedicineList","cartDetailList"})
+@JsonIgnoreProperties
+        ({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")
     @GenericGenerator(name = "prod-generator",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "TH"),
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "T"),
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String medicineId;
     private String medicineName;
     private String medicineActiveIngredients;
-    private Integer medicineQuantity;
     private Double medicineImportPrice;
     private Double medicineDiscount;
     private Double medicineWholesaleProfit;
     private Double medicineRetailSaleProfit;
     private Double medicineTax;
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
     private String medicineManufacture;
     @Column(columnDefinition = "LONGTEXT")
     private String medicineUsage;
@@ -42,16 +43,16 @@ public class Medicine {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "medicine_origin_id",referencedColumnName = "medicineOriginId")
+    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId")
     private MedicineOrigin medicineOrigin;
     @ManyToOne
-    @JoinColumn(name = "medicine_type_id",referencedColumnName = "medicineTypeId")
+    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId")
     private MedicineType medicineType;
     @ManyToOne
-    @JoinColumn (name = "medicine_unit_id",referencedColumnName = "medicineUnitId")
+    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId")
     private MedicineUnit medicineUnit;
     @ManyToOne
-    @JoinColumn (name = "medicine_conversion_unit_id",referencedColumnName = "medicineConversionUnitId")
+    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;
@@ -61,6 +62,8 @@ public class Medicine {
     private List<InvoiceMedicine> invoiceMedicineList;
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
+    @OneToMany(mappedBy = "medicine")
+    private Set<MedicineStorage> medicineStorageSet;
 
     public Medicine() {
     }
@@ -87,14 +90,6 @@ public class Medicine {
 
     public void setMedicineActiveIngredients(String medicineActiveIngredients) {
         this.medicineActiveIngredients = medicineActiveIngredients;
-    }
-
-    public Integer getMedicineQuantity() {
-        return medicineQuantity;
-    }
-
-    public void setMedicineQuantity(Integer medicineQuantity) {
-        this.medicineQuantity = medicineQuantity;
     }
 
     public Double getMedicineImportPrice() {
@@ -137,11 +132,11 @@ public class Medicine {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 
@@ -263,5 +258,14 @@ public class Medicine {
 
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
+    }
+
+
+    public Set<MedicineStorage> getMedicineStorageSet() {
+        return medicineStorageSet;
+    }
+
+    public void setMedicineStorageSet(Set<MedicineStorage> medicineStorageSet) {
+        this.medicineStorageSet = medicineStorageSet;
     }
 }

@@ -1,15 +1,25 @@
 package com.c1221g1.pharmacy.service.medicine;
 
+
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
-import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IMedicineService {
+    void createMedicine(Medicine medicine);
+
+    Optional<Medicine> findMedicineById(String id);
+
+    void updateMedicine(Medicine existMedicine);
+
+    MedicineDetailDto getMedicineDetailDtoById(String medicineId);
+
+    List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId);
     /*
         Created by AnP
         Time: 16:00 29/06/2022
@@ -25,5 +35,4 @@ public interface IMedicineService {
     */
 
     Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId);
-
 }
