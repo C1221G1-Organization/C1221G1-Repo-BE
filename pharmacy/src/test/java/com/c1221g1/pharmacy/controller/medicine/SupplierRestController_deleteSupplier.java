@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller.controllerSupplier;
+package com.c1221g1.pharmacy.controller.medicine;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ public class SupplierRestController_deleteSupplier {
     @Test
     public void deleteSupplier_25() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch(
-                        "/api/manager-medicine/medicines/supplier/delete/{supplier_id}", "null"))
+                MockMvcRequestBuilders.delete(
+                        "/api/manager-medicine/medicines/supplier/{supplier_id}", "null"))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -36,7 +36,7 @@ public class SupplierRestController_deleteSupplier {
     public void deleteSupplier_26() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.delete(
-                        "/api/manager-medicine/medicines/supplier/delete/{supplier_id}", ""))
+                        "/api/manager-medicine/medicines/supplier/{supplier_id}", ""))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -48,7 +48,7 @@ public class SupplierRestController_deleteSupplier {
     public void deleteSupplier_27() throws Exception {
         this.mockMvc.perform(
                 MockMvcRequestBuilders.delete(
-                        "/api/manager-medicine/medicines/supplier/delete/{supplier_id}", "NCC-99999"))
+                        "/api/manager-medicine/medicines/supplier/{supplier_id}", "NCC-99999"))
                 .andExpect(status().is4xxClientError());
     }
 
@@ -59,8 +59,8 @@ public class SupplierRestController_deleteSupplier {
     @Test
     public void deleteSupplier_28() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.patch(
-                        "/api/manager-medicine/medicines/supplier/delete/{supplier_id}", "NCC-00021"))
+                MockMvcRequestBuilders.delete(
+                        "/api/manager-medicine/medicines/supplier/{supplier_id}", "NCC-00024"))
                 .andExpect(status().is2xxSuccessful());
     }
 
