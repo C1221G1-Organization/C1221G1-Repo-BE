@@ -58,11 +58,11 @@ public class CustomerController_editCustomer {
     public void editCustomer_customerName_20() throws Exception {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setCustomerName("");
-        customerDto.setCustomerBirthday("1999-04-22");
+        customerDto.setCustomerBirthday("2001-04-22");
         customerDto.setCustomerGender(1);
         customerDto.setCustomerAddress("Đà Nẵng");
-        customerDto.setCustomerPhone("0905123456");
-        customerDto.setCustomerNote("Không ");
+        customerDto.setCustomerPhone("0905123458");
+        customerDto.setCustomerNote("1 đơn");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
         CustomerType customerType= new CustomerType();
@@ -88,8 +88,8 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerName("a");
         customerDto.setCustomerBirthday("2000-04-22");
         customerDto.setCustomerGender(1);
-        customerDto.setCustomerAddress("Đà Nẵng");
-        customerDto.setCustomerPhone("0905123456");
+        customerDto.setCustomerAddress("Sài Gòn");
+        customerDto.setCustomerPhone("0905387777");
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
@@ -115,11 +115,11 @@ public class CustomerController_editCustomer {
 
 
         CustomerDto customerDto = new CustomerDto();
-        customerDto.setCustomerName("Nguyễn Văn Quang Trường Hải Tín");
-        customerDto.setCustomerBirthday("2000-04-22");
+        customerDto.setCustomerName("Phan Đàm Thị Ngọc Linh Chi Thùy Dương");
+        customerDto.setCustomerBirthday("2004-01-02");
         customerDto.setCustomerGender(1);
         customerDto.setCustomerAddress("Đà Nẵng");
-        customerDto.setCustomerPhone("0905123456");
+        customerDto.setCustomerPhone("0905444333");
         customerDto.setCustomerNote("Khách hàng mua lần đầu");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
@@ -177,7 +177,7 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerGender(1);
         customerDto.setCustomerAddress("Đà Nẵng");
         customerDto.setCustomerPhone(null);
-        customerDto.setCustomerNote("Khách hàng mua lần đầu");
+        customerDto.setCustomerNote("Mua thuốc trị covid");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
         CustomerType customerType= new CustomerType();
@@ -205,7 +205,7 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerGender(1);
         customerDto.setCustomerAddress("Đà Nẵng");
         customerDto.setCustomerPhone("");
-        customerDto.setCustomerNote("Khách hàng mua lần đầu");
+        customerDto.setCustomerNote("Mua thuốc trị covid nặng");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
         CustomerType customerType= new CustomerType();
@@ -228,12 +228,12 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerPhone_21() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        customerDto.setCustomerName("Nguyễn Văn T");
-        customerDto.setCustomerBirthday("2000-04-22");
+        customerDto.setCustomerName("Nguyễn Văn Long");
+        customerDto.setCustomerBirthday("2003-04-22");
         customerDto.setCustomerGender(1);
         customerDto.setCustomerAddress("Đà Nẵng");
         customerDto.setCustomerPhone("1234567890");
-        customerDto.setCustomerNote("Khách hàng mua lần đầu");
+        customerDto.setCustomerNote("Mua que test covid");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
         CustomerType customerType= new CustomerType();
@@ -241,40 +241,11 @@ public class CustomerController_editCustomer {
         customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
+                        .patch("/api/manager_customer/customers/{customerId}","KH-00005")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
-    }
-
-
-    /**
-     * Create by TruongNQ
-     * Time : 20:30 30/06/2022
-     * Function test method with valid arg customer phone and valid data
-     */
-    @Test
-    public void editCustomer_customerPhone_24() throws Exception {
-        CustomerDto customerDto = new CustomerDto();
-        customerDto.setCustomerName("Nguyễn Văn T");
-        customerDto.setCustomerBirthday("2000-04-22");
-        customerDto.setCustomerGender(1);
-        customerDto.setCustomerAddress("Đà Nẵng");
-        customerDto.setCustomerPhone("0905123456");
-        customerDto.setCustomerNote("Khách hàng mua lần đầu");
-        customerDto.setCustomerUsername(null);
-        customerDto.setFlag(true);
-        CustomerType customerType= new CustomerType();
-        customerType.setCustomerTypeId(1);
-        customerDto.setCustomerType(customerType);
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
-                        .content(this.objectMapper.writeValueAsString(customerDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
     }
 
     /**
@@ -285,8 +256,8 @@ public class CustomerController_editCustomer {
     @Test
     public void editCustomer_customerType_19() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        customerDto.setCustomerName("Nguyễn Văn T");
-        customerDto.setCustomerBirthday("2000-04-22");
+        customerDto.setCustomerName("Nguyễn Thị Ngọc");
+        customerDto.setCustomerBirthday("1991-04-22");
         customerDto.setCustomerGender(1);
         customerDto.setCustomerAddress("Đà Nẵng");
         customerDto.setCustomerPhone("0905123456");
@@ -305,33 +276,6 @@ public class CustomerController_editCustomer {
                 .andExpect(status().is4xxClientError());
     }
 
-    /**
-     * Create by TruongNQ
-     * Time : 20:34 30/06/2022
-     * Function test method with valid arg customer type and valid data
-     */
-    @Test
-    public void editCustomer_customerType_24() throws Exception {
-        CustomerDto customerDto = new CustomerDto();
-        customerDto.setCustomerName("Nguyễn Văn T");
-        customerDto.setCustomerBirthday("2000-04-22");
-        customerDto.setCustomerGender(1);
-        customerDto.setCustomerAddress("Đà Nẵng");
-        customerDto.setCustomerPhone("0905123456");
-        customerDto.setCustomerNote("Khách hàng mua lần đầu");
-        customerDto.setCustomerUsername(null);
-        customerDto.setFlag(true);
-        CustomerType customerType= new CustomerType();
-        customerType.setCustomerTypeId(1);
-        customerDto.setCustomerType(customerType);
-        this.mockMvc
-                .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
-                        .content(this.objectMapper.writeValueAsString(customerDto))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
-    }
     /**
      * Create by TruongNQ
      * Time : 20:35 30/06/2022
@@ -360,34 +304,120 @@ public class CustomerController_editCustomer {
                 .andExpect(status().is4xxClientError());
 
     }
+
     /**
      * Create by TruongNQ
-     * Time : 20:37 30/06/2022
-     * Function test method with valid arg customer gender and valid data
+     * Time : 23:45 01/07/2022
+     * Function test method with arg customer address size min 2
      */
     @Test
-    public void editCustomer_customerGender_24() throws Exception {
+    public void editCustomer_customerAddress_22() throws Exception {
         CustomerDto customerDto = new CustomerDto();
-        CustomerType customerType= new CustomerType();
-        customerDto.setCustomerId("KH-00001");
-        customerDto.setCustomerName("Nguyễn Văn T");
-        customerDto.setCustomerBirthday("2000-04-22");
+        customerDto.setCustomerName("Trần Văn Lan");
+        customerDto.setCustomerBirthday("2000-02-12");
         customerDto.setCustomerGender(1);
-        customerDto.setCustomerAddress("Đà Nẵng");
+        customerDto.setCustomerAddress("a");
         customerDto.setCustomerPhone("0905123456");
-        customerDto.setCustomerNote("Khách hàng mua lần đầu");
+        customerDto.setCustomerNote("");
         customerDto.setCustomerUsername(null);
         customerDto.setFlag(true);
+        CustomerType customerType= new CustomerType();
         customerType.setCustomerTypeId(1);
         customerDto.setCustomerType(customerType);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager_customer/customers/{customerId}","KH-00001")
+                        .patch("/api/manager-customer/customers","KH-00001")
                         .content(this.objectMapper.writeValueAsString(customerDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
 
     }
 
+    /**
+     * Create by TruongNQ
+     * Time : 23:54 01/07/2022
+     * Function test method with arg customer address size max 20
+     */
+    @Test
+    public void editCustomer_customerAddress_23() throws Exception {
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setCustomerName("Nguyễn Văn T");
+        customerDto.setCustomerBirthday("2000-04-22");
+        customerDto.setCustomerGender(1);
+        customerDto.setCustomerAddress("abcdabcdabcdabcdabcdd");
+        customerDto.setCustomerPhone("0905123456");
+        customerDto.setCustomerNote("Khách hàng mua lần đầu");
+        customerDto.setCustomerUsername(null);
+        customerDto.setFlag(true);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/manager-customer/customers","KH_00002")
+                        .content(this.objectMapper.writeValueAsString(customerDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+
+    }
+
+    /**
+     * Create by TruongNQ
+     * Time : 23:57 01/07/2022
+     * Function test method with arg customer note size min 2
+     */
+    @Test
+    public void editCustomer_customerNote_22() throws Exception {
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setCustomerName("Nguyễn Văn T");
+        customerDto.setCustomerBirthday("2000-04-22");
+        customerDto.setCustomerGender(1);
+        customerDto.setCustomerAddress("Đà Lạt");
+        customerDto.setCustomerPhone("0905123456");
+        customerDto.setCustomerNote("a");
+        customerDto.setCustomerUsername(null);
+        customerDto.setFlag(true);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/manager-customer/customers","KH-00003")
+                        .content(this.objectMapper.writeValueAsString(customerDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+
+    }
+
+    /**
+     * Create by TruongNQ
+     * Time : 00:01 02/07/2022
+     * Function test method with arg customer note size max 20
+     */
+    @Test
+    public void editCustomer_customerNote_23() throws Exception {
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setCustomerName("Huỳnh Văn Huy");
+        customerDto.setCustomerBirthday("1981-02-04");
+        customerDto.setCustomerGender(1);
+        customerDto.setCustomerAddress("abcdabcdabcdabcdabcdd");
+        customerDto.setCustomerPhone("0905123456");
+        customerDto.setCustomerNote("Khách hàng mua lần đầu");
+        customerDto.setCustomerUsername(null);
+        customerDto.setFlag(true);
+        CustomerType customerType= new CustomerType();
+        customerType.setCustomerTypeId(1);
+        customerDto.setCustomerType(customerType);
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .patch("/api/manager-customer/customers","KH-00004")
+                        .content(this.objectMapper.writeValueAsString(customerDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+
+    }
 }
