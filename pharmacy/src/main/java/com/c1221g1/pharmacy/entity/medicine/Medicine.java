@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties
         ({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
-
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -260,6 +259,7 @@ public class Medicine {
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
     }
+
 
     public Set<MedicineStorage> getMedicineStorageSet() {
         return medicineStorageSet;

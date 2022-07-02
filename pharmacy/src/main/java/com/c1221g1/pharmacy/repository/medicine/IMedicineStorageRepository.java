@@ -35,4 +35,6 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
             nativeQuery = true)
     void updateMedicineQuantity(Long medicineQuantity, Integer medicineStorageId);
 
+
+
 }

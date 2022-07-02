@@ -23,9 +23,6 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
     private Employee employee;
-    @ManyToOne
-    @JoinColumn(name = "type_of_invoice_id", referencedColumnName = "typeOfInvoiceId")
-    private TypeOfInvoice typeOfInvoice;
     @Column(columnDefinition = "LONGTEXT")
     private String invoiceNote;
     private String invoiceCreatedDate;
@@ -68,14 +65,6 @@ public class Invoice {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
-    }
-
-    public TypeOfInvoice getTypeOfInvoice() {
-        return typeOfInvoice;
-    }
-
-    public void setTypeOfInvoice(TypeOfInvoice typeOfInvoice) {
-        this.typeOfInvoice = typeOfInvoice;
     }
 
     public String getInvoiceNote() {

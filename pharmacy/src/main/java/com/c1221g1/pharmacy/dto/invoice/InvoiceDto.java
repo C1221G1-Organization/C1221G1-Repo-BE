@@ -1,29 +1,15 @@
 package com.c1221g1.pharmacy.dto.invoice;
 
-import com.c1221g1.pharmacy.entity.customer.Customer;
-import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
-import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
-
 import java.util.List;
 
 public class InvoiceDto {
     private String invoiceId;
     private String customerId;
     private String employeeId;
-    private Integer typeOfInvoiceId;
     private String invoiceNote;
     private List<InvoiceMedicineDto> invoiceMedicineList;
 
     public InvoiceDto() {
-    }
-
-    public Integer getTypeOfInvoiceId() {
-        return typeOfInvoiceId;
-    }
-
-    public void setTypeOfInvoiceId(Integer typeOfInvoiceId) {
-        this.typeOfInvoiceId = typeOfInvoiceId;
     }
 
     public String getInvoiceNote() {

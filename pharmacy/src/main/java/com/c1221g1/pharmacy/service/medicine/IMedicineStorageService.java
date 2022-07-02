@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public interface IMedicineStorageService {
 
+
+
 //    boolean checkExistInMedicineStorage(String medicineId);
 //
 //    Long checkMedicineQuantity(String medicineId);

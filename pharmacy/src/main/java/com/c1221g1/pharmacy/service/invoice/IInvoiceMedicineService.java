@@ -8,5 +8,5 @@ public interface IInvoiceMedicineService {
      * Time: 1:16 PM 02/07/2022
      * Function: function createInvoiceMedicine
      * */
-    boolean saveInvoiceMedicine(InvoiceDto invoiceDto);
+    boolean saveInvoiceMedicine(InvoiceDto invoiceDto) throws Exception;
 }
