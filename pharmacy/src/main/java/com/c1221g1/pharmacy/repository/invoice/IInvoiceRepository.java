@@ -3,6 +3,7 @@ package com.c1221g1.pharmacy.repository.invoice;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
     /*
@@ -17,4 +18,13 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
             "desc limit 1;",
             nativeQuery = true)
     Invoice getNewInvoice();
+
+
+
+    @Query(value = "select invoice_id,invoice_created_date,customer_id,employee_id,invoice_note,flag,\n" +
+            "       type_of_invoice_id" +
+            "from invoice \n" +
+            "where invoice_id = :invoice_id and flag = :status ",
+            nativeQuery = true)
+    Invoice findByInvoiceId(@Param("invoice_id")String invoiceId,@Param("status") boolean status);
 }

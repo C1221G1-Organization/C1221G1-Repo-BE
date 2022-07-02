@@ -1,13 +1,8 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class MedicineStorage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +13,9 @@ public class MedicineStorage {
     private Long medicineQuantity;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
+    public MedicineStorage() {
+    }
 
     public Integer getMedicineStorageId() {
         return medicineStorageId;

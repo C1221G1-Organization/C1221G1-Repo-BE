@@ -6,4 +6,7 @@ public interface IInvoiceService {
     void saveInvoice(Invoice invoice);
 
     Invoice getNewInvoice();
+
+
+    Invoice findByInvoiceId(String invoiceId);
 }

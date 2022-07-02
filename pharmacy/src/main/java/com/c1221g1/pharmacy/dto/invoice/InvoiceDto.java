@@ -14,11 +14,28 @@ public class InvoiceDto {
     private TypeOfInvoice typeOfInvoice;
     private String invoiceNote;
     private String invoiceCreatedDate;
+    private String invoiceCreateTime;
     private boolean flag;
-    private List<InvoiceMedicine> invoiceMedicineList;
-
+    private Double invoiceTotalMoney;
+    private List<InvoiceMedicineDto> invoiceMedicineList;
 
     public InvoiceDto() {
+    }
+
+    public Double getInvoiceTotalMoney() {
+        return invoiceTotalMoney;
+    }
+
+    public void setInvoiceTotalMoney(Double invoiceTotalMoney) {
+        this.invoiceTotalMoney = invoiceTotalMoney;
+    }
+
+    public String getInvoiceCreateTime() {
+        return invoiceCreateTime;
+    }
+
+    public void setInvoiceCreateTime(String invoiceCreateTime) {
+        this.invoiceCreateTime = invoiceCreateTime;
     }
 
     public String getInvoiceId() {
@@ -77,11 +94,11 @@ public class InvoiceDto {
         this.flag = flag;
     }
 
-    public List<InvoiceMedicine> getInvoiceMedicineList() {
+    public List<InvoiceMedicineDto> getInvoiceMedicineList() {
         return invoiceMedicineList;
     }
 
-    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
+    public void setInvoiceMedicineList(List<InvoiceMedicineDto> invoiceMedicineList) {
         this.invoiceMedicineList = invoiceMedicineList;
     }
 }

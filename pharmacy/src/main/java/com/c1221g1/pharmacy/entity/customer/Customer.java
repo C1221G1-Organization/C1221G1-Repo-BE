@@ -2,17 +2,14 @@ package com.c1221g1.pharmacy.entity.customer;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties({"cartList"})
 public class Customer {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -33,7 +30,7 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
-    private Users customerUsername ;
+    private Users customerUsername;
 
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
@@ -41,6 +38,9 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
+
+    public Customer() {
+    }
 
     public String getCustomerId() {
         return customerId;
