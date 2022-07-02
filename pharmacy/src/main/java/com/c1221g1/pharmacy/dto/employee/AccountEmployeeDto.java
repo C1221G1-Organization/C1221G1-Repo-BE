@@ -1,10 +1,16 @@
 package com.c1221g1.pharmacy.dto.employee;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class AccountEmployeeDto {
     String employeeId;
     String employeeName;
+    @NotNull
     Integer positionId;
     String username;
+    @NotNull
+    @Size(min = 6)
     String password;
 
     public AccountEmployeeDto() {

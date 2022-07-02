@@ -53,19 +53,28 @@ public class EmployeeController {
             @RequestParam Optional<String> username,
             @RequestParam Optional<Integer> position
     ) {
+
         String nameVal = name.orElse("");
         String idVal = id.orElse("");
         String usernameVal = username.orElse("");
         int positionVal = position.orElse(-1);
         Page<IAccountEmployeeDto> iAccountEmployeeDtoPage = null;
-        if(iAccountEmployeeDtoPage.hasContent()) {
-           return new ResponseEntity<>( HttpStatus.NOT_FOUND);
-        }
+
         if (positionVal == -1) {
             iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount2(idVal, nameVal, usernameVal, pageable);
+            if (iAccountEmployeeDtoPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(iAccountEmployeeDtoPage, HttpStatus.OK);
+            }
+        } else {
+            iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount(idVal, nameVal, positionVal, usernameVal, pageable);
+            if (iAccountEmployeeDtoPage.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(iAccountEmployeeDtoPage, HttpStatus.OK);
+            }
         }
-        iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount(idVal, nameVal, positionVal, usernameVal, pageable);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**

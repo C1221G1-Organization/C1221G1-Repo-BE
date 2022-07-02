@@ -20,12 +20,10 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * time: 29/06/2022
      * This method to get data for account table from table employee and user (just List, don't have pagination)
      */
-    @Query(value = "select e.employee_name as `employeeName`, e.employee_id as `employeeId`,\n" +
-            "e.position_id `positionId`, e.username `username`, u.`password` as `password`\n" +
-            "from employee e left join users u on e.username =  u.username left join `position` p on p.position_id = e.position_id group by e.employee_id", nativeQuery = true)
+    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+            " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            "from employee join users  on employee.username =  users.username join `position`  on `position`.position_id = employee.position_id group by employee.employee_id", nativeQuery = true)
     List<IAccountEmployeeDto> findAllAccount();
-
-
 
 
     /**
@@ -33,15 +31,13 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * time: 01/07/2022
      * This method find account by employee_id
      */
-    @Query(value = "select e.employee_name as `employeeName`, e.employee_id as `employeeId`,\n" +
-            " p.position_name as `positionName`, e.username as `username`, u.`password` as `password`\n" +
-            "from employee e " +
-            "left join users u on e.username =  u.username " +
-            "left join `position` p on p.position_id = e.position_id " +
-            "where e.employee_id = ? ", nativeQuery = true)
+    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`,\n" +
+            " `position`.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            "from employee  " +
+            " join users  on employee.username =  users.username " +
+            " join `position`  on `position`.position_id = employee.position_id " +
+            "where employee.employee_id = ? ", nativeQuery = true)
     IAccountEmployeeDto findByAccountId(String id);
-
-
 
 
     /**
@@ -49,14 +45,25 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * time: 01/07/2022
      * This method to get data for account table from table employee and user (have pagination and search)
      */
-    @Query(value = "select e.employee_name as `employeeName`, e.employee_id as `employeeId`, " +
-            " e.position_id `positionId`, e.username `username`, u.`password` as `password`" +
-            " from employee e left join users u on e.username =  u.username left join `position` p on p.position_id = e.position_id " +
-            "where e.employee_id like %:id% " +
-            "or e.employee_name like %:name% " +
-            "or e.position_id like %:position% " +
-            "or e.username like %:username% " , nativeQuery = true)
-    Page<IAccountEmployeeDto> findAndSearchAccount (
+    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+            "employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            "from employee " +
+            "join users  on employee.username =  users.username " +
+            "join `position`  on `position`.position_id = employee.position_id " +
+            "where employee.employee_id like %:id% " +
+            "and employee.employee_name like %:name% " +
+            "and `position`.position_id like %:position% " +
+            "and employee.username like %:username% ",
+            countQuery = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+                    " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password` " +
+                    " from employee " +
+                    " join users  on employee.username =  users.username " +
+                    " join `position`  on `position`.position_id = employee.position_id" +
+                    " where employee.employee_id like %:id%" +
+                    " and employee.employee_name like %:name% " +
+                    " and employee.position_id like %:position% " +
+                    " and employee.username like %:username%", nativeQuery = true)
+    Page<IAccountEmployeeDto> findAndSearchAccount(
             @Param("id") String id,
             @Param("name") String name,
             @Param("position") Integer position,
@@ -69,19 +76,27 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * time: 01/07/2022
      * This method to get data for account table from table employee and user (have pagination and search)
      */
-    @Query(value = "select e.employee_name as `employeeName`, e.employee_id as `employeeId`, " +
-            " e.position_id `positionId`, e.username `username`, u.`password` as `password`" +
-            " from employee e left join users u on e.username =  u.username left join `position` p on p.position_id = e.position_id " +
-            "where e.employee_id like %:id% " +
-            "or e.employee_name like %:name% " +
-            "or e.username like %:username% " , nativeQuery = true)
-    Page<IAccountEmployeeDto> findAndSearchAccount2 (
+    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+            " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            "from employee " +
+            "join users  on employee.username =  users.username " +
+            "join `position`  on `position`.position_id = employee.position_id " +
+            "where employee.employee_id like %:id% " +
+            "and employee.employee_name like %:name% " +
+            "and employee.username like %:username% ",
+            countQuery = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+                    " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`" +
+                    " from employee" +
+                    " join users  on employee.username =  users.username" +
+                    " join `position`  on `position`.position_id = employee.position_id " +
+                    " where employee.employee_id like %:id%" +
+                    " and employee.employee_name like %:name%" +
+                    " and employee.username like %:username% ", nativeQuery = true)
+    Page<IAccountEmployeeDto> findAndSearchAccount2(
             @Param("id") String id,
             @Param("name") String name,
             @Param("username") String username,
             Pageable pageable);
-
-
 
 
     /**
@@ -96,7 +111,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
             "join `position`  on `position`.position_id = employee.position_id \n" +
             "set `users`.`password` = :password, employee.position_id = :position   where employee.employee_id = :id ", nativeQuery = true)
     void updateAccount(String password, Integer position, @Param("id") String id);
-
 
 
 }
