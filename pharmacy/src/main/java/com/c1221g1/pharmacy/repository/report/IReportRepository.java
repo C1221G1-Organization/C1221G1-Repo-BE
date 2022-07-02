@@ -19,8 +19,10 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select i.invoice_id invoiceId,\n" +
             "            i.invoice_created_date createdDay,\n" +
             "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)*m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)*(m.medicine_retail_sale_profit-1)) profit\n" +
+            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                                               *m.medicine_retail_sale_profit)) total,\n" +
+            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                 *(m.medicine_retail_sale_profit-1)) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -35,16 +37,17 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
      * @author DinhH
      * @Time 15:30 29/06/2022
      */
-    @Query(value = "Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)*m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)*(m.medicine_retail_sale_profit-1)) profit\n" +
-            "            from invoice i\n" +
-            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
-            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "            Where ((i.invoice_created_date>=:startTime) and (i.invoice_created_date<=:endTime))\n" +
-            "            Group by i.employee_id", nativeQuery = true)
+    @Query(value = "select " +
+            "       i.employee_id employeeId,\n" +
+            "       sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                                          *m.medicine_retail_sale_profit))) total,\n" +
+            "       sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                                            *(m.medicine_retail_sale_profit-1))) profit\n" +
+            "        from invoice i\n" +
+            "         inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "         inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "        Where ((i.invoice_created_date>=:startTime) and (i.invoice_created_date<=:endTime))\n" +
+            "        Group by i.employee_id;", nativeQuery = true)
     List<Revenue> getRevenueByEmployee(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
     /**
@@ -65,7 +68,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
-    @Query(value = "select m.medicine_id medicineId, m.medicine_name medicineName, ms.medicine_quantity\n" +
+    @Query(value = "select m.medicine_id medicineId, m.medicine_name medicineName, ms.medicine_quantity quantity\n" +
             "from medicine m\n" +
             "inner join medicine_storage ms on m.medicine_id = ms.medicine_id\n" +
             "where medicine_quantity<5;", nativeQuery = true)
@@ -81,7 +84,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "from medicine_storage ms\n" +
             "inner join medicine m on ms.medicine_id = m.medicine_id\n" +
             "inner join import_invoice_medicine iim on m.medicine_id = iim.medicine_id\n" +
-            "where (iim.import_invoice_medicine_expiry-now()<10)\n" +
+            "where (iim.import_invoice_medicine_expiry-curdate()<10)\n" +
             "group by m.medicine_id", nativeQuery = true)
     List<MedicineBeAboutExpired> getMedicineBeAboutExpired();
 
@@ -90,184 +93,124 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
-    @Query(value = "select sum(total) revenue, sum(profit) profit\n" +
-            "    from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "           i.invoice_created_date createdDay,\n" +
-            "           i.employee_id employeeId,\n" +
-            "           (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "               *m.medicine_retail_sale_profit)) total,\n" +
-            "           (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "               *(m.medicine_retail_sale_profit-1)) profit\n" +
-            "    from invoice i\n" +
-            "             inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
-            "             inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "    Where ((i.invoice_created_date>='01-01-2021') and (i.invoice_created_date<='31-01-2021'))\n" +
-            "    Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+    @Query(value = "Select      month('2021-01-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-02-2021') and (i.invoice_created_date<='28-02-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-01-01') and (i.invoice_created_date<='2021-01-31'));", nativeQuery = true)
+    Static getMonth1();
+    @Query(value = "Select  month('2021-02-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-03-2021') and (i.invoice_created_date<='31-03-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-02-01') and (i.invoice_created_date<='2021-02-28'));", nativeQuery = true)
+    Static getMonth2();
+    @Query(value = "Select  month('2021-03-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-04-2021') and (i.invoice_created_date<='30-04-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-03-01') and (i.invoice_created_date<='2021-03-31'));", nativeQuery = true)
+    Static getMonth3();
+    @Query(value = "Select      month('2021-04-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-05-2021') and (i.invoice_created_date<='31-05-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-04-01') and (i.invoice_created_date<='2021-04-30'));", nativeQuery = true)
+    Static getMonth4();
+    @Query(value = "Select      month('2021-05-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-06-2021') and (i.invoice_created_date<='30-06-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-05-01') and (i.invoice_created_date<='2021-05-31'));", nativeQuery = true)
+    Static getMonth5();
+    @Query(value = "Select      month('2021-06-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-07-2021') and (i.invoice_created_date<='31-07-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-06-01') and (i.invoice_created_date<='2021-06-30'));", nativeQuery = true)
+    Static getMonth6();
+    @Query(value = "Select      month('2021-07-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-08-2021') and (i.invoice_created_date<='31-08-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-07-01') and (i.invoice_created_date<='2021-07-31'));", nativeQuery = true)
+    Static getMonth7();
+    @Query(value = "Select      month('2021-08-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-09-2021') and (i.invoice_created_date<='30-09-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-08-01') and (i.invoice_created_date<='2021-08-31'));", nativeQuery = true)
+    Static getMonth8();
+    @Query(value = "Select      month('2021-09-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-10-2021') and (i.invoice_created_date<='31-10-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-09-01') and (i.invoice_created_date<='2021-09-30'));", nativeQuery = true)
+    Static getMonth9();
+    @Query(value = "Select      month('2021-10-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-11-2021') and (i.invoice_created_date<='30-11-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;\n" +
-            "union all\n" +
-            "select sum(total) revenue, sum(profit) profit\n" +
-            "from\n" +
-            "    (Select i.invoice_id invoiceId,\n" +
-            "            i.invoice_created_date createdDay,\n" +
-            "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "     Where ((i.invoice_created_date>='2021-10-01') and (i.invoice_created_date<='2021-10-31'));", nativeQuery = true)
+    Static getMonth10();
+    @Query(value = "Select      month('2021-11-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
-            "     Where ((i.invoice_created_date>='01-12-2021') and (i.invoice_created_date<='31-12-2021'))\n" +
-            "     Group by i.invoice_id) as invoiceListByMonth;", nativeQuery = true)
-    List<Static> getStatic();
+            "     Where ((i.invoice_created_date>='2021-11-01') and (i.invoice_created_date<='2021-11-30'));", nativeQuery = true)
+    Static getMonth11();
+    @Query(value = "Select      month('2021-12-01') 'month',\n" +
+            "            sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *m.medicine_retail_sale_profit))) revenue,\n" +
+            "            sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                *(m.medicine_retail_sale_profit-1))) profit\n" +
+            "     from invoice i\n" +
+            "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "     Where ((i.invoice_created_date>='2021-12-01') and (i.invoice_created_date<='2021-12-31'));", nativeQuery = true)
+    Static getMonth12();
 }
