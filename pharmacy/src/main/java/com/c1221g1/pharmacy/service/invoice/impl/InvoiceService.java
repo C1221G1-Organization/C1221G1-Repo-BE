@@ -17,24 +17,15 @@ public class InvoiceService implements IInvoiceService {
 
     /*
      * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
+     * Time: 1:30 PM 02/07/2022
      * Function: function saveInvoice
      * */
     @Override
-    public void saveInvoice(Invoice invoice) {
+    public Invoice saveInvoice(Invoice invoice) {
         invoice.setInvoiceCreatedDate(LocalDate.now().toString());
         invoice.setInvoiceCreateTime(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
         invoice.setFlag(true);
-        this.iInvoiceRepository.save(invoice);
+        return this.iInvoiceRepository.save(invoice);
     }
 
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: function getNewInvoice
-     * */
-    @Override
-    public Invoice getNewInvoice() {
-        return this.iInvoiceRepository.getNewInvoice();
-    }
 }

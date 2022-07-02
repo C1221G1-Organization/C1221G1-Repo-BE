@@ -17,43 +17,25 @@ import java.util.List;
  * */
 
 public class InvoiceMedicineDto {
-    private Integer invoiceMedicineId;
-    private Integer invoiceMedicineQuantity;
-    private InvoiceDto invoice;
-    private MedicineDto medicine;
+    private Integer quantity;
+    private String medicineId;
 
     public InvoiceMedicineDto() {
     }
 
-    public Integer getInvoiceMedicineId() {
-        return invoiceMedicineId;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setInvoiceMedicineId(Integer invoiceMedicineId) {
-        this.invoiceMedicineId = invoiceMedicineId;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Integer getInvoiceMedicineQuantity() {
-        return invoiceMedicineQuantity;
+    public String getMedicineId() {
+        return medicineId;
     }
 
-    public void setInvoiceMedicineQuantity(Integer invoiceMedicineQuantity) {
-        this.invoiceMedicineQuantity = invoiceMedicineQuantity;
-    }
-
-    public InvoiceDto getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(InvoiceDto invoice) {
-        this.invoice = invoice;
-    }
-
-    public MedicineDto getMedicine() {
-        return medicine;
-    }
-
-    public void setMedicine(MedicineDto medicine) {
-        this.medicine = medicine;
+    public void setMedicineId(String medicineId) {
+        this.medicineId = medicineId;
     }
 }

@@ -41,6 +41,7 @@ public class InvoiceMedicineController {
     private IInvoiceService iInvoiceService;
     @Autowired
     private IMedicineStorageService iMedicineStorageService;
+
     /*
      * Created by DaLQA
      * Time: 00:50 PM 30/06/2022
@@ -57,21 +58,8 @@ public class InvoiceMedicineController {
                     .stream().collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
             return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
-        Invoice invoice = new Invoice();
-        invoice.setEmployee(invoiceDto.getEmployee());
-        invoice.setCustomer(invoiceDto.getCustomer());
-        invoice.setTypeOfInvoice(invoiceDto.getTypeOfInvoice());
-        invoice.setInvoiceNote(invoiceDto.getInvoiceNote());
-        invoice.setInvoiceTotalMoney(invoiceDto.getInvoiceTotalMoney());
-        iInvoiceService.saveInvoice(invoice);
-        Invoice newInvoice = iInvoiceService.getNewInvoice();
-        List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
-        for (int i = 0; i < invoiceMedicineList.size(); i++) {
-            Integer quantity = invoiceMedicineList.get(i).getInvoiceMedicineQuantity();
-            String medicineId = invoiceMedicineList.get(i).getMedicine().getMedicineId();
-            iInvoiceMedicineService.createInvoiceMedicine(quantity, medicineId, newInvoice.getInvoiceId());
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
+        boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto);
+        return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 //
     /*
@@ -79,65 +67,65 @@ public class InvoiceMedicineController {
      * Time: 00:50 PM 30/06/2022
      * Function: function updateQuantityMedicine
      * */
-    @PatchMapping("/updateQuantityMedicine")
-    public ResponseEntity<Map<String, String>> updateQuantityMedicine(@Validated @RequestBody
-                                                                              InvoiceDto invoiceDto,
-                                                                      BindingResult bindingResult) {
-        String errorQuantity = "";
-        Map<String, String> errorMap = new HashMap<>();
-        if (!bindingResult.hasErrors()) {
-            if (!invoiceDto.getInvoiceMedicineList().isEmpty()) {
-                errorMap = checkListMedicine(invoiceDto.getInvoiceMedicineList());
-                if (errorMap.isEmpty()) {
-                    for (InvoiceMedicineDto invoiceMedicineDto : invoiceDto.getInvoiceMedicineList()) {
-                        Optional<MedicineStorage> medicineStorage = iMedicineStorageService
-                                .getStorageByIdMedicine(invoiceMedicineDto.getMedicine().getMedicineId());
-                        MedicineStorage storage = medicineStorage.orElse(null);
-                        assert storage != null;
-                        storage.setMedicineQuantity
-                                (storage.getMedicineQuantity() - invoiceMedicineDto.getInvoiceMedicineQuantity());
-                        iMedicineStorageService.updateMedicineQuantity(storage);
-                    }
-                    return new ResponseEntity<>(HttpStatus.OK);
-                } else {
-                    return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
-                }
-            } else {
-                errorQuantity = "Bạn chưa chọn thuốc";
-                errorMap.put("medicineList", errorQuantity);
-                return new ResponseEntity<>(errorMap,
-                        HttpStatus.BAD_REQUEST);
-            }
-        } else {
-            errorQuantity = "Vui lòng nhập đủ thông tin";
-            errorMap.put("validMedicine", errorQuantity);
-            return new ResponseEntity<>(errorMap,
-                    HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    /*
-     * Created by DaLQA
-     * Time: 11:40 AM 30/06/2022
-     * Function: function checkListMedicine
-     * */
-    public Map<String, String> checkListMedicine(List<InvoiceMedicineDto> invoiceMedicineDtoList) {
-        String errorMessage = "";
-        Map<String, String> errorMap = new HashMap<>();
-        for (int i = 0; i <= invoiceMedicineDtoList.size() - 1; i++) {
-            Optional<MedicineStorage> storages = iMedicineStorageService.getStorageByIdMedicine(invoiceMedicineDtoList
-                                                                             .get(i).getMedicine().getMedicineId());
-            MedicineStorage storage = storages.orElse(null);
-            if (storage == null) {
-                errorMessage = "Số lượng thuốc " + invoiceMedicineDtoList.get(i).getMedicine().getMedicineName()
-                        + " đã hết. Vui lòng chọn thuốc khác thay thế!";
-                errorMap.put(String.valueOf(i), errorMessage);
-            } else if (invoiceMedicineDtoList.get(i).getInvoiceMedicineQuantity() > storage.getMedicineQuantity()) {
-                errorMessage = "Số lượng thuốc " + storage.getMedicine().getMedicineName() +
-                        " trong tủ còn: " + storage.getMedicineQuantity();
-                errorMap.put(String.valueOf(i), errorMessage);
-            }
-        }
-        return errorMap;
-    }
+//    @PatchMapping("/updateQuantityMedicine")
+//    public ResponseEntity<Map<String, String>> updateQuantityMedicine(@Validated @RequestBody
+//                                                                              InvoiceDto invoiceDto,
+//                                                                      BindingResult bindingResult) {
+//        String errorQuantity = "";
+//        Map<String, String> errorMap = new HashMap<>();
+//        if (!bindingResult.hasErrors()) {
+//            if (!invoiceDto.getInvoiceMedicineList().isEmpty()) {
+//                errorMap = checkListMedicine(invoiceDto.getInvoiceMedicineList());
+//                if (errorMap.isEmpty()) {
+//                    for (InvoiceMedicineDto invoiceMedicineDto : invoiceDto.getInvoiceMedicineList()) {
+//                        Optional<MedicineStorage> medicineStorage = iMedicineStorageService
+//                                .getStorageByIdMedicine(invoiceMedicineDto.getMedicine().getMedicineId());
+//                        MedicineStorage storage = medicineStorage.orElse(null);
+//                        assert storage != null;
+//                        storage.setMedicineQuantity
+//                                (storage.getMedicineQuantity() - invoiceMedicineDto.getInvoiceMedicineQuantity());
+//                        iMedicineStorageService.updateMedicineQuantity(storage);
+//                    }
+//                    return new ResponseEntity<>(HttpStatus.OK);
+//                } else {
+//                    return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
+//                }
+//            } else {
+//                errorQuantity = "Bạn chưa chọn thuốc";
+//                errorMap.put("medicineList", errorQuantity);
+//                return new ResponseEntity<>(errorMap,
+//                        HttpStatus.BAD_REQUEST);
+//            }
+//        } else {
+//            errorQuantity = "Vui lòng nhập đủ thông tin";
+//            errorMap.put("validMedicine", errorQuantity);
+//            return new ResponseEntity<>(errorMap,
+//                    HttpStatus.BAD_REQUEST);
+//        }
+//    }
+//
+//    /*
+//     * Created by DaLQA
+//     * Time: 11:40 AM 30/06/2022
+//     * Function: function checkListMedicine
+//     * */
+//    public Map<String, String> checkListMedicine(List<InvoiceMedicineDto> invoiceMedicineDtoList) {
+//        String errorMessage = "";
+//        Map<String, String> errorMap = new HashMap<>();
+//        for (int i = 0; i <= invoiceMedicineDtoList.size() - 1; i++) {
+//            Optional<MedicineStorage> storages = iMedicineStorageService.getStorageByIdMedicine(invoiceMedicineDtoList
+//                                                                             .get(i).getMedicine().getMedicineId());
+//            MedicineStorage storage = storages.orElse(null);
+//            if (storage == null) {
+//                errorMessage = "Số lượng thuốc " + invoiceMedicineDtoList.get(i).getMedicine().getMedicineName()
+//                        + " đã hết. Vui lòng chọn thuốc khác thay thế!";
+//                errorMap.put(String.valueOf(i), errorMessage);
+//            } else if (invoiceMedicineDtoList.get(i).getInvoiceMedicineQuantity() > storage.getMedicineQuantity()) {
+//                errorMessage = "Số lượng thuốc " + storage.getMedicine().getMedicineName() +
+//                        " trong tủ còn: " + storage.getMedicineQuantity();
+//                errorMap.put(String.valueOf(i), errorMessage);
+//            }
+//        }
+//        return errorMap;
+//    }
 }

@@ -1,10 +1,12 @@
 package com.c1221g1.pharmacy.service.invoice;
 
+import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
+
 public interface IInvoiceMedicineService {
     /*
      * Created by DaLQA
-     * Time: 10:30 PM 29/06/2022
+     * Time: 1:16 PM 02/07/2022
      * Function: function createInvoiceMedicine
      * */
-    void createInvoiceMedicine(Integer quantity, String medicineInvoiceId, String invoiceId);
+    boolean saveInvoiceMedicine(InvoiceDto invoiceDto);
 }
