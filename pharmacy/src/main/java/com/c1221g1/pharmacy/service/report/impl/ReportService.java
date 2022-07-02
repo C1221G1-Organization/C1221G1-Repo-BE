@@ -6,6 +6,7 @@ import com.c1221g1.pharmacy.service.report.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -72,6 +73,19 @@ public class ReportService implements IReportService {
      */
     @Override
     public List<Static> getStatic() {
-        return this.iReportRepository.getStatic();
+        List<Static> statics = new ArrayList<Static>();
+        statics.add(this.iReportRepository.getMonth1());
+        statics.add(this.iReportRepository.getMonth2());
+        statics.add(this.iReportRepository.getMonth3());
+        statics.add(this.iReportRepository.getMonth4());
+        statics.add(this.iReportRepository.getMonth5());
+        statics.add(this.iReportRepository.getMonth6());
+        statics.add(this.iReportRepository.getMonth7());
+        statics.add(this.iReportRepository.getMonth8());
+        statics.add(this.iReportRepository.getMonth9());
+        statics.add(this.iReportRepository.getMonth10());
+        statics.add(this.iReportRepository.getMonth11());
+        statics.add(this.iReportRepository.getMonth12());
+        return statics;
     }
 }
