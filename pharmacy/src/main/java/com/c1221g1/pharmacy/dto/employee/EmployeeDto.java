@@ -31,21 +31,14 @@ public class EmployeeDto implements Validator {
     private String employeeName;
     @NotNull(message = "Image may not be null")
     @NotEmpty(message = "Image may not be empty")
-    @Pattern(regexp = "(https?:\\/\\/.*\\.(?:png|jpg))", message = "\n" +
+    @Pattern(regexp = "(\\S.*\\.(?:png$|jpg$))", message = "\n" +
             "Incorrect image file format\n")
-
-    @Size(max = 500, message = "\n" +
-            "Do not exceed 50 characters")
-    @Size(min = 4, message = "\n" +
-            "No less than 1 character")
     private String employeeImage;
-
     @NotNull(message = "Address may not be null")
     @NotEmpty(message = "Address may not be empty")
     @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
             "Do not enter special characters\n")
     private String employeeAddress;
-
     @NotNull(message = "Phone may not be null")
     @NotEmpty(message = "Phone may not be empty")
     @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$",

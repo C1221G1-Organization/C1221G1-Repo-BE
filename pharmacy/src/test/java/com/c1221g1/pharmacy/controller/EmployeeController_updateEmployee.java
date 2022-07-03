@@ -781,7 +781,7 @@ Function:  update test position
         position.setPositionId(1);
         employeeDto.setPosition(position);
 
-        Users usersDto = new Users();
+        Users usersDto = new Uers();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 

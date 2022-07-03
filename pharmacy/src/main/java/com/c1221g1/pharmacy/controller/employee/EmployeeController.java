@@ -7,6 +7,7 @@ import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.employee.IPositionService;
+import com.c1221g1.pharmacy.service.user.IUsersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,17 +21,20 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 
 @RestController
-@CrossOrigin("**")
 @RequestMapping(value = "api/manager-employee/employees")
 public class EmployeeController {
     @Autowired
     IEmployeeService iEmployeeService;
     @Autowired
     IPositionService iPositionService;
+
+    @Autowired
+    IUsersService iUsersService;
+
 
     /*
       Created by TamNA
@@ -39,16 +43,29 @@ public class EmployeeController {
  */
     @PostMapping(value = "")
     public ResponseEntity<?> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
-                                                           BindingResult bindingResult) {
+                                            BindingResult bindingResult) {
+
+        Map<String, String> errorMap = new HashMap<>();
+//        employeeDto.validate(employeeDto, bindingResult);
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
+            bindingResult.getFieldErrors()
+                    .forEach(
+                            err -> errorMap.put(err.getField(), err.getDefaultMessage())
+                    );
         }
         Employee employee = new Employee();
         Position position = new Position();
-        Users users = new Users();
-        position.setPositionId(employeeDto.getPosition().getPositionId());
-        users.setUsername(employeeDto.getEmployeeUsername().getUsername());
         employee.setPosition(position);
+        position.setPositionId(employeeDto.getPosition().getPositionId());
+        Users users = new Users();
+        users.setUsername(employeeDto.getEmployeeUsername().getUsername());
+        if (this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).size() > 0) {
+            errorMap.put("usersName", "Account already exists");
+            return ResponseEntity.badRequest().body(new ResponseMessage(false, "Failed!", errorMap, new ArrayList<>()));
+        }
+        users.setFlag(true);
+        users.setPassword("12345");
+        this.iUsersService.saveUser(users);
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
         this.iEmployeeService.saveEmployee(employee);
@@ -60,27 +77,39 @@ public class EmployeeController {
       Time: 9:50:00 29/06/2022
       Function:  Update Employee
  */
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<List<FieldError>> updateEmployee(@PathVariable String id,
-                                                           @Valid @RequestBody EmployeeDto employeeDto,
-                                                           BindingResult bindingResult) {
+    @PatchMapping(value = "{id}")
+    public ResponseEntity<?> updateEmployee(@PathVariable String id,
+                                            @Valid @RequestBody EmployeeDto employeeDto,
+                                            BindingResult bindingResult) {
         Employee employeeById = this.iEmployeeService.findEmployeeById(id);
-
         if (employeeById == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        Map<String, String> errorMap = new HashMap<>();
+//        employeeDto.validate(employeeDto, bindingResult);
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            bindingResult.getFieldErrors()
+                    .forEach(
+                            err -> errorMap.put(err.getField(), err.getDefaultMessage())
+                    );
         }
         Employee employee = new Employee();
         Position position = new Position();
-        Users users = new Users();
-        position.setPositionId(employeeDto.getPosition().getPositionId());
-        users.setUsername(employeeDto.getEmployeeUsername().getUsername());
+
         employee.setPosition(position);
+        position.setPositionId(employeeDto.getPosition().getPositionId());
+        Users users = new Users();
+        users.setUsername(employeeDto.getEmployeeUsername().getUsername());
+        if (this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).size() > 0) {
+            errorMap.put("usersName", "Account already exists");
+            return ResponseEntity.badRequest().body(new ResponseMessage(false, "Failed!", errorMap, new ArrayList<>()));
+        }
+        users.setFlag(true);
+        users.setPassword("12345");
+        this.iUsersService.saveUser(users);
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
-        this.iEmployeeService.updateEmployee(employee);
+        this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
