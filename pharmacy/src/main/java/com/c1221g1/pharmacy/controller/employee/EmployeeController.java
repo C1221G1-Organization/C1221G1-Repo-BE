@@ -110,7 +110,11 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    /*
+      Created by TamNA
+      Time: 11:50:00 03/07/2022
+      Function:  FindById Employee
+ */
     @GetMapping(value = "/{id}")
     public ResponseEntity<Employee> findEmployeeById(@PathVariable String id) {
         Employee employee = this.iEmployeeService.findEmployeeById(id);

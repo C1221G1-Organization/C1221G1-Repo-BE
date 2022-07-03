@@ -13,7 +13,11 @@ public class ResponseMessage<T> {
 
     public ResponseMessage() {
     }
-
+    /*
+      Created by TamNA
+      Time: 12:50:00 03/07/2022
+      Function:  return list field errors Employee
+ */
     public ResponseMessage(boolean status, String message, Map<String, String> errorMap, List<T> data) {
         this.status = status;
         this.message = message;
