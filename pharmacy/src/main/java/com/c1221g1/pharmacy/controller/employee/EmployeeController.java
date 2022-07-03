@@ -60,7 +60,7 @@ public class EmployeeController {
         Users users = new Users();
         users.setUsername(employeeDto.getEmployeeUsername().getUsername());
         if (this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).size() > 0) {
-            errorMap.put("usersName", "Account already exists");
+            errorMap.put("usersName", "Tên đăng nhập đã trùng");
             return ResponseEntity.badRequest().body(new ResponseMessage(false, "Failed!", errorMap, new ArrayList<>()));
         }
         users.setFlag(true);
@@ -82,6 +82,7 @@ public class EmployeeController {
                                             @Valid @RequestBody EmployeeDto employeeDto,
                                             BindingResult bindingResult) {
         Employee employeeById = this.iEmployeeService.findEmployeeById(id);
+        employeeDto.validate(employeeDto, bindingResult);
         if (employeeById == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -100,10 +101,6 @@ public class EmployeeController {
         position.setPositionId(employeeDto.getPosition().getPositionId());
         Users users = new Users();
         users.setUsername(employeeDto.getEmployeeUsername().getUsername());
-        if (this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).size() > 0) {
-            errorMap.put("usersName", "Account already exists");
-            return ResponseEntity.badRequest().body(new ResponseMessage(false, "Failed!", errorMap, new ArrayList<>()));
-        }
         users.setFlag(true);
         users.setPassword("12345");
         this.iUsersService.saveUser(users);
@@ -111,6 +108,16 @@ public class EmployeeController {
         BeanUtils.copyProperties(employeeDto, employee);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Employee> findEmployeeById(@PathVariable String id) {
+        Employee employee = this.iEmployeeService.findEmployeeById(id);
+        if (employee == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     /**

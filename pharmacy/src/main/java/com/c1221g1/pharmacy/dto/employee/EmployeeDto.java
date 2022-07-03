@@ -23,7 +23,7 @@ public class EmployeeDto implements Validator {
     @NotNull(message = "Name may not be null")
     @NotEmpty(message = "Name may not be empty")
     @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
-            "Do not enter special characters\n")
+            "Name do not enter special characters\n")
     @Size(max = 50, message = "\n" +
             "Do not exceed 50 characters")
     @Size(min = 1, message = "\n" +
@@ -32,7 +32,7 @@ public class EmployeeDto implements Validator {
     @NotNull(message = "Image may not be null")
     @NotEmpty(message = "Image may not be empty")
     @Pattern(regexp = "(\\S.*\\.(?:png$|jpg$))", message = "\n" +
-            "Incorrect image file format\n")
+            "Hãy chọn flle ảnh, định dạng :name.*Image\n")
     private String employeeImage;
     @NotNull(message = "Address may not be null")
     @NotEmpty(message = "Address may not be empty")
@@ -51,6 +51,7 @@ public class EmployeeDto implements Validator {
     private String employeeNote;
     private boolean flag;
     private Position position;
+    @NotNull
     private Users employeeUsername;
     private List<ImportInvoice> importInvoiceList;
 
