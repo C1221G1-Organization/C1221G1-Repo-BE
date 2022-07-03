@@ -54,7 +54,7 @@ public class EmployeeService implements IEmployeeService {
      * This method to get data for account table from table employee and user (have pagination and search)
      */
     @Override
-    public Page<IAccountEmployeeDto> findAndSearchAccount(String id, String name, Integer position, String username, Pageable pageable) {
+    public Page<IAccountEmployeeDto> findAndSearchAccount(String id, String name, String position, String username, Pageable pageable) {
         return iEmployeeRepository.findAndSearchAccount(id, name, position, username, pageable);
     }
 
@@ -64,9 +64,9 @@ public class EmployeeService implements IEmployeeService {
      * time: 01/07/2022
      * This method to get data for account table from table employee and user (have pagination and search)
      */
-    @Override
-    public Page<IAccountEmployeeDto> findAndSearchAccount2(String id, String name, String username, Pageable pageable) {
-        return iEmployeeRepository.findAndSearchAccount2(id, name, username, pageable);
-    }
+//    @Override
+//    public Page<IAccountEmployeeDto> findAndSearchAccount2(String id, String name, String username, Pageable pageable) {
+//        return iEmployeeRepository.findAndSearchAccount2(id, name, username, pageable);
+//    }
 
 }

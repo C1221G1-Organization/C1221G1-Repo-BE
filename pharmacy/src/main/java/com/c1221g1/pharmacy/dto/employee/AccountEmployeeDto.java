@@ -1,5 +1,7 @@
 package com.c1221g1.pharmacy.dto.employee;
 
+import com.c1221g1.pharmacy.entity.employee.Position;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -7,7 +9,7 @@ public class AccountEmployeeDto {
     String employeeId;
     String employeeName;
     @NotNull
-    Integer positionId;
+    Position position;
     String username;
     @NotNull
     @Size(min = 6)
@@ -32,12 +34,12 @@ public class AccountEmployeeDto {
         this.employeeName = employeeName;
     }
 
-    public Integer getPositionId() {
-        return positionId;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPositionId(Integer positionId) {
-        this.positionId = positionId;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public String getUsername() {

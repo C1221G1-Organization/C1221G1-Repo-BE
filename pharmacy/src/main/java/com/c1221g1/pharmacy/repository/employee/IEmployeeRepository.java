@@ -21,7 +21,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * This method to get data for account table from table employee and user (just List, don't have pagination)
      */
     @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-            " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            " `position`.position_name as `positionName`, employee.username as `username`, users.`password` as `password`\n" +
             "from employee join users  on employee.username =  users.username join `position`  on `position`.position_id = employee.position_id group by employee.employee_id", nativeQuery = true)
     List<IAccountEmployeeDto> findAllAccount();
 
@@ -32,7 +32,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * This method find account by employee_id
      */
     @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`,\n" +
-            " `position`.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            " `position`.position_name as `positionName`, employee.username as `username`, users.`password` as `password`\n" +
             "from employee  " +
             " join users  on employee.username =  users.username " +
             " join `position`  on `position`.position_id = employee.position_id " +
@@ -46,27 +46,27 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * This method to get data for account table from table employee and user (have pagination and search)
      */
     @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-            "employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+            "`position`.position_name as `positionName`, employee.username as `username`, users.`password` as `password`\n" +
             "from employee " +
             "join users  on employee.username =  users.username " +
             "join `position`  on `position`.position_id = employee.position_id " +
             "where employee.employee_id like %:id% " +
             "and employee.employee_name like %:name% " +
-            "and `position`.position_id like %:position% " +
+            "and `position`.position_name like %:position% " +
             "and employee.username like %:username% ",
             countQuery = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-                    " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password` " +
+                    " `position`.position_name as `positionName`, employee.username as `username`, users.`password` as `password` " +
                     " from employee " +
                     " join users  on employee.username =  users.username " +
                     " join `position`  on `position`.position_id = employee.position_id" +
                     " where employee.employee_id like %:id%" +
                     " and employee.employee_name like %:name% " +
-                    " and employee.position_id like %:position% " +
+                    " and `position`.position_name like %:position% " +
                     " and employee.username like %:username%", nativeQuery = true)
     Page<IAccountEmployeeDto> findAndSearchAccount(
             @Param("id") String id,
             @Param("name") String name,
-            @Param("position") Integer position,
+            @Param("position") String position,
             @Param("username") String username,
             Pageable pageable);
 
@@ -76,27 +76,27 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
      * time: 01/07/2022
      * This method to get data for account table from table employee and user (have pagination and search)
      */
-    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-            " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
-            "from employee " +
-            "join users  on employee.username =  users.username " +
-            "join `position`  on `position`.position_id = employee.position_id " +
-            "where employee.employee_id like %:id% " +
-            "and employee.employee_name like %:name% " +
-            "and employee.username like %:username% ",
-            countQuery = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-                    " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`" +
-                    " from employee" +
-                    " join users  on employee.username =  users.username" +
-                    " join `position`  on `position`.position_id = employee.position_id " +
-                    " where employee.employee_id like %:id%" +
-                    " and employee.employee_name like %:name%" +
-                    " and employee.username like %:username% ", nativeQuery = true)
-    Page<IAccountEmployeeDto> findAndSearchAccount2(
-            @Param("id") String id,
-            @Param("name") String name,
-            @Param("username") String username,
-            Pageable pageable);
+//    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+//            " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
+//            "from employee " +
+//            "join users  on employee.username =  users.username " +
+//            "join `position`  on `position`.position_id = employee.position_id " +
+//            "where employee.employee_id like %:id% " +
+//            "and employee.employee_name like %:name% " +
+//            "and employee.username like %:username% ",
+//            countQuery = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
+//                    " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`" +
+//                    " from employee" +
+//                    " join users  on employee.username =  users.username" +
+//                    " join `position`  on `position`.position_id = employee.position_id " +
+//                    " where employee.employee_id like %:id%" +
+//                    " and employee.employee_name like %:name%" +
+//                    " and employee.username like %:username% ", nativeQuery = true)
+//    Page<IAccountEmployeeDto> findAndSearchAccount2(
+//            @Param("id") String id,
+//            @Param("name") String name,
+//            @Param("username") String username,
+//            Pageable pageable);
 
 
     /**
