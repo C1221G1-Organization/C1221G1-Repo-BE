@@ -139,15 +139,31 @@ public class PaymentOnlineController_getPaymentOnline {
 
     /**
      * Created by: KhoaPV
-     * Date created: 30/6/2022
-     * function: test case find paymentOnline with customerName valid paymentOnlineId valid. Have 1 item response.
+     * Date created: 1/7/2022
+     * function: test case find paymentOnline with customerName valid paymentOnlineId valid.
+     * But with page number greater than total pages
      *
      * @throws Exception
      */
     @Test
     public void getPaymentOnline_10() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/payment-online?paymentOnlineId=HDO-0002&customerName=Khoa"))
+                .get("/api/payment-online?paymentOnlineId=HDO-0002&customerName=Khoa&page=3&size=5"))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 1/7/2022
+     * function: test case find paymentOnline with customerName valid paymentOnlineId valid. Have 1 item response.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getPaymentOnline_11() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .get("/api/payment-online?paymentOnlineId=HDO-0002&customerName=Khoa&page=0&size=5"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.totalPages").value(1))
