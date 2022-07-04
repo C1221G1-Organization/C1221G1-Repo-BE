@@ -56,5 +56,5 @@ public interface IReportService {
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
-    List<Static> getStatic();
+    List<Static> getStatic(String year);
 }

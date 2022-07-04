@@ -82,20 +82,20 @@ public class ReportService implements IReportService {
      * @Time 20:30 30/06/2022
      */
     @Override
-    public List<Static> getStatic() {
+    public List<Static> getStatic(String year) {
         List<Static> statics = new ArrayList<Static>();
-        statics.add(this.iReportRepository.getMonth1());
-        statics.add(this.iReportRepository.getMonth2());
-        statics.add(this.iReportRepository.getMonth3());
-        statics.add(this.iReportRepository.getMonth4());
-        statics.add(this.iReportRepository.getMonth5());
-        statics.add(this.iReportRepository.getMonth6());
-        statics.add(this.iReportRepository.getMonth7());
-        statics.add(this.iReportRepository.getMonth8());
-        statics.add(this.iReportRepository.getMonth9());
-        statics.add(this.iReportRepository.getMonth10());
-        statics.add(this.iReportRepository.getMonth11());
-        statics.add(this.iReportRepository.getMonth12());
+        statics.add(this.iReportRepository.getMonth1(year));
+        statics.add(this.iReportRepository.getMonth2(year));
+        statics.add(this.iReportRepository.getMonth3(year));
+        statics.add(this.iReportRepository.getMonth4(year));
+        statics.add(this.iReportRepository.getMonth5(year));
+        statics.add(this.iReportRepository.getMonth6(year));
+        statics.add(this.iReportRepository.getMonth7(year));
+        statics.add(this.iReportRepository.getMonth8(year));
+        statics.add(this.iReportRepository.getMonth9(year));
+        statics.add(this.iReportRepository.getMonth10(year));
+        statics.add(this.iReportRepository.getMonth11(year));
+        statics.add(this.iReportRepository.getMonth12(year));
         return statics;
     }
 }
