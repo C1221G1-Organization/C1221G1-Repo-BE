@@ -55,6 +55,7 @@ public class EmployeeDto implements Validator {
     private Users employeeUsername;
     private List<ImportInvoice> importInvoiceList;
 
+
     public EmployeeDto() {
     }
 
@@ -154,6 +155,6 @@ public class EmployeeDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
 
-
     }
+
 }

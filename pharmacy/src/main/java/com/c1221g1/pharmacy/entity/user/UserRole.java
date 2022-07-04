@@ -1,19 +1,16 @@
 package com.c1221g1.pharmacy.entity.user;
 
-
 import javax.persistence.*;
 
 @Entity
-
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userRoleId;
 
     @ManyToOne
-    @JoinColumn(name = "username",referencedColumnName = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private Users users;
-
     @ManyToOne
     @JoinColumn(name = "role", referencedColumnName = "roleId")
     private Roles roles;

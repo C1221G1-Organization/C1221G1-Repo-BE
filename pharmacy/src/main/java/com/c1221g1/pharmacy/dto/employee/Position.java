@@ -8,7 +8,6 @@ import java.util.List;
 public class Position {
     private Integer positionId;
     private String positionName;
-    private List<Employee> employeeList;
 
     public Position() {
     }
@@ -29,12 +28,5 @@ public class Position {
         this.positionName = positionName;
     }
 
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
 
 }

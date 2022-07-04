@@ -8,7 +8,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"userRoleList","customer","employee"})
+@JsonIgnoreProperties({"userRoleList", "customer", "employee"})
+
 public class Users {
     @Id
     @Column(columnDefinition = "VARCHAR(30)")
@@ -65,7 +66,6 @@ public class Users {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
 
     public Employee getEmployee() {
         return employee;

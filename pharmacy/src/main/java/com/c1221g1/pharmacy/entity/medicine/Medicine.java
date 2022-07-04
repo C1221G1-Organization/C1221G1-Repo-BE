@@ -1,6 +1,10 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
+import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
+import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
+import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -51,7 +55,6 @@ public class Medicine {
     @ManyToOne
     @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
-
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
@@ -219,7 +222,6 @@ public class Medicine {
     public void setMedicineConversionUnit(MedicineConversionUnit medicineConversionUnit) {
         this.medicineConversionUnit = medicineConversionUnit;
     }
-
 
     public List<CartDetail> getCartDetailList() {
         return cartDetailList;
