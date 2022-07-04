@@ -1,8 +1,8 @@
 package com.c1221g1.pharmacy.repository.medicine;
-
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
+import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,12 +10,33 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
-
 public interface IMedicineRepository extends JpaRepository<Medicine, String> {
+
+    /**
+     * Created by MyC
+     * Time: 23:00 30/06/2022
+     * Function: use procedure in DB search list medicine
+     */
+
+    @Query(value = "call look_up(:columName, :condition, :keyWord)",nativeQuery = true)
+    List<MedicineLookUpDto> getAllMedicine(@Param("columName") String columName , @Param("condition") String condition,
+                                           @Param("keyWord") String keyWord);
+
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: delete medicine by medicineId
+     */
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE medicine set flag = 0 where medicine_id = :id ", nativeQuery = true)
+    void deleteMedicineById(@Param("id") String id);
+
+
 
     /**
      * this function use to edit exist medicine

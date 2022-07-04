@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class MedicineOriginService implements IMedicineOriginService {
+
     @Autowired
     private IMedicineOriginRepository medicineOriginRepository;
     /**
