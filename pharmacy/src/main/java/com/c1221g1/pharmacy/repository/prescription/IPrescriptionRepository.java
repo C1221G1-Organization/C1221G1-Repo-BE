@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.repository.prescription;
 
+import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,20 +48,25 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             @Param("target") String target,
             @Param("symptom") String symptom,
             Pageable pageable);
+
     /*
      * Created by DaLQA
      * Time: 11:30 PM 29/06/2022
      * Function: function findByIdQuery
      * */
-    @Query(value = "select prescription.prescription_id, " +
-            " prescription.flag, " +
-            " prescription.prescription_name," +
-            " prescription.prescription_target_user," +
-            " prescription.prescription_symptom, " +
-            " prescription.prescription_number_of_days, " +
-            " prescription.prescription_note " +
-            "from prescription" +
-            " where prescription.prescription_id = :id ",
+    @Query(value = "select prescription.prescription_id as prescriptionId, prescription.prescription_name as " +
+            " prescriptionName, prescription.prescription_target_user as prescriptionTargetUser," +
+            " prescription.prescription_symptom as prescriptionSymptom, prescription.prescription_number_of_days as" +
+            " prescriptionNumberOfDays, prescription.prescription_note as prescriptionNote," +
+            " medicine_prescription.medicine_prescription_times as medicinePrescriptionTimes, " +
+            " medicine_prescription.medicine_prescription_number_per_time as medicinePrescriptionNumberPerTime," +
+            " (medicine_prescription.medicine_prescription_times*medicine_prescription.medicine_prescription_number_per_time" +
+            "*prescription.prescription_number_of_days)" +
+            " as totalQuantityMedicine" +
+            " from prescription inner join medicine_prescription on prescription.prescription_id = " +
+            " medicine_prescription.prescription_id" +
+            " where prescription.prescription_id = :idPrescription" +
+            " group by prescription.prescription_id",
             nativeQuery = true)
-    Prescription findByIdQuery( @Param("id") String id);
+    IMedicinePrescriptionDto detailPrescriptionById(@Param("idPrescription") String id);
 }

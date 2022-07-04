@@ -6,6 +6,7 @@ import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
+import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import com.c1221g1.pharmacy.repository.customer.ICustomerRepository;
@@ -18,6 +19,7 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -49,22 +51,29 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     @Override
     public boolean saveInvoiceMedicine(InvoiceDto invoiceDto) throws Exception {
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
+        List<String> listErrorQuantity = new ArrayList<>();
         for (InvoiceMedicineDto item : invoiceMedicineList) {
             MedicineStorage medicineStorage = this.iMedicineStorageService
                     .getStorageByIdMedicine(item.getMedicineId()).get();
             Long quantityCurrentMedicine = medicineStorage.getMedicineQuantity();
             if (quantityCurrentMedicine - item.getQuantity() < 0) {
-                throw new Exception("hết thuốc");
+                listErrorQuantity.add(medicineStorage.getMedicine().getMedicineName());
             }
             medicineStorage.setMedicineQuantity(quantityCurrentMedicine - item.getQuantity());
         }
-
+        if (!listErrorQuantity.isEmpty()) {
+            throw new Exception(listErrorQuantity.toString());
+        }
+        invoiceDto.setTypeOfInvoiceId(1);
         Employee employee = this.iEmployeeRepository.findById(invoiceDto.getEmployeeId()).orElse(null);
         Customer customer = this.iCustomerRepository.findById(invoiceDto.getCustomerId()).orElse(null);
+        TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
+        typeOfInvoice.setTypeOfInvoiceId(1);
         Invoice invoice = new Invoice();
         invoice.setEmployee(employee);
         invoice.setCustomer(customer);
         invoice.setInvoiceNote(invoiceDto.getInvoiceNote());
+        invoice.setTypeOfInvoice(typeOfInvoice);
         Invoice newInvoice = iInvoiceService.saveInvoice(invoice);
 
         for (InvoiceMedicineDto invoiceMedicineDto : invoiceMedicineList) {

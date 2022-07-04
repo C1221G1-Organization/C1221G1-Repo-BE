@@ -6,10 +6,19 @@ public class InvoiceDto {
     private String invoiceId;
     private String customerId;
     private String employeeId;
+    private Integer typeOfInvoiceId;
     private String invoiceNote;
     private List<InvoiceMedicineDto> invoiceMedicineList;
 
     public InvoiceDto() {
+    }
+
+    public Integer getTypeOfInvoiceId() {
+        return typeOfInvoiceId;
+    }
+
+    public void setTypeOfInvoiceId(Integer typeOfInvoiceId) {
+        this.typeOfInvoiceId = typeOfInvoiceId;
     }
 
     public String getInvoiceNote() {

@@ -1,9 +1,10 @@
 package com.c1221g1.pharmacy.controller.invoice;
 
 import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
+import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
+import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceMedicineService;
-import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
-import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
+import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,9 @@ import java.util.stream.Collectors;
 public class InvoiceMedicineController {
     @Autowired
     private IInvoiceMedicineService iInvoiceMedicineService;
+
     @Autowired
-    private IInvoiceService iInvoiceService;
-    @Autowired
-    private IMedicineStorageService iMedicineStorageService;
+    private IMedicineService iMedicineService;
 
     /*
      * Created by DaLQA
@@ -49,10 +49,28 @@ public class InvoiceMedicineController {
         try {
             boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto);
             return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
-        } catch (Exception e){
+        } catch (NullPointerException ex) {
             Map<String,String> errors = new HashMap<>();
-            errors.put("errors","số lượng trong kho không đủ");
+            errors.put("errors", ex.getMessage());
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
+        catch (Exception e){
+            Map<String,String> errors = new HashMap<>();
+            errors.put("errors","số lượng " + e.getMessage() + " trong kho không đủ" );
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+    }
+    /*
+     * Created by DaLQA
+     * Time: 10:30 PM 3/07/2022
+     * Function: function getListMedicine
+     * */
+    @GetMapping("/getMedicines")
+    public ResponseEntity<List<MedicineSale>> getListMedicine(){
+        List<MedicineSale> medicineSaleDtoList = this.iMedicineService.getListMedicineSale();
+        if(medicineSaleDtoList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(medicineSaleDtoList, HttpStatus.OK);
     }
 }

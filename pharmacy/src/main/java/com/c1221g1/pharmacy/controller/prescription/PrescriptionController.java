@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.controller.prescription;
 
+import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,13 @@ import java.util.Optional;
 public class PrescriptionController {
     @Autowired
     private IPrescriptionService prescriptionService;
-    /*
-     * Created by DaLQA
-     * Time: 11:30 PM 29/06/2022
-     * Function: function getPagePrescription
-     * */
-    @GetMapping("/list")
+
+    /**
+     * HienTLD
+     * Danh sách toa thuốc và tìm kiếm
+     * 16:00 29/06/2022
+     */
+    @GetMapping("")
     public ResponseEntity<Page<Prescription>> getPagePrescription(@RequestParam Optional<String> id,
                                                                   @RequestParam Optional<String> names,
                                                                   @RequestParam Optional<String> target,
@@ -42,17 +44,20 @@ public class PrescriptionController {
 
         return new ResponseEntity<>(prescriptionPage, HttpStatus.OK);
     }
-    /*
-     * Created by DaLQA
-     * Time: 11:40 PM 29/06/2022
-     * Function: function getPagePrescription
-     * */
-    @GetMapping("/{id}")
-    public ResponseEntity<Prescription> findById(@PathVariable("id") String id){
-        Prescription prescription = this.prescriptionService.findById(id);
-        if(prescription == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    /**
+     * HienTLD
+     * Chi tiết toa thuốc
+     * 16:30 29/06/2022
+     */
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<IMedicinePrescriptionDto> getInfoPrescription(@PathVariable String id) {
+
+        IMedicinePrescriptionDto medicinePrescriptionDto = this.prescriptionService.getPrescriptionById(id);
+
+        if (medicinePrescriptionDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(prescription,HttpStatus.OK);
+
+        return new ResponseEntity<>(medicinePrescriptionDto, HttpStatus.OK);
     }
 }
