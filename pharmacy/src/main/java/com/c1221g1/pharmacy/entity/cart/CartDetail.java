@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.cart;
 
+
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 
 import javax.persistence.*;

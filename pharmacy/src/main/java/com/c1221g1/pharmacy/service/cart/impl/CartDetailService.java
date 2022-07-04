@@ -2,7 +2,6 @@ package com.c1221g1.pharmacy.service.cart.impl;
 
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
 import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
-import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.cart.ICartDetailRepository;
@@ -36,10 +35,10 @@ public class CartDetailService implements ICartDetailService {
      */
     @Override
     public void checkExistOfLinksObject(CartDetailDto cartDetailDto, BindingResult bindingResult) {
-        Cart cart = this.iCartRepository.findCartById(cartDetailDto.getCart().getCartId(), false);
-        if (cart == null) {
-            bindingResult.rejectValue("cart", "cart.notfound");
-        }
+//        Cart cart = this.iCartRepository.findCartById(cartDetailDto.getCart().getCartId(), false);
+//        if (cart == null) {
+//            bindingResult.rejectValue("cart", "cart.notfound");
+//        }
         Medicine medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId()).orElse(null);
         if (medicine == null) {
             bindingResult.rejectValue("medicine", "medicine.notfound");
@@ -55,7 +54,7 @@ public class CartDetailService implements ICartDetailService {
      */
     @Override
     public void save(CartDetail cartDetail) {
-
+        this.iCartDetailRepository.save(cartDetail);
     }
 
     /**
@@ -67,11 +66,10 @@ public class CartDetailService implements ICartDetailService {
      */
     @Override
     public void updateItemCartDetail(CartDetail cartDetail) {
-
     }
 
     @Override
     public List<CartDtoForList> getListByCartId(Integer cartId) {
-        return this.iCartDetailRepository.findCartDetailByCartId(cartId,false);
+        return this.iCartDetailRepository.findCartDetailByCartId(cartId, false);
     }
 }
