@@ -146,7 +146,7 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
 
         }
         TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
-        typeOfInvoice.setTypeOfInvoiceId(2);
+        typeOfInvoice.setTypeOfInvoiceId(3);
         Employee employee = this.iEmployeeRepository.findById(invoiceDto.getEmployeeId()).orElse(null);
         Customer customer = this.iCustomerRepository.findById(invoiceDto.getCustomerId()).orElse(null);
         Invoice invoice = new Invoice();

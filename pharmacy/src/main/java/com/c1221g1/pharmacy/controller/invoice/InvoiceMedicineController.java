@@ -24,11 +24,10 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin()
 @RequestMapping("/api/manager-sale/invoices")
-public class InvoiceController {
+public class InvoiceMedicineController {
     @Autowired
     private IInvoiceMedicineService iInvoiceMedicineService;
-    @Autowired
-    private IInvoiceService iInvoiceService;
+
     @Autowired
     private IMedicineStorageService iMedicineStorageService;
 
