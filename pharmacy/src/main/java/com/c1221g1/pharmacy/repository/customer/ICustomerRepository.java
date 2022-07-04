@@ -22,7 +22,15 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
     @Query(value = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username " +
             "FROM customer " +
             "WHERE flag = 1 " +
-            "AND customer_id LIKE:customerId " +
+            "AND customer_id LIKE :customerId " +
+            "AND customer_type_id LIKE:customerType " +
+            "AND customer_name LIKE:customerName " +
+            "AND customer_address LIKE:customerAddress " +
+            "AND customer_phone LIKE:customerPhone"
+            ,countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username " +
+            "FROM customer " +
+            "WHERE flag = 1 " +
+            "AND customer_id LIKE :customerId " +
             "AND customer_type_id LIKE:customerType " +
             "AND customer_name LIKE:customerName " +
             "AND customer_address LIKE:customerAddress " +
