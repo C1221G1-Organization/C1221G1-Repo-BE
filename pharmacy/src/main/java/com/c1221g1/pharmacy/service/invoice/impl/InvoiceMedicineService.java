@@ -90,4 +90,93 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
             return false;
         }
     }
+    /*
+     * Created by TrinhNN
+     * Function: function find invoice by invoice id
+     * */
+    @Override
+    public List<InvoiceMedicine> findByInvoiceId(String id) {
+        return invoiceMedicineRepository.findByInvoiceId(id);
+    }
+    /*
+     * Created by TrinhNN
+     * Function: function create Wholesale Invoice Medicine
+     * */
+    @Override
+    public boolean saveWholesaleInvoiceMedicine(InvoiceDto invoiceDto) throws Exception{
+        List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
+        for (InvoiceMedicineDto item : invoiceMedicineList) {
+            Medicine medicine = iMedicineRepository.findById(item.getMedicineId()).orElse(null);
+            Long quantity = item.getQuantity() * Long.parseLong(medicine.getMedicineConversionRate().toString());
+            iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),quantity,0);
+        }
+        TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
+        typeOfInvoice.setTypeOfInvoiceId(2);
+        Employee employee = this.iEmployeeRepository.findById(invoiceDto.getEmployeeId()).orElse(null);
+        Customer customer = this.iCustomerRepository.findById(invoiceDto.getCustomerId()).orElse(null);
+        Invoice invoice = new Invoice();
+        invoice.setEmployee(employee);
+        invoice.setCustomer(customer);
+        invoice.setTypeOfInvoice(typeOfInvoice);
+        invoice.setInvoiceNote(invoiceDto.getInvoiceNote());
+        Invoice newInvoice = iInvoiceService.saveInvoice(invoice);
+
+        for (InvoiceMedicineDto invoiceMedicineDto : invoiceMedicineList) {
+            InvoiceMedicine invoiceMedicine = new InvoiceMedicine();
+            Medicine medicine = iMedicineRepository.findById(invoiceMedicineDto.getMedicineId()).orElse(null);
+            invoiceMedicine.setMedicine(medicine);
+            invoiceMedicine.setInvoice(newInvoice);
+            invoiceMedicine.setInvoiceMedicineQuantity(invoiceMedicineDto.getQuantity());
+            this.invoiceMedicineRepository.save(invoiceMedicine);
+        }
+        if (newInvoice != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+     * Created by TrinhNN
+     * Function: function create Refund Invoice Medicine
+     * */
+    @Override
+    public boolean saveRefundInvoiceMedicine(InvoiceDto invoiceDto) {
+        List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
+        for (InvoiceMedicineDto item : invoiceMedicineList) {
+            if(invoiceDto.getTypeOfInvoiceId() == 1){
+                iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),
+                        Long.parseLong(item.getQuantity().toString()),2);
+            }else{
+                Medicine medicine = iMedicineRepository.findById(item.getMedicineId()).orElse(null);
+                Long quantity = item.getQuantity() * Long.parseLong(medicine.getMedicineConversionRate().toString());
+                iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),quantity,2);
+            }
+
+        }
+        TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
+        typeOfInvoice.setTypeOfInvoiceId(3);
+        Employee employee = this.iEmployeeRepository.findById(invoiceDto.getEmployeeId()).orElse(null);
+        Customer customer = this.iCustomerRepository.findById(invoiceDto.getCustomerId()).orElse(null);
+        Invoice invoice = new Invoice();
+        invoice.setEmployee(employee);
+        invoice.setCustomer(customer);
+        invoice.setTypeOfInvoice(typeOfInvoice);
+        invoice.setInvoiceNote(invoiceDto.getInvoiceNote());
+        Invoice newInvoice = iInvoiceService.saveInvoice(invoice);
+
+        for (InvoiceMedicineDto invoiceMedicineDto : invoiceMedicineList) {
+            InvoiceMedicine invoiceMedicine = new InvoiceMedicine();
+            Medicine medicine = iMedicineRepository.findById(invoiceMedicineDto.getMedicineId()).orElse(null);
+            invoiceMedicine.setMedicine(medicine);
+            invoiceMedicine.setInvoice(newInvoice);
+            invoiceMedicine.setInvoiceMedicineQuantity(invoiceMedicineDto.getQuantity());
+            this.invoiceMedicineRepository.save(invoiceMedicine);
+        }
+        if (newInvoice != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

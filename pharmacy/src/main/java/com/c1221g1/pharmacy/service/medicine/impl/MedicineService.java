@@ -9,15 +9,32 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MedicineService implements IMedicineService {
     @Autowired
-    private IMedicineRepository iMedicineRepository;
+    private IMedicineRepository medicineRepository;
 
+    /*
+     * Created by DaLQA
+     * Time: 04/07/2022
+     * Function: function create getListMedicineSale
+     * */
     @Override
     public List<MedicineSale> getListMedicineSale() {
-        return this.iMedicineRepository.getListMedicineSale();
+        return this.medicineRepository.getListMedicineSale();
 
+    }
+
+    /**
+     * this function use to find medicine in db and return medicine
+     *
+     * @author LongNH
+     * @Time 20:20 29/06/2022
+     */
+    @Override
+    public Optional<Medicine> findMedicineById(String id) {
+        return this.medicineRepository.findMedicineById(id);
     }
 }
