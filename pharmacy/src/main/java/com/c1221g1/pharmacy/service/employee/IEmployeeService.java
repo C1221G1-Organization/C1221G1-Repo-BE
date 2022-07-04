@@ -41,21 +41,11 @@ public interface IEmployeeService {
     Page<IAccountEmployeeDto> findAndSearchAccount(
             String id,
             String name,
-            Integer position,
+            String position,
             String username,
             Pageable pageable);
 
 
-    /**
-     * create by HaiNX
-     * time: 01/07/2022
-     * This method to get data for account table from table employee and user (have pagination and search)
-     */
-    Page<IAccountEmployeeDto> findAndSearchAccount2(
-            String id,
-            String name,
-            String username,
-            Pageable pageable);
 
 
 }
