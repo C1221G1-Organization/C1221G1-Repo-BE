@@ -1,7 +1,8 @@
 package com.c1221g1.pharmacy.controller;
 
-import com.c1221g1.pharmacy.dto.employee.AccountEmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.IAccountEmployeeDto;
+import com.c1221g1.pharmacy.dto.account.AccountEmployeeDto;
+import com.c1221g1.pharmacy.dto.account.IAccountEmployeeDto;
+import com.c1221g1.pharmacy.service.account.IAccountService;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,9 @@ import java.util.Optional;
 public class AccountEmployeeController {
     @Autowired
     IEmployeeService iEmployeeService;
+
+    @Autowired
+    IAccountService iAccountService;
     /**
      * create by HaiNX
      * time: 29/06/2022
@@ -28,7 +32,7 @@ public class AccountEmployeeController {
      */
     @GetMapping(value = "/listAccount")
     public ResponseEntity<List<IAccountEmployeeDto>> getListAccount() {
-        List<IAccountEmployeeDto> accountEmployees = this.iEmployeeService.findAllAccount();
+        List<IAccountEmployeeDto> accountEmployees = this.iAccountService.findAllAccount();
         if (accountEmployees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -55,7 +59,7 @@ public class AccountEmployeeController {
         String idVal = id.orElse("");
         String usernameVal = username.orElse("");
         String positionVal = position.orElse("");
-        Page<IAccountEmployeeDto> iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount(idVal, nameVal, positionVal, usernameVal, pageable);
+        Page<IAccountEmployeeDto> iAccountEmployeeDtoPage = iAccountService.findAndSearchAccount(idVal, nameVal, positionVal, usernameVal, pageable);
         if (iAccountEmployeeDtoPage == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -71,7 +75,7 @@ public class AccountEmployeeController {
      */
     @GetMapping(value = "/{id}")
     public ResponseEntity<IAccountEmployeeDto> findId(@PathVariable("id") String id) {
-        IAccountEmployeeDto accountEmployee = iEmployeeService.findAccountId(id);
+        IAccountEmployeeDto accountEmployee = iAccountService.findAccountId(id);
         if (accountEmployee == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -92,9 +96,9 @@ public class AccountEmployeeController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        IAccountEmployeeDto iAccountEmployeeDto = iEmployeeService.findAccountId(id);
+        IAccountEmployeeDto iAccountEmployeeDto = iAccountService.findAccountId(id);
         if (iAccountEmployeeDto != null) {
-            iEmployeeService.updateAccount(accountEmployeeDto.getPassword(), accountEmployeeDto.getPosition().getPositionId(),  id);
+            iAccountService.updateAccount(accountEmployeeDto.getPassword(), accountEmployeeDto.getPosition().getPositionId(),  id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
