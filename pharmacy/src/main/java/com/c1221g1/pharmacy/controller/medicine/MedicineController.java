@@ -36,7 +36,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineOriginList")
-    public List<MedicineOrigin> getMedicineOriginList() {
+    public List<MedicineOrigin> medicineOriginList() {
         return this.medicineOriginService.getAll();
     }
 
@@ -47,7 +47,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineTypeList")
-    public List<MedicineType> getMedicineTypeList() {
+    public List<MedicineType> medicineTypeList() {
         return this.medicineTypeService.getAll();
     }
 
@@ -58,7 +58,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineUnitList")
-    public List<MedicineUnit> getMedicineUnitList() {
+    public List<MedicineUnit> medicineUnitList() {
         return this.medicineUnitService.getAll();
     }
 
@@ -69,7 +69,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineConversionUnitList")
-    public List<MedicineConversionUnit> getMedicineConversionUnitList() {
+    public List<MedicineConversionUnit> medicineConversionUnitList() {
         return this.medicineConversionUnitService.getAll();
     }
 
@@ -81,7 +81,7 @@ public class MedicineController {
      */
     @PostMapping("")
     public ResponseEntity<List<FieldError>> createMedicine(@Valid @RequestBody MedicineDto medicineDto,
-                                                              BindingResult bindingResult) {
+                                                           BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -101,6 +101,70 @@ public class MedicineController {
         BeanUtils.copyProperties(medicineDto, medicine);
         this.medicineService.createMedicine(medicine);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * this function use to get all medicine unit
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineUnit")
+    public ResponseEntity<List<MedicineUnit>> getMedicineUnitList() {
+        List<MedicineUnit> medicineUnitList = this.medicineUnitList();
+        if (medicineUnitList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineUnitList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to get all medicine conversion unit
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineConversionUnit")
+    public ResponseEntity<List<MedicineConversionUnit>> getMedicineConversionUnitList() {
+        List<MedicineConversionUnit> medicineConversionUnitList = this.medicineConversionUnitList();
+        if (medicineConversionUnitList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineConversionUnitList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to get all medicine origin
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineOrigin")
+    public ResponseEntity<List<MedicineOrigin>> getMedicineOriginList() {
+        List<MedicineOrigin> medicineOriginList = this.medicineOriginList();
+        if (medicineOriginList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineOriginList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to get all medicine type
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineType")
+    public ResponseEntity<List<MedicineType>> getMedicineTypeList() {
+        List<MedicineType> medicineTypeList = this.medicineTypeList();
+        if (medicineTypeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineTypeList, HttpStatus.OK);
+        }
     }
 
     /**
@@ -137,5 +201,20 @@ public class MedicineController {
         existMedicine.setMedicineId(id);
         this.medicineService.updateMedicine(existMedicine);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * this function use to get exist medicine in db
+     *
+     * @author LongNH
+     * @Time 19:25 03/07/2022
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<Medicine> findMedicineById(@PathVariable("id") String id) {
+        Medicine existMedicine = this.medicineService.findMedicineById(id).orElse(null);
+        if (existMedicine == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(existMedicine, HttpStatus.OK);
     }
 }
