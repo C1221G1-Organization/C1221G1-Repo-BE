@@ -17,32 +17,17 @@ public class MedicineService implements IMedicineService {
     @Autowired
     private IMedicineRepository medicineRepository;
 
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: get list medicine and search
+     */
 
-    //    @Override
-//    public Page<Medicine> findAllMedicine(Pageable pageable, String idValue, String medicineTypeValue,
-//                                          String medicineNameValue, String medicineActiveIngredientsValue,
-//                                          String importPriceValue, String wholesalePriceValue, String retailPriceValue) {
-//        return medicineRepository.getAllMedicine(pageable, "%" + idValue + "%",
-//                "%" + medicineTypeValue + "%", "%" + medicineNameValue + "%",
-//                "%" + medicineActiveIngredientsValue + "%",
-//                "%" + importPriceValue + "%", "%" + wholesalePriceValue + "%",
-//                "%" + retailPriceValue + "%");
-//    }
     @Override
     public List<MedicineLookUpDto> findAllMedicine(String columName, String condition, String keyword) {
         return medicineRepository.getAllMedicine(columName,condition,keyword);
     }
 
-    /**
-     * Created by MyC
-     * Time: 23:00 29/06/2022
-     * Function: get list medicine
-     */
-
-    @Override
-    public List<Medicine> getListMedicine() {
-        return medicineRepository.getListMedicine();
-    }
 
 
     /**

@@ -20,7 +20,7 @@ public class MedicineDto {
     private Double medicineWholesaleProfit;
     private Double medicineRetailSaleProfit;
     private Double medicineTax;
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
     private String medicineManufacture;
     private String medicineUsage;
     private String medicineInstruction;

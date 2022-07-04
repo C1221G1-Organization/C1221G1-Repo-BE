@@ -70,6 +70,5 @@ public class Medicine {
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
-//    @JsonBackReference(value = "medicineStorageSet")
     private Set<MedicineStorage> medicineStorageSet;
 }

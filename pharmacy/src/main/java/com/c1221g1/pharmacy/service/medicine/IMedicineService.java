@@ -14,6 +14,4 @@ public interface IMedicineService {
     Medicine findMedicineById(String id);
 
     void deleteMedicineById(String id);
-
-    List<Medicine> getListMedicine();
 }

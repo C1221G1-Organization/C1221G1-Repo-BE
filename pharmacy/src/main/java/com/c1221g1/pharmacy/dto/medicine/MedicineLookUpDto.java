@@ -1,24 +1,28 @@
 package com.c1221g1.pharmacy.dto.medicine;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public interface MedicineLookUpDto {
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class MedicineLookUpDto {
-
-    private String medicineId;
-    private Double medicineImportPrice;
-    private Double wholesalePrice;
-    private Double retailPrice;
-    private Double medicineWholesaleProfit;
-    private Double medicineRetailSaleProfit;
-    private Double medicineConversionRate;
-    private boolean flag;
-    private String medicineTypeName;
-    private Integer medicineUnitId;
-    private Integer medicineConversionUnitId;
+    String getMedicineId();
+    String getMedicineName();
+    String getMedicineActiveIngredients();
+    Double getMedicineImportPrice();
+    Double getWholesalePrice();
+    Double getRetailPrice();
+    Double getMedicineDiscount();
+    Double getMedicineWholesaleProfit();
+    Double getMedicineRetailSaleProfit();
+    Double getMedicineTax();
+    Integer getMedicineConversionRate();
+    String getMedicineManufacture();
+    String getMedicineUsage();
+    String getMedicineInstruction();
+    String getMedicineAgeApproved();
+    String getMedicineDescription();
+    String getMedicineOriginName();
+    String getMedicineTypeName();
+    String getMedicineUnitName();
+    String getMedicineConversionUnitName();
+    Boolean getFlag();
 }
+
