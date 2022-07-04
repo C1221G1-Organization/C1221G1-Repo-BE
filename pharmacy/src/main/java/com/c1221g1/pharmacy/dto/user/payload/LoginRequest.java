@@ -51,6 +51,8 @@ public class LoginRequest implements Validator {
         LoginRequest loginRequest = (LoginRequest) target;
         if(loginRequest.getPassword().contains(" ")){
             errors.rejectValue("password","","Mật khẩu chứa kí tự trống");
+        }else if(!loginRequest.getPassword().matches("^(\\s?[a-zA-Z!@#$%^&*()\\d]\\s?)*$")){
+            errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép");
         }
     }
 }
