@@ -117,3 +117,4 @@ public class ImportInvoice {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
     }
 }
+

@@ -11,3 +11,4 @@ public interface ITypeOfInvoiceRepository extends JpaRepository<TypeOfInvoice,In
     @Query(value = "select type_of_invoice_id, type_of_invoice_name from type_of_invoice  where type_of_invoice_id = 3;",nativeQuery = true)
     TypeOfInvoice getTypeOfInvoiceRefund();
 }
+

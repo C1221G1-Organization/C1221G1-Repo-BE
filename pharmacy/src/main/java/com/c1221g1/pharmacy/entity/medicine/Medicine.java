@@ -54,7 +54,6 @@ public class Medicine {
     @ManyToOne
     @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
-
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
@@ -222,7 +221,6 @@ public class Medicine {
     public void setMedicineConversionUnit(MedicineConversionUnit medicineConversionUnit) {
         this.medicineConversionUnit = medicineConversionUnit;
     }
-
 
     public List<CartDetail> getCartDetailList() {
         return cartDetailList;

@@ -1,6 +1,5 @@
 package com.c1221g1.pharmacy.dto.customer;
 
-
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.entity.user.Users;
 import javax.validation.constraints.*;
@@ -27,6 +26,7 @@ public class CustomerDto {
     private boolean flag;
     private Users customerUsername;
     private CustomerType customerType;
+
 
     public CustomerDto() {
     }
@@ -111,6 +111,5 @@ public class CustomerDto {
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
-
-
 }
+

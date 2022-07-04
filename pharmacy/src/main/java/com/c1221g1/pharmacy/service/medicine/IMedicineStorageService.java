@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IMedicineStorageService {
+
+
     boolean checkExistInMedicineStorage(String medicineId);
 
     Long checkMedicineQuantity(String medicineId);
@@ -26,4 +28,6 @@ public interface IMedicineStorageService {
     void updateMedicineQuantity(MedicineStorage storage);
 
     List<MedicineStorage> getAll();
+
 }
+

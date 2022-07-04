@@ -15,6 +15,10 @@ public class ImportInvoiceDto implements Validator {
     @NotNull
     private String importInvoiceDate;
     @NotNull
+    private Double paymentPrepayment;
+    private Double total;
+    private String importInvoiceHour;
+
     private boolean flag;
     @NotNull
     private SupplierDto supplierDto;
@@ -41,6 +45,21 @@ public class ImportInvoiceDto implements Validator {
         this.importSystemCode = importSystemCode;
     }
 
+    public Double getPaymentPrepayment() {
+        return paymentPrepayment;
+    }
+
+    public void setPaymentPrepayment(Double paymentPrepayment) {
+        this.paymentPrepayment = paymentPrepayment;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
     public String getImportInvoiceDate() {
         return importInvoiceDate;
@@ -50,11 +69,19 @@ public class ImportInvoiceDto implements Validator {
         this.importInvoiceDate = importInvoiceDate;
     }
 
+    public String getImportInvoiceHour() {
+        return importInvoiceHour;
+    }
+
+    public void setImportInvoiceHour(String importInvoiceHour) {
+        this.importInvoiceHour = importInvoiceHour;
+    }
+
     public boolean isFlag() {
         return flag;
     }
 
-    public void setFlag(Boolean flag) {
+    public void setFlag(boolean flag) {
         this.flag = flag;
     }
 
@@ -92,3 +119,4 @@ public class ImportInvoiceDto implements Validator {
         ImportInvoiceDto importInvoiceDto = (ImportInvoiceDto) target;
     }
 }
+

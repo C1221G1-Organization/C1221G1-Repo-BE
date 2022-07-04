@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.entity.invoice;
 
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 

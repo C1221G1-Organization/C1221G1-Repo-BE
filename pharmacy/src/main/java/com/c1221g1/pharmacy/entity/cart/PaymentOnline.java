@@ -1,7 +1,7 @@
 package com.c1221g1.pharmacy.entity.cart;
 
-import org.hibernate.annotations.GenericGenerator;
 
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity

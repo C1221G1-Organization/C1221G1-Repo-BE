@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 @JsonIgnoreProperties({"paymentOnlineList","cartDetailList"})
 public class Cart {
     @Id

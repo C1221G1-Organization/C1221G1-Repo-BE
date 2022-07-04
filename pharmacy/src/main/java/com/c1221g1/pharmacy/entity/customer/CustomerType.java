@@ -40,5 +40,4 @@ public class CustomerType {
     public void setCustomerList(List<Customer> customerList) {
         this.customerList = customerList;
     }
-
 }

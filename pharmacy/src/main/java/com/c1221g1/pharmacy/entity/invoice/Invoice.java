@@ -3,12 +3,14 @@ package com.c1221g1.pharmacy.entity.invoice;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"invoiceMedicineList"})
 public class Invoice {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -38,6 +40,7 @@ public class Invoice {
 
     public Invoice() {
     }
+
     public String getInvoiceCreateTime() {
         return invoiceCreateTime;
     }
@@ -110,3 +113,4 @@ public class Invoice {
         this.invoiceMedicineList = invoiceMedicineList;
     }
 }
+

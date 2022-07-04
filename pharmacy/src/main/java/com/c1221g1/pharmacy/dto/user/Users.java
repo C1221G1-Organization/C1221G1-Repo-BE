@@ -10,7 +10,6 @@ public class Users {
     private String username;
     private String password;
     private boolean flag;
-    private List<UserRole> userRoleList;
     private Customer customer;
     private Employee employee;
 
@@ -40,15 +39,7 @@ public class Users {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
-
-    public List<UserRole> getUserRoleList() {
-        return userRoleList;
-    }
-
-    public void setUserRoleList(List<UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
-    }
-
+    
     public Customer getCustomer() {
         return customer;
     }

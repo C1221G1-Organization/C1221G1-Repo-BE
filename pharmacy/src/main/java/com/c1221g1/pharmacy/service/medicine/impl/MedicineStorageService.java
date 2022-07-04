@@ -18,6 +18,7 @@ public class MedicineStorageService implements IMedicineStorageService {
 
     @Autowired
     private IMedicineService iMedicineService;
+
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
@@ -27,6 +28,7 @@ public class MedicineStorageService implements IMedicineStorageService {
     public Optional<MedicineStorage> getStorageByIdMedicine(String id) {
         return this.iMedicineStorageRepository.getStorageByMedicineId(id);
     }
+
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
@@ -35,7 +37,7 @@ public class MedicineStorageService implements IMedicineStorageService {
     @Override
     public void updateMedicineQuantity(MedicineStorage storage) {
         this.iMedicineStorageRepository.updateMedicineQuantity
-                (storage.getMedicineQuantity(),storage.getMedicineStorageId());
+                (storage.getMedicineQuantity(), storage.getMedicineStorageId());
     }
 
     @Override
@@ -53,6 +55,7 @@ public class MedicineStorageService implements IMedicineStorageService {
      * @param medicineId
      */
     @Override
+
     public boolean checkExistInMedicineStorage(String medicineId) {
         MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
         return medicineStorage != null;

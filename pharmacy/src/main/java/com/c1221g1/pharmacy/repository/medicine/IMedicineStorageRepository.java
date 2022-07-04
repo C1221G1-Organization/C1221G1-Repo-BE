@@ -7,6 +7,10 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
@@ -34,7 +38,6 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
             "WHERE (`medicine_storage_id` = ?2) and flag = true ",
             nativeQuery = true)
     void updateMedicineQuantity(Long medicineQuantity, Integer medicineStorageId);
-
 
     /**
      * Created by: TrungTVH

@@ -9,7 +9,6 @@ public class CustomerTypeDto {
     private Integer customerTypeId;
     private String customerTypeName;
     private List<Customer> customerList;
-
     public CustomerTypeDto() {
     }
 

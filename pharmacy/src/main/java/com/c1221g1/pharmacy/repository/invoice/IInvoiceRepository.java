@@ -29,13 +29,13 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
             "from invoice \n" +
             "where invoice_id = :invoice_id and flag = :status ",
             nativeQuery = true)
-    Invoice findByInvoiceId(@Param("invoice_id")String invoiceId, @Param("status") boolean status);
+    Invoice findByInvoiceId(@Param("invoice_id") String invoiceId, @Param("status") boolean status);
 
 
     /**
+     * @return invoice page
      * @author TuanPA
      * Function: find all invoice with all arguments in search field
-     * @return invoice page
      */
     @Query(value = "select invoice.invoice_id as invoiceId, customer.customer_name as customerName, employee.employee_name as employeeName, " +
             "invoice_created_date as invoiceCreatedDate, invoice_create_time as invoiceCreateTime, invoice_note as " +
@@ -70,22 +70,23 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
                                      @Param("endTime") String endTime,
                                      @Param("typeOfInvoiceId") String typeOfInvoiceId,
                                      Pageable pageable);
+
     /**
+     * @return invoice
      * @author TuanPA
      * function: find invoice by id
-     * @return invoice
      */
     @Query(value = "select invoice_id from invoice where invoice_id = :id", nativeQuery = true)
     Invoice findInvoiceById(String id);
 
 
     /**
+     * @return invoice
      * @author TuanPA
      * function: set invoice flag = 0
-     * @return invoice
      */
     @Transactional
     @Modifying
-    @Query(value="UPDATE invoice set flag = 0 where invoice_id = :id ", nativeQuery=true)
+    @Query(value = "UPDATE invoice set flag = 0 where invoice_id = :id ", nativeQuery = true)
     void deleteByFlag(String id);
 }
