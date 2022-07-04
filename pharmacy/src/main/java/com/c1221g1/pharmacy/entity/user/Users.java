@@ -8,8 +8,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-
 @JsonIgnoreProperties({"userRoleList", "customer", "employee"})
+
 public class Users {
     @Id
     @Column(columnDefinition = "VARCHAR(30)")
@@ -75,3 +75,6 @@ public class Users {
         this.employee = employee;
     }
 }
+
+
+

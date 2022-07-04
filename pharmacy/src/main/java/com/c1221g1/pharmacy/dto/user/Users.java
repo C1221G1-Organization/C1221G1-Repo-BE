@@ -6,14 +6,14 @@ import com.c1221g1.pharmacy.entity.user.UserRole;
 
 import java.util.List;
 
-public class UsersDto {
+public class Users {
     private String username;
     private String password;
     private boolean flag;
     private Customer customer;
     private Employee employee;
 
-    public UsersDto() {
+    public Users() {
     }
 
     public String getUsername() {
