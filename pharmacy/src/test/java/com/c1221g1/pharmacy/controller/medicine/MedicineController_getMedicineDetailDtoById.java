@@ -61,8 +61,7 @@ public class MedicineController_getMedicineDetailDtoById {
             .andExpect(jsonPath("$.medicineImage").value("null"))
             .andExpect(jsonPath("$.medicineActiveIngredients").value(
                 "Được tinh chiết từ muối biển tự nhiên, giàu khoáng chất và nguyên tố vi lượng như Ca++, Na+, Cu++, Zn++."))
-            .andExpect(jsonPath("$.medicineRetailSaleProfit").value(5.0))
-            .andExpect(jsonPath("$.medicineImportPrice").value(70000.0))
+            .andExpect(jsonPath("$.medicinePrice").value( 2450000.0))
             .andExpect(jsonPath("$.medicineManufacture").value("1"))
             .andExpect(jsonPath("$.medicineInstruction").value(
                 "Đưa nhẹ vòi phun vào mũi cho vừa khít. Ấn nhanh gọn vòi xịt 3-6 lần vào mỗi bên mũi. Để dung dịch thừa chảy ra ngoài sau đó xì mũi."))
