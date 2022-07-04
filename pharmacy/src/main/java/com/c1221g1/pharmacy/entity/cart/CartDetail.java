@@ -14,10 +14,10 @@ public class CartDetail {
     private Integer cartDetailId;
     private Integer cartDetailQuantity;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
     private Medicine medicine;
     @ManyToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "cartId")
+    @JoinColumn(name = "cart_id", referencedColumnName = "cartId",nullable = false)
     private Cart cart;
 
     public CartDetail() {

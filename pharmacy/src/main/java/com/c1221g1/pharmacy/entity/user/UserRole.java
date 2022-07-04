@@ -8,10 +8,10 @@ public class UserRole {
     private Integer userRoleId;
 
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username",nullable = false)
     private Users users;
     @ManyToOne
-    @JoinColumn(name = "role", referencedColumnName = "roleId")
+    @JoinColumn(name = "role", referencedColumnName = "roleId",nullable = false)
     private Roles roles;
 
     public UserRole() {

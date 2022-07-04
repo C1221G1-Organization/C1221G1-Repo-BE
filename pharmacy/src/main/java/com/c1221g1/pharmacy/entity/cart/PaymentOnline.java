@@ -12,7 +12,7 @@ public class PaymentOnline {
     private String timeCreate;
     private String note;
     @ManyToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "cartId")
+    @JoinColumn(name = "cart_id", referencedColumnName = "cartId",nullable = false)
     private Cart cart;
 
     public PaymentOnline() {

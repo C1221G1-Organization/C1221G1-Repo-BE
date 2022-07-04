@@ -15,10 +15,10 @@ public class MedicinePrescription {
     private Integer medicinePrescriptionTimes;
     private Integer medicinePrescriptionNumberPerTime;
     @ManyToOne
-    @JoinColumn(name = "prescription_id", referencedColumnName = "prescriptionId")
+    @JoinColumn(name = "prescription_id", referencedColumnName = "prescriptionId",nullable = false)
     private Prescription prescription;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
     private Medicine medicine;
 
     public MedicinePrescription() {

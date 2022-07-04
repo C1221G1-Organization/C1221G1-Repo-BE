@@ -8,7 +8,7 @@ public class MedicineStorage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicineStorageId;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
     private Medicine medicine;
     private Long medicineQuantity;
     @Column(columnDefinition = "BIT")

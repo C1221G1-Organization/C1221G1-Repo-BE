@@ -30,7 +30,7 @@ public class Employee {
     private boolean flag;
 
     @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "positionId")
+    @JoinColumn(name = "position_id", referencedColumnName = "positionId",nullable = false)
     private Position position;
 
     @OneToOne

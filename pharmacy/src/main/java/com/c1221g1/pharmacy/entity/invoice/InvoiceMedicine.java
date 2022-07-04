@@ -17,10 +17,10 @@ public class InvoiceMedicine {
     private Integer invoiceMedicineId;
     private Integer invoiceMedicineQuantity;
     @ManyToOne
-    @JoinColumn(name = "invoice_id", referencedColumnName = "invoiceId")
+    @JoinColumn(name = "invoice_id", referencedColumnName = "invoiceId",nullable = false)
     private Invoice invoice;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
     private Medicine medicine;
 
     public Integer getInvoiceMedicineId() {

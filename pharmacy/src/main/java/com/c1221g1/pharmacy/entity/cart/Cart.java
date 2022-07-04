@@ -16,10 +16,10 @@ public class Cart {
     @Column(columnDefinition = "DATE")
     private String dateCreate;
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customerId")
+    @JoinColumn(name = "customer_id", referencedColumnName = "customerId",nullable = false)
     private Customer customer;
     @ManyToOne
-    @JoinColumn(name = "discount_id", referencedColumnName = "discountId")
+    @JoinColumn(name = "discount_id", referencedColumnName = "discountId",nullable = false)
     private Discount discount;
     @OneToMany(mappedBy = "cart")
     private List<PaymentOnline> paymentOnlineList;

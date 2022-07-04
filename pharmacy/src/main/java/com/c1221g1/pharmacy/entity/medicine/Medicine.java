@@ -44,16 +44,16 @@ public class Medicine {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId")
+    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId",nullable = false)
     private MedicineOrigin medicineOrigin;
     @ManyToOne
-    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId")
+    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId",nullable = false)
     private MedicineType medicineType;
     @ManyToOne
-    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId")
+    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId",nullable = false)
     private MedicineUnit medicineUnit;
     @ManyToOne
-    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
+    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId",nullable = false)
     private MedicineConversionUnit medicineConversionUnit;
     @OneToMany(mappedBy = "medicine")
     private List<MedicinePrescription> medicinePrescriptionList;

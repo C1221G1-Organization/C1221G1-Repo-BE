@@ -3,17 +3,12 @@ package com.c1221g1.pharmacy.entity.invoice;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"invoiceMedicineList"})
 public class Invoice {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -23,24 +18,33 @@ public class Invoice {
             strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
     private String invoiceId;
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customerId")
+    @JoinColumn(name = "customer_id", referencedColumnName = "customerId",nullable = false)
     private Customer customer;
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId",nullable = false)
     private Employee employee;
     @ManyToOne
-    @JoinColumn(name = "type_of_invoice_id", referencedColumnName = "typeOfInvoiceId")
+    @JoinColumn(name = "type_of_invoice_id", referencedColumnName = "typeOfInvoiceId",nullable = false)
     private TypeOfInvoice typeOfInvoice;
     @Column(columnDefinition = "LONGTEXT")
     private String invoiceNote;
-    private String invoiceCreateTime;
     private String invoiceCreatedDate;
-    private Double invoiceTotalMoney;
+    private String invoiceCreateTime;
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @JsonBackReference(value = "invoiceMedicineList")
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceMedicine> invoiceMedicineList;
+
+    public Invoice() {
+    }
+    public String getInvoiceCreateTime() {
+        return invoiceCreateTime;
+    }
+
+    public void setInvoiceCreateTime(String invoiceCreateTime) {
+        this.invoiceCreateTime = invoiceCreateTime;
+    }
 
     public String getInvoiceId() {
         return invoiceId;
@@ -104,21 +108,5 @@ public class Invoice {
 
     public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
         this.invoiceMedicineList = invoiceMedicineList;
-    }
-
-    public String getInvoiceCreateTime() {
-        return invoiceCreateTime;
-    }
-
-    public void setInvoiceCreateTime(String invoiceCreateTime) {
-        this.invoiceCreateTime = invoiceCreateTime;
-    }
-
-    public Double getInvoiceTotalMoney() {
-        return invoiceTotalMoney;
-    }
-
-    public void setInvoiceTotalMoney(Double invoiceTotalMoney) {
-        this.invoiceTotalMoney = invoiceTotalMoney;
     }
 }

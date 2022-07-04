@@ -21,24 +21,12 @@ public class InvoiceService implements IInvoiceService {
      * Function: function saveInvoice
      * */
     @Override
-    public void saveInvoice(Invoice invoice) {
+    public Invoice saveInvoice(Invoice invoice) {
         invoice.setInvoiceCreatedDate(LocalDate.now().toString());
         invoice.setInvoiceCreateTime(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
-        this.iInvoiceRepository.save(invoice);
+        invoice.setFlag(true);
+        return this.iInvoiceRepository.save(invoice);
     }
-
-
-
-    /*
-     * Created by DaLQA
-     * Time: 7:30 PM 29/06/2022
-     * Function: function getNewInvoice
-     * */
-    @Override
-    public Invoice getNewInvoice() {
-        return this.iInvoiceRepository.getNewInvoice();
-    }
-
 
     /*
      * Created by TrinhNN

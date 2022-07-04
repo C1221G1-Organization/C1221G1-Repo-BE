@@ -25,10 +25,10 @@ public class ImportInvoice {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId")
+    @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId",nullable = false)
     private Supplier supplier;
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId",nullable = false)
     private Employee employee;
     @OneToMany(mappedBy = "importInvoice")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
