@@ -45,10 +45,10 @@ public class MedicineController_getListMedicineBestSeller {
                         .get("/api/manager-medicine/medicines/best-seller"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[1].medicineName").value("Cam"))
-                .andExpect(jsonPath("$[1].medicinePrice").value("1385.0289"))
-                .andExpect(jsonPath("$[1].soldQuantity").value(16))
-                .andExpect(jsonPath("$[1].medicineTypeName").hasJsonPath())
-                .andExpect(jsonPath("$[1].medicineImage").value("mana"));
+                .andExpect(jsonPath("$[9].medicineName").value("Agimoti Agimexpharm (60ml)"))
+                .andExpect(jsonPath("$[9].medicinePrice").value("37500.0"))
+                .andExpect(jsonPath("$[9].soldQuantity").value(2))
+                .andExpect(jsonPath("$[9].medicineTypeName").hasJsonPath())
+                .andExpect(jsonPath("$[9].medicineImage").value("https://data-service.pharmacity.io/pmc-upload-media/production/pmc-ecm-core/__sized__/products/P17147_1_l-thumbnail-255x255.webp"));
     }
 }

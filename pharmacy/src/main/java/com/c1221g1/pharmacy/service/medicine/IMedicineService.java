@@ -34,5 +34,5 @@ public interface IMedicineService {
         Function: Get All Medicine And Search by medicine_name and medicine_type
     */
 
-    Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId);
+    Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId, String sort);
 }

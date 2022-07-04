@@ -73,4 +73,9 @@ public class SupplierService implements ISupplierService {
 
         return iSupplierRepository.getAllSupplier("%" + searchId + "%", "%" + searchName + "%", "%" + searchAddress + "%", "%" + searchPhone + "%", pageable);
     }
+
+    @Override
+    public Supplier findByIdDEtail(String id) {
+        return iSupplierRepository.findByIdDetailSupplier(id);
+    }
 }

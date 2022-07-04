@@ -4,24 +4,21 @@ import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
 import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
 import com.c1221g1.pharmacy.entity.medicine.MedicineType;
 import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
-import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.*;
 
 public class MedicineDto {
     private String medicineId;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z0-9 ]+$")
-    @Length(min = 3, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineName;
 
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z0-9 ]+$")
-    @Length(min = 3, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineActiveIngredients;
 
     @NotNull
     @Positive
-    @Max(999999999)
     private Double medicineImportPrice;
 
     @NotNull
@@ -50,22 +47,21 @@ public class MedicineDto {
     private Integer medicineConversionRate;
 
     @NotEmpty
-    @Length(min = 2, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineManufacture;
     @NotEmpty
-    @Length(min = 2, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineUsage;
     @NotEmpty
-    @Length(min = 2, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineInstruction;
     @NotEmpty
-    @Length(min = 2, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineAgeApproved;
     @NotEmpty
-    @Length(min = 2, max = 50)
     private String medicineImage;
     @NotEmpty
-    @Length(min = 2, max = 50)
+    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineDescription;
     private boolean flag;
     @NotNull
@@ -81,22 +77,20 @@ public class MedicineDto {
     }
 
     public MedicineDto(String medicineId,
-                       @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$")
-                        @Length(min = 3, max = 50) String medicineName,
-                       @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$")
-                       @Length(min = 3, max = 50) String medicineActiveIngredients,
-                       @NotNull @Positive @Max(999999999) Double medicineImportPrice,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineName,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineActiveIngredients,
+                       @NotNull @Positive Double medicineImportPrice,
                        @NotNull @Positive @Max(100) Double medicineDiscount,
                        @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
                        @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
                        @NotNull @Positive @Max(100) Double medicineTax,
                        @NotNull @Positive @Max(100) Integer medicineConversionRate,
-                       @NotEmpty @Length(min = 2, max = 50) String medicineManufacture,
-                       @NotEmpty @Length(min = 2, max = 50) String medicineUsage,
-                       @NotEmpty @Length(min = 2, max = 50) String medicineInstruction,
-                       @NotEmpty @Length(min = 2, max = 50) String medicineAgeApproved,
-                       @NotEmpty @Length(min = 2, max = 50) String medicineImage,
-                       @NotEmpty @Length(min = 2, max = 50) String medicineDescription,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineManufacture,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineUsage,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineInstruction,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineAgeApproved,
+                       @NotEmpty String medicineImage,
+                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineDescription,
                        boolean flag,
                        @NotNull MedicineOrigin medicineOrigin,
                        @NotNull MedicineType medicineType,
@@ -147,6 +141,7 @@ public class MedicineDto {
     public void setMedicineActiveIngredients(String medicineActiveIngredients) {
         this.medicineActiveIngredients = medicineActiveIngredients;
     }
+
     public Double getMedicineImportPrice() {
         return medicineImportPrice;
     }
