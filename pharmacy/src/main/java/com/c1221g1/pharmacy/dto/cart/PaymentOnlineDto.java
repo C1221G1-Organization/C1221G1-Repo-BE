@@ -2,11 +2,13 @@ package com.c1221g1.pharmacy.dto.cart;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
 
+import javax.validation.constraints.NotNull;
+
 public class PaymentOnlineDto {
     private Integer paymentId;
-    private Float discount;
     private String timeCreate;
     private String note;
+    @NotNull(message = "cart is not allowed null")
     private Cart cart;
 
     public PaymentOnlineDto() {
@@ -18,14 +20,6 @@ public class PaymentOnlineDto {
 
     public void setPaymentId(Integer paymentId) {
         this.paymentId = paymentId;
-    }
-
-    public Float getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Float discount) {
-        this.discount = discount;
     }
 
     public String getTimeCreate() {
