@@ -100,11 +100,11 @@ public class MedicineService implements IMedicineService {
     */
 
     @Override
-    public Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId) {
+    public Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId, String sort) {
         if (typeId != null) {
-            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId);
+            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId,sort);
         }
-        return medicineRepository.getAllMedicineByName(pageable, name);
+        return medicineRepository.getAllMedicineByName(pageable, name,sort);
     }
 }
 

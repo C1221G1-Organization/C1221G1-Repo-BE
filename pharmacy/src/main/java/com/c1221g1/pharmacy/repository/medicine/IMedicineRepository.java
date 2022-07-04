@@ -99,7 +99,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     "from " +
                     "(select m.medicine_id as medicineId," +
                     "m.medicine_name as medicineName," +
-                    "(m.medicine_import_price * m.medicine_retail_sale_profit) as medicinePrice," +
+                    "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) as medicinePrice," +
                     "m.medicine_image as medicineImage," +
                     "sum(cd.cart_detail_quantity) as totalQuantity " +
                     "from medicine m\n" +
@@ -111,7 +111,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     "union " +
                     "select m.medicine_id as medicineId," +
                     "       m.medicine_name as medicineName," +
-                    "       (m.medicine_import_price * m.medicine_retail_sale_profit) as medicinePrice," +
+                    "       (m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) as medicinePrice," +
                     "       m.medicine_image as medicineImage," +
                     "       sum(im.invoice_medicine_quantity) as totalQuantity " +
                     "from medicine m\n" +
@@ -133,24 +133,26 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
 
     @Query(value =
             "select m.medicine_id as medicineId, m.medicine_name as medicineName,"
-                    + "(m.medicine_import_price * m.medicine_retail_sale_profit) as medicinePrice,"
+                    + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) as medicinePrice,"
                     + "m.medicine_manufacture as medicineManufacture, "
                     + "m.medicine_image as medicineImage,"
                     + "mt.medicine_type_name as medicineTypeName "
                     + "from medicine m inner join medicine_origin mo on m.medicine_origin_id = mo.medicine_origin_id "
                     + "inner join medicine_type mt on m.medicine_type_id = mt.medicine_type_id"
-                    + " where m.medicine_name like concat('%',:name,'%') and m.medicine_type_id = :typeId and m.flag=1",
+                    + " where m.medicine_name like concat('%',:name,'%') and m.medicine_type_id = :typeId and m.flag=1"
+                    + " order by case when :sort = 'priceDesc' then medicinePrice end desc, case when :sort = 'priceAsc' then medicinePrice end asc, case when :sort = 'idDesc' then medicineId end desc",
             countQuery =
                     "select m.medicine_id as medicineId, m.medicine_name as medicineName,"
-                            + "(m.medicine_import_price * m.medicine_retail_sale_profit) as medicinePrice,"
+                            + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) as medicinePrice,"
                             + "m.medicine_manufacture as medicineManufacture, "
                             + "m.medicine_image as medicineImage,"
                             + "mt.medicine_type_name as medicineTypeName "
                             + "from medicine m inner join medicine_origin mo on m.medicine_origin_id = mo.medicine_origin_id "
                             + "inner join medicine_type mt on m.medicine_type_id = mt.medicine_type_id"
-                            + " where m.medicine_name like concat('%',:name,'%') and m.medicine_type_id = :typeId and m.flag=1",
+                            + " where m.medicine_name like concat('%',:name,'%') and m.medicine_type_id = :typeId and m.flag=1"
+                            + " order by case when :sort = 'priceDesc' then medicinePrice end desc, case when :sort = 'priceAsc' then medicinePrice end asc, case when :sort = 'idDesc' then medicineId end desc",
             nativeQuery = true)
-    Page<IMedicineDto> getAllMedicineByNameAndTypeId(Pageable pageable, @Param("name") String name, @Param("typeId") Integer typeId);
+    Page<IMedicineDto> getAllMedicineByNameAndTypeId(Pageable pageable, @Param("name") String name, @Param("typeId") Integer typeId, @Param("sort") String sort);
 
     /*
         Created by AnP
@@ -160,22 +162,24 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
 
     @Query(value =
             "select m.medicine_id as medicineId, m.medicine_name as medicineName,"
-                    + "(m.medicine_import_price * m.medicine_retail_sale_profit) as medicinePrice,"
+                    + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) as medicinePrice,"
                     + "m.medicine_manufacture as medicineManufacture, "
                     + "m.medicine_image as medicineImage,"
                     + "mt.medicine_type_name as medicineTypeName "
                     + "from medicine m inner join medicine_origin mo on m.medicine_origin_id = mo.medicine_origin_id "
                     + "inner join medicine_type mt on m.medicine_type_id = mt.medicine_type_id"
-                    + " where m.medicine_name like concat('%',:name,'%') and m.flag=1",
+                    + " where m.medicine_name like concat('%',:name,'%') and m.flag=1"
+                    + " order by case when :sort = 'priceDesc' then medicinePrice end desc, case when :sort = 'priceAsc' then medicinePrice end asc, case when :sort = 'idDesc' then medicineId end desc",
             countQuery =
                     "select m.medicine_id as medicineId, m.medicine_name as medicineName,"
-                            + "(m.medicine_import_price * m.medicine_retail_sale_profit) as medicinePrice,"
+                            + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) as medicinePrice,"
                             + "m.medicine_manufacture as medicineManufacture, "
                             + "m.medicine_image as medicineImage,"
                             + "mt.medicine_type_name as medicineTypeName "
                             + "from medicine m inner join medicine_origin mo on m.medicine_origin_id = mo.medicine_origin_id "
                             + "inner join medicine_type mt on m.medicine_type_id = mt.medicine_type_id"
-                            + " where m.medicine_name like concat('%',:name,'%') and m.flag=1",
+                            + " where m.medicine_name like concat('%',:name,'%') and m.flag=1"
+                            + " order by case when :sort = 'priceDesc' then medicinePrice end desc, case when :sort = 'priceAsc' then medicinePrice end asc, case when :sort = 'idDesc' then medicineId end desc",
             nativeQuery = true)
-    Page<IMedicineDto> getAllMedicineByName(Pageable pageable, @Param("name") String name);
+    Page<IMedicineDto> getAllMedicineByName(Pageable pageable, @Param("name") String name, @Param("sort") String sort);
 }

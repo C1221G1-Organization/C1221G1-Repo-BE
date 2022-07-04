@@ -192,19 +192,11 @@ public class MedicineController {
                                                                       @RequestParam Optional<Integer> typeId) {
         String nameVal = name.orElse("");
         Integer typeIdVal = typeId.orElse(null);
-        String sortVal = sort.orElse("");
+        String sortVal = sort.orElse("idDesc");
         String dirVal = dir.orElse("");
         Pageable pageable;
-        if ("".equals(sortVal)) {
-            pageable = PageRequest.of(page, pageSize);
-        } else {
-            if (dirVal.equals("asc")) {
-                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
-            } else {
-                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
-            }
-        }
-        Page<IMedicineDto> medicineDtoPage = medicineService.getListAndSearch(pageable, nameVal, typeIdVal);
+        pageable = PageRequest.of(page, pageSize);
+        Page<IMedicineDto> medicineDtoPage = medicineService.getListAndSearch(pageable, nameVal, typeIdVal,sortVal);
         if (!medicineDtoPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
