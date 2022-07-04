@@ -1,70 +1,24 @@
 package com.c1221g1.pharmacy.dto.invoice;
 
-import com.c1221g1.pharmacy.entity.customer.Customer;
-import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
-import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
-
 import java.util.List;
 
 public class InvoiceDto {
     private String invoiceId;
-    private Customer customer;
-    private Employee employee;
-    private TypeOfInvoice typeOfInvoice;
+    private String customerId;
+    private String employeeId;
+    private Integer typeOfInvoiceId;
     private String invoiceNote;
-    private String invoiceCreatedDate;
-    /*
-    * Created by DaLQA
-    * Time: 4:12 PM 29/06/2022
-    * Function: create new property invoiceCreateTime
-    * */
-    private String invoiceCreateTime;
-    private boolean flag;
-    private List<InvoiceMedicine> invoiceMedicineList;
-
+    private List<InvoiceMedicineDto> invoiceMedicineList;
 
     public InvoiceDto() {
     }
 
-    public String getInvoiceCreateTime() {
-        return invoiceCreateTime;
+    public Integer getTypeOfInvoiceId() {
+        return typeOfInvoiceId;
     }
 
-    public void setInvoiceCreateTime(String invoiceCreateTime) {
-        this.invoiceCreateTime = invoiceCreateTime;
-    }
-
-    public String getInvoiceId() {
-        return invoiceId;
-    }
-
-    public void setInvoiceId(String invoiceId) {
-        this.invoiceId = invoiceId;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public TypeOfInvoice getTypeOfInvoice() {
-        return typeOfInvoice;
-    }
-
-    public void setTypeOfInvoice(TypeOfInvoice typeOfInvoice) {
-        this.typeOfInvoice = typeOfInvoice;
+    public void setTypeOfInvoiceId(Integer typeOfInvoiceId) {
+        this.typeOfInvoiceId = typeOfInvoiceId;
     }
 
     public String getInvoiceNote() {
@@ -75,27 +29,35 @@ public class InvoiceDto {
         this.invoiceNote = invoiceNote;
     }
 
-    public String getInvoiceCreatedDate() {
-        return invoiceCreatedDate;
+    public String getInvoiceId() {
+        return invoiceId;
     }
 
-    public void setInvoiceCreatedDate(String invoiceCreatedDate) {
-        this.invoiceCreatedDate = invoiceCreatedDate;
+    public void setInvoiceId(String invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
-    public boolean isFlag() {
-        return flag;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setFlag(boolean flag) {
-        this.flag = flag;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public List<InvoiceMedicine> getInvoiceMedicineList() {
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public List<InvoiceMedicineDto> getInvoiceMedicineList() {
         return invoiceMedicineList;
     }
 
-    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
+    public void setInvoiceMedicineList(List<InvoiceMedicineDto> invoiceMedicineList) {
         this.invoiceMedicineList = invoiceMedicineList;
     }
 }

@@ -1,9 +1,16 @@
 package com.c1221g1.pharmacy.entity.invoice;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"invoiceList"})
 public class TypeOfInvoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,9 +18,6 @@ public class TypeOfInvoice {
     private String typeOfInvoiceName;
     @OneToMany(mappedBy = "typeOfInvoice")
     private List<Invoice> invoiceList;
-
-    public TypeOfInvoice() {
-    }
 
     public Integer getTypeOfInvoiceId() {
         return typeOfInvoiceId;
