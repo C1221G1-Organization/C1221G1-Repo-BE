@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.controller.prescription;
 
+import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
@@ -7,7 +8,9 @@ import org.omg.CosNaming.NamingContextPackage.NotEmpty;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,22 +37,57 @@ public class PrescriptionController {
      */
     @GetMapping("")
     public ResponseEntity<Page<Prescription>> getPageAndSearchPrescription(@RequestParam Optional<String> id,
-                                                                  @RequestParam Optional<String> names,
-                                                                  @RequestParam Optional<String> target,
-                                                                  @RequestParam Optional<String> symptom,
-                                                                  @PageableDefault(value = 3) Pageable pageable) {
+                                                                           @RequestParam Optional<String> names,
+                                                                           @RequestParam Optional<String> target,
+                                                                           @RequestParam Optional<String> symptom,
+                                                                           @RequestParam(defaultValue = "0") int page,
+                                                                           @RequestParam(defaultValue = "5") Integer pageSize,
+                                                                           @RequestParam Optional<String> sort,
+                                                                           @RequestParam Optional<String> dir) {
+        Pageable pageable;
+        String sortVal = sort.orElse("");
+        String dirVal = dir.orElse("");
+        if ("".equals(sortVal)) {
+            pageable = PageRequest.of(page, pageSize);
+        } else {
+            if (dirVal.equals("desc")) {
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
+            } else if (dirVal.equals("asc")){
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
+            } else {
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
+            }
+        }
+
         String idVal = id.orElse("");
         String nameVal = names.orElse("");
         String targetVal = target.orElse("");
         String symptomVal = symptom.orElse("");
 
-        Page<Prescription> prescriptionPage = this.prescriptionService.findAllPageAndSearch(idVal, nameVal, targetVal, symptomVal, pageable);
+        Page<Prescription> prescriptionPage = this.prescriptionService.findAllPageAndSearch(pageable, idVal, nameVal, targetVal, symptomVal);
 
         if (!prescriptionPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(prescriptionPage, HttpStatus.OK);
+    }
+
+    /**
+     * HienTLD
+     * Chi tiết toa thuốc
+     * 16:30 29/06/2022
+     */
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<IMedicinePrescriptionDto> getInfoPrescription(@PathVariable String id) {
+
+        IMedicinePrescriptionDto medicinePrescriptionDto = this.prescriptionService.getPrescriptionById(id);
+
+        if (medicinePrescriptionDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(medicinePrescriptionDto, HttpStatus.OK);
     }
 
     /**
@@ -65,6 +103,8 @@ public class PrescriptionController {
         }
 
         Prescription prescription = new Prescription();
+
+        prescriptionDto.setFlag(true);
 
         BeanUtils.copyProperties(prescriptionDto, prescription);
 
@@ -100,7 +140,7 @@ public class PrescriptionController {
                                                            @PathVariable String id) throws NotEmpty {
 
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldErrors() ,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
         Prescription prescription = new Prescription();
 
