@@ -187,7 +187,6 @@ public class MedicineDto {
         this.medicineTax = medicineTax;
     }
 
-
     public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
