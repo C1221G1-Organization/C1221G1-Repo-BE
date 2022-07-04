@@ -3,7 +3,6 @@ package com.c1221g1.pharmacy.controller;
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_cartDetailQuantity_19() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(null);
+        cartDetailDto.setQuantity(null);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
@@ -65,7 +64,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_cartDetailQuantity_22() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(-1);
+        cartDetailDto.setQuantity(-1);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
@@ -94,7 +93,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_cartDetailQuantity_23() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(3000);
+        cartDetailDto.setQuantity(3000);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
@@ -123,7 +122,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_medicine_19() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
         Medicine medicine = null;
         Cart cart = new Cart();
         cart.setCartId(1);
@@ -148,7 +147,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_medicine_20() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
         Medicine medicine = new Medicine();
         medicine.setMedicineId("");
         cartDetailDto.setMedicine(medicine);
@@ -176,7 +175,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_medicine_21() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
         Medicine medicine = new Medicine();
         medicine.setMedicineId("ABD-0001");
         cartDetailDto.setMedicine(medicine);
@@ -204,7 +203,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_cart_19() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
@@ -231,7 +230,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_cart_22() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
@@ -260,7 +259,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_cart_23() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
@@ -289,7 +288,7 @@ public class CartController_updateItem {
     @Test
     public void updateItem_24() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
-        cartDetailDto.setCartDetailQuantity(1);
+        cartDetailDto.setQuantity(1);
 
         Medicine medicine = new Medicine();
         medicine.setMedicineId("T-0001");
