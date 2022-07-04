@@ -1,13 +1,18 @@
 package com.c1221g1.pharmacy.service.customer;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
-
 public interface ICustomerService {
+    /*
+     * Created by DaLQA
+     * Time: 7:30 PM 29/06/2022
+     * Function: function getRetailCustomer
+     * */
+    Customer getRetailCustomer();
+
     Page<Customer> findAllCustomer(Pageable pageable,
                                    String customerId,
                                    String customerName,
@@ -43,3 +48,4 @@ public interface ICustomerService {
      */
     void updateCustomer(Customer customer);
 }
+

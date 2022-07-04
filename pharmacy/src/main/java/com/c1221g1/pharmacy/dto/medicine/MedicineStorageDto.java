@@ -48,3 +48,4 @@ public class MedicineStorageDto implements Validator {
         MedicineStorageDto medicineStorageDto = (MedicineStorageDto) target;
     }
 }
+

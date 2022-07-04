@@ -1,4 +1,6 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
+
+import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
 import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +21,16 @@ public class MedicineService implements IMedicineService {
     @Autowired
     private IMedicineRepository medicineRepository;
 
+    /*
+     * Created by DaLQA
+     * Time: 04/07/2022
+     * Function: function create getListMedicineSale
+     * */
+    @Override
+    public List<MedicineSale> getListMedicineSale() {
+        return this.medicineRepository.getListMedicineSale();
+    }
+
     /**
      * Created by MyC
      * Time: 23:00 29/06/2022
@@ -26,7 +39,7 @@ public class MedicineService implements IMedicineService {
 
     @Override
     public List<MedicineLookUpDto> findAllMedicine(String columName, String condition, String keyword) {
-        return medicineRepository.getAllMedicine(columName,condition,keyword);
+        return medicineRepository.getAllMedicine(columName, condition, keyword);
     }
 
     /**
@@ -122,9 +135,9 @@ public class MedicineService implements IMedicineService {
     @Override
     public Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId, String sort) {
         if (typeId != null) {
-            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId,sort);
+            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId, sort);
         }
-        return medicineRepository.getAllMedicineByName(pageable, name,sort);
+        return medicineRepository.getAllMedicineByName(pageable, name, sort);
     }
-}
 
+}

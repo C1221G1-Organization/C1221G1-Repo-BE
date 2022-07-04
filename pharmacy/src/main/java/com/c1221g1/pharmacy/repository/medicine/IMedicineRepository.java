@@ -1,4 +1,6 @@
 package com.c1221g1.pharmacy.repository.medicine;
+
+import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
@@ -14,7 +16,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IMedicineRepository extends JpaRepository<Medicine, String> {
-
+    /**
+     * Created by DaLQA
+     * Time: 23:00 30/06/2022
+     * Function: get list getListMedicineSale
+     */
+    @Query(value = "select  medicine_id as medicineId" +
+            ", medicine_name as medicineName," +
+            "((medicine_import_price + " +
+            "(medicine_import_price*medicine_retail_sale_profit/100))/medicine_conversion_rate) " +
+            "as retailPrice from medicine"
+            , nativeQuery = true)
+    List<MedicineSale> getListMedicineSale();
     /**
      * Created by MyC
      * Time: 23:00 30/06/2022
@@ -69,7 +82,6 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             + "medicine_image,medicine_description,medicine_origin_id,medicine_type_id,medicine_unit_id," + "medicine_conversion_unit_id,flag "
             + "from medicine where flag = 1 and medicine_id =:id ", nativeQuery = true)
     Optional<Medicine> findMedicineById(@Param("id") String id);
-
     /**
      * Creator: NghiaNTT Time: 29/02/2022
      *

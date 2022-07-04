@@ -25,7 +25,6 @@ public class Customer {
     private String customerNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
     private Users customerUsername;
@@ -125,4 +124,6 @@ public class Customer {
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
     }
+
 }
+

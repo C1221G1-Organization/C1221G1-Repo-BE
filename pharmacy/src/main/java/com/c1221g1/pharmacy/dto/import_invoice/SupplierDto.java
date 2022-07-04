@@ -83,6 +83,4 @@ public class SupplierDto {
     public boolean isFlag() {
         return flag;
     }
-
 }
-

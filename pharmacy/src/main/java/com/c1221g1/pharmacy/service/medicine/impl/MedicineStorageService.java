@@ -8,6 +8,7 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +18,32 @@ public class MedicineStorageService implements IMedicineStorageService {
 
     @Autowired
     private IMedicineService iMedicineService;
+
+    /*
+     * Created by DaLQA
+     * Time: 11:49 AM 30/06/2022
+     * Function: function getStorageByMedicineId
+     * */
+    @Override
+    public Optional<MedicineStorage> getStorageByIdMedicine(String id) {
+        return this.iMedicineStorageRepository.getStorageByMedicineId(id);
+    }
+
+    /*
+     * Created by DaLQA
+     * Time: 11:49 AM 30/06/2022
+     * Function: function updateMedicineQuantity
+     * */
+    @Override
+    public void updateMedicineQuantity(MedicineStorage storage) {
+        this.iMedicineStorageRepository.updateMedicineQuantity
+                (storage.getMedicineQuantity(), storage.getMedicineStorageId());
+    }
+
+    @Override
+    public List<MedicineStorage> getAll() {
+        return iMedicineStorageRepository.findAll();
+    }
 
     /**
      * Created by: TrungTVH
@@ -28,6 +55,7 @@ public class MedicineStorageService implements IMedicineStorageService {
      * @param medicineId
      */
     @Override
+
     public boolean checkExistInMedicineStorage(String medicineId) {
         MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
         return medicineStorage != null;
@@ -99,5 +127,4 @@ public class MedicineStorageService implements IMedicineStorageService {
                 return false;
         }
     }
-
 }

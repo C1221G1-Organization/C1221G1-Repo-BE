@@ -24,6 +24,7 @@ public class Prescription {
     private String prescriptionNote;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
+
     @OneToMany(mappedBy = "prescription")
     private List<MedicinePrescription> medicinePrescriptionList;
 
