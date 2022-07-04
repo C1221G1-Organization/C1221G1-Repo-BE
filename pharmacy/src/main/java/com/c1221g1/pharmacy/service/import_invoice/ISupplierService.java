@@ -18,4 +18,5 @@ public interface ISupplierService {
     Page<Supplier> findAll(String searchId, String searchName, String searchAddress, String searchPhone, Pageable pageable);
 
 
+    Supplier findByIdDEtail(String id);
 }

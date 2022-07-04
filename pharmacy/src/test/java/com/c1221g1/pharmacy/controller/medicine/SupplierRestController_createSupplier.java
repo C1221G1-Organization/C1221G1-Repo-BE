@@ -1,4 +1,5 @@
-package com.c1221g1.pharmacy.controller.controllerSupplier;
+package com.c1221g1.pharmacy.controller.medicine;
+
 
 import com.c1221g1.pharmacy.dto.import_invoice.SupplierDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,8 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class SupplierRestController_editSupplier {
-
+public class SupplierRestController_createSupplier {
 
     @Autowired
     private MockMvc mockMvc;
@@ -31,7 +31,7 @@ public class SupplierRestController_editSupplier {
      * 16h10 30/06/2022
      */
     @Test
-    public void editSupplier_name_19() throws Exception {
+    public void createSupplier_name_13() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         // test this
@@ -42,7 +42,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -56,7 +56,7 @@ public class SupplierRestController_editSupplier {
      * 16h10 30/06/2022
      */
     @Test
-    public void editSupplier_address_19() throws Exception {
+    public void createSupplier_address_13() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An ");
@@ -67,7 +67,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -80,7 +80,7 @@ public class SupplierRestController_editSupplier {
      * 16h10 30/06/2022
      */
     @Test
-    public void editSupplier_email_19() throws Exception {
+    public void createSupplier_email_13() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An ");
@@ -91,7 +91,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -105,7 +105,7 @@ public class SupplierRestController_editSupplier {
      * 16h10 30/06/2022
      */
     @Test
-    public void editSupplier_phone_19() throws Exception {
+    public void createSupplier_phone_13() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
@@ -116,7 +116,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -128,10 +128,10 @@ public class SupplierRestController_editSupplier {
      * test note supplier == null
      * 16h10 30/06/2022
      * ( Because the note is not valid,
-     *   it's okay to have it or not )
+     * it's okay to have it or not )
      */
     @Test
-    public void editSupplier_note_19() throws Exception {
+    public void createSupplier_note_13() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
@@ -142,7 +142,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote(null);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -157,7 +157,7 @@ public class SupplierRestController_editSupplier {
      * 16h20 30/06/2022
      */
     @Test
-    public void editSupplier_name_20() throws Exception {
+    public void createSupplier_name_14() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         // test this
@@ -168,7 +168,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -181,7 +181,7 @@ public class SupplierRestController_editSupplier {
      * 16h32 30/06/2022
      */
     @Test
-    public void editSupplier_address_20() throws Exception {
+    public void createSupplier_address_14() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Minh Châu ");
@@ -192,7 +192,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -205,7 +205,7 @@ public class SupplierRestController_editSupplier {
      * 16h48 30/06/2022
      */
     @Test
-    public void editSupplier_email_20() throws Exception {
+    public void createSupplier_email_14() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
@@ -216,7 +216,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -227,10 +227,10 @@ public class SupplierRestController_editSupplier {
     /**
      * trần ngọc luật
      * test phone supplier == ""
-     * 16h56 30/06/2022
+     * 18h56 30/06/2022
      */
     @Test
-    public void editSupplier_phone_20() throws Exception {
+    public void createSupplier_phone_14 () throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
@@ -241,7 +241,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -252,10 +252,10 @@ public class SupplierRestController_editSupplier {
     /**
      * trần ngọc luật
      * test phone regexp Malformed  !
-     * 17h11 30/06/2022
+     * 18h11 30/06/2022
      */
     @Test
-    public void editSupplier_phone_21() throws Exception {
+    public void createSupplier_phone_15() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
@@ -266,7 +266,7 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -276,10 +276,10 @@ public class SupplierRestController_editSupplier {
     /**
      * trần ngọc luật
      * test email regexp Malformed!
-     * 17h20 30/06/2022
+     * 18h20 30/06/2022
      */
     @Test
-    public void editSupplier_email_21() throws Exception {
+    public void createSupplier_email_15() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
@@ -290,7 +290,55 @@ public class SupplierRestController_editSupplier {
         supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
+                        .content(this.objectMapper.writeValueAsString(supplierDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * trần ngọc luật
+     * test all valid!
+     * 19h57 30/06/2022
+     */
+    @Test
+    public void createSupplier_valid_18() throws Exception {
+
+        SupplierDto supplierDto = new SupplierDto();
+        supplierDto.setSupplierName("Trần Bình Giảng ");
+        supplierDto.setSupplierAddress("63 Phạm Vinh , Núi Thành Quảng Nam ");
+        supplierDto.setSupplierEmail("tranluat@gmail.com");
+        supplierDto.setSupplierPhone("0333167149");
+        supplierDto.setNote("Tốt");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/manager-medicine/medicines/supplier/")
+                        .content(this.objectMapper.writeValueAsString(supplierDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+
+    /**
+     * trần ngọc luật
+     * test phone minlenght  Malformed!
+     * 16h20 1/7/2022
+     */
+    @Test
+    public void createSupplier_minlenght_16() throws Exception {
+
+        SupplierDto supplierDto = new SupplierDto();
+        supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
+        supplierDto.setSupplierAddress("63 Phạm Vinh , Cẩm Lệ , Đà Nẵng");
+        // test this
+        supplierDto.setSupplierEmail("luahxzx   t@gail.com");
+        supplierDto.setSupplierPhone("0333");
+        supplierDto.setNote("hòa nhã");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -300,27 +348,51 @@ public class SupplierRestController_editSupplier {
 
     /**
      * trần ngọc luật
-     * test all valid!
-     * 19h57 30/06/2022
+     * test phone minlenght  Malformed!
+     * 16h20 1/7/2022
      */
     @Test
-    public void editSupplier_valid_24() throws Exception {
+    public void createSupplier_minLenghtName_16() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
-
-
-        supplierDto.setSupplierName(" Trần Ngọc Linh ");
-        supplierDto.setSupplierAddress("Tam Tiến Núi Thành Quảng Nam ");
-        supplierDto.setSupplierEmail("luatzxcv@gmail.com");
+        // test this
+        supplierDto.setSupplierName("Nha");
+        supplierDto.setSupplierAddress("63 Phạm Vinh , Cẩm Lệ , Đà Nẵng");
+        supplierDto.setSupplierEmail("luahxzxt@gail.com");
         supplierDto.setSupplierPhone("0333167149");
-        supplierDto.setNote("Thân Thiện");
+        supplierDto.setNote("hòa nhã");
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-medicine/medicines/supplier/update/{id}", "NCC-00018")
+                        .post("/api/manager-medicine/medicines/supplier")
                         .content(this.objectMapper.writeValueAsString(supplierDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is4xxClientError());
+    }
+
+
+    /**
+     * trần ngọc luật
+     * test phone maxlenght  Malformed!
+     * 16h20 1/7/2022
+     */
+    @Test
+    public void createSupplier_maxlenght_17() throws Exception {
+
+        SupplierDto supplierDto = new SupplierDto();
+        supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");
+        supplierDto.setSupplierAddress("63 Phạm Vinh , Cẩm Lệ , Đà Nẵng");
+        supplierDto.setSupplierEmail("iugwiugw@gmail.com");
+        // test this
+        supplierDto.setSupplierPhone("03331544968467149");
+        supplierDto.setNote("hòa nhã");
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/api/manager-medicine/medicines/supplier")
+                        .content(this.objectMapper.writeValueAsString(supplierDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 
 
