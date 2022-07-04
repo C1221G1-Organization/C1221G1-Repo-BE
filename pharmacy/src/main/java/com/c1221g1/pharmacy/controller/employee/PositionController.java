@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/api/manager-position/positions")
+@RequestMapping(value = "api/manager-position/positions")
 public class PositionController {
     @Autowired
     private IPositionService iPositionService;
