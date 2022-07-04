@@ -6,17 +6,17 @@ import com.c1221g1.pharmacy.service.customer.ICustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
-
 
 @RestController
 @CrossOrigin()
@@ -40,9 +40,10 @@ public class CustomerController {
             @RequestParam Optional<String> customerName,
             @RequestParam Optional<String> customerAddress,
             @RequestParam Optional<String> customerPhone,
-            @RequestParam Optional<String> soft,
+            @RequestParam Optional<String> sort,
+            @RequestParam Optional<String> dir,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "3") int size,
+            @RequestParam(defaultValue = "5") int size,
             Pageable pageable) {
 
         String valueCustomerId = customerId.orElse("");
@@ -50,7 +51,18 @@ public class CustomerController {
         String valueCustomerName = customerName.orElse("");
         String valueCustomerAddress = customerAddress.orElse("");
         String valueCustomerPhone = customerPhone.orElse("");
-        String valueSort = soft.orElse("");
+        String valueSort = sort.orElse("");
+        String dirVal = dir.orElse("");
+        System.out.println(customerId);
+        if ("".equals(valueSort)) {
+            pageable = PageRequest.of(page, size);
+        } else {
+            if (dirVal.equals("asc")) {
+                pageable = PageRequest.of(page, size, Sort.by(valueSort).ascending());
+            } else {
+                pageable = PageRequest.of(page, size, Sort.by(valueSort).descending());
+            }
+        }
 
         Page<Customer> customerPage = iCustomerService.findAllCustomer(pageable, valueCustomerId, valueCustomerName, valueCustomerAddress, valueCustomerPhone, valueCustomerType);
 
@@ -137,3 +149,4 @@ public class CustomerController {
     }
 
 }
+
