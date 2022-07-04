@@ -1,13 +1,18 @@
 package com.c1221g1.pharmacy.entity.cart;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 public class PaymentOnline {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer paymentId;
-    private Float discount;
+    @Column(columnDefinition = "VARCHAR(20)")
+    @GeneratedValue(generator = "payment-id-generator")
+    @GenericGenerator(name = "payment-id-generator",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "HDO"),
+            strategy = "com.c1221g1.pharmacy.common.IdentityCodeGenerator")
+    private String paymentId;
     @JoinColumn(columnDefinition = "DATETIME")
     private String timeCreate;
     private String note;
@@ -18,20 +23,12 @@ public class PaymentOnline {
     public PaymentOnline() {
     }
 
-    public Integer getPaymentId() {
+    public String getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(Integer paymentId) {
+    public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
-    }
-
-    public Float getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Float discount) {
-        this.discount = discount;
     }
 
     public String getTimeCreate() {
@@ -57,4 +54,6 @@ public class PaymentOnline {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
 }
+

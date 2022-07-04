@@ -2,16 +2,16 @@ package com.c1221g1.pharmacy.entity.user;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"userRoleList","customer","employee"})
 public class Users {
-    @Id @Column(columnDefinition = "VARCHAR(30)")
+    @Id
+    @Column(columnDefinition = "VARCHAR(30)")
     private String username;
     private String password;
     @Column(columnDefinition = "BIT")
@@ -25,10 +25,8 @@ public class Users {
     private Provider provider;
     @OneToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private List<UserRole> userRoleList;
-
     @OneToOne(mappedBy = "customerUsername")
     private Customer customer;
-
     @OneToOne(mappedBy = "employeeUsername")
     private Employee employee;
 
@@ -96,3 +94,4 @@ public class Users {
         this.employee = employee;
     }
 }
+

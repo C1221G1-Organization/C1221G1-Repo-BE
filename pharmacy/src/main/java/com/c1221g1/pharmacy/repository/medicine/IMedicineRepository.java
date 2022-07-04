@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
+
 public interface IMedicineRepository extends JpaRepository<Medicine, String> {
 
     @Query(value = "select  medicine_id as medicineId" +
@@ -18,7 +19,6 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             "as retailPrice from medicine"
             , nativeQuery = true)
     List<MedicineSale> getListMedicineSale();
-
     /**
      * this function use to find exist medicine in db if not exist return null
      *
@@ -32,4 +32,5 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             "medicine_conversion_unit_id,flag " +
             "from medicine where flag = 1 and medicine_id =:id ", nativeQuery = true)
     Optional<Medicine> findMedicineById(@Param("id") String id);
+
 }

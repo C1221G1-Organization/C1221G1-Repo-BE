@@ -12,12 +12,22 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+/*
+  Created by TamNA
+  Time: 13:35:00 01/07/2022
+  Function:  Validate EmployeeDto
+*/
+
 public class EmployeeDto implements Validator {
     private String employeeId;
     @NotNull(message = "Name may not be null")
     @NotEmpty(message = "Name may not be empty")
     @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
-            "Do not enter special characters\n")
+            "Name do not enter special characters\n")
+    @Size(max = 50, message = "\n" +
+            "Do not exceed 50 characters")
+    @Size(min = 1, message = "\n" +
+            "No less than 1 character")
     @Size(max = 50, message = "\n" +
             "Do not exceed 50 characters")
     @Size(min = 1, message = "\n" +
@@ -25,13 +35,17 @@ public class EmployeeDto implements Validator {
     private String employeeName;
     @NotNull(message = "Image may not be null")
     @NotEmpty(message = "Image may not be empty")
+
     @Pattern(regexp = "(https?:\\/\\/.*\\.(?:png|jpg))", message = "\n" +
             "Incorrect image file format\n")
 
     @Size(max = 500, message = "\n" +
             "Do not exceed 50 characters")
+
     @Size(min = 4, message = "\n" +
             "No less than 1 character")
+    @Pattern(regexp = "(\\S.*\\.(?:png$|jpg$))", message = "\n" +
+            "Hãy chọn flle ảnh, định dạng :name.*Image\n")
     private String employeeImage;
 
     @NotNull(message = "Address may not be null")
@@ -54,7 +68,7 @@ public class EmployeeDto implements Validator {
 
     private Position position;
 
-
+    @NotNull
     private Users employeeUsername;
     private List<ImportInvoice> importInvoiceList;
 
@@ -160,3 +174,5 @@ public class EmployeeDto implements Validator {
 
     }
 }
+
+

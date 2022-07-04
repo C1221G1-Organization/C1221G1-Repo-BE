@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.entity.customer;
-
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -125,4 +124,6 @@ public class Customer {
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
     }
+
 }
+
