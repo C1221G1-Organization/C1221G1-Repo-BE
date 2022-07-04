@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller.controllerSupplier;
+package com.c1221g1.pharmacy.controller.medicine;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
