@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
-@CrossOrigin("**")
 @RequestMapping("/api/manager-medicine/medicines/supplier")
 public class SupplierController {
 
@@ -40,21 +40,21 @@ public class SupplierController {
                                                           @RequestParam Optional<String> searchAddress,
                                                           @RequestParam Optional<String> searchPhone,
                                                           @RequestParam(defaultValue = "0") int page,
-                                                          @RequestParam(defaultValue = "10") Integer pageSize,
+                                                          @RequestParam(defaultValue = "5") Integer pageSize,
                                                           @RequestParam Optional<String> sort,
                                                           @RequestParam Optional<String> dir
     ) {
+
         Pageable pageable;
         String sortVal = sort.orElse("");
         String dirVal = dir.orElse("");
-
         if ("".equals(sortVal)) {
             pageable = PageRequest.of(page, pageSize);
         } else {
             if (dirVal.equals("asc")) {
-                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
-            } else {
                 pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
+            } else {
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
             }
         }
 
@@ -62,12 +62,16 @@ public class SupplierController {
         String valueName = searchName.orElse("");
         String valueAddress = searchAddress.orElse("");
         String valuePhone = searchPhone.orElse("");
-
+        System.out.println(valueSupplierId);
+        System.out.println(valueName);
+        System.out.println(valueAddress);
+        System.out.println(valuePhone);
         Page<Supplier> supplierPage = iSupplierService.findAll(valueSupplierId, valueName, valueAddress, valuePhone, pageable);
-        if (!supplierPage.hasContent()) {
+            if (!supplierPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(supplierPage, HttpStatus.OK);
         }
-        return new ResponseEntity<>(supplierPage, HttpStatus.OK);
     }
 
     /**
@@ -109,14 +113,13 @@ public class SupplierController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<Supplier> getSupplier(@PathVariable("id") String id) {
-                Supplier supplier = iSupplierService.findById(id);
-                System.err.println("ID");
-                System.err.println(supplier);
-                if (supplier == null) {
-                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-                }
-                return new ResponseEntity<>(supplier, HttpStatus.OK);
-
+        Supplier supplier = iSupplierService.findById(id);
+        System.err.println("ID");
+        System.err.println(supplier);
+        if (supplier == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(supplier, HttpStatus.OK);
     }
 
 
@@ -125,9 +128,9 @@ public class SupplierController {
      * if no error then copy SupplierDto to Supplier
      * <p>
      * and call method save in service
-     * 18h 29/06/2022
+     * 18h 29/06/2022 trần ngọc luật
      */
-    @PostMapping(value = "/")
+    @PostMapping(value = "")
     public ResponseEntity<?> saveSupplier(@Validated @RequestBody SupplierDto supplierDto,
                                           BindingResult bindingResult) {
 
@@ -174,6 +177,23 @@ public class SupplierController {
         }
     }
 
+
+    /**
+     * get detail  for 1 supplier whose id is the value the user entered
+     * (  Serve for detail screen, edit supplier information  )
+     * <p></p>
+     * 18h 29/06/2022  trần ngọc luật
+     */
+    @GetMapping("detail/{id}")
+    public ResponseEntity<Supplier> getSupplierDetail(@PathVariable("id") String id) {
+        Supplier supplier = iSupplierService.findByIdDEtail(id);
+        System.err.println("ID");
+        System.err.println(supplier);
+        if (supplier == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(supplier, HttpStatus.OK);
+    }
 
 }
 
