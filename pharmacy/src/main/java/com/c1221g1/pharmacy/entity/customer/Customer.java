@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.entity.customer;
-
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -125,21 +124,5 @@ public class Customer {
 
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId='" + customerId + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", customerBirthday='" + customerBirthday + '\'' +
-                ", customerGender=" + customerGender +
-                ", customerAddress='" + customerAddress + '\'' +
-                ", customerPhone='" + customerPhone + '\'' +
-                ", customerNote='" + customerNote + '\'' +
-                ", flag=" + flag +
-                ", customerUsername=" + customerUsername +
-                ", customerType=" + customerType +
-                '}';
     }
 }

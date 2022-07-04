@@ -1,7 +1,6 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 

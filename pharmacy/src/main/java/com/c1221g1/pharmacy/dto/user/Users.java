@@ -1,26 +1,17 @@
-package com.c1221g1.pharmacy.entity.user;
+package com.c1221g1.pharmacy.dto.user;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.c1221g1.pharmacy.entity.user.UserRole;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@JsonIgnoreProperties({"userRoleList","customer","employee"})
 public class Users {
-    @Id
-    @Column(columnDefinition = "VARCHAR(30)")
     private String username;
     private String password;
-    @Column(columnDefinition = "BIT")
     private boolean flag;
-    @OneToMany(mappedBy = "users")
     private List<UserRole> userRoleList;
-    @OneToOne(mappedBy = "customerUsername")
     private Customer customer;
-    @OneToOne(mappedBy = "employeeUsername")
     private Employee employee;
 
     public Users() {
@@ -66,7 +57,6 @@ public class Users {
         this.customer = customer;
     }
 
-
     public Employee getEmployee() {
         return employee;
     }
@@ -75,6 +65,3 @@ public class Users {
         this.employee = employee;
     }
 }
-
-
-

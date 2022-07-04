@@ -1,6 +1,9 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+import com.c1221g1.pharmacy.entity.employee.Employee;
+
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +27,19 @@ public class ImportInvoice {
     private String importInvoiceHour;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_id", referencedColumnName = "paymentId")
+    private Payment payment;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId")
+    private Supplier supplier;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
+    private Employee employee;
+
     @OneToMany(mappedBy = "importInvoice")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
 
