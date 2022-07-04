@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("**")
+@CrossOrigin
 @RequestMapping(value = "api/manager-employee/employees")
 public class EmployeeController {
     @Autowired
@@ -97,7 +97,7 @@ public class EmployeeController {
                                                          @RequestParam Optional<String> employeeAddress,
                                                          @RequestParam Optional<String> employeePhone,
                                                          @RequestParam(defaultValue = "0") Integer page,
-                                                         @RequestParam(defaultValue = "5") Integer size,
+                                                         @RequestParam(defaultValue = "8") Integer size,
                                                          @RequestParam(defaultValue = "employee_id") Optional<String> sort) {
         String employeeIdVal = employeeId.orElse("");
         String employeeNameVal = employeeName.orElse("");
