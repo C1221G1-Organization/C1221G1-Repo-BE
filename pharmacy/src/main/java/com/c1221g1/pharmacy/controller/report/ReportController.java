@@ -149,8 +149,9 @@ public class ReportController {
      * @Time 20:30 30/06/2022
      */
     @GetMapping("/static")
-    public ResponseEntity<List<Static>> getStatic(){
-        List<Static> statics = this.iReportService.getStatic();
+    public ResponseEntity<List<Static>> getStatic(@RequestParam Optional<String> year){
+        String yearVal = year.orElse("");
+        List<Static> statics = this.iReportService.getStatic(yearVal);
         if (statics.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
