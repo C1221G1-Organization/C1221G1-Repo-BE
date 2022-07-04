@@ -1,11 +1,19 @@
 package com.c1221g1.pharmacy.controller.cart;
 
+import com.c1221g1.pharmacy.dto.cart.CartAndDetailDto;
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
 import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
+import com.c1221g1.pharmacy.dto.cart.CustomerMailing;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
+import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
+import com.c1221g1.pharmacy.entity.customer.Customer;
+import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.service.cart.ICartDetailService;
 import com.c1221g1.pharmacy.service.cart.ICartService;
+import com.c1221g1.pharmacy.service.cart.IPaymentOnlineService;
+import com.c1221g1.pharmacy.service.cart.ISendingEmailService;
+import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,18 +24,27 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("**")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/carts")
 public class CartController {
     @Autowired
     private ICartService iCartService;
     @Autowired
     private ICartDetailService iCartDetailService;
+
+    @Autowired
+    private IMedicineService iMedicineService;
+
+    @Autowired
+    private IPaymentOnlineService iPaymentOnlineService;
+    @Autowired
+    private ISendingEmailService iSendingEmailService;
 
     /**
      * Created by: KhoaPV
@@ -110,6 +127,62 @@ public class CartController {
         cartResponse.put("cart", cart);
         cartResponse.put("totalItems", totalItems);
         return new ResponseEntity<>(cartResponse, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 4/7/2022
+     * function: check cart and details send from client, and return to payment pay if cart valid (For user non-login)
+     */
+    @PostMapping("")
+    public ResponseEntity<?> checkCartAndDetailFromClient(@RequestBody CartAndDetailDto cartAndDetailDto) {
+
+        //Validate
+        System.out.println(cartAndDetailDto);
+        return new ResponseEntity<>(cartAndDetailDto, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 4/7/2022
+     * function: save cart and detail after customer pay with paypal (For user non-login)
+     */
+    @PostMapping("/saveCart")
+    public ResponseEntity<?> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
+        System.out.println(cartAndDetailDto);
+        Cart cart = new Cart();
+        if (cartAndDetailDto.getDiscount() != null) {
+            cart.setDiscount(cartAndDetailDto.getDiscount());
+        }
+        cart = this.iCartService.save(cart, "KH-0001");
+        this.iCartService.setCartComplete(cart.getCartId());
+        System.out.println(cart);
+        Double total = 0.0;
+        for (CartDetailDto cartDetailDto : cartAndDetailDto.getCartDetail()) {
+            total += cartDetailDto.getQuantity() * cartDetailDto.getMedicine().getMedicinePrice();
+            CartDetail cartDetail = new CartDetail();
+            cartDetail.setCartDetailQuantity(cartDetailDto.getQuantity());
+            Medicine medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId()).get();
+            cartDetail.setMedicine(medicine);
+            cartDetail.setCart(cart);
+            this.iCartDetailService.save(cartDetail);
+        }
+        PaymentOnline paymentOnline = new PaymentOnline();
+        paymentOnline.setCart(cart);
+        this.iPaymentOnlineService.save(paymentOnline);
+        CustomerMailing customerMailing = new CustomerMailing();
+        customerMailing.setName(cartAndDetailDto.getCustomer().getCustomerName());
+        customerMailing.setPhone(cartAndDetailDto.getCustomer().getCustomerPhone());
+        customerMailing.setAddress(cartAndDetailDto.getCustomer().getCustomerAddress());
+        customerMailing.setEmail(cartAndDetailDto.getCustomer().getCustomerUserName());
+        customerMailing.setTotal(total);
+        try{
+            this.iSendingEmailService.sendEmail(customerMailing);
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+        System.out.println("success");
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**

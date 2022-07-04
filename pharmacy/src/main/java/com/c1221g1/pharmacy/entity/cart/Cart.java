@@ -2,9 +2,6 @@ package com.c1221g1.pharmacy.entity.cart;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -91,5 +88,18 @@ public class Cart {
 
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "cartId=" + cartId +
+                ", cartStatus=" + cartStatus +
+                ", dateCreate='" + dateCreate + '\'' +
+                ", customer=" + customer +
+                ", discount=" + discount +
+                ", paymentOnlineList=" + paymentOnlineList +
+                ", cartDetailList=" + cartDetailList +
+                '}';
     }
 }

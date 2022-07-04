@@ -2,8 +2,11 @@ package com.c1221g1.pharmacy.repository.cart;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import javax.transaction.Transactional;
 
 public interface ICartRepository extends JpaRepository<Cart, Integer> {
     /**
@@ -38,6 +41,8 @@ public interface ICartRepository extends JpaRepository<Cart, Integer> {
      *
      * @param cart
      */
+    @Modifying
+    @Transactional
     @Query(value = "UPDATE cart\n" +
             "SET cart_status = TRUE\n" +
             "WHERE cart_id = :id", nativeQuery = true)
