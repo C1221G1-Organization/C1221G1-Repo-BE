@@ -94,6 +94,4 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_phone") String customer_phone,
                         @Param("customer_type_id") Integer customer_type_id,
                         @Param("customer_id") String customer_id);
-
-
 }
