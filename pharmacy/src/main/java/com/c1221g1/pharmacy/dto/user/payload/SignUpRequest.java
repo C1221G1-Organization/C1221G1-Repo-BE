@@ -7,6 +7,9 @@ import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 
 /**
  * Created by HuuNQ
@@ -121,7 +124,7 @@ public class SignUpRequest implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         SignUpRequest signUpRequest = (SignUpRequest) target;
-        if(!signUpRequest.getName().matches("^(\\s?[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]\\s?)*$"))
+        if(!signUpRequest.getName().matches("^(\\s?[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểễỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]\\s?)*$"))
         {
             errors.rejectValue("name","name.invalid.pattern","Tên chứa kí tự đặc biệt");
         }else if (signUpRequest.getName().length() > 50){
@@ -142,7 +145,7 @@ public class SignUpRequest implements Validator {
 
         if(signUpRequest.getPassword().contains(" ")){
             errors.rejectValue("password","","Có ký tự trống trong mật khẩu của bạn");
-        }else if(!signUpRequest.getPassword().matches("^(\\s?[a-zA-Z_]\\s?)*$")){
+        }else if(!signUpRequest.getPassword().matches("^(\\s?[a-zA-Z_\\d]\\s?)*$")){
             errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép");
         }else if(signUpRequest.getPassword().length()>60){
             errors.rejectValue("password","","Mật khẩu vượt quá độ dài cho phép");
@@ -153,9 +156,14 @@ public class SignUpRequest implements Validator {
         if(!signUpRequest.getPhone().matches("((09)|(08)|(07))\\d{8}")){
             errors.rejectValue("phone","phone.invalid.pattern","Số điện thoại phải bắt đầu bằng 09 08 hoặc 07");
         }
-        if(!signUpRequest.getDayOfBirth().matches("([012]\\d|[3][0-1])/([0]\\d|[1][0-2])/((19)(\\d){2}|(20)(([01]\\d)|[2][0-2]))$")){
+
+        LocalDate localDate = LocalDate.now();
+        int age = Period.between(LocalDate.parse(signUpRequest.getDayOfBirth()),localDate).getYears();
+        if(!signUpRequest.getDayOfBirth().matches("((19)(\\d){2}|(20)(([01]\\d)|[2][0-2]))-([0]\\d|[1][0-2])-([012]\\d|[3][0-1])$")){
             errors.rejectValue("dayOfBirth","date.invalid.pattern","Sai định dạng ngày/tháng/năm");
-        }
+        }else if( age < 18){
+            errors.rejectValue("dayOfBirth","","Quý khách chưa đủ 18 tuổi");
+        };
         if(!signUpRequest.getConfirmPassword().matches(signUpRequest.getPassword())){
             errors.rejectValue("confirmPassword","confirmPassword.invalid","Xác nhận mật khẩu không chính xác");
         }

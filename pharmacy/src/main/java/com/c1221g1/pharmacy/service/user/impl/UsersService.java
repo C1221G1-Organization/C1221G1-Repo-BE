@@ -15,10 +15,13 @@ import com.c1221g1.pharmacy.service.user.IUsersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.oidc.OidcIdToken;
+import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Service
@@ -45,8 +48,8 @@ public class UsersService implements IUsersService {
     @Override
     public void saveUsers(SignUpRequest signUpRequest) throws Exception {
         try{
-            String[] dateSplit = signUpRequest.getDayOfBirth().split("/");
-            String dateFormat = dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
+//            String[] dateSplit = signUpRequest.getDayOfBirth().split("/");
+//            String dateFormat = dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
 
             Users users = new Users(signUpRequest.getEmail(),passwordEncoder.encode(signUpRequest.getPassword()));
             users.setFlag(true);
@@ -55,7 +58,7 @@ public class UsersService implements IUsersService {
             customerType.setCustomerTypeName("Khách lẻ");
             Customer customer = new Customer();
             customer.setCustomerName(signUpRequest.getName());
-            customer.setCustomerBirthday(dateFormat);
+            customer.setCustomerBirthday(signUpRequest.getDayOfBirth());
             customer.setCustomerAddress(signUpRequest.getAddress());
             customer.setCustomerNote(signUpRequest.getNote());
             customer.setCustomerPhone(signUpRequest.getPhone());
@@ -81,7 +84,7 @@ public class UsersService implements IUsersService {
      * Function Create new User for facebook login first time
      */
 
-    public void processOAuthPostLogin(String username) {
+    public UsersDetails processOAuthPostLogin(String username, Map<String,Object> attributes) {
         Users existUser = this.iUsersRepository.getUserByUsername(username);
         if (existUser == null) {
             Users newUser = new Users();
@@ -90,6 +93,8 @@ public class UsersService implements IUsersService {
             newUser.setFlag(true);
             this.iUsersRepository.save(newUser);
         }
+
+        return UsersDetails.create(existUser,attributes);
 
     }
     @Override

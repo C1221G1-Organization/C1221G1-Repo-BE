@@ -4,14 +4,10 @@ import com.c1221g1.pharmacy.dto.user.payload.JwtResponse;
 import com.c1221g1.pharmacy.dto.user.payload.LoginRequest;
 import com.c1221g1.pharmacy.dto.user.payload.ResponseMessage;
 import com.c1221g1.pharmacy.dto.user.payload.SignUpRequest;
-import com.c1221g1.pharmacy.entity.customer.Customer;
-import com.c1221g1.pharmacy.entity.user.Users;
-import com.c1221g1.pharmacy.service.customer.ICustomerService;
 import com.c1221g1.pharmacy.service.user.IUsersService;
 import com.c1221g1.pharmacy.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,15 +17,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.sql.SQLOutput;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/manager-security/users")
 public class UserController {
@@ -58,6 +54,11 @@ public class UserController {
                             err -> errorMap.put(err.getField(),err.getDefaultMessage())
                     );
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
+        }
+
+        if(this.iUsersService.checkEmail(loginRequest.getUsername()).size()==0){
+            errorMap.put("notExists","Tài khoản chưa tồn tại trong hệ thống");
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed",errorMap,new ArrayList<>()));
         }
 
         Authentication authentication = authenticationManager.authenticate(
@@ -97,8 +98,8 @@ public class UserController {
         try {
             this.iUsersService.saveUsers(signUpRequest);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Có lỗi xảy ra");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok().body("Đăng ký thành công");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
