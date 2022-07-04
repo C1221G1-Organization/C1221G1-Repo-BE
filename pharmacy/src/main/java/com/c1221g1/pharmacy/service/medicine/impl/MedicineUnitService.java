@@ -10,19 +10,16 @@ import java.util.List;
 
 @Service
 public class MedicineUnitService implements IMedicineUnitService {
-
-
     @Autowired
     private IMedicineUnitRepository medicineUnitRepository;
-
     /**
-     * Created by MyC
-     * Time: 23:00 29/06/2022
-     * Function: get all list MedicineUnit
+     * this function use to get medicineUnitList
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
      */
-
     @Override
-    public List<MedicineUnit> getAllMedicineUnit() {
-        return medicineUnitRepository.getAllMedicineUnit();
+    public List<MedicineUnit> getAll() {
+        return medicineUnitRepository.getAll();
     }
 }

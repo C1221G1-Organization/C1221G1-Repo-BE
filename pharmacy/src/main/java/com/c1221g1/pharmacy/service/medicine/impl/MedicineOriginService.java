@@ -13,14 +13,14 @@ public class MedicineOriginService implements IMedicineOriginService {
 
     @Autowired
     private IMedicineOriginRepository medicineOriginRepository;
-
     /**
-     * Created by MyC
-     * Time: 23:00 29/06/2022
-     * Function: get all list MedicineOrigin
+     * this function use to get medicineOriginList
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
      */
     @Override
-    public List<MedicineOrigin> getAllMedicineOrigin() {
-        return medicineOriginRepository.getAllMedicineOrigin();
+    public List<MedicineOrigin> getAll() {
+        return this.medicineOriginRepository.getAll();
     }
 }

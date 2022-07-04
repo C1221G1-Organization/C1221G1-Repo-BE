@@ -7,7 +7,6 @@ import java.util.List;
 public class CustomerTypeDto {
     private Integer customerTypeId;
     private String customerTypeName;
-    private List<Customer> customerList;
 
     public CustomerTypeDto() {
     }
@@ -28,11 +27,4 @@ public class CustomerTypeDto {
         this.customerTypeName = customerTypeName;
     }
 
-    public List<Customer> getCustomerList() {
-        return customerList;
-    }
-
-    public void setCustomerList(List<Customer> customerList) {
-        this.customerList = customerList;
-    }
 }

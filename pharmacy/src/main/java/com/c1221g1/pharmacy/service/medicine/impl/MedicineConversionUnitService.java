@@ -12,14 +12,14 @@ import java.util.List;
 public class MedicineConversionUnitService implements IMedicineConversionUnitService {
     @Autowired
     private IMedicineConversionUnitRepository medicineConversionUnitRepository;
-
     /**
-     * Created by MyC
-     * Time: 23:00 29/06/2022
-     * Function: get all list MedicineConversionUnit
+     * this function use to get medicineConversionUnitList
+     *
+     * @author LongNH
+     * @Time 15:30 29/06/2022
      */
     @Override
-    public List<MedicineConversionUnit> getAllMedicineConversionUnit() {
-        return medicineConversionUnitRepository.getAllMedicineConversionUnit();
+    public List<MedicineConversionUnit> getAll() {
+        return this.medicineConversionUnitRepository.getAll();
     }
 }

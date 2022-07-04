@@ -5,5 +5,6 @@ import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
 import java.util.List;
 
 public interface IMedicineConversionUnitService {
-    List<MedicineConversionUnit> getAllMedicineConversionUnit();
+    List<MedicineConversionUnit> getAll();
+
 }

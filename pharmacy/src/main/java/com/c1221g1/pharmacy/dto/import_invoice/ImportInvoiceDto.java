@@ -1,29 +1,32 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
-
-import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
-import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
-
+import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class ImportInvoiceDto {
-    private Integer importInvoiceId;
+public class ImportInvoiceDto implements Validator {
+    private String importInvoiceId;
     private Integer importSystemCode;
-    private Integer accountingVoucherNumber;
+    private Double paymentPrepayment;
+    private Double total;
     private String importInvoiceDate;
+    private String importInvoiceHour;
     private boolean flag;
-    private Supplier supplier;
-    private Employee employee;
-    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
+    @NotNull
+    private SupplierDto supplierDto;
+    @NotNull
+    private EmployeeDto employeeDto;
+    private List<ImportInvoiceMedicineDto> importInvoiceMedicineList;
 
     public ImportInvoiceDto() {
     }
 
-    public Integer getImportInvoiceId() {
+    public String getImportInvoiceId() {
         return importInvoiceId;
     }
 
-    public void setImportInvoiceId(Integer importInvoiceId) {
+    public void setImportInvoiceId(String importInvoiceId) {
         this.importInvoiceId = importInvoiceId;
     }
 
@@ -35,12 +38,20 @@ public class ImportInvoiceDto {
         this.importSystemCode = importSystemCode;
     }
 
-    public Integer getAccountingVoucherNumber() {
-        return accountingVoucherNumber;
+    public Double getPaymentPrepayment() {
+        return paymentPrepayment;
     }
 
-    public void setAccountingVoucherNumber(Integer accountingVoucherNumber) {
-        this.accountingVoucherNumber = accountingVoucherNumber;
+    public void setPaymentPrepayment(Double paymentPrepayment) {
+        this.paymentPrepayment = paymentPrepayment;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public String getImportInvoiceDate() {
@@ -51,6 +62,14 @@ public class ImportInvoiceDto {
         this.importInvoiceDate = importInvoiceDate;
     }
 
+    public String getImportInvoiceHour() {
+        return importInvoiceHour;
+    }
+
+    public void setImportInvoiceHour(String importInvoiceHour) {
+        this.importInvoiceHour = importInvoiceHour;
+    }
+
     public boolean isFlag() {
         return flag;
     }
@@ -59,27 +78,37 @@ public class ImportInvoiceDto {
         this.flag = flag;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public SupplierDto getSupplierDto() {
+        return supplierDto;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSupplierDto(SupplierDto supplierDto) {
+        this.supplierDto = supplierDto;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public EmployeeDto getEmployeeDto() {
+        return employeeDto;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployeeDto(EmployeeDto employeeDto) {
+        this.employeeDto = employeeDto;
     }
 
-    public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
+    public List<ImportInvoiceMedicineDto> getImportInvoiceMedicineList() {
         return importInvoiceMedicineList;
     }
 
-    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
+    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicineDto> importInvoiceMedicineList) {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }
