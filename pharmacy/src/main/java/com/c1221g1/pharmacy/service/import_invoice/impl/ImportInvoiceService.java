@@ -12,9 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ImportInvoiceService implements IImportInvoiceService {
-
 
     @Autowired
     private IImportInvoiceRepository importInvoiceRepository;
@@ -41,6 +42,7 @@ public class ImportInvoiceService implements IImportInvoiceService {
      *
      * @author HongHTX
      * @Time 17:00 29/06/2022
+     * @return
      */
     @Override
     public Page<ImportInvoice> findAllImportInvoice(String startDate, String endDate, String startTime, String endTime, Pageable pageable) {
@@ -57,7 +59,6 @@ public class ImportInvoiceService implements IImportInvoiceService {
     public void deleteById(String id) {
         importInvoiceRepository.deleteImportInvoice(id);
     }
-
 
     /**
      * Created by: TrungTVH
