@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.repository.employee;
 
+import com.c1221g1.pharmacy.dto.employee.AccountEmployeeDto;
 import com.c1221g1.pharmacy.dto.employee.IAccountEmployeeDto;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import org.springframework.data.domain.Page;
@@ -40,6 +41,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
     IAccountEmployeeDto findByAccountId(String id);
 
 
+
     /**
      * create by HaiNX
      * time: 01/07/2022
@@ -70,33 +72,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
             @Param("username") String username,
             Pageable pageable);
 
-
-    /**
-     * create by HaiNX
-     * time: 01/07/2022
-     * This method to get data for account table from table employee and user (have pagination and search)
-     */
-//    @Query(value = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-//            " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`\n" +
-//            "from employee " +
-//            "join users  on employee.username =  users.username " +
-//            "join `position`  on `position`.position_id = employee.position_id " +
-//            "where employee.employee_id like %:id% " +
-//            "and employee.employee_name like %:name% " +
-//            "and employee.username like %:username% ",
-//            countQuery = "select employee.employee_name as `employeeName`, employee.employee_id as `employeeId`," +
-//                    " employee.position_id as `positionId`, employee.username as `username`, users.`password` as `password`" +
-//                    " from employee" +
-//                    " join users  on employee.username =  users.username" +
-//                    " join `position`  on `position`.position_id = employee.position_id " +
-//                    " where employee.employee_id like %:id%" +
-//                    " and employee.employee_name like %:name%" +
-//                    " and employee.username like %:username% ", nativeQuery = true)
-//    Page<IAccountEmployeeDto> findAndSearchAccount2(
-//            @Param("id") String id,
-//            @Param("name") String name,
-//            @Param("username") String username,
-//            Pageable pageable);
 
 
     /**

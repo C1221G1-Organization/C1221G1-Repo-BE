@@ -9,6 +9,7 @@ public class AccountEmployeeDto {
     String employeeId;
     String employeeName;
     @NotNull
+//    Integer positionId;
     Position position;
     String username;
     @NotNull
@@ -33,6 +34,15 @@ public class AccountEmployeeDto {
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
+
+//    public Integer getPositionId() {
+//        return positionId;
+//    }
+//
+//    public void setPositionId(Integer positionId) {
+//        this.positionId = positionId;
+//    }
+
 
     public Position getPosition() {
         return position;

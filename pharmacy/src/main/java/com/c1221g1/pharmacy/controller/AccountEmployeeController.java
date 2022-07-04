@@ -48,40 +48,21 @@ public class AccountEmployeeController {
             @RequestParam Optional<String> name,
             @RequestParam Optional<String> position,
             @RequestParam Optional<String> username
-//            @RequestParam Optional<Integer> position
 
     ) {
 
         String nameVal = name.orElse("");
         String idVal = id.orElse("");
         String usernameVal = username.orElse("");
-//        int positionVal = position.orElse(-1);
         String positionVal = position.orElse("");
         Page<IAccountEmployeeDto> iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount(idVal, nameVal, positionVal, usernameVal, pageable);
-
         if (iAccountEmployeeDtoPage == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<>(iAccountEmployeeDtoPage, HttpStatus.OK);
 
-
-//        if (positionVal == -1) {
-//            iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount2(idVal, nameVal, usernameVal, pageable);
-//            if (iAccountEmployeeDtoPage.isEmpty()) {
-//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//            } else {
-//                return new ResponseEntity<>(iAccountEmployeeDtoPage, HttpStatus.OK);
-//            }
-//        } else {
-//            iAccountEmployeeDtoPage = iEmployeeService.findAndSearchAccount(idVal, nameVal, positionVal, usernameVal, pageable);
-//            if (iAccountEmployeeDtoPage.isEmpty()) {
-//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//            } else {
-//                return new ResponseEntity<>(iAccountEmployeeDtoPage, HttpStatus.OK);
-//            }
-//        }
     }
+
 
     /**
      * create by HaiNX
@@ -113,7 +94,7 @@ public class AccountEmployeeController {
         }
         IAccountEmployeeDto iAccountEmployeeDto = iEmployeeService.findAccountId(id);
         if (iAccountEmployeeDto != null) {
-            iEmployeeService.updateAccount(accountEmployeeDto.getPassword(), accountEmployeeDto.getPosition().getPositionId(), id);
+            iEmployeeService.updateAccount(accountEmployeeDto.getPassword(), accountEmployeeDto.getPosition().getPositionId(),  id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
