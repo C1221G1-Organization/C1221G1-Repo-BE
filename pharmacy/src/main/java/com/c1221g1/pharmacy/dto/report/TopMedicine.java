@@ -2,10 +2,9 @@ package com.c1221g1.pharmacy.dto.report;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({ "medicineId", "medicineName", "quantity"})
-public interface MedicineNeedToImport {
+@JsonPropertyOrder({ "medicineId", "medicineName", "totalQuantity"})
+public interface TopMedicine {
     String getMedicineId();
     String getMedicineName();
-    Double getQuantity();
-
+    String getTotalQuantity();
 }

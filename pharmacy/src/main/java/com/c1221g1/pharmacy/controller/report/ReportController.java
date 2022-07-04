@@ -130,6 +130,20 @@ public class ReportController {
     }
 
     /**
+     * this method to get list 100 medicine that have best sold-out
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @GetMapping("/topMedicine")
+    public ResponseEntity<List<TopMedicine>> getTopMedicine(){
+        List<TopMedicine> topMedicines = this.iReportService.getTopMedicine();
+        if (topMedicines.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(topMedicines, HttpStatus.OK);
+    }
+
+    /**
      * this method to get list revenue and profit to show static on angular
      * @author DinhH
      * @Time 20:30 30/06/2022
