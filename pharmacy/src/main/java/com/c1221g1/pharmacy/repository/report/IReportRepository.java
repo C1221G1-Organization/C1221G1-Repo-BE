@@ -19,15 +19,21 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select i.invoice_id invoiceId,\n" +
             "            i.invoice_created_date createdDay,\n" +
             "            i.employee_id employeeId,\n" +
-            "            (ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                                               *m.medicine_retail_sale_profit)) total,\n" +
-            "            (ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                 *(m.medicine_retail_sale_profit-1)) profit\n" +
+            "            (if(i.type_of_invoice_id = 1,\n" +
+            "                ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                                               *m.medicine_retail_sale_profit),\n" +
+            "                ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                                               *m.medicine_wholesale_profit))) total,\n" +
+            "           (if(i.type_of_invoice_id = 1,\n" +
+            "               ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                   *(m.medicine_retail_sale_profit-1),\n" +
+            "               ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                   *(m.medicine_wholesale_profit-1))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "            Where ((i.invoice_created_date>=:startTime) and (i.invoice_created_date<=:endTime))\n" +
-            "            Group by i.invoice_id", nativeQuery = true)
+            "            Group by i.invoice_id;", nativeQuery = true)
     List<Revenue> getRevenue(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
     /**
@@ -37,12 +43,18 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
      * @author DinhH
      * @Time 15:30 29/06/2022
      */
-    @Query(value = "select " +
+    @Query(value = "select\n" +
             "       i.employee_id employeeId,\n" +
-            "       sum((ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                                          *m.medicine_retail_sale_profit))) total,\n" +
-            "       sum((ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                                            *(m.medicine_retail_sale_profit-1))) profit\n" +
+            "       sum((if(i.type_of_invoice_id = 1,\n" +
+            "               ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                   *m.medicine_retail_sale_profit),\n" +
+            "               ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                   *m.medicine_wholesale_profit)))) total,\n" +
+            "       sum((if(i.type_of_invoice_id = 1,\n" +
+            "               ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                   *(m.medicine_retail_sale_profit-1),\n" +
+            "               ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "                   *(m.medicine_wholesale_profit-1)))) profit\n" +
             "        from invoice i\n" +
             "         inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "         inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -87,6 +99,20 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "where (iim.import_invoice_medicine_expiry-curdate()<10)\n" +
             "group by m.medicine_id", nativeQuery = true)
     List<MedicineBeAboutExpired> getMedicineBeAboutExpired();
+
+    /**
+     * this method to get list 100 medicine that have best sold-out
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    @Query(value = "select m.medicine_id medicineId, m.medicine_name medicineName, " +
+            "sum(im.invoice_medicine_quantity) totalQuantity\n" +
+            "from medicine m\n" +
+            "inner join invoice_medicine im on m.medicine_id = im.medicine_id\n" +
+            "group by m.medicine_id\n" +
+            "order by m.medicine_id desc\n" +
+            "limit 100;", nativeQuery = true)
+    List<TopMedicine> getTopMedicine();
 
     /**
      * this method to get list revenue and profit to show static on angular

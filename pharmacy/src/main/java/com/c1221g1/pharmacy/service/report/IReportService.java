@@ -45,6 +45,13 @@ public interface IReportService {
     List<MedicineBeAboutExpired> getMedicineBeAboutExpired();
 
     /**
+     * this method to get list 100 medicine that have best sold-out
+     * @author DinhH
+     * @Time 20:30 30/06/2022
+     */
+    List<TopMedicine> getTopMedicine();
+
+    /**
      * this method to get list revenue and profit to show static on angular
      * @author DinhH
      * @Time 20:30 30/06/2022
