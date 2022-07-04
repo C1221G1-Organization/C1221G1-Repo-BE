@@ -1720,7 +1720,7 @@ public class MedicineController_updateMedicine {
                         medicineType, medicineUnit, medicineConversionUnit);
         medicineDto.setMedicineName("thuoc nho mat");
         medicineDto.setMedicineActiveIngredients("vitaminC");
-        medicineDto.setMedicineImportPrice(10.0);
+        medicineDto.setMedicineImportPrice(10.1);
         medicineDto.setMedicineDiscount(11.0);
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(122.0);

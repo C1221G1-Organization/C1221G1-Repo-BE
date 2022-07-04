@@ -9,9 +9,9 @@ public class UserRole {
     private Integer userRoleId;
 
     @ManyToOne
-    @JoinColumn(name = "username",referencedColumnName = "username")
-    private Users users;
 
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private Users users;
     @ManyToOne
     @JoinColumn(name = "role", referencedColumnName = "roleId")
     private Roles roles;

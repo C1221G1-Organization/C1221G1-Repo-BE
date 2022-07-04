@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.service.import_invoice.impl;
 
 import com.c1221g1.pharmacy.dto.import_invoice.MedicineImportDto;
+import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.repository.import_invoice.IImportInvoiceMedicineRepository;
 import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceMedicineService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
@@ -19,7 +20,7 @@ public class ImportInvoiceMedicineService implements IImportInvoiceMedicineServi
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
-     * function: get list medicine_id and quantity in import_invoice_medicine table
+     * function: get list medicie_id and quantity in import_invoice_medicine table
      * by importInvoiceId
      *
      * @param importInvoiceId
@@ -44,11 +45,23 @@ public class ImportInvoiceMedicineService implements IImportInvoiceMedicineServi
     public boolean updateMedicineStorage(String importInvoiceId) {
         List<MedicineImportDto> medicineImportDtoList = this.findImportMedicineByImportInvoiceId(importInvoiceId);
         boolean flag = false;
-        for (int i = 0; i < medicineImportDtoList.size() ; i++) {
+        for (int i = 0; i < medicineImportDtoList.size(); i++) {
             String medicineId = medicineImportDtoList.get(i).getMedicineImportId();
             Long medicineQuantityImport = Long.parseLong(medicineImportDtoList.get(i).getMedicineImportQuantity());
-            flag = medicineStorageService.changeMedicineQuantity(medicineId,medicineQuantityImport,1);
+            flag = medicineStorageService.changeMedicineQuantity(medicineId, medicineQuantityImport, 1);
         }
         return flag;
+    }
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 30/6/2022
+     * function: save ImportInvoiceMedicine
+     *
+     * @param importInvoiceMedicine
+     */
+    @Override
+    public void saveImportInvoiceMedicine(ImportInvoiceMedicine importInvoiceMedicine) {
+        this.importInvoiceMedicineRepository.save(importInvoiceMedicine);
     }
 }

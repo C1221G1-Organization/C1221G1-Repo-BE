@@ -7,17 +7,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cart_detail", //
         uniqueConstraints = { //
-                @UniqueConstraint(name = "CART_MEDICINE_UK", columnNames = { "medicine_id", "cart_id" }) })
+                @UniqueConstraint(name = "CART_MEDICINE_UK", columnNames = {"medicine_id", "cart_id"})})
 public class CartDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cartDetailId;
     private Integer cartDetailQuantity;
     @ManyToOne
-    @JoinColumn(name = "medicine_id",referencedColumnName = "medicineId")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
     private Medicine medicine;
     @ManyToOne
-    @JoinColumn(name = "cart_id",referencedColumnName = "cartId")
+    @JoinColumn(name = "cart_id", referencedColumnName = "cartId")
     private Cart cart;
 
     public CartDetail() {

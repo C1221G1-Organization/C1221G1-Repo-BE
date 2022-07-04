@@ -1,17 +1,25 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
 
+
+import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineRepository;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class MedicineService implements IMedicineService {
     @Autowired
     private IMedicineRepository medicineRepository;
+
 
     /**
      * this function use to create new medicine
@@ -24,6 +32,7 @@ public class MedicineService implements IMedicineService {
         medicine.setFlag(true);
         this.medicineRepository.save(medicine);
     }
+
     /**
      * this function use to find medicine in db and return medicine
      *
@@ -34,6 +43,7 @@ public class MedicineService implements IMedicineService {
     public Optional<Medicine> findMedicineById(String id) {
         return this.medicineRepository.findMedicineById(id);
     }
+
     /**
      * this function use to create exist medicine
      *
@@ -44,4 +54,57 @@ public class MedicineService implements IMedicineService {
     public void updateMedicine(Medicine existMedicine) {
         this.medicineRepository.updateMedicine(existMedicine);
     }
+
+    /**
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
+     * @return MedicineDetailDto contain properties to show customers
+     */
+    @Override
+    public MedicineDetailDto getMedicineDetailDtoById(String medicineId) {
+        return medicineRepository.getMedicineDetailDtoById(medicineId)
+                .orElse(null);
+    }
+
+    /**
+     * Creator: NghiaNTT Time: 29/02/2022
+     *
+     * @param medicineId: String
+     * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
+     */
+    @Override
+    public List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId) {
+        Integer medicineTypeId = medicineRepository.findMedicineTypeById(medicineId);
+        if (medicineTypeId == null) {
+            return null;
+        }
+        return medicineRepository.get5RelativeMedicinesOf(medicineId, medicineTypeId);
+    }
+
+    /*
+         Created by AnP
+         Time: 17:30 29/06/2022
+         Function: Get list 10 medicines best seller,
+    */
+
+    @Override
+    public List<IMedicineDto> getListMedicineBestSeller() {
+        return medicineRepository.getListMedicineBestSeller();
+    }
+
+    /*
+        Created by AnP
+        Time: 17:30 29/06/2022
+        Function: Get All Medicine And Search by medicine_name and medicine_type
+    */
+
+    @Override
+    public Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId) {
+        if (typeId != null) {
+            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId);
+        }
+        return medicineRepository.getAllMedicineByName(pageable, name);
+    }
 }
+

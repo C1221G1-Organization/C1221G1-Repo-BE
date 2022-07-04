@@ -80,7 +80,28 @@ public class MedicineDto {
     public MedicineDto() {
     }
 
-    public MedicineDto(String medicineId, @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$") @Length(min = 3, max = 50) String medicineName, @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$") @Length(min = 3, max = 50) String medicineActiveIngredients, @NotNull @Positive @Max(999999999) Double medicineImportPrice, @NotNull @Positive @Max(100) Double medicineDiscount, @NotNull @Positive @Max(100) Double medicineWholesaleProfit, @NotNull @Positive @Max(100) Double medicineRetailSaleProfit, @NotNull @Positive @Max(100) Double medicineTax, @NotNull @Positive @Max(100) Integer medicineConversionRate, @NotEmpty @Length(min = 2, max = 50) String medicineManufacture, @NotEmpty @Length(min = 2, max = 50) String medicineUsage, @NotEmpty @Length(min = 2, max = 50) String medicineInstruction, @NotEmpty @Length(min = 2, max = 50) String medicineAgeApproved, @NotEmpty @Length(min = 2, max = 50) String medicineImage, @NotEmpty @Length(min = 2, max = 50) String medicineDescription, boolean flag, @NotNull MedicineOrigin medicineOrigin, @NotNull MedicineType medicineType, @NotNull MedicineUnit medicineUnit, @NotNull MedicineConversionUnit medicineConversionUnit) {
+    public MedicineDto(String medicineId,
+                       @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$")
+                        @Length(min = 3, max = 50) String medicineName,
+                       @NotEmpty @Pattern(regexp = "^[A-Za-z0-9 ]+$")
+                       @Length(min = 3, max = 50) String medicineActiveIngredients,
+                       @NotNull @Positive @Max(999999999) Double medicineImportPrice,
+                       @NotNull @Positive @Max(100) Double medicineDiscount,
+                       @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
+                       @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
+                       @NotNull @Positive @Max(100) Double medicineTax,
+                       @NotNull @Positive @Max(100) Integer medicineConversionRate,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineManufacture,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineUsage,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineInstruction,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineAgeApproved,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineImage,
+                       @NotEmpty @Length(min = 2, max = 50) String medicineDescription,
+                       boolean flag,
+                       @NotNull MedicineOrigin medicineOrigin,
+                       @NotNull MedicineType medicineType,
+                       @NotNull MedicineUnit medicineUnit,
+                       @NotNull MedicineConversionUnit medicineConversionUnit) {
         this.medicineId = medicineId;
         this.medicineName = medicineName;
         this.medicineActiveIngredients = medicineActiveIngredients;
@@ -126,7 +147,6 @@ public class MedicineDto {
     public void setMedicineActiveIngredients(String medicineActiveIngredients) {
         this.medicineActiveIngredients = medicineActiveIngredients;
     }
-
     public Double getMedicineImportPrice() {
         return medicineImportPrice;
     }
