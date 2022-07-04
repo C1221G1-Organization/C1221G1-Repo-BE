@@ -11,5 +11,4 @@ public interface IPositionRepository extends JpaRepository<Position,Integer> {
 
     @Query(value = "select position_id,position_name from position",nativeQuery=true)
     List<Position> getPositionList();
-
 }

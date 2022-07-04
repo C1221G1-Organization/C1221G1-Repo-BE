@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.dto.employee;
+package com.c1221g1.pharmacy.dto.account;
 
 public interface IAccountEmployeeDto {
     String getEmployeeId();
