@@ -1,4 +1,5 @@
 package com.c1221g1.pharmacy.entity.user;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class UserRole {
     private Integer userRoleId;
 
     @ManyToOne
+
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users users;
     @ManyToOne
