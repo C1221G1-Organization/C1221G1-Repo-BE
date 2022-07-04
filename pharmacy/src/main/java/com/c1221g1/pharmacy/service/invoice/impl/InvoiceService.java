@@ -1,5 +1,7 @@
 package com.c1221g1.pharmacy.service.invoice.impl;
 
+import com.c1221g1.pharmacy.dto.invoice.IInvoiceDto;
+import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.repository.invoice.IInvoiceRepository;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
@@ -13,7 +15,7 @@ public class InvoiceService implements IInvoiceService {
     @Autowired
     private IInvoiceRepository iInvoiceRepository;
     @Override
-    public Page<Invoice> findAllInvoice(String startDate, String endDate, String startTime, String endTime, Integer typeOfInvoiceId, Pageable pageable) {
+    public Page<IInvoiceDto> findAllInvoice(String startDate, String endDate, String startTime, String endTime, String typeOfInvoiceId, Pageable pageable) {
         return iInvoiceRepository.findAllInvoice(startDate,endDate,startTime,endTime,typeOfInvoiceId,pageable);
     }
 

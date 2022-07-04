@@ -41,7 +41,7 @@ public class Invoice {
      * Time: 8:36 PM 30/06/2022
      * Function: create new property invoiceCreateTime
      * */
-    private Double invoiceTotalMoney;
+//    private Double invoiceTotalMoney;
     /*
      * Created by DaLQA
      * Time: 4:12 PM 29/06/2022
