@@ -11,8 +11,7 @@ public class CartDto {
     private boolean cartStatus;
     private String dateCreate;
     private Customer customer;
-    private List<PaymentOnline> paymentOnlineList;
-    private List<CartDetail> cartDetailList;
+
 
     public CartDto() {
     }
@@ -49,19 +48,4 @@ public class CartDto {
         this.customer = customer;
     }
 
-    public List<PaymentOnline> getPaymentOnlineList() {
-        return paymentOnlineList;
-    }
-
-    public void setPaymentOnlineList(List<PaymentOnline> paymentOnlineList) {
-        this.paymentOnlineList = paymentOnlineList;
-    }
-
-    public List<CartDetail> getCartDetailList() {
-        return cartDetailList;
-    }
-
-    public void setCartDetailList(List<CartDetail> cartDetailList) {
-        this.cartDetailList = cartDetailList;
-    }
 }

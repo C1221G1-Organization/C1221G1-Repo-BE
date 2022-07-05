@@ -1,11 +1,11 @@
 package com.c1221g1.pharmacy.dto.customer;
 
-
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.entity.user.Users;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class CustomerDto {
     private String customerId;
@@ -27,8 +27,10 @@ public class CustomerDto {
     @Size(max = 20)
     @Size(min = 2)
     private String customerNote;
+
     private boolean flag;
     private Users customerUsername;
+
     @NotNull
     private CustomerType customerType;
 
@@ -116,5 +118,6 @@ public class CustomerDto {
         this.customerType = customerType;
     }
 
-
 }
+
+
