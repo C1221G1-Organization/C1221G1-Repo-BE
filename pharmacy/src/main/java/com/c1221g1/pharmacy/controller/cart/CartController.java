@@ -7,7 +7,6 @@ import com.c1221g1.pharmacy.dto.cart.CustomerMailing;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
-import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.service.cart.ICartDetailService;
 import com.c1221g1.pharmacy.service.cart.ICartService;
@@ -24,10 +23,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -57,7 +56,7 @@ public class CartController {
      * @return
      */
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateItem(@PathVariable String id,
+    public ResponseEntity<Map<String, String>> updateItem(@PathVariable String id,
                                         @Validated @RequestBody CartDetailDto cartDetailDto,
                                         BindingResult bindingResult) {
         Cart cart = this.iCartService.findCartByCustomerId(id);
@@ -90,7 +89,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/details/{id}")
-    public ResponseEntity<?> getListDetail(@PathVariable String id) {
+    public ResponseEntity<List<CartDtoForList>> getListDetail(@PathVariable String id) {
         Cart cart = this.iCartService.findCartByCustomerId(id);
         if (cart == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -112,7 +111,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> findCartByCustomerId(@PathVariable String id) {
+    public ResponseEntity<Map<String, Object>> findCartByCustomerId(@PathVariable String id) {
         Map<String, Object> cartResponse = new HashMap<>();
         Cart cart = this.iCartService.findCartByCustomerId(id);
         if (cart == null) {
@@ -135,7 +134,7 @@ public class CartController {
      * function: check cart and details send from client, and return to payment pay if cart valid (For user non-login)
      */
     @PostMapping("")
-    public ResponseEntity<?> checkCartAndDetailFromClient(@RequestBody CartAndDetailDto cartAndDetailDto) {
+    public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@RequestBody CartAndDetailDto cartAndDetailDto) {
 
         //Validate
         System.out.println(cartAndDetailDto);
@@ -148,7 +147,7 @@ public class CartController {
      * function: save cart and detail after customer pay with paypal (For user non-login)
      */
     @PostMapping("/saveCart")
-    public ResponseEntity<?> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
+    public ResponseEntity<HttpStatus> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
         System.out.println(cartAndDetailDto);
         Cart cart = new Cart();
         if (cartAndDetailDto.getDiscount() != null) {
@@ -162,8 +161,12 @@ public class CartController {
             total += cartDetailDto.getQuantity() * cartDetailDto.getMedicine().getMedicinePrice();
             CartDetail cartDetail = new CartDetail();
             cartDetail.setCartDetailQuantity(cartDetailDto.getQuantity());
-            Medicine medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId()).get();
-            cartDetail.setMedicine(medicine);
+
+            Optional<Medicine> medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId());
+            if (medicine.isPresent()) {
+                cartDetail.setMedicine(medicine.get());
+            }
+
             cartDetail.setCart(cart);
             this.iCartDetailService.save(cartDetail);
         }
@@ -176,9 +179,9 @@ public class CartController {
         customerMailing.setAddress(cartAndDetailDto.getCustomer().getCustomerAddress());
         customerMailing.setEmail(cartAndDetailDto.getCustomer().getCustomerUserName());
         customerMailing.setTotal(total);
-        try{
+        try {
             this.iSendingEmailService.sendEmail(customerMailing);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         System.out.println("success");

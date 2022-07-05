@@ -1,18 +1,15 @@
 package com.c1221g1.pharmacy.service.medicine;
 
 import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
-
-
-import java.util.List;
-import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.Optional;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface IMedicineService {
 
