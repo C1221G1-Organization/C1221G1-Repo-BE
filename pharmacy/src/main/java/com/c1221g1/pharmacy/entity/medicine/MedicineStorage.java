@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.entity.medicine;
-
 import javax.persistence.*;
 
 @Entity
@@ -49,4 +48,3 @@ public class MedicineStorage {
         this.flag = flag;
     }
 }
-

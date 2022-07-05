@@ -2,7 +2,6 @@ package com.c1221g1.pharmacy.dto.import_invoice;
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
