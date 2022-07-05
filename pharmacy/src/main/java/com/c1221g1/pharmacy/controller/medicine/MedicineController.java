@@ -317,13 +317,11 @@ public class MedicineController {
                                                                               page,
                                                                       @RequestParam(defaultValue = "5") Integer pageSize,
                                                                       @RequestParam Optional<String> sort,
-                                                                      @RequestParam Optional<String> dir,
                                                                       @RequestParam Optional<String> name,
                                                                       @RequestParam Optional<Integer> typeId) {
         String nameVal = name.orElse("");
         Integer typeIdVal = typeId.orElse(null);
         String sortVal = sort.orElse("idDesc");
-        String dirVal = dir.orElse("");
         Pageable pageable;
         pageable = PageRequest.of(page, pageSize);
         Page<IMedicineDto> medicineDtoPage = medicineService.getListAndSearch(pageable, nameVal, typeIdVal, sortVal);
