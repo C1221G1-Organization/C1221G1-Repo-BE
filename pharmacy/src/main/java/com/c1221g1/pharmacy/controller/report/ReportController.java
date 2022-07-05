@@ -19,6 +19,7 @@ public class ReportController {
 
     /**
      * this method to get revenue in period of time that you input
+     *
      * @param startTime
      * @param endTime
      * @author DinhH
@@ -26,14 +27,14 @@ public class ReportController {
      */
     @GetMapping("/revenue")
     public ResponseEntity<List<Revenue>> getRevenue(@RequestParam Optional<String> startTime,
-                                                    @RequestParam Optional<String> endTime){
+                                                    @RequestParam Optional<String> endTime) {
         String startTimeVal = startTime.orElse("");
         String endTimeVal = endTime.orElse("");
-        if ("".equals(startTimeVal)||"".equals(endTimeVal)){
+        if ("".equals(startTimeVal) || "".equals(endTimeVal)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
             List<Revenue> revenueList = this.iReportService.getRevenue(startTimeVal, endTimeVal);
-            if (revenueList.isEmpty()){
+            if (revenueList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(revenueList, HttpStatus.OK);
@@ -42,6 +43,7 @@ public class ReportController {
 
     /**
      * this method to get profit in period of time that you input
+     *
      * @param startTime
      * @param endTime
      * @author DinhH
@@ -49,14 +51,14 @@ public class ReportController {
      */
     @GetMapping("/profit")
     public ResponseEntity<List<Revenue>> getProfit(@RequestParam Optional<String> startTime,
-                                                 @RequestParam Optional<String> endTime){
+                                                   @RequestParam Optional<String> endTime) {
         String startTimeVal = startTime.orElse("");
         String endTimeVal = endTime.orElse("");
-        if ("".equals(startTimeVal)||"".equals(endTimeVal)){
+        if ("".equals(startTimeVal) || "".equals(endTimeVal)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
             List<Revenue> revenueList = this.iReportService.getRevenue(startTimeVal, endTimeVal);
-            if (revenueList.isEmpty()){
+            if (revenueList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(revenueList, HttpStatus.OK);
@@ -66,6 +68,7 @@ public class ReportController {
 
     /**
      * this method to get revenue in period of time that you input; the revenue will be group by employee
+     *
      * @param startTime
      * @param endTime
      * @author DinhH
@@ -73,14 +76,14 @@ public class ReportController {
      */
     @GetMapping("/diary")
     public ResponseEntity<List<Revenue>> getRevenueByEmployee(@RequestParam Optional<String> startTime,
-                                                   @RequestParam Optional<String> endTime){
+                                                              @RequestParam Optional<String> endTime) {
         String startTimeVal = startTime.orElse("");
         String endTimeVal = endTime.orElse("");
-        if ("".equals(startTimeVal)||"".equals(endTimeVal)){
+        if ("".equals(startTimeVal) || "".equals(endTimeVal)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
             List<Revenue> revenueList = this.iReportService.getRevenueByEmployee(startTimeVal, endTimeVal);
-            if (revenueList.isEmpty()){
+            if (revenueList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(revenueList, HttpStatus.OK);
@@ -89,27 +92,29 @@ public class ReportController {
 
     /**
      * this method to get list of supplier that have receivable or payable
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
     @GetMapping("/supplier")
-    public ResponseEntity<List<SupplierHaveReceivable>> getSupplierHaveReceivable(){
-            List<SupplierHaveReceivable> supplierHaveReceivableList = this.iReportService.getSupplierHaveReceivable();
-            if (supplierHaveReceivableList.isEmpty()){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(supplierHaveReceivableList, HttpStatus.OK);
+    public ResponseEntity<List<SupplierHaveReceivable>> getSupplierHaveReceivable() {
+        List<SupplierHaveReceivable> supplierHaveReceivableList = this.iReportService.getSupplierHaveReceivable();
+        if (supplierHaveReceivableList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(supplierHaveReceivableList, HttpStatus.OK);
     }
 
     /**
      * this method to get list medicine to be out of stock
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
     @GetMapping("/medicineNeedToImport")
-    public ResponseEntity<List<MedicineNeedToImport>> getMedicineNeedToImport(){
+    public ResponseEntity<List<MedicineNeedToImport>> getMedicineNeedToImport() {
         List<MedicineNeedToImport> medicineNeedToImports = this.iReportService.getMedicineNeedToImport();
-        if (medicineNeedToImports.isEmpty()){
+        if (medicineNeedToImports.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicineNeedToImports, HttpStatus.OK);
@@ -117,13 +122,14 @@ public class ReportController {
 
     /**
      * this method to get list medicine to be about out of date
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
     @GetMapping("/medicineBeAboutExpired")
-    public ResponseEntity<List<MedicineBeAboutExpired>> getMedicineBeAboutExpired(){
+    public ResponseEntity<List<MedicineBeAboutExpired>> getMedicineBeAboutExpired() {
         List<MedicineBeAboutExpired> medicineBeAboutExpired = this.iReportService.getMedicineBeAboutExpired();
-        if (medicineBeAboutExpired.isEmpty()){
+        if (medicineBeAboutExpired.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicineBeAboutExpired, HttpStatus.OK);
@@ -131,13 +137,14 @@ public class ReportController {
 
     /**
      * this method to get list 100 medicine that have best sold-out
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
     @GetMapping("/topMedicine")
-    public ResponseEntity<List<TopMedicine>> getTopMedicine(){
+    public ResponseEntity<List<TopMedicine>> getTopMedicine() {
         List<TopMedicine> topMedicines = this.iReportService.getTopMedicine();
-        if (topMedicines.isEmpty()){
+        if (topMedicines.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(topMedicines, HttpStatus.OK);
@@ -145,14 +152,15 @@ public class ReportController {
 
     /**
      * this method to get list revenue and profit to show static on angular
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
     @GetMapping("/static")
-    public ResponseEntity<List<Static>> getStatic(@RequestParam Optional<String> year){
+    public ResponseEntity<List<Static>> getStatic(@RequestParam Optional<String> year) {
         String yearVal = year.orElse("");
         List<Static> statics = this.iReportService.getStatic(yearVal);
-        if (statics.isEmpty()){
+        if (statics.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(statics, HttpStatus.OK);

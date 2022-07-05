@@ -11,6 +11,7 @@ import java.util.List;
 public interface IReportRepository extends JpaRepository<Customer, String> {
     /**
      * this method to get revenue and profit in period of time that you input
+     *
      * @param startTime
      * @param endTime
      * @author DinhH
@@ -38,6 +39,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
 
     /**
      * this method to get revenue in period of time that you input; the revenue will be group by employee
+     *
      * @param startTime
      * @param endTime
      * @author DinhH
@@ -64,6 +66,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
 
     /**
      * this method to get list of supplier that have receivable or payable
+     *
      * @author DinhH
      * @Time 15:30 29/06/2022
      */
@@ -77,6 +80,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
 
     /**
      * this method to get list medicine to be out of stock
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
@@ -88,6 +92,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
 
     /**
      * this method to get list medicine to be about out of date
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
@@ -102,6 +107,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
 
     /**
      * this method to get list 100 medicine that have best sold-out
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
@@ -116,6 +122,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
 
     /**
      * this method to get list revenue and profit to show static on angular
+     *
      * @author DinhH
      * @Time 20:30 30/06/2022
      */
@@ -135,6 +142,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='1' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth1(@Param("year") String year);
+
     @Query(value = "Select      '2' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -151,6 +159,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='2' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth2(@Param("year") String year);
+
     @Query(value = "Select      '3' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -167,6 +176,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='3' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth3(@Param("year") String year);
+
     @Query(value = "Select      '4' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -183,6 +193,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='4' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth4(@Param("year") String year);
+
     @Query(value = "Select      '5' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -199,6 +210,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='5' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth5(@Param("year") String year);
+
     @Query(value = "Select      '6' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -215,6 +227,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='6' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth6(@Param("year") String year);
+
     @Query(value = "Select      '7' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -231,6 +244,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='7' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth7(@Param("year") String year);
+
     @Query(value = "Select      '8' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -247,6 +261,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='8' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth8(@Param("year") String year);
+
     @Query(value = "Select      '9' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -263,6 +278,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='9' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth9(@Param("year") String year);
+
     @Query(value = "Select      '10' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -279,6 +295,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='10' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth10(@Param("year") String year);
+
     @Query(value = "Select      '11' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
@@ -295,6 +312,7 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='11' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth11(@Param("year") String year);
+
     @Query(value = "Select      '12' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
