@@ -7,7 +7,6 @@ import java.util.List;
 public class RolesDto {
     private Integer roleId;
     private String roleName;
-    private List<UserRole> userRoleList;
 
     public RolesDto() {
     }
@@ -28,12 +27,4 @@ public class RolesDto {
         this.roleName = roleName;
     }
 
-    public List<UserRole> getUserRoleList() {
-        return userRoleList;
-    }
-
-
-    public void setUserRoleList(List<UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
-    }
 }
