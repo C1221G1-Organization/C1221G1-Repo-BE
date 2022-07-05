@@ -4,13 +4,22 @@ import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
 import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
 import com.c1221g1.pharmacy.entity.medicine.MedicineType;
 import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import javax.validation.constraints.*;
 
 public class MedicineDto {
     private String medicineId;
     @NotEmpty
+
     @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+
     private String medicineName;
 
     @NotEmpty
@@ -71,7 +80,6 @@ public class MedicineDto {
     private MedicineUnit medicineUnit;
     @NotNull
     private MedicineConversionUnit medicineConversionUnit;
-
     public MedicineDto() {
     }
 
