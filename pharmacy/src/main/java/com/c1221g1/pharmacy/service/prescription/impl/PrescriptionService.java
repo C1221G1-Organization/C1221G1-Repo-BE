@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.service.prescription.impl;
 
+import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.repository.prescription.IPrescriptionRepository;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
@@ -8,19 +9,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PrescriptionService implements IPrescriptionService {
     @Autowired
     private IPrescriptionRepository prescriptionRepository;
 
     @Override
-    public Page<Prescription> findAllPageAndSearch(String id, String name, String target, String symptom, Pageable pageable) {
-        return this.prescriptionRepository.findAllPage("%"+id+"%",
-                "%"+ name +"%","%"+ target +"%","%"+ symptom +"%", pageable);
+    public Page<Prescription> findAllPageAndSearch(Pageable pageable, String id, String name, String target, String symptom) {
+        return this.prescriptionRepository.findAllPage(pageable, "%" + id + "%",
+                "%" + name + "%", "%" + target + "%", "%" + symptom + "%");
     }
 
     @Override
-    public void save(Prescription prescription) {
+    public void savePrescription(Prescription prescription) {
         this.prescriptionRepository.save(prescription);
     }
 
@@ -38,4 +41,11 @@ public class PrescriptionService implements IPrescriptionService {
     public void edit(Prescription prescription) {
         prescriptionRepository.editPrescription(prescription);
     }
+
+    @Override
+    public IMedicinePrescriptionDto getPrescriptionById(String id) {
+        return this.prescriptionRepository.detailPrescriptionById(id);
+    }
+
+
 }

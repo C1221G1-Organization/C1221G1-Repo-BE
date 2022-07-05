@@ -1,17 +1,24 @@
 package com.c1221g1.pharmacy.service.prescription;
 
+import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionDto;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface IPrescriptionService {
-    Page<Prescription> findAllPageAndSearch(String id, String name, String target, String symptom, Pageable pageable);
+import java.util.List;
+import java.util.Optional;
 
-    void save(Prescription prescription);
+public interface IPrescriptionService {
+    Page<Prescription> findAllPageAndSearch(Pageable pageable, String id, String name, String target, String symptom);
+
+    void savePrescription(Prescription prescription);
 
     Prescription findById(String id);
 
     void deleteById(String id);
 
     void edit(Prescription prescription);
+
+    IMedicinePrescriptionDto getPrescriptionById(String id);
 }

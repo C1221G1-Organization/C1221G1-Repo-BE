@@ -1,8 +1,7 @@
 package com.c1221g1.pharmacy.dto.prescription;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.validation.constraints.*;
+import java.util.List;
 
 public class PrescriptionDto {
     private String prescriptionId;
@@ -31,6 +30,7 @@ public class PrescriptionDto {
     @Max(365)
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
+//    private List<MedicinePrescriptionDto> medicinePrescriptionDtoList;
 
     public PrescriptionDto() {
     }
@@ -90,4 +90,5 @@ public class PrescriptionDto {
     public void setFlag(Boolean flag) {
         this.flag = flag;
     }
+
 }
