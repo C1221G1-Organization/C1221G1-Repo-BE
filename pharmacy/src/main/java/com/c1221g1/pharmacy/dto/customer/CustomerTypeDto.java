@@ -1,7 +1,5 @@
 package com.c1221g1.pharmacy.dto.customer;
-
 import com.c1221g1.pharmacy.entity.customer.Customer;
-
 import java.util.List;
 
 public class CustomerTypeDto {
