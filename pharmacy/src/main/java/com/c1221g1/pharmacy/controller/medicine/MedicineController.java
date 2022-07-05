@@ -51,13 +51,9 @@ public class MedicineController {
         String columNameValue = columName.orElse("medicineId");
         String conditionValue = condition.orElse("like");
         String keyWordValue = keyWord.orElse("'%%'");
-        System.out.println(columNameValue);
-        System.out.println(conditionValue);
-        System.out.println(keyWordValue);
         List<MedicineLookUpDto> medicinePage = medicineService.findAllMedicine(columNameValue, conditionValue, keyWordValue);
         if (medicinePage.isEmpty()) {
-            System.out.println(medicinePage);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(medicinePage,HttpStatus.NO_CONTENT);
         }
         final int start = (int) pageable.getOffset();
         final int end = Math.min((start + pageable.getPageSize()), medicinePage.size());
