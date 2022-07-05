@@ -41,4 +41,6 @@ public class TypeOfInvoice {
     public void setInvoiceList(List<Invoice> invoiceList) {
         this.invoiceList = invoiceList;
     }
+
 }
+

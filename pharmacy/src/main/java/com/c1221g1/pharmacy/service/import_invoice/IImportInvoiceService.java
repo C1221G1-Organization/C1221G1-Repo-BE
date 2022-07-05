@@ -6,6 +6,8 @@ import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface IImportInvoiceService {
     ImportInvoice saveImportInvoice(ImportInvoice importInvoice);
 
