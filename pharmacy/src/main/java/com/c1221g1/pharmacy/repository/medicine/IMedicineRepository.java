@@ -66,7 +66,8 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             + "medicine_conversion_rate=:#{#medicine.medicineConversionRate},medicine_manufacture=:#{#medicine.medicineManufacture},"
             + "medicine_usage=:#{#medicine.medicineUsage},medicine_instruction=:#{#medicine.medicineInstruction},"
             + "medicine_age_approved=:#{#medicine.medicineAgeApproved},medicine_image=:#{#medicine.medicineImage},"
-            + "medicine_description=:#{#medicine.medicineDescription},medicine_origin_id=:#{#medicine.medicineOrigin},"
+            + "medicine_description=:#{#medicine.medicineDescription},flag =:#{#medicine.flag},"
+            + "medicine_origin_id=:#{#medicine.medicineOrigin},"
             + "medicine_type_id=:#{#medicine.medicineType},medicine_unit_id=:#{#medicine.medicineUnit},"
             + "medicine_conversion_unit_id=:#{#medicine.medicineConversionUnit}" + " WHERE medicine_id=:#{#medicine.medicineId}", nativeQuery = true)
     void updateMedicine(Medicine medicine);
@@ -106,15 +107,13 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
      * @param medicineId: String
      * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
      */
-    @Query(value =
-
-            "SELECT m.medicine_id AS medicineId, m.medicine_name AS medicineName, m.medicine_active_ingredients AS medicineActiveIngredients, m.medicine_import_price * (1 + m.medicine_retail_sale_profit / 100) / m.medicine_conversion_rate AS medicinePrice, m.medicine_manufacture AS medicineManufacture, "
-                    + "m.medicine_usage AS medicineUsage, m.medicine_instruction AS medicineInstruction, m.medicine_age_approved AS medicineAgeApproved, m.medicine_image AS medicineImage, m.medicine_description AS medicineDescription, mo.medicine_origin_name AS medicineOrigin, "
-                    + "mcu.medicine_conversion_unit_name AS medicineConversionUnit, ms.medicine_quantity AS medicineQuantity  "
-                    + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
-                    + "INNER JOIN medicine_conversion_unit mcu ON m.medicine_conversion_unit_id = mcu.medicine_conversion_unit_id "
-                    + "INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id "
-                    + "INNER JOIN medicine_unit mu ON m.medicine_unit_id = mu.medicine_unit_id INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id WHERE m.flag = 1 AND m.medicine_type_id = :medicineTypeId AND m.medicine_id != :medicineId LIMIT 5", nativeQuery = true)
+    @Query(value = "SELECT m.medicine_id AS medicineId, m.medicine_name AS medicineName, m.medicine_active_ingredients AS medicineActiveIngredients, m.medicine_import_price * (1 + m.medicine_retail_sale_profit / 100) / m.medicine_conversion_rate AS medicinePrice, m.medicine_manufacture AS medicineManufacture, "
+            + "m.medicine_usage AS medicineUsage, m.medicine_instruction AS medicineInstruction, m.medicine_age_approved AS medicineAgeApproved, m.medicine_image AS medicineImage, m.medicine_description AS medicineDescription, mo.medicine_origin_name AS medicineOrigin, "
+            + "mcu.medicine_conversion_unit_name AS medicineConversionUnit, ms.medicine_quantity AS medicineQuantity  "
+            + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
+            + "INNER JOIN medicine_conversion_unit mcu ON m.medicine_conversion_unit_id = mcu.medicine_conversion_unit_id "
+            + "INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id "
+            + "INNER JOIN medicine_unit mu ON m.medicine_unit_id = mu.medicine_unit_id INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id WHERE m.flag = 1 AND m.medicine_type_id = :medicineTypeId AND m.medicine_id != :medicineId LIMIT 5", nativeQuery = true)
     List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId, Integer medicineTypeId);
 
     /**
@@ -217,4 +216,5 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                             + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             nativeQuery = true)
     Page<IMedicineDto> getAllMedicineByName(Pageable pageable, @Param("name") String name, @Param("sort") String sort);
+
 }
