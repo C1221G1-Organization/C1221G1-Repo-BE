@@ -9,15 +9,22 @@ public class UserRole {
     private Integer userRoleId;
 
     @ManyToOne
-    @JoinColumn(name = "username",referencedColumnName = "username")
-    private Users users;
+    @JoinColumn(name = "username", referencedColumnName = "username")
 
+    private Users users;
     @ManyToOne
     @JoinColumn(name = "role", referencedColumnName = "roleId")
     private Roles roles;
 
     public UserRole() {
     }
+
+
+    public UserRole(Users users, Roles roles) {
+        this.users = users;
+        this.roles = roles;
+    }
+
 
     public Integer getUserRoleId() {
         return userRoleId;
@@ -43,3 +50,4 @@ public class UserRole {
         this.roles = roles;
     }
 }
+

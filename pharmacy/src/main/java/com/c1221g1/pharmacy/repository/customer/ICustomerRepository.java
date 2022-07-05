@@ -4,6 +4,9 @@ import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +15,20 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 public interface ICustomerRepository extends JpaRepository<Customer, String> {
+
+    /*
+     * Created by DaLQA
+     * Time: 7:30 PM 29/06/2022
+     * Function: function getRetailCustomer
+     * */
+    @Query(value = "select customer_id, customer_address, customer_birthday," +
+            "customer_gender, customer_name, customer_note,customer_phone, " +
+            "flag, customer_type_id, customer_username " +
+            "from customer " +
+            "order by customer.customer_id " +
+            "asc limit 1",
+            nativeQuery = true)
+    Customer getRetailCustomer();
 
     /**
      * create by TinBQ
@@ -27,10 +44,11 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
             "AND customer_name LIKE:customerName " +
             "AND customer_address LIKE:customerAddress " +
             "AND customer_phone LIKE:customerPhone"
-            ,countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username " +
+            , countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username " +
             "FROM customer " +
             "WHERE flag = 1 " +
             "AND customer_id LIKE :customerId " +
+            "AND customer_id LIKE:customerId " +
             "AND customer_type_id LIKE:customerType " +
             "AND customer_name LIKE:customerName " +
             "AND customer_address LIKE:customerAddress " +
@@ -94,4 +112,6 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_phone") String customer_phone,
                         @Param("customer_type_id") Integer customer_type_id,
                         @Param("customer_id") String customer_id);
+
 }
+

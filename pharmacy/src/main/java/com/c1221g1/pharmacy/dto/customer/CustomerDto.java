@@ -1,8 +1,8 @@
 package com.c1221g1.pharmacy.dto.customer;
 
-
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.entity.user.Users;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -115,6 +115,5 @@ public class CustomerDto {
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
-
-
 }
+
