@@ -11,9 +11,7 @@ import javax.validation.constraints.*;
 public class MedicineDto {
     private String medicineId;
     @NotEmpty
-
     @Pattern(regexp = VieRegex.VN_REGEX)
-
     private String medicineName;
 
     @NotEmpty
