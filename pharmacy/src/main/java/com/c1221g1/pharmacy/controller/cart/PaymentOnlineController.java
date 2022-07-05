@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.controller.cart;
 
 import com.c1221g1.pharmacy.dto.cart.PaymentOnlineDto;
+import com.c1221g1.pharmacy.dto.cart.PaymentOnlineForLookup;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
 import com.c1221g1.pharmacy.service.cart.IPaymentOnlineService;
 import org.springframework.beans.BeanUtils;
@@ -20,7 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("**")
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/payment-online")
 public class PaymentOnlineController {
     @Autowired
@@ -39,16 +40,16 @@ public class PaymentOnlineController {
      * @return
      */
     @GetMapping("")
-    public ResponseEntity<Page<PaymentOnline>> getPaymentOnline(@RequestParam Optional<String> paymentOnlineId,
+    public ResponseEntity<Page<PaymentOnlineForLookup>> getPaymentOnline(@RequestParam Optional<String> paymentOnlineId,
                                                                 @RequestParam Optional<String> customerName,
                                                                 @RequestParam(defaultValue = "0") int page,
                                                                 @RequestParam(defaultValue = "5") int size) {
         String paymentOnlineIdVal = paymentOnlineId.orElse("");
         String customerNameVal = customerName.orElse("");
         Pageable pageable = PageRequest.of(page, size);
-        Page<PaymentOnline> paymentOnlines = this.iPaymentOnlineService.findAll(paymentOnlineIdVal, customerNameVal, pageable);
+        Page<PaymentOnlineForLookup> paymentOnlines = this.iPaymentOnlineService.findAll(paymentOnlineIdVal, customerNameVal, pageable);
         if (paymentOnlines.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(paymentOnlines, HttpStatus.OK);
     }
