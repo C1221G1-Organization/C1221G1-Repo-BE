@@ -2,16 +2,37 @@ package com.c1221g1.pharmacy.dto.prescription;
 
 import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
 
+import javax.validation.constraints.*;
 import java.util.List;
 
 public class PrescriptionDto {
     private String prescriptionId;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 50)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
     private String prescriptionName;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 100)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
     private String prescriptionSymptom;
-    private String prescriptionObject;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 50)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
+    private String prescriptionTargetUser;
+    @NotNull
+    @NotEmpty
+    @Size(min = 5, max = 100)
+    @Pattern(regexp = "^[^!@#$%^&*()]*$")
+    private String prescriptionNote;
+    @NotNull
+    @Min(1)
+    @Max(365)
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-    private List<MedicinePrescription> medicinePrescriptionList;
+    private List<MedicinePrescriptionDto> medicinePrescriptionList;
 
     public PrescriptionDto() {
     }
@@ -40,12 +61,20 @@ public class PrescriptionDto {
         this.prescriptionSymptom = prescriptionSymptom;
     }
 
-    public String getPrescriptionObject() {
-        return prescriptionObject;
+    public String getPrescriptionTargetUser() {
+        return prescriptionTargetUser;
     }
 
-    public void setPrescriptionObject(String prescriptionObject) {
-        this.prescriptionObject = prescriptionObject;
+    public void setPrescriptionTargetUser(String prescriptionTargetUser) {
+        this.prescriptionTargetUser = prescriptionTargetUser;
+    }
+
+    public String getPrescriptionNote() {
+        return prescriptionNote;
+    }
+
+    public void setPrescriptionNote(String prescriptionNote) {
+        this.prescriptionNote = prescriptionNote;
     }
 
     public Integer getPrescriptionNumberOfDays() {
@@ -64,11 +93,11 @@ public class PrescriptionDto {
         this.flag = flag;
     }
 
-    public List<MedicinePrescription> getMedicinePrescriptionList() {
+    public List<MedicinePrescriptionDto> getMedicinePrescriptionList() {
         return medicinePrescriptionList;
     }
 
-    public void setMedicinePrescriptionList(List<MedicinePrescription> medicinePrescriptionList) {
+    public void setMedicinePrescriptionList(List<MedicinePrescriptionDto> medicinePrescriptionList) {
         this.medicinePrescriptionList = medicinePrescriptionList;
     }
 }

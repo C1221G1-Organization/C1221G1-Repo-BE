@@ -1,25 +1,49 @@
 package com.c1221g1.pharmacy.dto.customer;
 
-import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.entity.user.Users;
-
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class CustomerDto {
     private String customerId;
+    @NotNull
+    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$")
     private String customerName;
     private String customerBirthday;
-    private String customerAddress;
-    private String customerPhone;
-    private String customerNote;
-    private boolean flag;
-    private Users customerUsername ;
-    private CustomerType customerType;
-    private List<Cart> cartList;
+    @NotNull
+    private Integer customerGender;
 
+    @Size(max = 20)
+    @Size(min = 2)
+    private String customerAddress;
+
+    @NotNull
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
+    private String customerPhone;
+
+    @Size(max = 20)
+    @Size(min = 2)
+    private String customerNote;
+
+    private boolean flag;
+    private Users customerUsername;
+
+    @NotNull
+    private CustomerType customerType;
 
     public CustomerDto() {
+    }
+
+
+    public Integer getCustomerGender() {
+        return customerGender;
+    }
+
+    public void setCustomerGender(Integer customerGender) {
+        this.customerGender = customerGender;
     }
 
     public String getCustomerId() {
@@ -94,11 +118,6 @@ public class CustomerDto {
         this.customerType = customerType;
     }
 
-    public List<Cart> getCartList() {
-        return cartList;
-    }
-
-    public void setCartList(List<Cart> cartList) {
-        this.cartList = cartList;
-    }
 }
+
+
