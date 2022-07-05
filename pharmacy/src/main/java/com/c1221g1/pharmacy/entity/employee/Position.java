@@ -12,6 +12,7 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer positionId;
     private String positionName;
+
     @OneToMany(mappedBy = "position")
     private List<Employee> employeeList;
 
@@ -42,3 +43,4 @@ public class Position {
         this.employeeList = employeeList;
     }
 }
+
