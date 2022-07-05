@@ -25,7 +25,6 @@ public class CustomerService implements ICustomerService {
         return this.iCustomerRepository.getRetailCustomer();
     }
 
-
     /**
      * create by TinBQ
      * time: 30/06/2022
@@ -36,7 +35,6 @@ public class CustomerService implements ICustomerService {
     public Page<Customer> findAllCustomer(Pageable pageable, String customerId, String customerName, String customerAddress, String customerPhone, String customerType) {
         return iCustomerRepository.getAllSearchAndSortCustomer("%" + customerId + "%", "%" + customerType + "%", "%" + customerName + "%", "%" + customerAddress + "%", "%" + customerPhone + "%", pageable);
     }
-
 
     /**
      * create by TinBQ
@@ -77,5 +75,5 @@ public class CustomerService implements ICustomerService {
                 , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone()
                 , customer.getCustomerType().getCustomerTypeId(), customer.getCustomerId());
     }
-}
 
+}
