@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService implements ICustomerService {
+
     @Autowired
     private ICustomerRepository iCustomerRepository;
 
@@ -23,6 +24,7 @@ public class CustomerService implements ICustomerService {
     public Customer getRetailCustomer() {
         return this.iCustomerRepository.getRetailCustomer();
     }
+
 
     /**
      * create by TinBQ

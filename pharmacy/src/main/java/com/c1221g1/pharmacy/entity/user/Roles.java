@@ -12,12 +12,11 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
     private String roleName;
-    @OneToMany(mappedBy = "roles",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private List<UserRole> userRoleList;
 
     public Roles() {
     }
-
 
     public Roles(String roleName) {
         this.roleName = roleName;
