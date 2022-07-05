@@ -1,17 +1,17 @@
 package com.c1221g1.pharmacy.controller.medicine;
-
-
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.*;
 import com.c1221g1.pharmacy.service.medicine.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -36,6 +36,54 @@ public class MedicineController {
     private IMedicineUnitService medicineUnitService;
     @Autowired
     private IMedicineConversionUnitService medicineConversionUnitService;
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: get all page medicine
+     */
+
+    @GetMapping("/search")
+    public ResponseEntity<?> findAllMedicine(@PageableDefault(value = 4) Pageable pageable,
+                                             @RequestParam Optional<String> columName,
+                                             @RequestParam Optional<String> condition,
+                                             @RequestParam Optional<String> keyWord
+    ) {
+        String columNameValue = columName.orElse("medicineId");
+        String conditionValue = condition.orElse("like");
+        String keyWordValue = keyWord.orElse("'%%'");
+        System.out.println(columNameValue);
+        System.out.println(conditionValue);
+        System.out.println(keyWordValue);
+        List<MedicineLookUpDto> medicinePage = medicineService.findAllMedicine(columNameValue, conditionValue, keyWordValue);
+        if (medicinePage.isEmpty()) {
+            System.out.println(medicinePage);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        final int start = (int) pageable.getOffset();
+        final int end = Math.min((start + pageable.getPageSize()), medicinePage.size());
+        final Page<MedicineLookUpDto> page = new PageImpl<>(medicinePage.subList(start, end), pageable, medicinePage.size());
+        return new ResponseEntity<>(page, HttpStatus.OK);
+    }
+
+
+
+
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: delete medicine by medicineId
+     */
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Medicine> deleteMedicineById(@PathVariable String id) {
+        Medicine medicine = this.medicineService.findMedicineById(id).orElse(null);
+        if (medicine == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        this.medicineService.deleteMedicineById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     /**
      * this function use to create medicineOriginList to modelAttribute
@@ -44,7 +92,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineOriginList")
-    public List<MedicineOrigin> getMedicineOriginList() {
+    public List<MedicineOrigin> medicineOriginList() {
         return this.medicineOriginService.getAll();
     }
 
@@ -55,7 +103,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineTypeList")
-    public List<MedicineType> getMedicineTypeList() {
+    public List<MedicineType> medicineTypeList() {
         return this.medicineTypeService.getAll();
     }
 
@@ -66,7 +114,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineUnitList")
-    public List<MedicineUnit> getMedicineUnitList() {
+    public List<MedicineUnit> medicineUnitList() {
         return this.medicineUnitService.getAll();
     }
 
@@ -77,7 +125,7 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @ModelAttribute("medicineConversionUnitList")
-    public List<MedicineConversionUnit> getMedicineConversionUnitList() {
+    public List<MedicineConversionUnit> medicineConversionUnitList() {
         return this.medicineConversionUnitService.getAll();
     }
 
@@ -109,6 +157,70 @@ public class MedicineController {
         BeanUtils.copyProperties(medicineDto, medicine);
         this.medicineService.createMedicine(medicine);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * this function use to get all medicine unit
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineUnit")
+    public ResponseEntity<List<MedicineUnit>> getMedicineUnitList() {
+        List<MedicineUnit> medicineUnitList = this.medicineUnitList();
+        if (medicineUnitList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineUnitList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to get all medicine conversion unit
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineConversionUnit")
+    public ResponseEntity<List<MedicineConversionUnit>> getMedicineConversionUnitList() {
+        List<MedicineConversionUnit> medicineConversionUnitList = this.medicineConversionUnitList();
+        if (medicineConversionUnitList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineConversionUnitList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to get all medicine origin
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineOrigin")
+    public ResponseEntity<List<MedicineOrigin>> getMedicineOriginList() {
+        List<MedicineOrigin> medicineOriginList = this.medicineOriginList();
+        if (medicineOriginList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineOriginList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * this function use to get all medicine type
+     *
+     * @author LongNH
+     * @Time 09:42 03/07/2022
+     */
+    @GetMapping("medicineType")
+    public ResponseEntity<List<MedicineType>> getMedicineTypeList() {
+        List<MedicineType> medicineTypeList = this.medicineTypeList();
+        if (medicineTypeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(medicineTypeList, HttpStatus.OK);
+        }
     }
 
     /**
@@ -148,11 +260,27 @@ public class MedicineController {
     }
 
     /**
+     * this function use to get exist medicine in db
+     *
+     * @author LongNH
+     * @Time 19:25 03/07/2022
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<Medicine> findMedicineById(@PathVariable("id") String id) {
+        Medicine existMedicine = this.medicineService.findMedicineById(id).orElse(null);
+        if (existMedicine == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(existMedicine, HttpStatus.OK);
+    }
+
+    /**
      * Creator: NghiaNTT Time: 29/02/2022
      *
      * @param medicineId: String
      * @return MedicineDetailDto contain properties to show customers
      */
+
     @GetMapping("detail/{medicineId}")
     public ResponseEntity<MedicineDetailDto> getMedicineDetailDtoById(@PathVariable("medicineId") String medicineId) {
         MedicineDetailDto medicineDetailDto = medicineService.getMedicineDetailDtoById(medicineId);
@@ -169,7 +297,8 @@ public class MedicineController {
      * @return List<MedicineDetailDto> contains maximum of 5 medicines that same medicineType of medicine has medicineId
      */
     @GetMapping("get-5-relative-medicines-type/{medicineId}")
-    public ResponseEntity<List<MedicineDetailDto>> get5RelativeMedicinesOf(@PathVariable("medicineId") String medicineId) {
+    public ResponseEntity<List<MedicineDetailDto>> get5RelativeMedicinesOf(@PathVariable("medicineId") String
+                                                                                   medicineId) {
         List<MedicineDetailDto> medicineDetailDtoList = medicineService.get5RelativeMedicinesOf(medicineId);
         if (medicineDetailDtoList == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -184,7 +313,8 @@ public class MedicineController {
     */
 
     @GetMapping("")
-    public ResponseEntity<Page<IMedicineDto>> getAllMedicineAndSearch(@RequestParam(defaultValue = "0") Integer page,
+    public ResponseEntity<Page<IMedicineDto>> getAllMedicineAndSearch(@RequestParam(defaultValue = "0") Integer
+                                                                              page,
                                                                       @RequestParam(defaultValue = "5") Integer pageSize,
                                                                       @RequestParam Optional<String> sort,
                                                                       @RequestParam Optional<String> dir,
@@ -196,7 +326,7 @@ public class MedicineController {
         String dirVal = dir.orElse("");
         Pageable pageable;
         pageable = PageRequest.of(page, pageSize);
-        Page<IMedicineDto> medicineDtoPage = medicineService.getListAndSearch(pageable, nameVal, typeIdVal,sortVal);
+        Page<IMedicineDto> medicineDtoPage = medicineService.getListAndSearch(pageable, nameVal, typeIdVal, sortVal);
         if (!medicineDtoPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

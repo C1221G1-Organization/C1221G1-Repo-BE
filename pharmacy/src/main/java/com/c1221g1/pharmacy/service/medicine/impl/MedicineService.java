@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
 
-
+import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
@@ -14,12 +15,43 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class MedicineService implements IMedicineService {
+
     @Autowired
     private IMedicineRepository medicineRepository;
 
+    /*
+     * Created by DaLQA
+     * Time: 04/07/2022
+     * Function: function create getListMedicineSale
+     * */
+    @Override
+    public List<MedicineSale> getListMedicineSale() {
+        return this.medicineRepository.getListMedicineSale();
+    }
+
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: get list medicine and search
+     */
+
+    @Override
+    public List<MedicineLookUpDto> findAllMedicine(String columName, String condition, String keyword) {
+        return medicineRepository.getAllMedicine(columName, condition, keyword);
+    }
+
+    /**
+     * Created by MyC
+     * Time: 23:00 29/06/2022
+     * Function: delete medicine by medicineId
+     */
+
+    @Override
+    public void deleteMedicineById(String id) {
+        this.medicineRepository.deleteMedicineById(id);
+    }
 
     /**
      * this function use to create new medicine
@@ -27,6 +59,7 @@ public class MedicineService implements IMedicineService {
      * @author LongNH
      * @Time 15:30 29/06/2022
      */
+
     @Override
     public void createMedicine(Medicine medicine) {
         medicine.setFlag(true);
@@ -102,9 +135,9 @@ public class MedicineService implements IMedicineService {
     @Override
     public Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId, String sort) {
         if (typeId != null) {
-            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId,sort);
+            return medicineRepository.getAllMedicineByNameAndTypeId(pageable, name, typeId, sort);
         }
-        return medicineRepository.getAllMedicineByName(pageable, name,sort);
+        return medicineRepository.getAllMedicineByName(pageable, name, sort);
     }
-}
 
+}
