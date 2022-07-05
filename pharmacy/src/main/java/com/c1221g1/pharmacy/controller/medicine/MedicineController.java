@@ -240,7 +240,6 @@ public class MedicineController {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         MedicineType medicineType = new MedicineType();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
         MedicineUnit medicineUnit = new MedicineUnit();

@@ -1,4 +1,5 @@
 package com.c1221g1.pharmacy.repository.medicine;
+
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +54,8 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
             + "medicine_conversion_rate=:#{#medicine.medicineConversionRate},medicine_manufacture=:#{#medicine.medicineManufacture},"
             + "medicine_usage=:#{#medicine.medicineUsage},medicine_instruction=:#{#medicine.medicineInstruction},"
             + "medicine_age_approved=:#{#medicine.medicineAgeApproved},medicine_image=:#{#medicine.medicineImage},"
-            + "medicine_description=:#{#medicine.medicineDescription},medicine_origin_id=:#{#medicine.medicineOrigin},"
+            + "medicine_description=:#{#medicine.medicineDescription},flag =:#{#medicine.flag},"
+            + "medicine_origin_id=:#{#medicine.medicineOrigin},"
             + "medicine_type_id=:#{#medicine.medicineType},medicine_unit_id=:#{#medicine.medicineUnit},"
             + "medicine_conversion_unit_id=:#{#medicine.medicineConversionUnit}" + " where medicine_id=:#{#medicine.medicineId}", nativeQuery = true)
     void updateMedicine(Medicine medicine);
