@@ -41,11 +41,9 @@ public class EmployeeController {
       Function:  Create Employee
  */
     @PostMapping(value = "")
-    public ResponseEntity<?> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
-                                            BindingResult bindingResult) {
-
+    public ResponseEntity<Object> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
+                                                 BindingResult bindingResult) {
         Map<String, String> errorMap = new HashMap<>();
-//        employeeDto.validate(employeeDto, bindingResult);
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(
@@ -58,10 +56,9 @@ public class EmployeeController {
         position.setPositionId(employeeDto.getPosition().getPositionId());
         Users users = new Users();
         users.setUsername(employeeDto.getEmployeeUsername().getUsername());
-        if (this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).size() > 0) {
-            errorMap.put("usersName", "Tên đăng nhập đã trùng");
-            return ResponseEntity.badRequest().body(new ResponseMessage(
-                    false, "Failed!", errorMap, new ArrayList<>()));
+        if (!this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).isEmpty()) {
+            errorMap.put("usersName", "Tên đăng nhập tồn tại");
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed!", errorMap, new ArrayList<>()));
         }
         users.setFlag(true);
         users.setPassword("12345");
@@ -78,16 +75,14 @@ public class EmployeeController {
       Function:  Update Employee
  */
     @PatchMapping(value = "{id}")
-    public ResponseEntity<?> updateEmployee(@PathVariable String id,
-                                            @Valid @RequestBody EmployeeDto employeeDto,
-                                            BindingResult bindingResult) {
+    public ResponseEntity<Employee> updateEmployee(@PathVariable String id,
+                                                   @Valid @RequestBody EmployeeDto employeeDto,
+                                                   BindingResult bindingResult) {
         Employee employeeById = this.iEmployeeService.findEmployeeById(id);
-        employeeDto.validate(employeeDto, bindingResult);
         if (employeeById == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Map<String, String> errorMap = new HashMap<>();
-//        employeeDto.validate(employeeDto, bindingResult);
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(

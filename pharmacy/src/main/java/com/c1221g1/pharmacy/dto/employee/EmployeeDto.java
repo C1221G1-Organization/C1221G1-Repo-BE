@@ -18,11 +18,11 @@ import java.util.List;
   Function:  Validate EmployeeDto
 */
 
-public class EmployeeDto implements Validator {
+public class EmployeeDto  {
     private String employeeId;
     @NotNull(message = "Name may not be null")
     @NotEmpty(message = "Name may not be empty")
-    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
+    @Pattern(regexp = "^([(A-Z{1}+)][a-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]+)((\\s{1}[(A-Z{1}+)][a-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]+){1,})$", message = "\n" +
             "Name do not enter special characters\n")
     @Size(max = 50, message = "\n" +
             "Do not exceed 50 characters")
@@ -34,14 +34,11 @@ public class EmployeeDto implements Validator {
     @Pattern(regexp = "(\\S.*\\.(?:png$|jpg$))", message = "\n" +
             "Hãy chọn flle ảnh, định dạng :name.*Image\n")
     private String employeeImage;
-    @NotNull(message = "Address may not be null")
     @NotEmpty(message = "Address may not be empty")
-    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
-            "Do not enter special characters\n")
     private String employeeAddress;
     @NotNull(message = "Phone may not be null")
     @NotEmpty(message = "Phone may not be empty")
-    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$",
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|9]|7[0|6-9]|8[0-6|9]|9[0-4|6-9])[0-9]{7}$",
             message = "\n" +
                     "Enter the correct phone number format including 10 numbers")
     private String employeePhone;
@@ -146,14 +143,5 @@ public class EmployeeDto implements Validator {
         this.importInvoiceList = importInvoiceList;
     }
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
 
-    @Override
-    public void validate(Object target, Errors errors) {
-
-
-    }
 }
