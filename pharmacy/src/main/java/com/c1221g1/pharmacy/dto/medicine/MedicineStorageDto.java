@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.dto.medicine;
-
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -47,3 +46,4 @@ public class MedicineStorageDto implements Validator {
         MedicineStorageDto medicineStorageDto = (MedicineStorageDto) target;
     }
 }
+
