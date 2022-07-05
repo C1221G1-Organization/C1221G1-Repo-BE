@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PrescriptionService implements IPrescriptionService {
@@ -18,12 +18,12 @@ public class PrescriptionService implements IPrescriptionService {
 
     @Override
     public Page<Prescription> findAllPageAndSearch(Pageable pageable, String id, String name, String target, String symptom) {
-        return this.prescriptionRepository.findAllPage(pageable, "%"+id+"%",
-                "%"+ name +"%","%"+ target +"%","%"+ symptom +"%");
+        return this.prescriptionRepository.findAllPage(pageable, "%" + id + "%",
+                "%" + name + "%", "%" + target + "%", "%" + symptom + "%");
     }
 
     @Override
-    public void save(Prescription prescription) {
+    public void savePrescription(Prescription prescription) {
         this.prescriptionRepository.save(prescription);
     }
 
@@ -47,6 +47,5 @@ public class PrescriptionService implements IPrescriptionService {
         return this.prescriptionRepository.detailPrescriptionById(id);
     }
 
-    @Autowired
 
 }

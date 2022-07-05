@@ -26,10 +26,10 @@ public class MedicineDto {
     private MedicineType medicineType;
     private MedicineUnit medicineUnit;
     private MedicineConversionUnit medicineConversionUnit;
-    private List<MedicinePrescription> medicinePrescriptionList;
-    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
-    private List<InvoiceMedicine> invoiceMedicineList;
-    private List<CartDetail> cartDetailList;
+//    private List<MedicinePrescription> medicinePrescriptionList;
+//    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
+//    private List<InvoiceMedicine> invoiceMedicineList;
+//    private List<CartDetail> cartDetailList;
 
     public MedicineDto() {
     }
@@ -154,35 +154,5 @@ public class MedicineDto {
         this.medicineConversionUnit = medicineConversionUnit;
     }
 
-    public List<MedicinePrescription> getMedicinePrescriptionList() {
-        return medicinePrescriptionList;
-    }
 
-    public void setMedicinePrescriptionList(List<MedicinePrescription> medicinePrescriptionList) {
-        this.medicinePrescriptionList = medicinePrescriptionList;
-    }
-
-    public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
-        return importInvoiceMedicineList;
-    }
-
-    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
-        this.importInvoiceMedicineList = importInvoiceMedicineList;
-    }
-
-    public List<InvoiceMedicine> getInvoiceMedicineList() {
-        return invoiceMedicineList;
-    }
-
-    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
-        this.invoiceMedicineList = invoiceMedicineList;
-    }
-
-    public List<CartDetail> getCartDetailList() {
-        return cartDetailList;
-    }
-
-    public void setCartDetailList(List<CartDetail> cartDetailList) {
-        this.cartDetailList = cartDetailList;
-    }
 }

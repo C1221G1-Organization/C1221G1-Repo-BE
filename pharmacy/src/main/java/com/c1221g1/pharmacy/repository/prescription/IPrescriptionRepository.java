@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 public interface IPrescriptionRepository extends JpaRepository<Prescription, String> {
     /**
@@ -83,5 +84,15 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             nativeQuery = true)
     void editPrescription(Prescription prescription);
 
-
+//    @Query(value = "select prescription.prescription_id, " +
+//            " prescription.flag, " +
+//            " prescription.prescription_name," +
+//            " prescription.prescription_target_user," +
+//            " prescription.prescription_symptom, " +
+//            " prescription.prescription_number_of_days, " +
+//            " prescription.prescription_note " +
+//            "from prescription" +
+//            " where prescription.prescription_id = :id ",
+//            nativeQuery = true)
+//    Prescription findByIdQuery( @Param("id") String id);
 }

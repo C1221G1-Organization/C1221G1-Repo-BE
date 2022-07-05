@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.controller.prescription;
 
 import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionDto;
+import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
 import org.omg.CosNaming.NamingContextPackage.NotEmpty;
@@ -40,24 +41,21 @@ public class PrescriptionController {
                                                                            @RequestParam Optional<String> names,
                                                                            @RequestParam Optional<String> target,
                                                                            @RequestParam Optional<String> symptom,
-                                                                           @RequestParam(defaultValue = "0") int page,
-                                                                           @RequestParam(defaultValue = "5") Integer pageSize,
-                                                                           @RequestParam Optional<String> sort,
-                                                                           @RequestParam Optional<String> dir) {
-        Pageable pageable;
-        String sortVal = sort.orElse("");
-        String dirVal = dir.orElse("");
-        if ("".equals(sortVal)) {
-            pageable = PageRequest.of(page, pageSize);
-        } else {
-            if (dirVal.equals("desc")) {
-                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
-            } else if (dirVal.equals("asc")){
-                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
-            } else {
-                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
-            }
-        }
+                                                                           @PageableDefault(value = 5) Pageable pageable) {
+//        Pageable pageable;
+//        String sortVal = sort.orElse("");
+//        String dirVal = dir.orElse("");
+//        if ("".equals(sortVal)) {
+//            pageable = PageRequest.of(pages, pageSize);
+//        } else {
+//            if (dirVal.equals("desc")) {
+//                pageable = PageRequest.of(pages, pageSize, Sort.by(sortVal).descending());
+//            } else if (dirVal.equals("asc")){
+//                pageable = PageRequest.of(pages, pageSize, Sort.by(sortVal).ascending());
+//            } else {
+//                pageable = PageRequest.of(pages, pageSize, Sort.by(sortVal).ascending());
+//            }
+//        }
 
         String idVal = id.orElse("");
         String nameVal = names.orElse("");
@@ -108,7 +106,7 @@ public class PrescriptionController {
 
         BeanUtils.copyProperties(prescriptionDto, prescription);
 
-        this.prescriptionService.save(prescription);
+        this.prescriptionService.savePrescription(prescription);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

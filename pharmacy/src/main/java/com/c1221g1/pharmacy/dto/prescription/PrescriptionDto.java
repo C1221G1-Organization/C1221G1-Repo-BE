@@ -1,7 +1,5 @@
 package com.c1221g1.pharmacy.dto.prescription;
 
-import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
-
 import javax.validation.constraints.*;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class PrescriptionDto {
     @Max(365)
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-    private List<MedicinePrescriptionDto> medicinePrescriptionList;
+//    private List<MedicinePrescriptionDto> medicinePrescriptionDtoList;
 
     public PrescriptionDto() {
     }
@@ -93,11 +91,4 @@ public class PrescriptionDto {
         this.flag = flag;
     }
 
-    public List<MedicinePrescriptionDto> getMedicinePrescriptionList() {
-        return medicinePrescriptionList;
-    }
-
-    public void setMedicinePrescriptionList(List<MedicinePrescriptionDto> medicinePrescriptionList) {
-        this.medicinePrescriptionList = medicinePrescriptionList;
-    }
 }
