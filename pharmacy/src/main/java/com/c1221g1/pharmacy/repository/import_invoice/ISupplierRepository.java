@@ -116,5 +116,5 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
             "on s.supplier_id = ii.supplier_id " +
             "where s.supplier_id = :supplierId and s.flag = 1",
             nativeQuery = true)
-    Supplier findByIdDetailSupplier(@Param("supplierId") String id);
+    Supplier    findByIdDetailSupplier(@Param("supplierId") String id);
 }
