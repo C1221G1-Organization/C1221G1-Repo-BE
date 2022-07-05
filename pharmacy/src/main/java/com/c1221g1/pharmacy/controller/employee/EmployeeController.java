@@ -1,7 +1,6 @@
 package com.c1221g1.pharmacy.controller.employee;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.employee.Position;
 import com.c1221g1.pharmacy.entity.user.Users;
@@ -17,7 +16,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -62,7 +60,8 @@ public class EmployeeController {
         users.setUsername(employeeDto.getEmployeeUsername().getUsername());
         if (this.iUsersService.checkEmail(employeeDto.getEmployeeUsername().getUsername()).size() > 0) {
             errorMap.put("usersName", "Tên đăng nhập đã trùng");
-            return ResponseEntity.badRequest().body(new ResponseMessage(false, "Failed!", errorMap, new ArrayList<>()));
+            return ResponseEntity.badRequest().body(new ResponseMessage(
+                    false, "Failed!", errorMap, new ArrayList<>()));
         }
         users.setFlag(true);
         users.setPassword("12345");
