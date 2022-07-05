@@ -4,9 +4,7 @@ import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-
 public interface ICustomerService {
-
     /*
      * Created by DaLQA
      * Time: 7:30 PM 29/06/2022

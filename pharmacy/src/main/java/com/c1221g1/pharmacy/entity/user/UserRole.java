@@ -19,12 +19,10 @@ public class UserRole {
     public UserRole() {
     }
 
-
     public UserRole(Users users, Roles roles) {
         this.users = users;
         this.roles = roles;
     }
-
 
     public Integer getUserRoleId() {
         return userRoleId;

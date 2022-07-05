@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +54,6 @@ public class CustomerController {
         String valueCustomerPhone = customerPhone.orElse("");
         String valueSort = sort.orElse("");
         String dirVal = dir.orElse("");
-        System.out.println(customerId);
         if ("".equals(valueSort)) {
             pageable = PageRequest.of(page, size);
         } else {
@@ -108,6 +108,7 @@ public class CustomerController {
         }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
+        customer.setFlag(true);
         this.iCustomerService.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }

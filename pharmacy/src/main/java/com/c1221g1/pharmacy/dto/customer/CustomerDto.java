@@ -7,10 +7,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+
 public class CustomerDto {
     private String customerId;
     @NotNull
     @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$")
+    @Size(max = 20)
+    @Size(min = 2)
     private String customerName;
     private String customerBirthday;
     @NotNull
@@ -21,14 +24,16 @@ public class CustomerDto {
     private String customerAddress;
 
     @NotNull
-    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|9]|7[0|6-9]|8[0-6|9]|9[0-4|6-9])[0-9]{7}$")
     private String customerPhone;
 
     @Size(max = 20)
     @Size(min = 2)
     private String customerNote;
+
     private boolean flag;
     private Users customerUsername;
+
     @NotNull
     private CustomerType customerType;
 
@@ -115,5 +120,7 @@ public class CustomerDto {
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
+
 }
+
 

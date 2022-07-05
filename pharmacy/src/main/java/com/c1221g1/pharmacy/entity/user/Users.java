@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @JsonIgnoreProperties({"userRoleList", "customer", "employee"})
+
 public class Users {
     @Id
     @Column(columnDefinition = "VARCHAR(30)")
@@ -32,7 +33,6 @@ public class Users {
 
     public Users() {
     }
-
 
     public Users(String username, String password) {
         this.username = username;
@@ -64,7 +64,6 @@ public class Users {
         this.flag = flag;
     }
 
-
     public Provider getProvider() {
         return provider;
     }
@@ -72,7 +71,6 @@ public class Users {
     public void setProvider(Provider provider) {
         this.provider = provider;
     }
-
 
     public List<UserRole> getUserRoleList() {
         return userRoleList;

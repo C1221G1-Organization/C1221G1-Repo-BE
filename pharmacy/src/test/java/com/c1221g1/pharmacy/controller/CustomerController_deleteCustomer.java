@@ -51,7 +51,7 @@ public class CustomerController_deleteCustomer {
     @Test
     public void deleteCustomer_28() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.delete("/api/manager-customer/customers/{customerId}","KH-00002"))
+                        MockMvcRequestBuilders.delete("/api/manager-customer/customers/{customerId}","KH0003"))
                 .andExpect(status().isOk());
     }
 }

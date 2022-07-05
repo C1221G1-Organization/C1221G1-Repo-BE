@@ -9,7 +9,6 @@ import java.util.List;
 public interface ICustomerTypeRepository extends JpaRepository<CustomerType, Integer> {
 
     /**
-<<<<<<< HEAD
      * create by TinBQ and TruongNQ
      * time: 30/06/2022
      * This method to get customer type in database
