@@ -92,7 +92,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerId","KH-00002"))
+                                .param("customerId","KH-0002"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -102,7 +102,7 @@ public class CustomerController_getPageCustomer {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/api/manager-customer/customers")
-                                .param("customerId","KH-00002"))
+                                .param("customerId","1"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
