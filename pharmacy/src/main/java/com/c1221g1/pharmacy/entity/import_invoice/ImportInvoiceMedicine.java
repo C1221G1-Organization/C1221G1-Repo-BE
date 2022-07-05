@@ -107,4 +107,5 @@ public class ImportInvoiceMedicine {
     public void setImportInvoice(ImportInvoice importInvoice) {
         this.importInvoice = importInvoice;
     }
+
 }

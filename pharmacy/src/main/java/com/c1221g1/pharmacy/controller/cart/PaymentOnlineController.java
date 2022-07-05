@@ -63,7 +63,7 @@ public class PaymentOnlineController {
      * @return
      */
     @PostMapping("")
-    public ResponseEntity<?> savePayment(@Validated @RequestBody PaymentOnlineDto paymentOnlineDto) {
+    public ResponseEntity<HttpStatus> savePayment(@Validated @RequestBody PaymentOnlineDto paymentOnlineDto) {
         PaymentOnline paymentOnline = new PaymentOnline();
         BeanUtils.copyProperties(paymentOnlineDto, paymentOnline);
         this.iPaymentOnlineService.save(paymentOnline);

@@ -54,4 +54,6 @@ public class PaymentOnline {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
 }
+

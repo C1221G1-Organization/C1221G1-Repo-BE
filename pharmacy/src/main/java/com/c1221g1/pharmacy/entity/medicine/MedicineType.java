@@ -46,4 +46,5 @@ public class MedicineType {
     public void setMedicineList(List<Medicine> medicineList) {
         this.medicineList = medicineList;
     }
+
 }

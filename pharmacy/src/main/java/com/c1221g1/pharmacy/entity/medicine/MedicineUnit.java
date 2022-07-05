@@ -41,4 +41,5 @@ public class MedicineUnit {
     public void setMedicineList(List<Medicine> medicineList) {
         this.medicineList = medicineList;
     }
+
 }
