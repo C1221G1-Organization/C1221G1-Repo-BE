@@ -18,7 +18,12 @@ import java.util.Properties;
 public class IdentityCodeGenerator implements IdentifierGenerator, Configurable {
 
     private String prefix;
-
+    /**
+     * this function use to custom generate id
+     *
+     * @author NghiaNTT
+     * @Time 28/06/2022
+     */
     @Override
     public Serializable generate(
             SharedSessionContractImplementor session, Object obj)
@@ -32,12 +37,12 @@ public class IdentityCodeGenerator implements IdentifierGenerator, Configurable 
         List<Long> longs = new ArrayList<>();
         longs.add(0L);
         Query query = session.createQuery(queryString);
-        for(Object o : query.list()) {
+        for (Object o : query.list()) {
             longs.add(Long.parseLong(((String) o).replace(prefix + "-", "")));
         }
         Long max = Collections.max(longs);
 
-        return prefix + "-" + String.format("%05d",(max + 1));
+        return prefix + "-" + String.format("%05d", (max + 1));
     }
 
     @Override

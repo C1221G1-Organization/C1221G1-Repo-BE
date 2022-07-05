@@ -4,6 +4,7 @@ import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,7 +27,6 @@ public class Customer {
     private String customerNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
     private Users customerUsername;
@@ -127,19 +127,4 @@ public class Customer {
         this.cartList = cartList;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId='" + customerId + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", customerBirthday='" + customerBirthday + '\'' +
-                ", customerGender=" + customerGender +
-                ", customerAddress='" + customerAddress + '\'' +
-                ", customerPhone='" + customerPhone + '\'' +
-                ", customerNote='" + customerNote + '\'' +
-                ", flag=" + flag +
-                ", customerUsername=" + customerUsername +
-                ", customerType=" + customerType +
-                '}';
-    }
 }

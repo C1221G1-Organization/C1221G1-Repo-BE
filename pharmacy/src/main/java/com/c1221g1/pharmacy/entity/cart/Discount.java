@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.entity.cart;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"cartList"})
 public class Discount {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -45,4 +47,6 @@ public class Discount {
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
     }
+
 }
+
