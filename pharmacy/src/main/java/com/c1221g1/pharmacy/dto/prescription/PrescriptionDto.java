@@ -1,5 +1,5 @@
 package com.c1221g1.pharmacy.dto.prescription;
-
+import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
 import javax.validation.constraints.*;
 import java.util.List;
 
@@ -61,6 +61,7 @@ public class PrescriptionDto {
 
     public String getPrescriptionTargetUser() {
         return prescriptionTargetUser;
+
     }
 
     public void setPrescriptionTargetUser(String prescriptionTargetUser) {
@@ -90,5 +91,4 @@ public class PrescriptionDto {
     public void setFlag(Boolean flag) {
         this.flag = flag;
     }
-
 }

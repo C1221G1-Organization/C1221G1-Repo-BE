@@ -1,12 +1,8 @@
 package com.c1221g1.pharmacy.entity.prescription;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,7 +24,6 @@ public class Prescription {
     private String prescriptionNote;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-//    @JsonBackReference(value = "prescriptionList")
     @OneToMany(mappedBy = "prescription")
     private List<MedicinePrescription> medicinePrescriptionList;
 
