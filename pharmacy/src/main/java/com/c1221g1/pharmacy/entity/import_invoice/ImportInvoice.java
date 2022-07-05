@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @JsonIgnoreProperties({"importInvoiceMedicineList"})
 public class ImportInvoice {
-
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")
@@ -111,7 +110,6 @@ public class ImportInvoice {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-
 
     public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
         return importInvoiceMedicineList;

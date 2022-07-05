@@ -47,4 +47,6 @@ public class Discount {
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
     }
+
 }
+
