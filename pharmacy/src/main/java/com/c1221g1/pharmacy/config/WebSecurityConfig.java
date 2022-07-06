@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/api/manager-security/users/sign-in"
+                .antMatchers("/api/manager-security/users/sign-in","/api/manager-medicine/**"
                         ,"/api/manager-security/users/sign-up","/api/carts","/api/payment-online","/api/manager-position**"
                     )
                 .permitAll()
@@ -77,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("USER")
                 .antMatchers("/api/manager-customer/customers**","/api/manager-prescription/**",
                         "/api/manager-sale/**","api/manager-sale/invoices**"
-                        ,"/api/manager-medicine/**","/api/manager-prescription**","/api/manager_report/**"
+                        ,"/api/manager-prescription**","/api/manager_report/**"
                 )
                 .hasAnyRole("EMPLOYEE","MANAGER")
                 .antMatchers("/api/manager-account/**","/api/manager-employee/**")
