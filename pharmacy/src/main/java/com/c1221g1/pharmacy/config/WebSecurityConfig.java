@@ -11,10 +11,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -75,31 +73,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/payment**",
                         "/api/manager-position**",
                         "/api/cart**",
-                        "/api/manager-medicine/**"
+                        "/api/manager-medicine/**",
+                        "/api/manager_report/**",
+                        "/**"
 
                 )
-                .permitAll()
-                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
-                        "/api/manager-sale/**", "api/manager-sale/invoices**"
-                        , "/api/manager-prescription**", "/api/manager_report/**"
-                )
-                .hasAnyRole("EMPLOYEE", "MANAGER")
-                .antMatchers("/api/manager-account/**", "/api/manager-employee/**")
-                .hasRole("MANAGER")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler)
-                .and()
-                .rememberMe()
-                .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
+                .permitAll();
+//                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
+//                        "/api/manager-sale/**", "api/manager-sale/invoices**"
+//                        , "/api/manager-prescription**", "/api/manager_report/**"
+//                )
+//                .hasAnyRole("EMPLOYEE", "MANAGER")
+//                .antMatchers("/api/manager-account/**", "/api/manager-employee/**")
+//                .hasRole("MANAGER")
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(unauthorizedHandler)
+//                .and()
+//                .rememberMe()
+//                .tokenRepository(persistentTokenRepository())
+//                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
 
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 
