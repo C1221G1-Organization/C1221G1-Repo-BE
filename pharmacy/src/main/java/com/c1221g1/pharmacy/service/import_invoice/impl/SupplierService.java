@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.service.import_invoice.impl;
 
+import com.c1221g1.pharmacy.dto.import_invoice.ISupplierDto;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import com.c1221g1.pharmacy.repository.import_invoice.ISupplierRepository;
 import com.c1221g1.pharmacy.service.import_invoice.ISupplierService;
@@ -75,7 +76,7 @@ public class SupplierService implements ISupplierService {
     }
 
     @Override
-    public Supplier findByIdDEtail(String id) {
+    public ISupplierDto findByIdDEtail(String id) {
         return iSupplierRepository.findByIdDetailSupplier(id);
     }
 }
