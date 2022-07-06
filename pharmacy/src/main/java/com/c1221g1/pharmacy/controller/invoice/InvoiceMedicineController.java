@@ -52,7 +52,7 @@ public class InvoiceMedicineController {
             return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
         try {
-            boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto);
+            boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto, bindingResult);
             return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
         } catch (NullPointerException ex) {
             Map<String,String> errors = new HashMap<>();
