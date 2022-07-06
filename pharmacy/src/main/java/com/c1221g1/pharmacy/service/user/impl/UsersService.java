@@ -62,8 +62,6 @@ public class UsersService implements IUsersService {
             this.iUsersRepository.save(users);
             this.iUserRoleRepository.save(userRole);
             this.iCustomerRepository.save(customer);
-
-
     }
 
     /**
