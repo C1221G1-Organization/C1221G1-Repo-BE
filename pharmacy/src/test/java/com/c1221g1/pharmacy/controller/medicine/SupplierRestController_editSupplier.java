@@ -337,7 +337,7 @@ public class SupplierRestController_editSupplier {
         // test this
         supplierDto.setSupplierName("Nha");
         supplierDto.setSupplierAddress("63 Phạm Vinh , Cẩm Lệ , Đà Nẵng");
-        supplierDto.setSupplierEmail("luahxzx   t@gail.com");
+        supplierDto.setSupplierEmail("luahxzxt@gail.com");
         supplierDto.setSupplierPhone("0333167149");
         supplierDto.setNote("hòa nhã");
         this.mockMvc
@@ -356,7 +356,7 @@ public class SupplierRestController_editSupplier {
      * 16h20 1/7/2022
      */
     @Test
-    public void createSupplier_maxlenght_23() throws Exception {
+    public void createSupplier_maxlenght_phone_23() throws Exception {
 
         SupplierDto supplierDto = new SupplierDto();
         supplierDto.setSupplierName("Nhà Thuốc Thiên An  ");

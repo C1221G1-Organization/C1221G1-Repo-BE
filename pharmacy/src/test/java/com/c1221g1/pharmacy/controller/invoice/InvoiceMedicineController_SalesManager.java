@@ -4,6 +4,7 @@ import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
 import com.c1221g1.pharmacy.dto.invoice.InvoiceMedicineDto;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.Position;
 import com.c1221g1.pharmacy.dto.import_invoice.ImportInvoiceDto;
 import com.c1221g1.pharmacy.dto.import_invoice.SupplierDto;
+import com.c1221g1.pharmacy.entity.employee.Position;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
