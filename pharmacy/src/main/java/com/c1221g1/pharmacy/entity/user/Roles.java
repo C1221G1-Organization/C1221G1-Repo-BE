@@ -13,7 +13,7 @@ public class Roles {
     @OneToMany(mappedBy = "roles")
     private List<UserRole> userRoleList;
 
-    public Roles() {
+    public Roles(String role_manager) {
     }
 
     public Integer getRoleId() {

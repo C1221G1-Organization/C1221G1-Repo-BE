@@ -21,6 +21,8 @@ public class UserRole {
     public UserRole() {
     }
 
+
+
     public Integer getUserRoleId() {
         return userRoleId;
     }

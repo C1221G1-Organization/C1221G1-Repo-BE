@@ -1,12 +1,14 @@
 package com.c1221g1.pharmacy.controller.employee;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.employee.Position;
+import com.c1221g1.pharmacy.entity.user.Roles;
+import com.c1221g1.pharmacy.entity.user.UserRole;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.employee.IPositionService;
+import com.c1221g1.pharmacy.service.user.IUserRoleService;
 import com.c1221g1.pharmacy.service.user.IUsersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class EmployeeController {
 
     @Autowired
     IUsersService iUsersService;
+
+    @Autowired
+    IUserRoleService iUserRoleService;
 
 
     /*
@@ -67,6 +72,16 @@ public class EmployeeController {
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
         employee.setFlag(true);
+        Roles roles = null;
+        if(employee.getPosition().getPositionId() == 1){
+             roles = new Roles("ROLE_MANAGER");
+        }else {
+            roles = new Roles("ROLE_EMPLOYEE");
+        }
+        UserRole userRole = new UserRole();
+        userRole.setUsers(users);
+        userRole.setRoles(roles);
+        this.iUserRoleService.save(userRole);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
