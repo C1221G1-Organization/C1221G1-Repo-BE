@@ -42,21 +42,37 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
      * 10:55 04/07/2022
      */
 
-    @Query(value = "select prescription.prescription_id as prescriptionId, prescription.prescription_name as " +
-            " prescriptionName, prescription.prescription_target_user as prescriptionTargetUser," +
-            " prescription.prescription_symptom as prescriptionSymptom, prescription.prescription_number_of_days as" +
-            " prescriptionNumberOfDays, prescription.prescription_note as prescriptionNote," +
-            " medicine_prescription.medicine_prescription_times as medicinePrescriptionTimes, " +
+    @Query(value = "select prescription.prescription_id as prescriptionId," +
+            " prescription.prescription_name as prescriptionName," +
+            " prescription.prescription_number_of_days as prescriptionNumberOfDays," +
+            " medicine.medicine_id as medicineId," +
+            " medicine.medicine_name as medicineName," +
+            " medicine_prescription.medicine_prescription_times as medicinePrescriptionTimes," +
             " medicine_prescription.medicine_prescription_number_per_time as medicinePrescriptionNumberPerTime," +
             " (medicine_prescription.medicine_prescription_times*medicine_prescription.medicine_prescription_number_per_time" +
             "*prescription.prescription_number_of_days)" +
             " as totalQuantityMedicine" +
             " from prescription inner join medicine_prescription on prescription.prescription_id = " +
-            " medicine_prescription.prescription_id" +
+            " medicine_prescription.prescription_id inner join medicine on medicine_prescription.medicine_id =" +
+            " medicine.medicine_id" +
             " where prescription.prescription_id = :idPrescription" +
-            " group by prescription.prescription_id",
-            nativeQuery = true)
-    IMedicinePrescriptionDto detailPrescriptionById(@Param("idPrescription") String id);
+            " group by medicine_prescription.medicine_prescription_id", nativeQuery = true)
+    List<IMedicinePrescriptionDto> detailPrescriptionById(@Param("idPrescription") String id);
+//    @Query(value = "select prescription.prescription_id as prescriptionId, prescription.prescription_name as " +
+//            " prescriptionName, prescription.prescription_target_user as prescriptionTargetUser," +
+//            " prescription.prescription_symptom as prescriptionSymptom, prescription.prescription_number_of_days as" +
+//            " prescriptionNumberOfDays, prescription.prescription_note as prescriptionNote," +
+//            " medicine_prescription.medicine_prescription_times as medicinePrescriptionTimes, " +
+//            " medicine_prescription.medicine_prescription_number_per_time as medicinePrescriptionNumberPerTime," +
+//            " (medicine_prescription.medicine_prescription_times*medicine_prescription.medicine_prescription_number_per_time" +
+//            "*prescription.prescription_number_of_days)" +
+//            " as totalQuantityMedicine" +
+//            " from prescription inner join medicine_prescription on prescription.prescription_id = " +
+//            " medicine_prescription.prescription_id" +
+//            " where prescription.prescription_id = :idPrescription" +
+//            " group by prescription.prescription_id",
+//            nativeQuery = true)
+//    IMedicinePrescriptionDto detailPrescriptionById(@Param("idPrescription") String id);
 
     /**
      * HienTLD
@@ -85,6 +101,23 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             " where prescription_id = :#{#prescription.prescriptionId}",
             nativeQuery = true)
     void editPrescription(Prescription prescription);
+
+    /**
+     * <<<<<<< HEAD
+     * HienTLD
+     * Lấy List<Prescription>
+     * update 11:18 30/06/2022
+     */
+    @Query(value = "select prescription.prescription_id, " +
+            " prescription.flag, " +
+            " prescription.prescription_name," +
+            " prescription.prescription_target_user," +
+            " prescription.prescription_symptom, " +
+            " prescription.prescription_number_of_days, " +
+            " prescription.prescription_note " +
+            "from prescription",
+            nativeQuery = true)
+    List<Prescription> findAllPre();
 
     /**
      * DaLQA
@@ -119,5 +152,5 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             "                  left join medicine m on medicine_prescription.medicine_id = m.medicine_id\n" +
             "            where p.prescription_id = :id ", nativeQuery = true)
     List<PrescriptionMedicineDetail> getDetailListPreMe(@Param("id") String id);
-
 }
+
