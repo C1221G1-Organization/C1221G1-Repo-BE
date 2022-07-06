@@ -49,14 +49,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             }
         }catch (ExpiredJwtException e){
             log.error("Cannot set user authentication : {}",e.getMessage());
-            String isRefreshToken = request.getHeader("isRefreshToken");
-            String requestURL = request.getRequestURL().toString();
-            // allow for Refresh Token creation if following conditions are true.
-            if (isRefreshToken != null && isRefreshToken.equals("true") && requestURL.contains("refreshtoken")) {
-                allowForRefreshToken(e, request);
-            } else
-                request.setAttribute("exception", e);
-
         }
         filterChain.doFilter(request,response);
 

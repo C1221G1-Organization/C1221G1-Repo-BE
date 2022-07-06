@@ -1,9 +1,12 @@
 package com.c1221g1.pharmacy.controller.user;
 
-import com.c1221g1.pharmacy.dto.user.payload.JwtResponse;
-import com.c1221g1.pharmacy.dto.user.payload.LoginRequest;
-import com.c1221g1.pharmacy.dto.user.payload.ResponseMessage;
-import com.c1221g1.pharmacy.dto.user.payload.SignUpRequest;
+import com.c1221g1.pharmacy.dto.user.payload.*;
+import com.c1221g1.pharmacy.entity.user.Provider;
+import com.c1221g1.pharmacy.entity.user.Roles;
+import com.c1221g1.pharmacy.entity.user.UserRole;
+import com.c1221g1.pharmacy.entity.user.Users;
+import com.c1221g1.pharmacy.service.user.IRoleService;
+import com.c1221g1.pharmacy.service.user.IUserRoleService;
 import com.c1221g1.pharmacy.service.user.IUsersService;
 import com.c1221g1.pharmacy.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -24,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/manager-security/users")
 public class UserController {
@@ -38,6 +42,15 @@ public class UserController {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+    @Autowired
+    private IUserRoleService iUserRoleService;
+
+    @Autowired
+    private IRoleService iRoleService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
     /**
      * Created by HuuNQ
      * Time 16:00 30/06/2022
@@ -102,5 +115,24 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @PostMapping("/sign-in-facebook")
+    public ResponseEntity<Users> signInWithFacebook(@RequestBody FacebookRequest facebookRequest){
+        List<Users> users = this.iUsersService.checkEmail(facebookRequest.getEmail());
+        if(users.isEmpty()){
+            Users newUser = new Users();
+            newUser.setUsername(facebookRequest.getEmail());
+            newUser.setPassword(passwordEncoder.encode(facebookRequest.getAccessToken().substring(0,20)));
+            newUser.setProvider(Provider.FACEBOOK);
+            newUser.setFlag(true);
+            Roles roles = this.iRoleService.findRoleByName("ROLE_USER");
+            UserRole userRole = new UserRole();
+            userRole.setUsers(newUser);
+            userRole.setRoles(roles);
+            this.iUsersService.saveUser(newUser);
+            this.iUserRoleService.saveUserRole(userRole);
+            return ResponseEntity.ok().body(newUser);
+        }else {
+            return ResponseEntity.ok().body(users.get(0));
+        }
+    }
 }
