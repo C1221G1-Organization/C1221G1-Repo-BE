@@ -32,7 +32,7 @@ public interface IPaymentOnlineRepository extends JpaRepository<PaymentOnline, I
             "         JOIN customer c2 ON c.customer_id = c2.customer_id\n" +
             "         JOIN cart_detail cd ON c.cart_id = cd.cart_id\n" +
             "         JOIN medicine m ON cd.medicine_id = m.medicine_id\n" +
-            "WHERE po.payment_id = :payment_id\n" +
+            "WHERE po.payment_id LIKE concat('%',:payment_id,'%')\n" +
             "  AND c2.customer_name LIKE concat('%',:customer_name,'%')\n" +
             "GROUP BY c.cart_id",
             countQuery = "SELECT DATE(time_create)              AS dateCreate,\n" +
@@ -48,7 +48,7 @@ public interface IPaymentOnlineRepository extends JpaRepository<PaymentOnline, I
                     "         JOIN customer c2 ON c.customer_id = c2.customer_id\n" +
                     "         JOIN cart_detail cd ON c.cart_id = cd.cart_id\n" +
                     "         JOIN medicine m ON cd.medicine_id = m.medicine_id\n" +
-                    "WHERE po.payment_id = :payment_id\n" +
+                    "WHERE po.payment_id LIKE concat('%',:payment_id,'%')\n" +
                     "  AND c2.customer_name LIKE concat('%',:customer_name,'%')\n" +
                     "GROUP BY c.cart_id", nativeQuery = true)
     Page<PaymentOnlineForLookup> findPaymentOnlineByIdAndCustomerName(@Param("payment_id") String paymentOnlineIdVal,
