@@ -60,4 +60,14 @@ public class InvoiceController {
         iInvoiceService.delete(id);
         return new ResponseEntity<>(invoice, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findInvoiceByInvoiceId(@PathVariable String id) {
+        Invoice invoice = iInvoiceService.findByInvoiceId(id);
+        if(invoice == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(invoice,HttpStatus.OK);
+    }
 }
+
