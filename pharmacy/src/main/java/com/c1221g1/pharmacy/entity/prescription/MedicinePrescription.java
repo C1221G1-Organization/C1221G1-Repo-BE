@@ -1,13 +1,14 @@
 package com.c1221g1.pharmacy.entity.prescription;
 
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "medicine_prescription", //
         uniqueConstraints = { //
                 @UniqueConstraint(name = "MEDICINE_PRESCRIPTION_UK", columnNames = {"prescription_id", "medicine_id"})})
+@JsonIgnoreProperties({"medicinePrescriptionList1"})
 public class MedicinePrescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,3 +67,4 @@ public class MedicinePrescription {
         this.medicine = medicine;
     }
 }
+
