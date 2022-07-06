@@ -18,6 +18,7 @@ import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,14 +50,19 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
      * Function: function createInvoiceMedicine
      * */
     @Override
-    public boolean saveInvoiceMedicine(InvoiceDto invoiceDto) throws Exception {
+    public boolean saveInvoiceMedicine(InvoiceDto invoiceDto, BindingResult bindingResult) throws Exception {
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         List<String> listErrorQuantity = new ArrayList<>();
+        int i = 0;
         for (InvoiceMedicineDto item : invoiceMedicineList) {
             MedicineStorage medicineStorage = this.iMedicineStorageService
                     .getStorageByIdMedicine(item.getMedicineId()).get();
             Long quantityCurrentMedicine = medicineStorage.getMedicineQuantity();
             if (quantityCurrentMedicine - item.getQuantity() < 0) {
+                bindingResult.pushNestedPath("invoiceMedicineList[" + i + "]");
+                bindingResult.rejectValue("quantity", "medicine.soldOut",
+                        medicineStorage.getMedicine().getMedicineName() + " hiện tại đã hết hàng");
+                bindingResult.popNestedPath();
                 listErrorQuantity.add(medicineStorage.getMedicine().getMedicineName());
             }
             medicineStorage.setMedicineQuantity(quantityCurrentMedicine - item.getQuantity());
