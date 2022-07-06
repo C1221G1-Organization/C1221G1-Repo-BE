@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.service.import_invoice.impl;
 
+import com.c1221g1.pharmacy.dto.import_invoice.ISupplierDto;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import com.c1221g1.pharmacy.repository.import_invoice.ISupplierRepository;
 import com.c1221g1.pharmacy.service.import_invoice.ISupplierService;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SupplierService implements ISupplierService {
@@ -24,7 +27,6 @@ public class SupplierService implements ISupplierService {
     public void save(Supplier supplier) {
         supplier.setFlag(true);
         iSupplierRepository.save(supplier);
-
     }
 
     /**
@@ -74,8 +76,18 @@ public class SupplierService implements ISupplierService {
         return iSupplierRepository.getAllSupplier("%" + searchId + "%", "%" + searchName + "%", "%" + searchAddress + "%", "%" + searchPhone + "%", pageable);
     }
 
+    /**
+     * Created by: TrungTVH
+     * Date created: 4/7/2022
+     * function: create temp supplier service dùng tạm
+     */
     @Override
-    public Supplier findByIdDEtail(String id) {
+    public List<Supplier> getList() {
+        return this.iSupplierRepository.findAll();
+    }
+
+    @Override
+    public ISupplierDto findByIdDEtail(String id) {
         return iSupplierRepository.findByIdDetailSupplier(id);
     }
 }

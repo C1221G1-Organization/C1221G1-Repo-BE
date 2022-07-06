@@ -1,22 +1,28 @@
-package com.c1221g1.pharmacy.controller.employee;
+package com.c1221g1.pharmacy.dto.user.payload;
 
 import java.util.List;
 import java.util.Map;
 
-public class ResponseMessage<T> {
+/**
+ * Created by HuuNQ
+ * Time 12:00 30/06/2022
+ * Function: use for check validate form
+ */
+public class ResponseMessage <T> {
     private boolean status;
     private String message;
-    private Map<String, String> errorMap;
+    private Map<String,String> errorMap;
     private List<T> data;
-
 
     public ResponseMessage() {
     }
-    /*
-      Created by TamNA
-      Time: 12:50:00 03/07/2022
-      Function:  return list field errors Employee
- */
+
+    public ResponseMessage(boolean status, String message, List<T> data) {
+        this.status = status;
+        this.message = message;
+        this.data = data;
+    }
+
     public ResponseMessage(boolean status, String message, Map<String, String> errorMap, List<T> data) {
         this.status = status;
         this.message = message;
@@ -24,7 +30,7 @@ public class ResponseMessage<T> {
         this.data = data;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -55,6 +61,4 @@ public class ResponseMessage<T> {
     public void setData(List<T> data) {
         this.data = data;
     }
-
-
 }

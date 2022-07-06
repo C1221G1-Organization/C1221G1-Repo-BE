@@ -1,22 +1,17 @@
 package com.c1221g1.pharmacy.controller.prescription;
 
-import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
 import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionDetail;
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionDto;
 import com.c1221g1.pharmacy.dto.prescription.PrescriptionMedicineDetail;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
-import org.omg.CosNaming.NamingContextPackage.NotEmpty;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -116,32 +111,6 @@ public class PrescriptionController {
         }
     }
 
-
-    /**
-     * HienTLD
-     * Sửa toa thuốc (xoá theo cờ 'flag')
-     * update 11:18 30/06/2022
-     */
-    @PatchMapping("/{id}")
-    public ResponseEntity<List<FieldError>> editSmartPhone(@Validated @RequestBody PrescriptionDto prescriptionDto,
-                                                           BindingResult bindingResult,
-                                                           @PathVariable String id) throws NotEmpty {
-
-        if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
-        }
-        Prescription prescription = new Prescription();
-
-        prescription.setPrescriptionId(id);
-
-        prescription.setFlag(true);
-
-        BeanUtils.copyProperties(prescriptionDto, prescription);
-
-        this.prescriptionService.edit(prescription);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
     /*
      * Created by DaLQA

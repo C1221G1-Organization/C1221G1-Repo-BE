@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,10 +100,14 @@ public class AccountEmployeeController {
         IAccountEmployeeDto iAccountEmployeeDto = iAccountService.findAccountId(id);
 
         if (iAccountEmployeeDto != null) {
-            iAccountService.updateAccount(accountEmployeeDto.getPassword(), accountEmployeeDto.getPosition().getPositionId(),  id);
+            iAccountService.updateAccount(passwordEncoder.encode(accountEmployeeDto.getPassword()), accountEmployeeDto.getPosition().getPositionId(),  id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
 
 }
