@@ -5,8 +5,8 @@ import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "invoice_medicine", //
-        uniqueConstraints = { //
+@Table(name = "invoice_medicine",
+        uniqueConstraints = {
                 @UniqueConstraint(name = "INVOICE_MEDICINE_UK", columnNames = {"invoice_id", "medicine_id"})})
 public class InvoiceMedicine {
     @Id

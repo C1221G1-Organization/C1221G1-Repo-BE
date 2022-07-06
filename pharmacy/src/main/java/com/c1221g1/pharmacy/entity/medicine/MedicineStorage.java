@@ -1,7 +1,9 @@
 package com.c1221g1.pharmacy.entity.medicine;
+
 import javax.persistence.*;
 
 @Entity
+
 public class MedicineStorage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +14,7 @@ public class MedicineStorage {
     private Long medicineQuantity;
     @Column(columnDefinition = "BIT")
     private boolean flag;
+
 
     public MedicineStorage() {
     }
@@ -47,4 +50,5 @@ public class MedicineStorage {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
 }

@@ -18,6 +18,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @CrossOrigin
@@ -27,7 +29,6 @@ public class ImportInvoiceController {
 
     @Autowired
     private IImportInvoiceService importInvoiceService;
-
 
     /**
      * Created by: TrungTVH
@@ -99,19 +100,28 @@ public class ImportInvoiceController {
      */
     @GetMapping(value = "")
     ResponseEntity<Page<ImportInvoice>> getPageListImportInvoice(
-            @RequestParam Optional<String> startDate,
-            @RequestParam Optional<String> endDate,
-            @RequestParam Optional<String> startTime,
-            @RequestParam Optional<String> endTime,
-            @RequestParam Optional<String> fieldSort) {
+            @RequestParam String startDate,
+            @RequestParam String endDate,
+            @RequestParam String startTime,
+            @RequestParam String endTime,
+            @RequestParam (defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size,
+            @RequestParam String fieldSort,
+            @RequestParam String fieldSortBy) {
 
-        String startDateVal = startDate.orElse("");
-        String endDateVal = endDate.orElse("");
-        String startTimeVal = startTime.orElse("");
-        String endTimeVal = endTime.orElse("");
-        String fieldSortVal = fieldSort.orElse("import_invoice_id");
-        Pageable pageable = PageRequest.of(0, 5, Sort.by(fieldSortVal).ascending());
-        Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDateVal, endDateVal, startTimeVal, endTimeVal, pageable);
+        if ("".equals(endDate)) {
+            endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(LocalDateTime.now());
+        }
+        if ("".equals(endTime)) {
+            endTime = "23:59";
+        }
+        Pageable pageable = null;
+        if ("asc".equals(fieldSortBy)) {
+            pageable = PageRequest.of(page, size, Sort.by(fieldSort).ascending());
+        } else {
+            pageable = PageRequest.of(page, size, Sort.by(fieldSort).descending());
+        }
+        Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDate, endDate, startTime, endTime, pageable);
 
         if (importInvoicePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -126,7 +136,6 @@ public class ImportInvoiceController {
      * @author HongHTX
      * @Time 17:00 29/06/2022
      */
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteImportInvoice(@PathVariable String id) {
         if ("null".equals(id) || "".equals(id)) {
