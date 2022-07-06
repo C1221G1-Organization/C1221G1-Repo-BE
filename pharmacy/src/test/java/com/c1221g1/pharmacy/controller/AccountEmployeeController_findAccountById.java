@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeController_findAccountById {
+public class AccountEmployeeController_findAccountById {
     @Autowired
     private MockMvc mockMvc;
 

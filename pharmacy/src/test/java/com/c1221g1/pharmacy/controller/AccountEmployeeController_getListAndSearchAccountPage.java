@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeController_getListAndSearchAccountPage {
+public class AccountEmployeeController_getListAndSearchAccountPage {
     @Autowired
     private MockMvc mockMvc;
 
@@ -54,7 +54,6 @@ public class EmployeeController_getListAndSearchAccountPage {
                 .andExpect(jsonPath("$.content[4].username").value("nguena"))
                 .andExpect(jsonPath("$.content[4].employeeName").value("Nguyễn A"))
                 .andExpect(jsonPath("$.content[4].employeeId").value("NV-0006"));
-
     }
 
 
