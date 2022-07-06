@@ -20,6 +20,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,26 +46,21 @@ public class MedicineController {
      */
 
     @GetMapping("/search")
-    public ResponseEntity<?> findAllMedicine(@PageableDefault(value = 4) Pageable pageable,
-                                             @RequestParam Optional<String> columName,
-                                             @RequestParam Optional<String> condition,
-                                             @RequestParam Optional<String> keyWord
+    public ResponseEntity<List<MedicineLookUpDto>> findAllMedicine(
+                                                                   @RequestParam Optional<String> columName,
+                                                                   @RequestParam Optional<String> condition,
+                                                                   @RequestParam Optional<String> keyWord
     ) {
         String columNameValue = columName.orElse("medicineId");
         String conditionValue = condition.orElse("like");
         String keyWordValue = keyWord.orElse("'%%'");
-        System.out.println(columNameValue);
-        System.out.println(conditionValue);
-        System.out.println(keyWordValue);
         List<MedicineLookUpDto> medicinePage = medicineService.findAllMedicine(columNameValue, conditionValue, keyWordValue);
         if (medicinePage.isEmpty()) {
-            System.out.println(medicinePage);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(medicinePage, HttpStatus.OK);
+
         }
-        final int start = (int) pageable.getOffset();
-        final int end = Math.min((start + pageable.getPageSize()), medicinePage.size());
-        final Page<MedicineLookUpDto> page = new PageImpl<>(medicinePage.subList(start, end), pageable, medicinePage.size());
-        return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
 
@@ -343,5 +339,21 @@ public class MedicineController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicineDtoList, HttpStatus.OK);
+    }
+
+    /**
+     * HienTLD
+     * danh sách List<Medicine>
+     * 8:58 06/07/2022
+     */
+    @GetMapping("/list")
+    public ResponseEntity<List<Medicine>> getAllMedicineList(){
+        List<Medicine> medicineList = medicineService.findAllMedicine();
+
+        if (medicineList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(medicineList, HttpStatus.OK);
     }
 }

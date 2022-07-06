@@ -1,8 +1,8 @@
 package com.c1221g1.pharmacy.entity.prescription;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,7 +24,6 @@ public class Prescription {
     private String prescriptionNote;
     private Integer prescriptionNumberOfDays;
     private Boolean flag;
-
     @OneToMany(mappedBy = "prescription")
     private List<MedicinePrescription> medicinePrescriptionList;
 

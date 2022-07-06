@@ -5,6 +5,7 @@ import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerService {
@@ -22,26 +23,33 @@ public interface ICustomerService {
                                    String customerPhone,
                                    String customerType);
 
+    /**
+     * Create by TinBQ
+     * Time : 20:21 29/06/2022
+     * Function to delete customer by id
+     */
     void deleteCustomer(String id);
 
+    /**
+     * Create by TinBQ
+     * Time : 20:21 29/06/2022
+     * Function find customer by id
+     */
     Customer findById(String id);
 
     /**
-     *     Create by TruongNQ
-     *     Time : 15:05 29/06/2022
-     *     Function create customer
+     * Create by TruongNQ
+     * Time : 15:05 29/06/2022
+     * Function create customer
      */
     Customer save(Customer customer);
 
-
-
     /**
-     *     Create by TruongNQ
-     *     Time : 18:04 29/06/2022
-     *     Function find by customer id
+     * Create by TruongNQ
+     * Time : 18:04 29/06/2022
+     * Function find by customer id
      */
     Customer findByCustomerId(String customerId);
-
 
     /**
      * Create by TruongNQ
@@ -49,5 +57,12 @@ public interface ICustomerService {
      * Function update customer
      */
     void updateCustomer(Customer customer);
-}
 
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    List<Customer> findByCustomerType();
+
+}

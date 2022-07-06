@@ -9,6 +9,7 @@ public class UserRoleDto {
     private Roles roles;
 
     public UserRoleDto() {
+        // nothing
     }
 
     public Integer getUserRoleId() {
