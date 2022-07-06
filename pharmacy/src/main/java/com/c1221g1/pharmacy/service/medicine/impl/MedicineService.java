@@ -7,6 +7,7 @@ import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineRepository;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -110,7 +111,7 @@ public class MedicineService implements IMedicineService {
     public List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId) {
         Integer medicineTypeId = medicineRepository.findMedicineTypeById(medicineId);
         if (medicineTypeId == null) {
-            return null;
+            return Collections.emptyList();
         }
         return medicineRepository.get5RelativeMedicinesOf(medicineId, medicineTypeId);
     }

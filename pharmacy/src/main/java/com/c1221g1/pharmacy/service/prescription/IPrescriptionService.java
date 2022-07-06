@@ -1,6 +1,8 @@
 package com.c1221g1.pharmacy.service.prescription;
 
 import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionDetail;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionMedicineDetail;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,4 +22,7 @@ public interface IPrescriptionService {
 
     IMedicinePrescriptionDto getPrescriptionById(String id);
 
+    PrescriptionDetail getDetailPrescription(String id);
+
+    List<PrescriptionMedicineDetail> getListPreMeDetail(String id);
 }
