@@ -25,7 +25,6 @@ public class ImportInvoice {
     private String importInvoiceHour;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
     @ManyToOne
     @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId")
     private Supplier supplier;
@@ -37,7 +36,6 @@ public class ImportInvoice {
 
     public ImportInvoice() {
     }
-
 
     public String getImportInvoiceId() {
         return importInvoiceId;
@@ -118,5 +116,5 @@ public class ImportInvoice {
     public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
     }
-}
 
+}

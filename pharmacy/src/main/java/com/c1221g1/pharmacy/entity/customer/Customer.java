@@ -1,8 +1,10 @@
 package com.c1221g1.pharmacy.entity.customer;
+
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -126,4 +128,3 @@ public class Customer {
     }
 
 }
-
