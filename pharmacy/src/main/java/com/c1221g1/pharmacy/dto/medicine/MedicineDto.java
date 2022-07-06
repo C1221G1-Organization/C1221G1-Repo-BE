@@ -4,19 +4,19 @@ import com.c1221g1.pharmacy.entity.medicine.MedicineConversionUnit;
 import com.c1221g1.pharmacy.entity.medicine.MedicineOrigin;
 import com.c1221g1.pharmacy.entity.medicine.MedicineType;
 import com.c1221g1.pharmacy.entity.medicine.MedicineUnit;
+import com.c1221g1.pharmacy.util.VieRegex;
 
 import javax.validation.constraints.*;
 
 public class MedicineDto {
     private String medicineId;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineName;
 
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineActiveIngredients;
-
     @NotNull
     @Positive
     private Double medicineImportPrice;
@@ -47,21 +47,18 @@ public class MedicineDto {
     private Integer medicineConversionRate;
 
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineManufacture;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineUsage;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineInstruction;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
+    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineAgeApproved;
-    @NotEmpty
     private String medicineImage;
-    @NotEmpty
-    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$")
     private String medicineDescription;
     private boolean flag;
     @NotNull
@@ -77,20 +74,20 @@ public class MedicineDto {
     }
 
     public MedicineDto(String medicineId,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineName,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineActiveIngredients,
+                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineName,
+                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineActiveIngredients,
                        @NotNull @Positive Double medicineImportPrice,
                        @NotNull @Positive @Max(100) Double medicineDiscount,
                        @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
                        @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
                        @NotNull @Positive @Max(100) Double medicineTax,
                        @NotNull @Positive @Max(100) Integer medicineConversionRate,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineManufacture,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineUsage,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineInstruction,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineAgeApproved,
-                       @NotEmpty String medicineImage,
-                       @NotEmpty @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\w|_]{2,50}$") String medicineDescription,
+                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineManufacture,
+                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineUsage,
+                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineInstruction,
+                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineAgeApproved,
+                       String medicineImage,
+                       String medicineDescription,
                        boolean flag,
                        @NotNull MedicineOrigin medicineOrigin,
                        @NotNull MedicineType medicineType,

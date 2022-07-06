@@ -44,7 +44,6 @@ public class SupplierController {
                                                           @RequestParam Optional<String> sort,
                                                           @RequestParam Optional<String> dir
     ) {
-
         Pageable pageable;
         String sortVal = sort.orElse("");
         String dirVal = dir.orElse("");
@@ -52,6 +51,8 @@ public class SupplierController {
             pageable = PageRequest.of(page, pageSize);
         } else {
             if (dirVal.equals("asc")) {
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
+            } else if (dirVal.equals("desc")) {
                 pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
             } else {
                 pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
@@ -171,7 +172,6 @@ public class SupplierController {
             Supplier supplier = new Supplier();
             BeanUtils.copyProperties(supplierDto, supplier);
             System.err.println(supplier);
-
             iSupplierService.update(supplier);
             return new ResponseEntity<>(HttpStatus.OK);
         }

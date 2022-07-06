@@ -1,4 +1,8 @@
 package com.c1221g1.pharmacy.dto.import_invoice;
+
+import com.c1221g1.pharmacy.entity.employee.Employee;
+import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
+import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -7,12 +11,17 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ImportInvoiceDto implements Validator {
-    private String importInvoiceId;
+
+    private Integer importInvoiceId;
+    @NotNull
     private Integer importSystemCode;
+    @NotNull
+    private String importInvoiceDate;
+    @NotNull
     private Double paymentPrepayment;
     private Double total;
-    private String importInvoiceDate;
     private String importInvoiceHour;
+
     private boolean flag;
     @NotNull
     private SupplierDto supplierDto;
@@ -23,11 +32,11 @@ public class ImportInvoiceDto implements Validator {
     public ImportInvoiceDto() {
     }
 
-    public String getImportInvoiceId() {
+    public Integer getImportInvoiceId() {
         return importInvoiceId;
     }
 
-    public void setImportInvoiceId(String importInvoiceId) {
+    public void setImportInvoiceId(Integer importInvoiceId) {
         this.importInvoiceId = importInvoiceId;
     }
 
@@ -110,6 +119,7 @@ public class ImportInvoiceDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        ImportInvoiceDto importInvoiceDto = (ImportInvoiceDto) target;
     }
 }
+
