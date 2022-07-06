@@ -3,8 +3,6 @@ package com.c1221g1.pharmacy.dto.user;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 
-
-
 public class Users {
     private String username;
     private String password;

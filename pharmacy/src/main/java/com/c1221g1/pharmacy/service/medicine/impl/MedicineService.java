@@ -7,6 +7,7 @@ import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineRepository;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -89,6 +90,16 @@ public class MedicineService implements IMedicineService {
     }
 
     /**
+     * Created by: TrungTVH
+     * Date created: 4/7/2022
+     * function: get medicine list dùng tạm
+     */
+    @Override
+    public List<Medicine> getList() {
+        return this.medicineRepository.findAll();
+    }
+
+    /**
      * Creator: NghiaNTT Time: 29/02/2022
      *
      * @param medicineId: String
@@ -110,7 +121,7 @@ public class MedicineService implements IMedicineService {
     public List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId) {
         Integer medicineTypeId = medicineRepository.findMedicineTypeById(medicineId);
         if (medicineTypeId == null) {
-            return null;
+            return Collections.emptyList();
         }
         return medicineRepository.get5RelativeMedicinesOf(medicineId, medicineTypeId);
     }
@@ -140,4 +151,15 @@ public class MedicineService implements IMedicineService {
         return medicineRepository.getAllMedicineByName(pageable, name, sort);
     }
 
+    /**
+     * HienTLD
+     * danh sách List<>
+     * 9:00 06/07/2022
+     */
+    @Override
+    public List<Medicine> findAllMedicine() {
+        return this.medicineRepository.findAll();
+    }
+
 }
+

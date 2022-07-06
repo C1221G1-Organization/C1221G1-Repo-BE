@@ -3,5 +3,8 @@ package com.c1221g1.pharmacy.service.user;
 import com.c1221g1.pharmacy.entity.user.Roles;
 
 public interface IRoleService {
-    Roles findRoleByName(String role_user);
+
+    Roles findRoleByName(String roleUser);
+
+
 }
