@@ -106,7 +106,8 @@ public class ImportInvoiceController {
             @RequestParam String endTime,
             @RequestParam (defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size,
-            @RequestParam String fieldSort) {
+            @RequestParam String fieldSort,
+            @RequestParam String fieldSortBy) {
 
         if ("".equals(endDate)) {
             endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(LocalDateTime.now());
@@ -114,7 +115,12 @@ public class ImportInvoiceController {
         if ("".equals(endTime)) {
             endTime = "23:59";
         }
-        Pageable pageable = PageRequest.of(page, size, Sort.by(fieldSort).ascending());
+        Pageable pageable = null;
+        if ("asc".equals(fieldSortBy)) {
+            pageable = PageRequest.of(page, size, Sort.by(fieldSort).ascending());
+        } else {
+            pageable = PageRequest.of(page, size, Sort.by(fieldSort).descending());
+        }
         Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDate, endDate, startTime, endTime, pageable);
 
         if (importInvoicePage.isEmpty()) {
