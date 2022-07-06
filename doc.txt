@@ -1,0 +1,2 @@
+- Chức năng save được anh Tiến đồng ý cho phép gọi trong service chứ ko cần viết caai Querry 
+- Trường employee vẫn còn null vì chưa tiến hành đăng nhập vào hệ thống.
