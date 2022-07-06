@@ -57,7 +57,6 @@ public class ImportInvoiceController {
         ImportInvoice importInvoice = new ImportInvoice();
         BeanUtils.copyProperties(importInvoiceDto, importInvoice);
         ImportInvoice importInvoiceSave = this.importInvoiceService.saveImportInvoice(importInvoice);
-
         List<ImportInvoiceMedicine> importInvoiceMedicineList = importInvoiceDto.getImportInvoiceMedicineList();
         for (int i = 0; i < importInvoiceMedicineList.size(); i++) {
             ImportInvoiceMedicine importInvoiceMedicine;
