@@ -1,6 +1,8 @@
 package com.c1221g1.pharmacy.service.prescription.impl;
 
 import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionDetail;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionMedicineDetail;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.repository.prescription.IPrescriptionRepository;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PrescriptionService implements IPrescriptionService {
@@ -46,5 +50,16 @@ public class PrescriptionService implements IPrescriptionService {
         return this.prescriptionRepository.detailPrescriptionById(id);
     }
 
+    @Override
+    public PrescriptionDetail getDetailPrescription(String id) {
+        return this.prescriptionRepository.getDetailPrescription(id);
+    }
+
+    @Override
+    public List<PrescriptionMedicineDetail> getListPreMeDetail(String id) {
+        return this.prescriptionRepository.getDetailListPreMe(id);
+    }
+
 }
+
 

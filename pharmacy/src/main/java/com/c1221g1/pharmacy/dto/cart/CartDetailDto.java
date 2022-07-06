@@ -4,10 +4,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class CartDetailDto implements Validator {
-    //    private Integer cartDetailId;
     private Integer quantity;
     private MedicineDtoForCart medicine;
-//    private Cart cart;
 
     public CartDetailDto() {
     }
@@ -27,14 +25,6 @@ public class CartDetailDto implements Validator {
     public void setMedicine(MedicineDtoForCart medicine) {
         this.medicine = medicine;
     }
-
-//    public Cart getCart() {
-//        return cart;
-//    }
-//
-//    public void setCart(Cart cart) {
-//        this.cart = cart;
-//    }
 
     @Override
     public String toString() {
