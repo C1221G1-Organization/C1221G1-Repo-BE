@@ -1,10 +1,5 @@
 package com.c1221g1.pharmacy.dto.invoice;
 
-import com.c1221g1.pharmacy.entity.customer.Customer;
-import com.c1221g1.pharmacy.entity.employee.Employee;
-import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
-import com.c1221g1.pharmacy.entity.invoice.TypeOfInvoice;
-
 import java.util.List;
 
 public class InvoiceDto {
@@ -41,6 +36,7 @@ public class InvoiceDto {
     public void setInvoiceId(String invoiceId) {
         this.invoiceId = invoiceId;
     }
+
 
     public String getCustomerId() {
         return customerId;

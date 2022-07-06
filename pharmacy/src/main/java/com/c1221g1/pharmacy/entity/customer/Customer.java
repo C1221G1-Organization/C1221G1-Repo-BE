@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.entity.customer;
-
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,7 +29,7 @@ public class Customer {
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
     private Users customerUsername;
     @ManyToOne
-    @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId",nullable = false)
+    @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
@@ -125,4 +124,5 @@ public class Customer {
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
     }
+
 }

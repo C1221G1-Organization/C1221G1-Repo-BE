@@ -1,8 +1,6 @@
 package com.c1221g1.pharmacy.entity.invoice;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,6 +14,9 @@ public class TypeOfInvoice {
     private String typeOfInvoiceName;
     @OneToMany(mappedBy = "typeOfInvoice")
     private List<Invoice> invoiceList;
+
+    public TypeOfInvoice() {
+    }
 
     public Integer getTypeOfInvoiceId() {
         return typeOfInvoiceId;
@@ -40,4 +41,5 @@ public class TypeOfInvoice {
     public void setInvoiceList(List<Invoice> invoiceList) {
         this.invoiceList = invoiceList;
     }
+
 }

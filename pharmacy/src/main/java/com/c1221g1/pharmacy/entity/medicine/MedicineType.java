@@ -1,8 +1,6 @@
 package com.c1221g1.pharmacy.entity.medicine;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 

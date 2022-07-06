@@ -12,13 +12,15 @@ public class MedicinePrescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicinePrescriptionId;
-    private Integer medicinePrescriptionTimes;
-    private Integer medicinePrescriptionNumberPerTime;
+    private Integer medicinePrescriptionTimes;              //ngày uống ? lần
+    private Integer medicinePrescriptionNumberPerTime;      //mỗi lần ? viên
+
     @ManyToOne
-    @JoinColumn(name = "prescription_id", referencedColumnName = "prescriptionId",nullable = false)
+    @JoinColumn(name = "prescription_id", referencedColumnName = "prescriptionId")
     private Prescription prescription;
+
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
     private Medicine medicine;
 
     public MedicinePrescription() {

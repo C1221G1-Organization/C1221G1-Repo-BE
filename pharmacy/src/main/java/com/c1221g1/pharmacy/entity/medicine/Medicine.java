@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties
         ({"medicinePrescriptionList", "importInvoiceMedicineList", "invoiceMedicineList", "cartDetailList", "medicineStorageSet"})
-
 public class Medicine {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -30,7 +29,7 @@ public class Medicine {
     private Double medicineWholesaleProfit;
     private Double medicineRetailSaleProfit;
     private Double medicineTax;
-    private Double medicineConversionRate;
+    private Integer medicineConversionRate;
     private String medicineManufacture;
     @Column(columnDefinition = "LONGTEXT")
     private String medicineUsage;
@@ -44,23 +43,17 @@ public class Medicine {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId",nullable = false)
+    @JoinColumn(name = "medicine_origin_id", referencedColumnName = "medicineOriginId")
     private MedicineOrigin medicineOrigin;
     @ManyToOne
-    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId",nullable = false)
+    @JoinColumn(name = "medicine_type_id", referencedColumnName = "medicineTypeId")
     private MedicineType medicineType;
     @ManyToOne
-    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId",nullable = false)
+    @JoinColumn(name = "medicine_unit_id", referencedColumnName = "medicineUnitId")
     private MedicineUnit medicineUnit;
     @ManyToOne
-    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId",nullable = false)
+    @JoinColumn(name = "medicine_conversion_unit_id", referencedColumnName = "medicineConversionUnitId")
     private MedicineConversionUnit medicineConversionUnit;
-    @OneToMany(mappedBy = "medicine")
-    private List<MedicinePrescription> medicinePrescriptionList;
-    @OneToMany(mappedBy = "medicine")
-    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
-    @OneToMany(mappedBy = "medicine")
-    private List<InvoiceMedicine> invoiceMedicineList;
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
     @OneToMany(mappedBy = "medicine")
@@ -133,11 +126,11 @@ public class Medicine {
         this.medicineTax = medicineTax;
     }
 
-    public Double getMedicineConversionRate() {
+    public Integer getMedicineConversionRate() {
         return medicineConversionRate;
     }
 
-    public void setMedicineConversionRate(Double medicineConversionRate) {
+    public void setMedicineConversionRate(Integer medicineConversionRate) {
         this.medicineConversionRate = medicineConversionRate;
     }
 
@@ -229,30 +222,6 @@ public class Medicine {
         this.medicineConversionUnit = medicineConversionUnit;
     }
 
-    public List<MedicinePrescription> getMedicinePrescriptionList() {
-        return medicinePrescriptionList;
-    }
-
-    public void setMedicinePrescriptionList(List<MedicinePrescription> medicinePrescriptionList) {
-        this.medicinePrescriptionList = medicinePrescriptionList;
-    }
-
-    public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
-        return importInvoiceMedicineList;
-    }
-
-    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
-        this.importInvoiceMedicineList = importInvoiceMedicineList;
-    }
-
-    public List<InvoiceMedicine> getInvoiceMedicineList() {
-        return invoiceMedicineList;
-    }
-
-    public void setInvoiceMedicineList(List<InvoiceMedicine> invoiceMedicineList) {
-        this.invoiceMedicineList = invoiceMedicineList;
-    }
-
     public List<CartDetail> getCartDetailList() {
         return cartDetailList;
     }
@@ -260,6 +229,7 @@ public class Medicine {
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
     }
+
 
     public Set<MedicineStorage> getMedicineStorageSet() {
         return medicineStorageSet;

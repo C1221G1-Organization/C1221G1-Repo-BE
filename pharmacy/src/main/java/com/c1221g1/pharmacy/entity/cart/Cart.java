@@ -2,11 +2,13 @@ package com.c1221g1.pharmacy.entity.cart;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"paymentOnlineList", "cartDetailList"})
+
+@JsonIgnoreProperties({"paymentOnlineList","cartDetailList"})
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,13 +18,15 @@ public class Cart {
     @Column(columnDefinition = "DATE")
     private String dateCreate;
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customerId",nullable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customerId")
     private Customer customer;
     @ManyToOne
-    @JoinColumn(name = "discount_id", referencedColumnName = "discountId",nullable = false)
+    @JoinColumn(name = "discount_id", referencedColumnName = "discountId")
     private Discount discount;
     @OneToMany(mappedBy = "cart")
     private List<PaymentOnline> paymentOnlineList;
+
+
     @OneToMany(mappedBy = "cart")
     private List<CartDetail> cartDetailList;
 

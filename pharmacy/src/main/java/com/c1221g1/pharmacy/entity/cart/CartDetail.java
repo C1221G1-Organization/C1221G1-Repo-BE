@@ -1,7 +1,7 @@
 package com.c1221g1.pharmacy.entity.cart;
 
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
 
+import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import javax.persistence.*;
 
 @Entity
@@ -14,10 +14,10 @@ public class CartDetail {
     private Integer cartDetailId;
     private Integer cartDetailQuantity;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
     private Medicine medicine;
     @ManyToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "cartId",nullable = false)
+    @JoinColumn(name = "cart_id", referencedColumnName = "cartId")
     private Cart cart;
 
     public CartDetail() {
@@ -54,4 +54,5 @@ public class CartDetail {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
 }

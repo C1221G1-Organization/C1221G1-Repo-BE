@@ -19,10 +19,10 @@ public class ImportInvoiceMedicine {
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
     private Medicine medicine;
     @ManyToOne
-    @JoinColumn(name = "import_invoice_id", referencedColumnName = "importInvoiceId",nullable = false)
+    @JoinColumn(name = "import_invoice_id", referencedColumnName = "importInvoiceId")
     private ImportInvoice importInvoice;
 
     public ImportInvoiceMedicine() {
@@ -107,4 +107,5 @@ public class ImportInvoiceMedicine {
     public void setImportInvoice(ImportInvoice importInvoice) {
         this.importInvoice = importInvoice;
     }
+
 }

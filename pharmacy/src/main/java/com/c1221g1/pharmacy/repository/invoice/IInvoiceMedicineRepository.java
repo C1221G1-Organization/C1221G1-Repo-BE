@@ -11,20 +11,21 @@ import java.util.List;
 
 public interface IInvoiceMedicineRepository extends JpaRepository<InvoiceMedicine, Integer> {
     /*
-        Created by TrinhNN
-          Function: create invoiceMedicine
-    */
+     * Created by DaLQA
+     * Time: 10:30 PM 29/06/2022
+     * Function: function createInvoiceMedicine
+     * */
     @Transactional
     @Modifying
-    @Query(value = "insert into invoice_medicine (invoice_medicine_quantity,invoice_medicine_id ,invoice_id)" +
+    @Query(value = "insert into invoice_medicine (invoice_medicine_quantity, medicine_id ,invoice_id)" +
             " value (?1,?2,?3)", nativeQuery = true)
-    void createInvoiceMedicine(Integer quantity, String medicineInvoiceId, String invoiceId);
+    void createInvoiceMedicine(Integer quantity, String medicineId, String invoiceId);
 
     /*
             Created by TrinhNN
               Function: Find invoiceMedicine by Invoice id
         */
-    @Query(value = "select invoice_id,medicine_id,invoice_medicine_quantity\n" +
+    @Query(value = "select *" +
             "from invoice_medicine\n" +
             "where invoice_id = :invoice_id", nativeQuery = true)
     List<InvoiceMedicine> findByInvoiceId(@Param("invoice_id") String id);

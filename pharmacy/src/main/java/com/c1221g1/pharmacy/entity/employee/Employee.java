@@ -4,7 +4,6 @@ import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Employee {
     private boolean flag;
 
     @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "positionId",nullable = false)
+    @JoinColumn(name = "position_id", referencedColumnName = "positionId")
     private Position position;
 
     @OneToOne
@@ -130,4 +129,5 @@ public class Employee {
     public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
         this.importInvoiceList = importInvoiceList;
     }
+
 }

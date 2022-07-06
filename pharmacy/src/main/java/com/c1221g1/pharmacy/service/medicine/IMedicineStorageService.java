@@ -7,12 +7,12 @@ import java.util.Optional;
 
 public interface IMedicineStorageService {
 
+
     boolean checkExistInMedicineStorage(String medicineId);
 
     Long checkMedicineQuantity(String medicineId);
 
     boolean changeMedicineQuantity(String medicineId, Long quantity, int manipulation);
-
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
@@ -28,4 +28,5 @@ public interface IMedicineStorageService {
     void updateMedicineQuantity(MedicineStorage storage);
 
     List<MedicineStorage> getAll();
+
 }

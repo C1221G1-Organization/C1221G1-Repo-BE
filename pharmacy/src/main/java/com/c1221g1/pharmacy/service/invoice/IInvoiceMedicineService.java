@@ -12,11 +12,10 @@ public interface IInvoiceMedicineService {
      * Function: function createInvoiceMedicine
      * */
     boolean saveInvoiceMedicine(InvoiceDto invoiceDto) throws Exception;
-    
+
     List<InvoiceMedicine> findByInvoiceId(String id);
 
     boolean saveWholesaleInvoiceMedicine(InvoiceDto invoiceDto) throws Exception;
 
     boolean saveRefundInvoiceMedicine(InvoiceDto invoiceDto);
 }
-    

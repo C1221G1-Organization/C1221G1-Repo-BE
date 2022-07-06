@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.entity.medicine;
-
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +7,7 @@ public class MedicineStorage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer medicineStorageId;
     @ManyToOne
-    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId",nullable = false)
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicineId")
     private Medicine medicine;
     private Long medicineQuantity;
     @Column(columnDefinition = "BIT")
