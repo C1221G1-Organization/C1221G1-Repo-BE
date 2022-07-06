@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
-
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineStorageRepository;
@@ -7,17 +6,37 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
-
 @Service
 public class MedicineStorageService implements IMedicineStorageService {
     @Autowired
     private IMedicineStorageRepository iMedicineStorageRepository;
-
     @Autowired
     private IMedicineService iMedicineService;
-
+    /*
+     * Created by DaLQA
+     * Time: 11:49 AM 30/06/2022
+     * Function: function getStorageByMedicineId
+     * */
+    @Override
+    public Optional<MedicineStorage> getStorageByIdMedicine(String id) {
+        return this.iMedicineStorageRepository.getStorageByMedicineId(id);
+    }
+    /*
+     * Created by DaLQA
+     * Time: 11:49 AM 30/06/2022
+     * Function: function updateMedicineQuantity
+     * */
+    @Override
+    public void updateMedicineQuantity(MedicineStorage storage) {
+        this.iMedicineStorageRepository.updateMedicineQuantity
+                (storage.getMedicineQuantity(), storage.getMedicineStorageId());
+    }
+    @Override
+    public List<MedicineStorage> getAll() {
+        return iMedicineStorageRepository.findAll();
+    }
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -32,7 +51,6 @@ public class MedicineStorageService implements IMedicineStorageService {
         MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
         return medicineStorage != null;
     }
-
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -50,7 +68,6 @@ public class MedicineStorageService implements IMedicineStorageService {
             return medicineQuantity;
         }
     }
-
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -70,7 +87,7 @@ public class MedicineStorageService implements IMedicineStorageService {
         Long medicineQuantity = this.checkMedicineQuantity(medicineId);
         switch (manipulation) {
             case 0:
-                if ((checkExist) | (medicineQuantity < quantity)) {
+                if ((!checkExist) || (medicineQuantity < quantity)) {
                     return false;
                 } else {
                     medicineQuantity -= quantity;
@@ -99,5 +116,4 @@ public class MedicineStorageService implements IMedicineStorageService {
                 return false;
         }
     }
-
 }

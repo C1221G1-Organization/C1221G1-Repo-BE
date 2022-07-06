@@ -1,7 +1,6 @@
 package com.c1221g1.pharmacy.controller.medicine;
 
 import com.c1221g1.pharmacy.dto.import_invoice.ImportInvoiceDto;
-import com.c1221g1.pharmacy.dto.import_invoice.ImportInvoiceMedicineDto;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceService;
@@ -18,7 +17,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -27,7 +29,6 @@ public class ImportInvoiceController {
 
     @Autowired
     private IImportInvoiceService importInvoiceService;
-
 
     /**
      * Created by: TrungTVH
@@ -52,44 +53,29 @@ public class ImportInvoiceController {
             });
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
+        System.out.println(importInvoiceDto.getImportInvoiceMedicineList());
         ImportInvoice importInvoice = new ImportInvoice();
         BeanUtils.copyProperties(importInvoiceDto, importInvoice);
         ImportInvoice importInvoiceSave = this.importInvoiceService.saveImportInvoice(importInvoice);
-        boolean checkSuccess = true;
-        List<ImportInvoiceMedicineDto> importInvoiceMedicineDtoList = importInvoiceDto.getImportInvoiceMedicineList();
-        List<ImportInvoiceMedicine> importInvoiceMedicineList = new ArrayList<>();
-        for (int i = 0; i < importInvoiceMedicineDtoList.size(); i++) {
-            ImportInvoiceMedicineDto importInvoiceMedicineDto = importInvoiceMedicineDtoList.get(i);
-            new ImportInvoiceMedicineDto().validate(importInvoiceMedicineDto, bindingResult);
-            if (bindingResult.hasErrors()) {
-                Map<String, String> errors = new HashMap<>();
-                bindingResult.getAllErrors().forEach((error) -> {
-                    String fieldName = ((
-                            FieldError) error).getField();
-                    String errorMessage = error.getDefaultMessage();
-                    errors.put(fieldName, errorMessage);
-                });
-                return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-            }
-            ImportInvoiceMedicine importInvoiceMedicine = new ImportInvoiceMedicine();
-            BeanUtils.copyProperties(importInvoiceMedicineDto, importInvoiceMedicine);
+
+        List<ImportInvoiceMedicine> importInvoiceMedicineList = importInvoiceDto.getImportInvoiceMedicineList();
+        for (int i = 0; i < importInvoiceMedicineList.size(); i++) {
+            ImportInvoiceMedicine importInvoiceMedicine;
+            importInvoiceMedicine = importInvoiceMedicineList.get(i);
             importInvoiceMedicine.setImportInvoice(importInvoiceSave);
-            checkSuccess = this.importInvoiceService.saveImportInvoiceMedicine(importInvoiceMedicine);
-            if (checkSuccess) {
-                importInvoiceMedicineList.add(importInvoiceMedicine);
-            } else {
-                break;
-            }
+            this.importInvoiceService.saveImportInvoiceMedicine(importInvoiceMedicine);
         }
-        if (checkSuccess) {
-            for (int i = 0; i < importInvoiceMedicineList.size(); i++) {
-                ImportInvoiceMedicine importInvoiceMedicine = importInvoiceMedicineList.get(i);
-                boolean flag = this.importInvoiceService.updateMedicineStorage(importInvoiceMedicine.getMedicine(),
-                        importInvoiceMedicine.getImportInvoiceMedicineImportAmount());
-            }
+        System.out.println("here");
+        System.out.println(importInvoiceMedicineList);
+        for (int i = 0; i < importInvoiceMedicineList.size(); i++) {
+            System.out.println("Luu vao kho");
+            ImportInvoiceMedicine importInvoiceMedicine = importInvoiceMedicineList.get(i);
+            boolean flag = this.importInvoiceService.updateMedicineStorage(importInvoiceMedicine.getMedicine(),
+                    importInvoiceMedicine.getImportInvoiceMedicineImportAmount());
         }
         return new ResponseEntity<>(importInvoiceDto, HttpStatus.OK);
     }
+
 
     /**
      * this function use to get all list Import Invoice

@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SupplierService implements ISupplierService {
 
@@ -24,7 +26,6 @@ public class SupplierService implements ISupplierService {
     public void save(Supplier supplier) {
         supplier.setFlag(true);
         iSupplierRepository.save(supplier);
-
     }
 
     /**
@@ -72,5 +73,15 @@ public class SupplierService implements ISupplierService {
                                   Pageable pageable) {
 
         return iSupplierRepository.getAllSupplier("%" + searchId + "%", "%" + searchName + "%", "%" + searchAddress + "%", "%" + searchPhone + "%", pageable);
+    }
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 4/7/2022
+     * function: create temp supplier service dùng tạm
+     */
+    @Override
+    public List<Supplier> getList() {
+        return this.iSupplierRepository.findAll();
     }
 }

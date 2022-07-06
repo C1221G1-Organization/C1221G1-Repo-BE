@@ -6,6 +6,7 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,6 +46,16 @@ public class MedicineService implements IMedicineService {
     @Override
     public void updateMedicine(Medicine existMedicine) {
         this.medicineRepository.updateMedicine(existMedicine);
+    }
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 4/7/2022
+     * function: get medicine list dùng tạm
+     */
+    @Override
+    public List<Medicine> getList() {
+        return this.medicineRepository.findAll();
     }
 }
 

@@ -44,7 +44,6 @@ public class SupplierController {
                                                           @RequestParam Optional<String> sort,
                                                           @RequestParam Optional<String> dir
     ) {
-
         Pageable pageable;
         String sortVal = sort.orElse("");
         String dirVal = dir.orElse("");

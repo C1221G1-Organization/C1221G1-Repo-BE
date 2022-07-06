@@ -4,6 +4,8 @@ import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface ISupplierService {
 
 
@@ -18,4 +20,5 @@ public interface ISupplierService {
     Page<Supplier> findAll(String searchId, String searchName, String searchAddress, String searchPhone, Pageable pageable);
 
 
+    List<Supplier> getList();
 }
