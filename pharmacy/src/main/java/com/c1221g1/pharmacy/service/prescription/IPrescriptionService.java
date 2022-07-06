@@ -12,7 +12,7 @@ import java.util.List;
 public interface IPrescriptionService {
     Page<Prescription> findAllPageAndSearch(Pageable pageable, String id, String name, String target, String symptom);
 
-    void save(Prescription prescription);
+    void savePrescription(Prescription prescription);
 
     Prescription findById(String id);
 
@@ -20,9 +20,14 @@ public interface IPrescriptionService {
 
     void edit(Prescription prescription);
 
-    IMedicinePrescriptionDto getPrescriptionById(String id);
+    List<IMedicinePrescriptionDto> getPrescriptionById(String id);
+
+
+    List<Prescription> findAllListPrescription();
+
 
     PrescriptionDetail getDetailPrescription(String id);
 
     List<PrescriptionMedicineDetail> getListPreMeDetail(String id);
 }
+

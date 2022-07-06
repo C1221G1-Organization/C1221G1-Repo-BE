@@ -26,9 +26,8 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
             nativeQuery = true)
     Invoice getNewInvoice();
 
-    @Query(value = "select invoice_id,invoice_created_date,customer_id,employee_id,invoice_note,flag,\n" +
-            "       type_of_invoice_id" +
-            "from invoice \n" +
+    @Query(value = "select *" +
+            " from invoice " +
             "where invoice_id = :invoice_id and flag = :status ",
             nativeQuery = true)
     Invoice findByInvoiceId(@Param("invoice_id") String invoiceId, @Param("status") boolean status);

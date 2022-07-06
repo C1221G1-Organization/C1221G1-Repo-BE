@@ -148,5 +148,18 @@ public class CustomerController {
         this.iCustomerService.updateCustomer(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    @GetMapping(value = "/getCustomerType")
+    public ResponseEntity<List<Customer>> getCustomerByCustomerType() {
+        List<Customer> customer = iCustomerService.findByCustomerType();
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
 }
+

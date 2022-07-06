@@ -48,4 +48,3 @@ public class Position {
         this.employeeList = employeeList;
     }
 }
-
