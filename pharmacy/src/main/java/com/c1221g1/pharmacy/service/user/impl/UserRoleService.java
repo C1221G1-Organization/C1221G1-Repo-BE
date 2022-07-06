@@ -14,4 +14,9 @@ public class UserRoleService implements IUserRoleService {
     public void save(UserRole userRole) {
         this.iUserRoleRepository.save(userRole);
     }
+
+    @Override
+    public UserRole findUserRole(String username) {
+        return this.iUserRoleRepository.findUserRoleByUsername(username);
+    }
 }

@@ -28,14 +28,31 @@ public class EmployeeDto  {
             "Do not exceed 50 characters")
     @Size(min = 1, message = "\n" +
             "No less than 1 character")
+    @Size(max = 50, message = "\n" +
+            "Do not exceed 50 characters")
+    @Size(min = 1, message = "\n" +
+            "No less than 1 character")
     private String employeeName;
     @NotNull(message = "Image may not be null")
     @NotEmpty(message = "Image may not be empty")
+
+    @Pattern(regexp = "(https?:\\/\\/.*\\.(?:png|jpg))", message = "\n" +
+            "Incorrect image file format\n")
+
+    @Size(max = 500, message = "\n" +
+            "Do not exceed 50 characters")
+
+    @Size(min = 4, message = "\n" +
+            "No less than 1 character")
     @Pattern(regexp = "(\\S.*\\.(?:png$|jpg$))", message = "\n" +
             "Hãy chọn flle ảnh, định dạng :name.*Image\n")
     private String employeeImage;
+
+    @NotNull(message = "Address may not be null")
+
     @NotEmpty(message = "Address may not be empty")
     private String employeeAddress;
+
     @NotNull(message = "Phone may not be null")
     @NotEmpty(message = "Phone may not be empty")
     @Pattern(regexp = "^(0?)(3[2-9]|5[6|9]|7[0|6-9]|8[0-6|9]|9[0-4|6-9])[0-9]{7}$",
@@ -47,10 +64,13 @@ public class EmployeeDto  {
     private String employeeDateStart;
     private String employeeNote;
     private boolean flag;
+
     private Position position;
+
     @NotNull
     private Users employeeUsername;
     private List<ImportInvoice> importInvoiceList;
+
 
     public EmployeeDto() {
     }
@@ -143,5 +163,6 @@ public class EmployeeDto  {
         this.importInvoiceList = importInvoiceList;
     }
 
-
 }
+
+

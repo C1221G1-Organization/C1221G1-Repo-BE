@@ -24,7 +24,6 @@ public class Employee {
     private String employeePhone;
     @Column(columnDefinition = "DATE")
     private String employeeDateStart;
-
     private String employeeNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
@@ -36,8 +35,10 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private Users employeeUsername;
+
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
+
     public Employee() {
     }
 
@@ -128,4 +129,5 @@ public class Employee {
     public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
         this.importInvoiceList = importInvoiceList;
     }
+
 }
