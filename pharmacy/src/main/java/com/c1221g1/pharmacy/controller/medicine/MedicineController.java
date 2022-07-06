@@ -344,4 +344,20 @@ public class MedicineController {
         }
         return new ResponseEntity<>(medicineDtoList, HttpStatus.OK);
     }
+
+    /**
+     * HienTLD
+     * danh sách List<Medicine>
+     * 8:58 06/07/2022
+     */
+    @GetMapping("/list")
+    public ResponseEntity<List<Medicine>> getAllMedicineList(){
+        List<Medicine> medicineList = medicineService.findAllMedicine();
+
+        if (medicineList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(medicineList, HttpStatus.OK);
+    }
 }

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
+
+import java.util.List;
+
 @Service
 public class PrescriptionService implements IPrescriptionService {
 
@@ -43,8 +45,13 @@ public class PrescriptionService implements IPrescriptionService {
     }
 
     @Override
-    public IMedicinePrescriptionDto getPrescriptionById(String id) {
+    public List<IMedicinePrescriptionDto> getPrescriptionById(String id) {
         return this.prescriptionRepository.detailPrescriptionById(id);
+    }
+
+    @Override
+    public List<Prescription> findAllListPrescription() {
+        return this.prescriptionRepository.findAllPre();
     }
 }
 
