@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.service.medicine.impl;
-
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import com.c1221g1.pharmacy.repository.medicine.IMedicineStorageRepository;
@@ -10,12 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class MedicineStorageService implements IMedicineStorageService {
     @Autowired
     private IMedicineStorageRepository iMedicineStorageRepository;
-
     @Autowired
     private IMedicineService iMedicineService;
 
@@ -60,7 +57,6 @@ public class MedicineStorageService implements IMedicineStorageService {
         MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
         return medicineStorage != null;
     }
-
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -78,7 +74,6 @@ public class MedicineStorageService implements IMedicineStorageService {
             return medicineQuantity;
         }
     }
-
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -98,7 +93,7 @@ public class MedicineStorageService implements IMedicineStorageService {
         Long medicineQuantity = this.checkMedicineQuantity(medicineId);
         switch (manipulation) {
             case 0:
-                if ((checkExist) | (medicineQuantity < quantity)) {
+                if ((!checkExist) || (medicineQuantity < quantity)) {
                     return false;
                 } else {
                     medicineQuantity -= quantity;
@@ -115,6 +110,7 @@ public class MedicineStorageService implements IMedicineStorageService {
                         Medicine medicine = medicineOptional.orElse(null);
                         medicineStorage.setMedicine(medicine);
                         medicineStorage.setMedicineQuantity(quantity);
+                        medicineStorage.setFlag(true);
                         this.iMedicineStorageRepository.save(medicineStorage);
                         return true;
                     }
