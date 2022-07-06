@@ -108,6 +108,7 @@ public class CustomerController {
         }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
+        customer.setFlag(true);
         this.iCustomerService.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
