@@ -66,6 +66,7 @@ public class EmployeeController {
         this.iUsersService.saveUser(users);
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
+        employee.setFlag(true);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
