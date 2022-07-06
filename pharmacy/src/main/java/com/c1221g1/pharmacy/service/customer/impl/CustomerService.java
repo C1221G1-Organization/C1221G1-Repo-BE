@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService implements ICustomerService {
 
@@ -36,7 +38,6 @@ public class CustomerService implements ICustomerService {
     public Page<Customer> findAllCustomer(Pageable pageable, String customerId, String customerName, String customerAddress, String customerPhone, String customerType) {
         return iCustomerRepository.getAllSearchAndSortCustomer("%" + customerId + "%", "%" + customerType + "%", "%" + customerName + "%", "%" + customerAddress + "%", "%" + customerPhone + "%", pageable);
     }
-
 
     /**
      * create by TinBQ
@@ -68,7 +69,6 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer findByCustomerId(String customerId) {
         return this.iCustomerRepository.findByCustomerId(customerId);
-
     }
 
     @Override
@@ -78,5 +78,15 @@ public class CustomerService implements ICustomerService {
                 , customer.getCustomerType().getCustomerTypeId(), customer.getCustomerId());
     }
 
-}
 
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    @Override
+    public List<Customer> findByCustomerType() {
+        return iCustomerRepository.getCustomerList();
+    }
+
+}

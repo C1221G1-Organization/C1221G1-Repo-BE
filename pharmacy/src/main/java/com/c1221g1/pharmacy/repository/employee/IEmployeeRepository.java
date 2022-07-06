@@ -84,11 +84,10 @@ public interface IEmployeeRepository extends JpaRepository<Employee,String> {
   Time: 13:35:00 01/07/2022
   Function:  SQL Update Emoloyee
 */
-
     @Transactional
     @Modifying
     @Query(value = "update employee set employee_name = :employeeName, employee_image = :employeeImage ,employee_address = :employeeAddress," +
-            "employee_phone = :employeePhone , employee_date_start = :employeeDateStart,employee_note = :employeeNote," +
+            ":employee_phone = :employeePhone , employee_date_start = :employeeDateStart,employee_note = :employeeNote," +
             "position_id = :position,username = :employeeUsername where employee_id = :employeeId", nativeQuery = true)
     void updateEmployee(
             @Param("employeeName") String employeeName,
