@@ -1,10 +1,8 @@
 package com.c1221g1.pharmacy.entity.customer;
-
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,15 +25,12 @@ public class Customer {
     private String customerNote;
     @Column(columnDefinition = "BIT")
     private boolean flag;
-
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")
     private Users customerUsername;
-
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
-
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
 
@@ -129,4 +124,6 @@ public class Customer {
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
     }
+
 }
+

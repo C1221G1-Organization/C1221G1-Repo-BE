@@ -6,11 +6,13 @@ import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ImportInvoiceDto implements Validator {
     private String importInvoiceId;
     private Integer importSystemCode;
+    @NotNull
     private Double paymentPrepayment;
     private Double total;
     private String importInvoiceDate;

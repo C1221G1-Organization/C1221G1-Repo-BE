@@ -25,7 +25,6 @@ public class SupplierDto {
     private String note;
     private boolean flag;
 
-
     public SupplierDto() {
     }
 
@@ -84,7 +83,4 @@ public class SupplierDto {
     public boolean isFlag() {
         return flag;
     }
-
-
 }
-

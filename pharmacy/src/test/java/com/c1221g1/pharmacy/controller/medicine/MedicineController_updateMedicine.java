@@ -1838,7 +1838,7 @@ public class MedicineController_updateMedicine {
         medicineDto.setMedicineWholesaleProfit(2.0);
         medicineDto.setMedicineRetailSaleProfit(2.0);
         medicineDto.setMedicineTax(1.0);
-        medicineDto.setMedicineConversionRate(null);
+        medicineDto.setMedicineConversionRate(10);
         medicineDto.setMedicineManufacture("daphaco");
         medicineDto.setMedicineUsage("giảm mù mắt");
         medicineDto.setMedicineInstruction("nhỏ vào mắt");

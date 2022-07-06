@@ -21,8 +21,14 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
      * searchPhone (provider phone number)    search for 4 fields named as follows)
      * 16h 29/06/2022
      */
-    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where ( supplier_id like :searchId and supplier_name like :searchName and supplier_address like :searchAddress and supplier_phone like :searchPhone ) and `flag` = 1  ",
-            countQuery = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where ( supplier_id like :searchId and supplier_name like :searchName and supplier_address like :searchAddress and supplier_phone like :searchPhone ) and `flag` = 1  ",
+    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone" +
+            " from supplier " +
+            "where  supplier_id like :searchId and supplier_name like :searchName and supplier_address like :searchAddress and supplier_phone like :searchPhone " +
+            " and `flag` = 1  ",
+            countQuery = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone" +
+                    " from supplier " +
+                    "where  supplier_id like :searchId and supplier_name like :searchName and supplier_address like :searchAddress and supplier_phone like :searchPhone " +
+                    " and `flag` = 1  ",
             nativeQuery = true)
     Page<Supplier> getAllSupplier(
             @Param("searchId") String searchId,
@@ -40,7 +46,8 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
      */
     @Transactional
     @Modifying
-    @Query(value = "UPDATE supplier SET `flag` = 0 WHERE supplier_id = :id",
+    @Query(value = "UPDATE supplier SET `flag` = 0 " +
+            "WHERE supplier_id = :id",
             nativeQuery = true)
     void deleteSupplierById(@Param("id") String id);
 
@@ -71,7 +78,10 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
      * (  Serve for detail screen, edit supplier information  )
      * 16h 29/06/2022
      */
-    @Query(value = "select supplier_id, flag, note, supplier_address, supplier_email, supplier_name, supplier_phone from supplier where supplier_id = :supplierId",
+    @Query(value = "select   supplier_id , supplier_name, supplier_address,supplier_phone, supplier_email,  note,  flag" +
+            " from supplier " +
+            "where supplier_id = :supplierId " +
+            "and flag = 1 ",
             nativeQuery = true)
     Supplier findByIdSupplier(@Param("supplierId") String supplierId);
 
@@ -93,4 +103,18 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
             "where supplier_id = :#{#supplier.supplierId}",
             nativeQuery = true)
     void updateSupplier(Supplier supplier);
+
+    /**
+     * get for 1 supplier whose id is the value the user entered
+     * (  Serve for detail screen, edit supplier information  )
+     * 16h 29/06/2022
+     */
+    @Query(value = "select  s.supplier_id, s.flag, s.note, s.supplier_address, s.supplier_email, s.supplier_name, s.supplier_phone," +
+            " (ii.total - ii.payment_prepayment) as debt " +
+            "from supplier s " +
+            "join import_invoice ii  " +
+            "on s.supplier_id = ii.supplier_id " +
+            "where s.supplier_id = :supplierId and s.flag = 1",
+            nativeQuery = true)
+    Supplier    findByIdDetailSupplier(@Param("supplierId") String id);
 }

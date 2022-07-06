@@ -84,4 +84,9 @@ public class SupplierService implements ISupplierService {
     public List<Supplier> getList() {
         return this.iSupplierRepository.findAll();
     }
+
+    @Override
+    public Supplier findByIdDEtail(String id) {
+        return iSupplierRepository.findByIdDetailSupplier(id);
+    }
 }

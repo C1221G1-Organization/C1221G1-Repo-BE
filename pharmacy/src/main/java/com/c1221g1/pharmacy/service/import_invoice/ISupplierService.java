@@ -21,4 +21,6 @@ public interface ISupplierService {
 
 
     List<Supplier> getList();
+
+    Supplier findByIdDEtail(String id);
 }

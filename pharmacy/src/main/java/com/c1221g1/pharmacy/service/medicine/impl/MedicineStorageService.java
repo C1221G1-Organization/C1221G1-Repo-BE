@@ -6,6 +6,7 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -14,6 +15,7 @@ public class MedicineStorageService implements IMedicineStorageService {
     private IMedicineStorageRepository iMedicineStorageRepository;
     @Autowired
     private IMedicineService iMedicineService;
+
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
@@ -23,6 +25,7 @@ public class MedicineStorageService implements IMedicineStorageService {
     public Optional<MedicineStorage> getStorageByIdMedicine(String id) {
         return this.iMedicineStorageRepository.getStorageByMedicineId(id);
     }
+
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
@@ -33,10 +36,12 @@ public class MedicineStorageService implements IMedicineStorageService {
         this.iMedicineStorageRepository.updateMedicineQuantity
                 (storage.getMedicineQuantity(), storage.getMedicineStorageId());
     }
+
     @Override
     public List<MedicineStorage> getAll() {
         return iMedicineStorageRepository.findAll();
     }
+
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -47,6 +52,7 @@ public class MedicineStorageService implements IMedicineStorageService {
      * @param medicineId
      */
     @Override
+
     public boolean checkExistInMedicineStorage(String medicineId) {
         MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
         return medicineStorage != null;
