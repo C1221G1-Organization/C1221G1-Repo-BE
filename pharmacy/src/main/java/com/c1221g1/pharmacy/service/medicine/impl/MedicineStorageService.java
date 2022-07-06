@@ -110,6 +110,7 @@ public class MedicineStorageService implements IMedicineStorageService {
                         Medicine medicine = medicineOptional.orElse(null);
                         medicineStorage.setMedicine(medicine);
                         medicineStorage.setMedicineQuantity(quantity);
+                        medicineStorage.setFlag(true);
                         this.iMedicineStorageRepository.save(medicineStorage);
                         return true;
                     }

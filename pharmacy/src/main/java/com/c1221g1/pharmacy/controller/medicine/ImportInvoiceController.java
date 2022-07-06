@@ -1,9 +1,15 @@
 package com.c1221g1.pharmacy.controller.medicine;
 
 import com.c1221g1.pharmacy.dto.import_invoice.ImportInvoiceDto;
+import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
+import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
+import com.c1221g1.pharmacy.entity.medicine.Medicine;
+import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.import_invoice.IImportInvoiceService;
+import com.c1221g1.pharmacy.service.import_invoice.ISupplierService;
+import com.c1221g1.pharmacy.service.medicine.IMedicineService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,6 +37,51 @@ public class ImportInvoiceController {
 
     @Autowired
     private IImportInvoiceService importInvoiceService;
+
+    @Autowired
+    private IMedicineService medicineService;
+
+    @Autowired
+    private ISupplierService supplierService;
+
+    @Autowired
+    private IEmployeeService employeeService;
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 30/6/2022
+     * function: get list medicine
+     *
+     * @return List<Medicine>
+     */
+    @GetMapping(value = "/medicines")
+    List<Medicine> getAllMedicine() {
+        return this.medicineService.getList();
+    }
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 30/6/2022
+     * function: get list suppliers
+     *
+     * @return List<Medicine>
+     */
+    @GetMapping(value = "/suppliers")
+    List<Supplier> getAllSupplier() {
+        return this.supplierService.getList();
+    }
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 30/6/2022
+     * function: get list Employee
+     *
+     * @return List<Employee>
+     */
+    @GetMapping(value = "/employees")
+    List<Employee> getAllEmployee() {
+        return this.employeeService.getList();
+    }
 
     /**
      * Created by: TrungTVH
