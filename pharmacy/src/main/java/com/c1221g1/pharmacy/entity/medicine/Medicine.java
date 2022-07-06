@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.entity.medicine;
 
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
-import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
-import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
-import com.c1221g1.pharmacy.entity.prescription.MedicinePrescription;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -229,7 +226,6 @@ public class Medicine {
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
     }
-
 
     public Set<MedicineStorage> getMedicineStorageSet() {
         return medicineStorageSet;

@@ -9,11 +9,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import com.c1221g1.pharmacy.entity.medicine.MedicineStorage;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-
 public interface IMedicineStorageRepository extends JpaRepository<MedicineStorage, Integer> {
 
     /*
@@ -47,11 +48,11 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
      * @param medicineId
      * @return medicineStorage object
      */
-    @Query(value = "SELECT medicine_storage_id, medicine_id , medicine_quantity,flag " +
-            "FROM medicine_storage " +
-            "WHERE (medicine_id = :id) AND flag = true ", nativeQuery = true)
-    MedicineStorage findMedicineStorageById(@Param("id") String medicineId);
 
+    @Query(value = "SELECT medicine_storage_id, medicine_id , medicine_quantity, flag " +
+            "FROM medicine_storage " +
+            "WHERE medicine_id = :id AND `flag` = TRUE", nativeQuery = true)
+    MedicineStorage findMedicineStorageById(@Param("id") String medicineId);
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -60,11 +61,11 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
      * @param medicineId
      * @return medicine quantity
      */
-    @Query(value = "SELECT  medicine_quantity ,flag from medicine_storage" +
-            " WHERE (medicine_id = :id) AND flag = true ", nativeQuery = true)
+
+    @Query(value = "SELECT  medicine_quantity " +
+            "FROM medicine_storage " +
+            "WHERE medicine_id = :id AND `flag` = TRUE", nativeQuery = true)
     Long getMedicineQuantityByMedicineId(@Param("id") String medicineId);
-
-
     /**
      * Created by: TrungTVH
      * Date created: 30/6/2022
@@ -76,8 +77,8 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
      */
     @Transactional
     @Modifying
-    @Query(value = "UPDATE `medicine_storage` SET `medicine_quantity` = :quantity " +
-            "where medicine_id = :medicineId", nativeQuery = true)
-    void changeMedicineQuantity(String medicineId,Long quantity);
+    @Query(value = "UPDATE medicine_storage SET medicine_quantity = :quantity " +
+            "WHERE medicine_id = :medicine_id", nativeQuery = true)
+    void changeMedicineQuantity(@Param("medicine_id") String medicineId, @Param("quantity") Long quantity);
 
 }

@@ -27,28 +27,14 @@ public class InvoiceController {
     @Autowired
     IInvoiceService iInvoiceService;
 
+
     @Autowired
     private InvoiceMedicineService invoiceMedicineService;
+
     /**
      * Create by TuanPA
      * Function: get all invoices, search/sort invoices
      */
-//    @GetMapping
-//    ResponseEntity<Page<Invoice>> getListInvoice(
-//                                    @RequestParam(defaultValue = "") String startDate,
-//                                    @RequestParam(defaultValue = "") String endDate,
-//                                    @RequestParam(defaultValue = "") String startTime,
-//                                    @RequestParam(defaultValue = "") String endTime,
-//                                    @RequestParam(defaultValue = "1") Integer typeOfInvoiceId,
-//                                    @RequestParam(defaultValue = "invoiceId") String fieldSort) {
-//        Pageable pageable = PageRequest.of(0,5, Sort.Direction.ASC,fieldSort);
-//        Page<Invoice> invoicePage = iInvoiceService.findAllInvoice(startDate, endDate, startTime, endTime, typeOfInvoiceId, pageable);
-//        if(invoicePage.isEmpty()){
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        } else {
-//            return new ResponseEntity<>(invoicePage, HttpStatus.OK);
-//        }
-//    }
     @GetMapping("")
     ResponseEntity<Page<IInvoiceDto>> getListInvoice(
             @RequestParam(defaultValue = "") String startDate,
@@ -60,7 +46,6 @@ public class InvoiceController {
         String endDateVal = endDate.orElse(String.valueOf(LocalDate.now()));
         Pageable pageable;
         if (fieldSort.equals("time")) {
-//            pageable = PageRequest.of(0, 5, Sort.by(Sort.Order.asc("invoiceCreatedDate"), Sort.Order.asc("invoiceCreateTime")));
             pageable = PageRequest.of(0, 5, Sort.Direction.ASC, "invoiceCreatedDate", "invoiceCreateTime");
         } else {
             pageable = PageRequest.of(0, 5, Sort.by(fieldSort).ascending());
@@ -86,6 +71,7 @@ public class InvoiceController {
         iInvoiceService.delete(id);
         return new ResponseEntity<>(invoice, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> findInvoiceByInvoiceId(@PathVariable String id) {
         Invoice invoice = iInvoiceService.findByInvoiceId(id);
@@ -96,3 +82,5 @@ public class InvoiceController {
     }
 
 }
+
+

@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.repository.import_invoice;
 
+import com.c1221g1.pharmacy.dto.import_invoice.ISupplierDto;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -99,7 +100,7 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
             "    supplier_address = :#{#supplier.supplierAddress},\n" +
             "    supplier_email = :#{#supplier.supplierEmail},\n" +
             "    supplier_phone= :#{#supplier.supplierPhone},\n" +
-            "    note = :#{#supplier.supplierName} " +
+            "    note = :#{#supplier.note} " +
             "where supplier_id = :#{#supplier.supplierId}",
             nativeQuery = true)
     void updateSupplier(Supplier supplier);
@@ -109,12 +110,14 @@ public interface ISupplierRepository extends JpaRepository<Supplier, String> {
      * (  Serve for detail screen, edit supplier information  )
      * 16h 29/06/2022
      */
-    @Query(value = "select  s.supplier_id, s.flag, s.note, s.supplier_address, s.supplier_email, s.supplier_name, s.supplier_phone," +
-            " (ii.total - ii.payment_prepayment) as debt " +
-            "from supplier s " +
-            "join import_invoice ii  " +
-            "on s.supplier_id = ii.supplier_id " +
-            "where s.supplier_id = :supplierId and s.flag = 1",
+    @Query(value = "select  s.supplier_id as supplierId , s.flag as flag, s.note as note, s.supplier_address as supplierAddress, s.supplier_email as supplierEmail, " +
+            "            s.supplier_name as supplierName, s.supplier_phone as supplierPhone , " +
+            "             (ii.total - ii.payment_prepayment) as debt " +
+            "             from supplier s " +
+            "             join import_invoice ii " +
+            "             on s.supplier_id = ii.supplier_id " +
+            "             where s.supplier_id = :supplierId and s.flag = 1 " +
+            "             group by s.supplier_id",
             nativeQuery = true)
-    Supplier findByIdDetailSupplier(@Param("supplierId") String id);
+    ISupplierDto findByIdDetailSupplier(@Param("supplierId") String id);
 }
