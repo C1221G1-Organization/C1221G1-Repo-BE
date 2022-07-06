@@ -80,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         ,"/api/manager-medicine/**","/api/manager-prescription**","/api/manager_report/**"
                 )
                 .hasAnyRole("EMPLOYEE","MANAGER")
-                .antMatchers("/api/manager-account/**","api/manager-employee/employees**","/api/manager-report/**")
+                .antMatchers("/api/manager-account/**","api/manager-employee/employees**")
                 .hasRole("MANAGER")
                 .anyRequest()
                 .authenticated()
