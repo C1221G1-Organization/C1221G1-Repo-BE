@@ -4,9 +4,6 @@ import com.c1221g1.pharmacy.entity.user.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.core.oidc.OidcIdToken;
-import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +22,7 @@ public class UsersDetails implements UserDetails {
     private Boolean flag;
     private String password;
     private List<GrantedAuthority> authorities = null;
-    private Map<String, Object> attributes;
+    private transient Map<String, Object> attributes;
 
 
 
@@ -103,9 +100,6 @@ public class UsersDetails implements UserDetails {
         this.username = username;
     }
 
-    public Boolean getFlag() {
-        return flag;
-    }
 
     public void setFlag(Boolean flag) {
         this.flag = flag;

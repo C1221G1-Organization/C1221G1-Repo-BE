@@ -70,14 +70,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        ,"/api/manager-security/users/sign-up","/api/manager-cart/cart"
+                        ,"/api/manager-security/users/sign-up","/api/carts","/api/payment-online"
                     )
                 .permitAll()
                 .antMatchers("/api/manager-cart**")
                 .hasRole("USER")
-                .antMatchers("/api/manager-customer/**","/api/manager-prescription/**","/api/manager-sale/**")
+                .antMatchers("/api/manager-customer/customers**","/api/manager-prescription/**",
+                        "/api/manager-sale/**","api/manager-sale/invoices**"
+                        ,"/api/manager-medicine/**","/api/manager-prescription**","/api/manager_report/**"
+                )
                 .hasAnyRole("EMPLOYEE","MANAGER")
-                .antMatchers("/api/manager-account/**","/api/manager-medicine/**","/api/manager-employee/**","/api/manager-report/**")
+                .antMatchers("/api/manager-account/**","api/manager-employee/employees**")
                 .hasRole("MANAGER")
                 .anyRequest()
                 .authenticated()
@@ -90,16 +93,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                 .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(60 * 60 * 24).and().logout().logoutSuccessUrl("/");
+                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
 
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 
+    public int computeDurationInMilliseconds(){
+        return (60 * 60 *60 );
+    }
+
 
     private PersistentTokenRepository persistentTokenRepository() {
-        InMemoryTokenRepositoryImpl memoryTokenRepository = new InMemoryTokenRepositoryImpl();
-        return memoryTokenRepository;
+        return new InMemoryTokenRepositoryImpl();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {

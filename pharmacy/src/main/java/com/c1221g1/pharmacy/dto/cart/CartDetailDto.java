@@ -1,48 +1,57 @@
 package com.c1221g1.pharmacy.dto.cart;
 
-import com.c1221g1.pharmacy.entity.cart.Cart;
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-
-public class CartDetailDto {
-    private Integer cartDetailId;
-    private Integer cartDetailQuantity;
-    private Medicine medicine;
-    private Cart cart;
+public class CartDetailDto implements Validator {
+    //    private Integer cartDetailId;
+    private Integer quantity;
+    private MedicineDtoForCart medicine;
+//    private Cart cart;
 
     public CartDetailDto() {
     }
 
-    public Integer getCartDetailId() {
-        return cartDetailId;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setCartDetailId(Integer cartDetailId) {
-        this.cartDetailId = cartDetailId;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Integer getCartDetailQuantity() {
-        return cartDetailQuantity;
-    }
-
-    public void setCartDetailQuantity(Integer cartDetailQuantity) {
-        this.cartDetailQuantity = cartDetailQuantity;
-    }
-
-    public Medicine getMedicine() {
+    public MedicineDtoForCart getMedicine() {
         return medicine;
     }
 
-    public void setMedicine(Medicine medicine) {
+    public void setMedicine(MedicineDtoForCart medicine) {
         this.medicine = medicine;
     }
 
-    public Cart getCart() {
-        return cart;
+//    public Cart getCart() {
+//        return cart;
+//    }
+//
+//    public void setCart(Cart cart) {
+//        this.cart = cart;
+//    }
+
+    @Override
+    public String toString() {
+        return "CartDetailDto{" +
+                "quantity=" + quantity +
+                ", medicine=" + medicine +
+                '}';
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
     }
 
+    @Override
+    public void validate(Object target, Errors errors) {
+        CartDetailDto cartDetailDto = (CartDetailDto) target;
+
+    }
 }

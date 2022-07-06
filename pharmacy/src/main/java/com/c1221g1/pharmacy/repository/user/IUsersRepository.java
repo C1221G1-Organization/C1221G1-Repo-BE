@@ -3,14 +3,17 @@ package com.c1221g1.pharmacy.repository.user;
 import com.c1221g1.pharmacy.dto.user.IUsersDto;
 import com.c1221g1.pharmacy.entity.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.util.List;
 
 public interface IUsersRepository extends JpaRepository<Users,String> {
+
     /**
      * Created by HuuNQ
      * Time 12:00 30/06/2022

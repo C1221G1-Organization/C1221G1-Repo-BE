@@ -18,7 +18,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +44,7 @@ public class UserController {
      * Function Sign-in Account Online and when success login server will return information with JWT
      */
     @PostMapping("/sign-in")
-    public ResponseEntity<?> getSignIn(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult){
+    public ResponseEntity<Object> getSignIn(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult){
         new LoginRequest().validate(loginRequest,bindingResult);
         Map<String, String> errorMap = new HashMap<>();
         if(bindingResult.hasErrors()){
@@ -53,10 +52,10 @@ public class UserController {
                     .forEach(
                             err -> errorMap.put(err.getField(),err.getDefaultMessage())
                     );
-            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed",errorMap,new ArrayList<>()));
         }
 
-        if(this.iUsersService.checkEmail(loginRequest.getUsername()).size()==0){
+        if(this.iUsersService.checkEmail(loginRequest.getUsername()).isEmpty()){
             errorMap.put("notExists","Tài khoản chưa tồn tại trong hệ thống");
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed",errorMap,new ArrayList<>()));
         }
@@ -81,7 +80,7 @@ public class UserController {
      * Function Sign Up Online And Validate Sign Up Form
      */
     @PostMapping("/sign-up")
-    public ResponseEntity<?> signUpUser(@Valid @RequestBody SignUpRequest signUpRequest,BindingResult bindingResult){
+    public ResponseEntity<Object> signUpUser(@Valid @RequestBody SignUpRequest signUpRequest,BindingResult bindingResult){
         new SignUpRequest().validate(signUpRequest,bindingResult);
         Map<String, String> errorMap = new HashMap<>();
         if(bindingResult.hasErrors()){
@@ -91,7 +90,7 @@ public class UserController {
                     );
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
         }
-        if(this.iUsersService.checkEmail(signUpRequest.getEmail()).size() > 0){
+        if(!this.iUsersService.checkEmail(signUpRequest.getEmail()).isEmpty()){
             errorMap.put("email","Email đã được sử dụng!");
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
         }
@@ -102,4 +101,6 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
 }

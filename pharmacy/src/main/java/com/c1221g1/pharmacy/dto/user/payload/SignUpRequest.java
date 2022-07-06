@@ -1,14 +1,8 @@
 package com.c1221g1.pharmacy.dto.user.payload;
 
-import com.c1221g1.pharmacy.entity.user.Roles;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
 
 /**
@@ -29,19 +23,10 @@ public class SignUpRequest implements Validator {
     private String note;
 
     public SignUpRequest() {
+        //This use to create object no params
+        //HuuNQ
     }
 
-    public SignUpRequest(String name, String email, String password, String confirmPassword, Integer gender, String address, String phone, String dayOfBirth, String note) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.confirmPassword = confirmPassword;
-        this.gender = gender;
-        this.address = address;
-        this.phone = phone;
-        this.dayOfBirth = dayOfBirth;
-        this.note = note;
-    }
 
     public String getName() {
         return name;
@@ -124,33 +109,36 @@ public class SignUpRequest implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         SignUpRequest signUpRequest = (SignUpRequest) target;
-        if(!signUpRequest.getName().matches("^(\\s?[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểễỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]\\s?)*$"))
+        final String NAME = "name";
+        final String EMAIL = "email";
+        final String PASSWORD = "password";
+        if(!signUpRequest.getName().matches("^(\\s?[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểễỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]\\s?){6,100}$"))
         {
-            errors.rejectValue("name","name.invalid.pattern","Tên chứa kí tự đặc biệt");
+            errors.rejectValue(NAME,"name.invalid.pattern","Tên chứa kí tự đặc biệt");
         }else if (signUpRequest.getName().length() > 50){
-            errors.rejectValue("name","name.invalid.maxLength","Tên quá dài");
+            errors.rejectValue(NAME,"name.invalid.maxLength","Tên quá dài");
         }else if(signUpRequest.getName().length() < 5){
-            errors.rejectValue("name","name.invalid.minLength","Tên quá ngắn");
+            errors.rejectValue(NAME,"name.invalid.minLength","Tên quá ngắn");
         }
 
         if(signUpRequest.getEmail() == null){
-            errors.rejectValue("email","email.invalid.pattern","Không được để trống");
-        }else if(!signUpRequest.getEmail().matches("^[a-z0-9]((.|\\+)?[a-z0-9]){4,}@g(oogle)?mail\\.com$")){
-            errors.rejectValue("email","email.invalid.pattern","Không đúng định dạng email");
+            errors.rejectValue(EMAIL,"email.invalid.pattern","Không được để trống");
+        }else if(!signUpRequest.getEmail().matches("^[a-z0-9]((.)?[a-z0-9]){4,100}@g(oogle)?mail\\.com$")){
+            errors.rejectValue(EMAIL,"email.invalid.pattern","Không đúng định dạng email");
         }else if(signUpRequest.getEmail().length() > 60){
-            errors.rejectValue("email","","Vượt quá độ dài cho phép");
+            errors.rejectValue(EMAIL,"","Vượt quá độ dài cho phép");
         }else if(signUpRequest.getEmail().length() <= 12){
-            errors.rejectValue("email","","Quá ngắn vui lòng nhập lại");
+            errors.rejectValue(EMAIL,"","Quá ngắn vui lòng nhập lại");
         }
 
         if(signUpRequest.getPassword().contains(" ")){
-            errors.rejectValue("password","","Có ký tự trống trong mật khẩu của bạn");
-        }else if(!signUpRequest.getPassword().matches("^(\\s?[a-zA-Z_\\d]\\s?)*$")){
-            errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép");
+            errors.rejectValue(PASSWORD,"","Có ký tự trống trong mật khẩu của bạn");
+        }else if(!signUpRequest.getPassword().matches("^(\\s?[a-zA-Z_\\d]\\s?){6,100}$")){
+            errors.rejectValue(PASSWORD,"","Có kí tự đặc biệt không được cho phép");
         }else if(signUpRequest.getPassword().length()>60){
-            errors.rejectValue("password","","Mật khẩu vượt quá độ dài cho phép");
+            errors.rejectValue(PASSWORD,"","Mật khẩu vượt quá độ dài cho phép");
         }else if(signUpRequest.getPassword().length() < 6){
-            errors.rejectValue("password","","Mật khẩu quá ngắn");
+            errors.rejectValue(PASSWORD,"","Mật khẩu quá ngắn");
         }
 
         if(!signUpRequest.getPhone().matches("((09)|(08)|(07))\\d{8}")){
@@ -163,7 +151,8 @@ public class SignUpRequest implements Validator {
             errors.rejectValue("dayOfBirth","date.invalid.pattern","Sai định dạng ngày/tháng/năm");
         }else if( age < 18){
             errors.rejectValue("dayOfBirth","","Quý khách chưa đủ 18 tuổi");
-        };
+        }
+
         if(!signUpRequest.getConfirmPassword().matches(signUpRequest.getPassword())){
             errors.rejectValue("confirmPassword","confirmPassword.invalid","Xác nhận mật khẩu không chính xác");
         }

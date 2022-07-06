@@ -6,7 +6,6 @@ import org.springframework.validation.Validator;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 /**
  * Created by HuuNQ
@@ -51,7 +50,7 @@ public class LoginRequest implements Validator {
         LoginRequest loginRequest = (LoginRequest) target;
         if(loginRequest.getPassword().contains(" ")){
             errors.rejectValue("password","","Mật khẩu chứa kí tự trống");
-        }else if(!loginRequest.getPassword().matches("^(\\s?[a-zA-Z!@#$%^&*()\\d]\\s?)*$")){
+        }else if(!loginRequest.getPassword().matches("^(\\s?[a-zA-Z!@#$%^&*()\\d]\\s?){6,100}$")){
             errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép");
         }
     }

@@ -12,7 +12,8 @@ import java.util.Date;
 @Component
 public class JwtUtils {
     private String secretKey = "vn.codegym.pharmacy_C1221G1";
-    private int jwtExpirationMs = 86400000;
+    private final int jwtExpirationMs = 86400;
+    private final int jwtRefreshTokenExpirationMs = 124600;
     private Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     public String generateJwtKey(Authentication authentication){
         User user = (User) authentication.getPrincipal();
@@ -22,6 +23,14 @@ public class JwtUtils {
                 .setExpiration(new Date(new Date().getTime()+jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512,secretKey)
                 .compact();
+    }
+
+    public String generateRefreshToken(Authentication authentication){
+        User user = (User) authentication.getPrincipal();
+        return  Jwts.builder().setSubject(user.getUsername()).
+                setIssuedAt(new Date())
+                .setExpiration(new Date(new Date().getTime()+jwtRefreshTokenExpirationMs))
+                .signWith(SignatureAlgorithm.HS512, secretKey).compact();
     }
 
     public String getUsernameFromJwtKey(String authToken){

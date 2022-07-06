@@ -12,17 +12,12 @@ import com.c1221g1.pharmacy.repository.user.IRoleRepository;
 import com.c1221g1.pharmacy.repository.user.IUserRoleRepository;
 import com.c1221g1.pharmacy.repository.user.IUsersRepository;
 import com.c1221g1.pharmacy.service.user.IUsersService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.core.oidc.OidcIdToken;
-import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
+
 
 @Service
 public class UsersService implements IUsersService {
@@ -46,11 +41,7 @@ public class UsersService implements IUsersService {
      * Function format Date, and save data for customer when sign up
      */
     @Override
-    public void saveUsers(SignUpRequest signUpRequest) throws Exception {
-        try{
-//            String[] dateSplit = signUpRequest.getDayOfBirth().split("/");
-//            String dateFormat = dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
-
+    public void saveUsers(SignUpRequest signUpRequest) {
             Users users = new Users(signUpRequest.getEmail(),passwordEncoder.encode(signUpRequest.getPassword()));
             users.setFlag(true);
             CustomerType customerType = new CustomerType();
@@ -71,11 +62,6 @@ public class UsersService implements IUsersService {
             this.iUsersRepository.save(users);
             this.iUserRoleRepository.save(userRole);
             this.iCustomerRepository.save(customer);
-        }catch (Exception e){
-            throw new Exception("lỗi");
-        }
-
-
     }
 
     /**
@@ -97,6 +83,13 @@ public class UsersService implements IUsersService {
         return UsersDetails.create(existUser,attributes);
 
     }
+
+    @Override
+    public void saveUser(Users users) {
+        this.iUsersRepository.save(users);
+    }
+
+
     @Override
     public List<Users> checkEmail(String email) {
         return this.iUsersRepository.checkEmail(email);
