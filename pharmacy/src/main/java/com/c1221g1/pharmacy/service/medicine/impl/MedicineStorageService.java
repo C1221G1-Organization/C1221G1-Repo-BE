@@ -98,7 +98,7 @@ public class MedicineStorageService implements IMedicineStorageService {
         Long medicineQuantity = this.checkMedicineQuantity(medicineId);
         switch (manipulation) {
             case 0:
-                if ((checkExist) | (medicineQuantity < quantity)) {
+                if ((!checkExist) || (medicineQuantity < quantity)) {
                     return false;
                 } else {
                     medicineQuantity -= quantity;
