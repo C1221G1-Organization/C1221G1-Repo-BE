@@ -48,6 +48,7 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
      * @param medicineId
      * @return medicineStorage object
      */
+
     @Query(value = "SELECT medicine_storage_id, medicine_id , medicine_quantity, flag " +
             "FROM medicine_storage " +
             "WHERE medicine_id = :id AND `flag` = TRUE", nativeQuery = true)
@@ -60,6 +61,7 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
      * @param medicineId
      * @return medicine quantity
      */
+
     @Query(value = "SELECT  medicine_quantity " +
             "FROM medicine_storage " +
             "WHERE medicine_id = :id AND `flag` = TRUE", nativeQuery = true)
@@ -69,9 +71,9 @@ public interface IMedicineStorageRepository extends JpaRepository<MedicineStorag
      * Date created: 30/6/2022
      * function: decrease quantity of medicine by medicine for export storage medince
      *
-     * @param medicineId
-     * @param quantity
-     * @return void
+//     * @param medicineId
+//     * @param quantity
+//     * @return void
      */
     @Transactional
     @Modifying

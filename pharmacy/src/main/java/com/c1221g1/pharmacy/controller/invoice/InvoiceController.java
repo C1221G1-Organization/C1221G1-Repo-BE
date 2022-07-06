@@ -1,7 +1,12 @@
 package com.c1221g1.pharmacy.controller.invoice;
+
 import com.c1221g1.pharmacy.dto.invoice.IInvoiceDto;
+import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
+import com.c1221g1.pharmacy.dto.invoice.InvoiceRefundDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
+import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
+import com.c1221g1.pharmacy.service.invoice.impl.InvoiceMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +26,11 @@ import java.util.Optional;
 public class InvoiceController {
     @Autowired
     IInvoiceService iInvoiceService;
+
+
+    @Autowired
+    private InvoiceMedicineService invoiceMedicineService;
+
     /**
      * Create by TuanPA
      * Function: get all invoices, search/sort invoices
@@ -69,5 +80,7 @@ public class InvoiceController {
         }
         return new ResponseEntity<>(invoice,HttpStatus.OK);
     }
+
 }
+
 

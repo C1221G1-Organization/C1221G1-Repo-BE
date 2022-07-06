@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerRepository extends JpaRepository<Customer, String> {
@@ -113,5 +114,14 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_phone") String customer_phone,
                         @Param("customer_type_id") Integer customer_type_id,
                         @Param("customer_id") String customer_id);
+
+
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    @Query(value = "SELECT * FROM customer WHERE flag = 1 AND customer_type_id = 2", nativeQuery = true)
+    List<Customer> getCustomerList();
 
 }

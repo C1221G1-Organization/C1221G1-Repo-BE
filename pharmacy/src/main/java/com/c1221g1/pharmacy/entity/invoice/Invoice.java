@@ -126,4 +126,3 @@ public class Invoice {
         this.invoiceMedicineList = invoiceMedicineList;
     }
 }
-
