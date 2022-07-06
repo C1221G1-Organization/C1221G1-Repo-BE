@@ -1,6 +1,5 @@
 package com.c1221g1.pharmacy.service.cart.impl;
 
-
 import com.c1221g1.pharmacy.dto.cart.CustomerMailing;
 import com.c1221g1.pharmacy.dto.cart.MailModel;
 import com.c1221g1.pharmacy.service.cart.ISendingEmailService;
@@ -36,9 +35,9 @@ public class SendingEmailService implements ISendingEmailService {
     public void sendEmail(CustomerMailing customerMailing) throws MessagingException, IOException, TemplateException {
         MailModel mailModel = new MailModel();
 
-        Map model = new HashMap();
+        Map<String, String> model = new HashMap<>();
         model.put("name", customerMailing.getName());
-        model.put("total", customerMailing.getTotal());
+        model.put("total", customerMailing.getTotal().toString());
         model.put("address", customerMailing.getAddress());
         model.put("phone", customerMailing.getPhone());
         model.put("location", "Đội ngũ C1221G1");
@@ -63,6 +62,8 @@ public class SendingEmailService implements ISendingEmailService {
         mimeMessageHelper.setText(html, true);
         mimeMessageHelper.setSubject("Đơn hàng của bạn đã được xác nhận");
         mimeMessageHelper.setFrom("noreply@C12Pharmacy.com");
+        emailSender.send(message);
+
         emailSender.send(message);
     }
 }

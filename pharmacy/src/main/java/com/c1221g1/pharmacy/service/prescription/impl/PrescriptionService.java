@@ -15,6 +15,7 @@ import java.util.List;
 
 @Service
 public class PrescriptionService implements IPrescriptionService {
+
     @Autowired
     private IPrescriptionRepository prescriptionRepository;
 
@@ -60,3 +61,5 @@ public class PrescriptionService implements IPrescriptionService {
     }
 
 }
+
+
