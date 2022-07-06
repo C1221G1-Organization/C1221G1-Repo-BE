@@ -3,7 +3,6 @@ package com.c1221g1.pharmacy.dto.user;
 import com.c1221g1.pharmacy.entity.user.Roles;
 import com.c1221g1.pharmacy.entity.user.Users;
 
-
 public class UserRoleDto {
     private Integer userRoleId;
     private Users users;

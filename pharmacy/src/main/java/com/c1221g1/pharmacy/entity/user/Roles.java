@@ -1,23 +1,29 @@
 package com.c1221g1.pharmacy.entity.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
+@JsonIgnoreProperties({"userRoleList"})
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
     private String roleName;
-    @OneToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private List<UserRole> userRoleList;
 
     public Roles() {
     }
+
+
+    public Roles(String roleName) {
+        this.roleName = roleName;
+    }
+
 
     public Integer getRoleId() {
         return roleId;
@@ -43,3 +49,4 @@ public class Roles {
         this.userRoleList = userRoleList;
     }
 }
+

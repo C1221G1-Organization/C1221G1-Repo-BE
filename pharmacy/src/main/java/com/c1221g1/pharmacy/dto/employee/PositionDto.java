@@ -1,13 +1,11 @@
 package com.c1221g1.pharmacy.dto.employee;
 
-import com.c1221g1.pharmacy.entity.employee.Employee;
-
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 public class PositionDto {
+    @NotNull(message = "Position may not be null")
     private Integer positionId;
     private String positionName;
-    private List<Employee> employeeList;
 
     public PositionDto() {
     }
@@ -28,12 +26,5 @@ public class PositionDto {
         this.positionName = positionName;
     }
 
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
 
 }

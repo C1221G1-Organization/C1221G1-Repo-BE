@@ -4,6 +4,9 @@ package com.c1221g1.pharmacy.entity.employee;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +17,7 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer positionId;
     private String positionName;
+
     @OneToMany(mappedBy = "position")
     private List<Employee> employeeList;
 
@@ -44,3 +48,4 @@ public class Position {
         this.employeeList = employeeList;
     }
 }
+
