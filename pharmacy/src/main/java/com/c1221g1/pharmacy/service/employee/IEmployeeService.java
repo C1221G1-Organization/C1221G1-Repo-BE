@@ -47,7 +47,6 @@ public interface IEmployeeService {
   Function: Save Emoloyee
 */
     void saveEmployee(Employee employee);
-
 /*
   Created by TamNA
   Time: 13:35:00 01/07/2022
