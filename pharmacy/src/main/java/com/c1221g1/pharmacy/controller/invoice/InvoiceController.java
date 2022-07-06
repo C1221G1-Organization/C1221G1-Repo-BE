@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.invoice;
 import com.c1221g1.pharmacy.dto.invoice.IInvoiceDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
@@ -20,7 +20,6 @@ import java.util.Optional;
 public class InvoiceController {
     @Autowired
     IInvoiceService iInvoiceService;
-
     /**
      * Create by TuanPA
      * Function: get all invoices, search/sort invoices

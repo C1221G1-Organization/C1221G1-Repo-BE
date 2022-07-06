@@ -12,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
 
 public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
+
     /*
      * Created by DaLQA
      * Time: 7:30 PM 29/06/2022
@@ -77,7 +78,8 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, String> {
      * @author TuanPA
      * function: find invoice by id
      */
-    @Query(value = "select invoice_id from invoice where invoice_id = :id", nativeQuery = true)
+    @Query(value = "select invoice_id, invoice_created_date,customer_id,employee_id,invoice_note,flag, " +
+            "invoice_create_time, type_of_invoice_id from invoice where invoice_id = :id", nativeQuery = true)
     Invoice findInvoiceById(String id);
 
 
