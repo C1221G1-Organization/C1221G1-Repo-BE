@@ -232,7 +232,6 @@ public class Medicine {
         this.cartDetailList = cartDetailList;
     }
 
-
     public Set<MedicineStorage> getMedicineStorageSet() {
         return medicineStorageSet;
     }
@@ -241,4 +240,3 @@ public class Medicine {
         this.medicineStorageSet = medicineStorageSet;
     }
 }
-

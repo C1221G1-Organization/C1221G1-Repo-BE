@@ -1,6 +1,8 @@
 package com.c1221g1.pharmacy.repository.prescription;
 
 import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionDetail;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionMedicineDetail;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +13,6 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
-
 
 public interface IPrescriptionRepository extends JpaRepository<Prescription, String> {
     /**
@@ -102,6 +103,7 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
     void editPrescription(Prescription prescription);
 
     /**
+     * <<<<<<< HEAD
      * HienTLD
      * Lấy List<Prescription>
      * update 11:18 30/06/2022
@@ -116,5 +118,39 @@ public interface IPrescriptionRepository extends JpaRepository<Prescription, Str
             "from prescription",
             nativeQuery = true)
     List<Prescription> findAllPre();
+
+    /**
+     * DaLQA
+     * Function: getInfoPrescription
+     * Time: 11:18 05/07/2022
+     */
+    @Query(value = "select prescription_id             as prescriptionId\n" +
+            "     , prescription_name           as prescriptionName\n" +
+            "     , prescription_symptom        as symptom\n" +
+            "     , prescription_target_user    as targetUser\n" +
+            "     , prescription_number_of_days as numberOfDays\n" +
+            "from prescription\n" +
+            "where prescription_id = :id ", nativeQuery = true)
+    PrescriptionDetail getDetailPrescription(@Param("id") String id);
+
+    /**
+     * DaLQA
+     * Function: getInfoPrescription
+     * Time: 11:18 05/07/2022
+     */
+    @Query(value = "select medicine_prescription.prescription_id                       as prescriptionId\n" +
+            "              , medicine_prescription.medicine_id                           as medicineId\n" +
+            "              , medicine_name                                               as medicineName\n" +
+            "              , medicine_prescription.medicine_prescription_times           as times\n" +
+            "              , medicine_prescription.medicine_prescription_number_per_time as numberPerTime\n" +
+            "              , (medicine_prescription_times\n" +
+            "                     * medicine_prescription_number_per_time * prescription_number_of_days)             as totalQuantity\n" +
+            "            , (medicine_import_price\n" +
+            "                   + ((medicine_import_price*medicine_retail_sale_profit)/100)/medicine_conversion_rate) as retailPrice\n" +
+            "            from medicine_prescription\n" +
+            "                  left join prescription p on medicine_prescription.prescription_id = p.prescription_id\n" +
+            "                  left join medicine m on medicine_prescription.medicine_id = m.medicine_id\n" +
+            "            where p.prescription_id = :id ", nativeQuery = true)
+    List<PrescriptionMedicineDetail> getDetailListPreMe(@Param("id") String id);
 }
 

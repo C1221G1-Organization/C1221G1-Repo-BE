@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 @JsonIgnoreProperties({"userRoleList"})
 public class Roles {
     @Id
@@ -18,10 +19,10 @@ public class Roles {
     public Roles() {
     }
 
+
     public Roles(String roleName) {
         this.roleName = roleName;
     }
-
 
     public Integer getRoleId() {
         return roleId;

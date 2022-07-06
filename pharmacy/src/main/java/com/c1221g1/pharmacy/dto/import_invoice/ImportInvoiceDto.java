@@ -3,7 +3,6 @@ package com.c1221g1.pharmacy.dto.import_invoice;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoiceMedicine;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
-import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -11,32 +10,26 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ImportInvoiceDto implements Validator {
-
-    private Integer importInvoiceId;
-    @NotNull
+    private String importInvoiceId;
     private Integer importSystemCode;
-    @NotNull
-    private String importInvoiceDate;
     @NotNull
     private Double paymentPrepayment;
     private Double total;
+    private String importInvoiceDate;
     private String importInvoiceHour;
-
     private boolean flag;
-    @NotNull
-    private SupplierDto supplierDto;
-    @NotNull
-    private EmployeeDto employeeDto;
-    private List<ImportInvoiceMedicineDto> importInvoiceMedicineList;
+    private Supplier supplier;
+    private Employee employee;
+    private List<ImportInvoiceMedicine> importInvoiceMedicineList;
 
     public ImportInvoiceDto() {
     }
 
-    public Integer getImportInvoiceId() {
+    public String getImportInvoiceId() {
         return importInvoiceId;
     }
 
-    public void setImportInvoiceId(Integer importInvoiceId) {
+    public void setImportInvoiceId(String importInvoiceId) {
         this.importInvoiceId = importInvoiceId;
     }
 
@@ -88,27 +81,27 @@ public class ImportInvoiceDto implements Validator {
         this.flag = flag;
     }
 
-    public SupplierDto getSupplierDto() {
-        return supplierDto;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierDto(SupplierDto supplierDto) {
-        this.supplierDto = supplierDto;
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
-    public EmployeeDto getEmployeeDto() {
-        return employeeDto;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeDto(EmployeeDto employeeDto) {
-        this.employeeDto = employeeDto;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public List<ImportInvoiceMedicineDto> getImportInvoiceMedicineList() {
+    public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
         return importInvoiceMedicineList;
     }
 
-    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicineDto> importInvoiceMedicineList) {
+    public void setImportInvoiceMedicineList(List<ImportInvoiceMedicine> importInvoiceMedicineList) {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
     }
 
@@ -122,4 +115,3 @@ public class ImportInvoiceDto implements Validator {
         ImportInvoiceDto importInvoiceDto = (ImportInvoiceDto) target;
     }
 }
-

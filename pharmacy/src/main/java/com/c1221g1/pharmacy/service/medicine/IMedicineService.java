@@ -29,6 +29,8 @@ public interface IMedicineService {
 
     void updateMedicine(Medicine existMedicine);
 
+    List<Medicine> getList();
+
     MedicineDetailDto getMedicineDetailDtoById(String medicineId);
 
     List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId);

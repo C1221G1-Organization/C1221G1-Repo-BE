@@ -7,3 +7,4 @@ package com.c1221g1.pharmacy.entity.user;
 public enum Provider {
     LOCAL,FACEBOOK
 }
+

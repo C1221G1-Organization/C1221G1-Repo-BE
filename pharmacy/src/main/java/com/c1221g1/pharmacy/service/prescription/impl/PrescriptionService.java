@@ -1,6 +1,8 @@
 package com.c1221g1.pharmacy.service.prescription.impl;
 
 import com.c1221g1.pharmacy.dto.prescription.IMedicinePrescriptionDto;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionDetail;
+import com.c1221g1.pharmacy.dto.prescription.PrescriptionMedicineDetail;
 import com.c1221g1.pharmacy.entity.prescription.Prescription;
 import com.c1221g1.pharmacy.repository.prescription.IPrescriptionRepository;
 import com.c1221g1.pharmacy.service.prescription.IPrescriptionService;
@@ -53,5 +55,16 @@ public class PrescriptionService implements IPrescriptionService {
     public List<Prescription> findAllListPrescription() {
         return this.prescriptionRepository.findAllPre();
     }
+
+    public PrescriptionDetail getDetailPrescription(String id) {
+        return this.prescriptionRepository.getDetailPrescription(id);
+    }
+
+    @Override
+    public List<PrescriptionMedicineDetail> getListPreMeDetail(String id) {
+        return this.prescriptionRepository.getDetailListPreMe(id);
+    }
+
 }
+
 

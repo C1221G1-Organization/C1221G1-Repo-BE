@@ -1,10 +1,10 @@
 package com.c1221g1.pharmacy.service.customer.impl;
 
-import com.c1221g1.pharmacy.entity.customer.Customer;
+
 import com.c1221g1.pharmacy.repository.customer.ICustomerRepository;
 import com.c1221g1.pharmacy.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,6 @@ public class CustomerService implements ICustomerService {
         return this.iCustomerRepository.getRetailCustomer();
     }
 
-
     /**
      * create by TinBQ
      * time: 30/06/2022
@@ -36,7 +35,6 @@ public class CustomerService implements ICustomerService {
     public Page<Customer> findAllCustomer(Pageable pageable, String customerId, String customerName, String customerAddress, String customerPhone, String customerType) {
         return iCustomerRepository.getAllSearchAndSortCustomer("%" + customerId + "%", "%" + customerType + "%", "%" + customerName + "%", "%" + customerAddress + "%", "%" + customerPhone + "%", pageable);
     }
-
 
     /**
      * create by TinBQ
@@ -77,5 +75,5 @@ public class CustomerService implements ICustomerService {
                 , customer.getCustomerBirthday(), customer.getCustomerGender(), customer.getCustomerNote(), customer.getCustomerPhone()
                 , customer.getCustomerType().getCustomerTypeId(), customer.getCustomerId());
     }
-}
 
+}

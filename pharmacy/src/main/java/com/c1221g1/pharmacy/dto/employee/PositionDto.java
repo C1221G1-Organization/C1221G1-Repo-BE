@@ -1,16 +1,13 @@
 package com.c1221g1.pharmacy.dto.employee;
 
-import com.c1221g1.pharmacy.entity.employee.Employee;
-
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
-public class Position {
+public class PositionDto {
     @NotNull(message = "Position may not be null")
     private Integer positionId;
     private String positionName;
 
-    public Position() {
+    public PositionDto() {
     }
 
     public Integer getPositionId() {
