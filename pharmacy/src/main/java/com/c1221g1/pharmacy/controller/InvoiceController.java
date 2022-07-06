@@ -1,5 +1,4 @@
 package com.c1221g1.pharmacy.controller;
-
 import com.c1221g1.pharmacy.dto.invoice.IInvoiceDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
@@ -32,15 +31,14 @@ public class InvoiceController {
             @RequestParam Optional<String> endDate,
             @RequestParam(defaultValue = "") String startTime,
             @RequestParam(defaultValue = "23:59") String endTime,
-            @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "1") String typeOfInvoiceId,
             @RequestParam(defaultValue = "invoiceId") String fieldSort) {
         String endDateVal = endDate.orElse(String.valueOf(LocalDate.now()));
         Pageable pageable;
         if (fieldSort.equals("time")) {
-            pageable = PageRequest.of(page, 5, Sort.Direction.ASC, "invoiceCreatedDate", "invoiceCreateTime");
+            pageable = PageRequest.of(0, 5, Sort.Direction.ASC, "invoiceCreatedDate", "invoiceCreateTime");
         } else {
-            pageable = PageRequest.of(page, 5, Sort.by(fieldSort).ascending());
+            pageable = PageRequest.of(0, 5, Sort.by(fieldSort).ascending());
         }
         Page<IInvoiceDto> invoicePage = iInvoiceService.findAllInvoice(startDate, endDateVal, startTime, endTime, typeOfInvoiceId, pageable);
         if (invoicePage.isEmpty()) {

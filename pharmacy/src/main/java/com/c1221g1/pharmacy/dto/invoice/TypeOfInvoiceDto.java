@@ -7,7 +7,6 @@ import java.util.List;
 public class TypeOfInvoiceDto {
     private Integer typeOfInvoiceId;
     private String typeOfInvoiceName;
-    private List<Invoice> invoiceList;
 
     public TypeOfInvoiceDto() {
     }
@@ -26,13 +25,5 @@ public class TypeOfInvoiceDto {
 
     public void setTypeOfInvoiceName(String typeOfInvoiceName) {
         this.typeOfInvoiceName = typeOfInvoiceName;
-    }
-
-    public List<Invoice> getInvoiceList() {
-        return invoiceList;
-    }
-
-    public void setInvoiceList(List<Invoice> invoiceList) {
-        this.invoiceList = invoiceList;
     }
 }

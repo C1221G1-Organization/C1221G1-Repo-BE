@@ -4,9 +4,10 @@ public interface IInvoiceDto {
     String getInvoiceId();
     String getCustomerName();
     String getEmployeeName();
-//    String getTypeOfInvoiceId();
+    String getTypeOfInvoiceId();
     String getInvoiceNote();
     String getInvoiceCreatedDate();
     String getInvoiceCreateTime();
     String getInvoiceTotalMoney();
 }
+
