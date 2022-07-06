@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
+import com.c1221g1.pharmacy.dto.employee.Position;
 import com.c1221g1.pharmacy.dto.import_invoice.ImportInvoiceDto;
 import com.c1221g1.pharmacy.dto.import_invoice.SupplierDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ImportInvoiceController_createImportInvoice {
+public class
+ImportInvoiceController_createImportInvoice {
 
     @Autowired
     private MockMvc mockMvc;
@@ -28,7 +30,6 @@ public class ImportInvoiceController_createImportInvoice {
      * Created by: TrungTVH
      * Date created: 30/6/2022
      * function: test pass all.
-     *
      */
     @Test
     public void createImportInvoice_importSystemCode_18() throws Exception {
@@ -46,7 +47,7 @@ public class ImportInvoiceController_createImportInvoice {
         supplierDto.setNote("goodnight");
         supplierDto.setFlag(true);
         importInvoiceDto.setSupplierDto(supplierDto);
-        importInvoiceDto.setImportSystemCode(null);
+        importInvoiceDto.setImportSystemCode(1111);
 
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setEmployeeId("NV-0001");
@@ -56,6 +57,10 @@ public class ImportInvoiceController_createImportInvoice {
         employeeDto.setEmployeePhone("090123121");
         employeeDto.setEmployeeDateStart("01-01-2022");
         employeeDto.setEmployeeNote("01-01-2022");
+        employeeDto.setFlag(true);
+        Position position = new Position();
+        position.setPositionId(1);
+        position.setPositionName("M");
         employeeDto.setFlag(true);
 
         this.mockMvc
@@ -72,7 +77,6 @@ public class ImportInvoiceController_createImportInvoice {
      * Created by: TrungTVH
      * Date created: 30/6/2022
      * function: test importSystemCode not null.
-     *
      */
     @Test
     public void createImportInvoice_importSystemCode_13() throws Exception {
@@ -116,7 +120,6 @@ public class ImportInvoiceController_createImportInvoice {
      * Created by: TrungTVH
      * Date created: 30/6/2022
      * function: test importInvoiceDate not null.
-     *
      */
     @Test
     public void createImportInvoice_importInvoiceDate_13() throws Exception {
@@ -159,7 +162,6 @@ public class ImportInvoiceController_createImportInvoice {
      * Created by: TrungTVH
      * Date created: 30/6/2022
      * function: test importInvoiceDate not "".
-     *
      */
     @Test
     public void createImportInvoice_importInvoiceDate_14() throws Exception {
@@ -202,7 +204,6 @@ public class ImportInvoiceController_createImportInvoice {
      * Created by: TrungTVH
      * Date created: 30/6/2022
      * function: test flag not null.
-     *
      */
     @Test
     public void createImportInvoice_flag_13() throws Exception {
