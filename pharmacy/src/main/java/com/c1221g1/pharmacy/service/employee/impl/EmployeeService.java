@@ -12,8 +12,19 @@ import java.util.List;
 
 @Service
 public class EmployeeService implements IEmployeeService {
+
     @Autowired
-    IEmployeeRepository iEmployeeRepository;
+    private IEmployeeRepository iEmployeeRepository;
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 5/7/2022
+     * function: get medicine list dùng tạm
+     */
+    @Override
+    public List<Employee> getList() {
+        return this.iEmployeeRepository.findAll();
+    }
 
     /**
      * this function use to get all page Employee
@@ -28,7 +39,7 @@ public class EmployeeService implements IEmployeeService {
                 "%" + employeeNameVal + "%",
                 "%" + positionVal + "%",
                 "%" + employeeAddressVal + "%",
-                "%"+employeePhoneVal+"%", pageable);
+                "%" + employeePhoneVal + "%", pageable);
     }
 
     /**
