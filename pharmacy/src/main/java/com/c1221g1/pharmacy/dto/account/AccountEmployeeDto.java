@@ -9,9 +9,10 @@ public class AccountEmployeeDto {
     String employeeId;
     String employeeName;
     @NotNull
-//    Integer positionId;
     Position position;
+
     String username;
+
     @NotNull
     @Size(min = 6)
     String password;
