@@ -58,10 +58,6 @@ public class MedicineController {
         if (medicinePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-
-//        final int start = (int) pageable.getOffset();
-//        final int end = Math.min((start + pageable.getPageSize()), medicinePage.size());
-//        final Page<MedicineLookUpDto> page = new PageImpl<>(medicinePage.subList(start, end), pageable, medicinePage.size());
             return new ResponseEntity<>(medicinePage, HttpStatus.OK);
 
         }
