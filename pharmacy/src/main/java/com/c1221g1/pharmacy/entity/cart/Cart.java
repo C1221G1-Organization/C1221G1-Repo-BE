@@ -88,18 +88,4 @@ public class Cart {
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
     }
-
-
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "cartId=" + cartId +
-                ", cartStatus=" + cartStatus +
-                ", dateCreate='" + dateCreate + '\'' +
-                ", customer=" + customer +
-                ", discount=" + discount +
-                ", paymentOnlineList=" + paymentOnlineList +
-                ", cartDetailList=" + cartDetailList +
-                '}';
-    }
 }

@@ -1,14 +1,23 @@
 package com.c1221g1.pharmacy.service.medicine;
-import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
+
+import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.Optional;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface IMedicineService {
+
+    List<MedicineSale> getListMedicineSale();
+
+    Optional<Medicine> findMedicineById(String medicineId);
+
+
     List<MedicineLookUpDto> findAllMedicine(String columName, String condition,
                                             String keyword);
 
@@ -17,7 +26,6 @@ public interface IMedicineService {
 
     void createMedicine(Medicine medicine);
 
-    Optional<Medicine> findMedicineById(String id);
 
     void updateMedicine(Medicine existMedicine);
 
@@ -40,3 +48,4 @@ public interface IMedicineService {
 
     Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId, String sort);
 }
+

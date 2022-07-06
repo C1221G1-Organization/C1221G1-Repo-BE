@@ -54,4 +54,6 @@ public class CartDetail {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
 }
+
