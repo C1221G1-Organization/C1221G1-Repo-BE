@@ -63,8 +63,6 @@ public class SendingEmailService implements ISendingEmailService {
         mimeMessageHelper.setText(html, true);
         mimeMessageHelper.setSubject("Đơn hàng của bạn đã được xác nhận");
         mimeMessageHelper.setFrom("noreply@C12Pharmacy.com");
-
         emailSender.send(message);
-
     }
 }

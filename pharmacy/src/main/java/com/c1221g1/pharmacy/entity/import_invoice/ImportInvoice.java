@@ -1,17 +1,15 @@
 package com.c1221g1.pharmacy.entity.import_invoice;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 import com.c1221g1.pharmacy.entity.employee.Employee;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @JsonIgnoreProperties({"importInvoiceMedicineList"})
 public class ImportInvoice {
-
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
     @GeneratedValue(generator = "prod-generator")
@@ -29,17 +27,11 @@ public class ImportInvoice {
     private boolean flag;
 
     @ManyToOne
-    @JoinColumn(name = "payment_id", referencedColumnName = "paymentId")
-    private Payment payment;
-
-    @ManyToOne
     @JoinColumn(name = "supplier_id", referencedColumnName = "supplierId")
     private Supplier supplier;
-
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
     private Employee employee;
-
     @OneToMany(mappedBy = "importInvoice")
     private List<ImportInvoiceMedicine> importInvoiceMedicineList;
 
@@ -103,6 +95,22 @@ public class ImportInvoice {
         this.flag = flag;
     }
 
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     public List<ImportInvoiceMedicine> getImportInvoiceMedicineList() {
         return importInvoiceMedicineList;
     }
@@ -111,3 +119,4 @@ public class ImportInvoice {
         this.importInvoiceMedicineList = importInvoiceMedicineList;
     }
 }
+

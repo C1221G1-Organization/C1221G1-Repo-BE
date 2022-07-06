@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+import com.c1221g1.pharmacy.entity.employee.Employee;
+
 public interface IEmployeeService {
 
     /**

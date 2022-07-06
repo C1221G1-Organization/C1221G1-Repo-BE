@@ -3,9 +3,13 @@ package com.c1221g1.pharmacy.controller.employee;
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.employee.Position;
+import com.c1221g1.pharmacy.entity.user.Roles;
+import com.c1221g1.pharmacy.entity.user.UserRole;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import com.c1221g1.pharmacy.service.employee.IPositionService;
+import com.c1221g1.pharmacy.service.user.IRoleService;
+import com.c1221g1.pharmacy.service.user.IUserRoleService;
 import com.c1221g1.pharmacy.service.user.IUsersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +39,14 @@ public class EmployeeController {
     @Autowired
     IUsersService iUsersService;
 
+    @Autowired
+    IUserRoleService iUserRoleService;
+
+    @Autowired
+    IRoleService iRoleService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     /*
       Created by TamNA
@@ -61,11 +74,21 @@ public class EmployeeController {
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed!", errorMap, new ArrayList<>()));
         }
         users.setFlag(true);
-        users.setPassword("12345");
+        users.setPassword(passwordEncoder.encode("123456"));
         this.iUsersService.saveUser(users);
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
         employee.setFlag(true);
+        Roles roles = null;
+        if(employee.getPosition().getPositionId() == 2){
+             roles = this.iRoleService.findRole("ROLE_MANAGER");
+        }else if(employee.getPosition().getPositionId() == 1) {
+            roles = this.iRoleService.findRole("ROLE_EMPLOYEE");
+        }
+        UserRole userRole = new UserRole();
+        userRole.setUsers(users);
+        userRole.setRoles(roles);
+        this.iUserRoleService.save(userRole);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -102,6 +125,16 @@ public class EmployeeController {
         this.iUsersService.saveUser(users);
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
+        Roles roles = null;
+        if(employee.getPosition().getPositionId() == 2){
+            roles = this.iRoleService.findRole("ROLE_MANAGER");
+        }else if(employee.getPosition().getPositionId() == 1) {
+            roles = this.iRoleService.findRole("ROLE_EMPLOYEE");
+        }
+        UserRole userRole = this.iUserRoleService.findUserRole(users.getUsername());
+        userRole.setUsers(users);
+        userRole.setRoles(roles);
+        this.iUserRoleService.save(userRole);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }

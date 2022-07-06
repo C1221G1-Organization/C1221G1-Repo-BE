@@ -2,11 +2,9 @@ package com.c1221g1.pharmacy.entity.cart;
 
 
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
-
 import javax.persistence.*;
 
 @Entity
-
 @Table(name = "cart_detail", //
         uniqueConstraints = { //
                 @UniqueConstraint(name = "CART_MEDICINE_UK", columnNames = {"medicine_id", "cart_id"})})
@@ -56,4 +54,6 @@ public class CartDetail {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
 }
+

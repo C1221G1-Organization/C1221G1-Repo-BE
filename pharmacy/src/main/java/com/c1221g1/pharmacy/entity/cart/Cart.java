@@ -1,13 +1,13 @@
 package com.c1221g1.pharmacy.entity.cart;
 
 import com.c1221g1.pharmacy.entity.customer.Customer;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 @JsonIgnoreProperties({"paymentOnlineList","cartDetailList"})
 public class Cart {
     @Id
@@ -23,7 +23,6 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "discount_id", referencedColumnName = "discountId")
     private Discount discount;
-
     @OneToMany(mappedBy = "cart")
     private List<PaymentOnline> paymentOnlineList;
 
@@ -88,18 +87,5 @@ public class Cart {
 
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
-    }
-
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "cartId=" + cartId +
-                ", cartStatus=" + cartStatus +
-                ", dateCreate='" + dateCreate + '\'' +
-                ", customer=" + customer +
-                ", discount=" + discount +
-                ", paymentOnlineList=" + paymentOnlineList +
-                ", cartDetailList=" + cartDetailList +
-                '}';
     }
 }
