@@ -71,6 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
                         ,"/api/manager-security/users/sign-up","/api/carts","/api/payment-online"
+                        ,"/api/manager-security/users/sign-in-facebook"
                     )
                 .permitAll()
                 .antMatchers("/api/manager-cart**")

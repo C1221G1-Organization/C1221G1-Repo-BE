@@ -17,4 +17,7 @@ public interface IUserRoleRepository extends JpaRepository<UserRole,Integer> {
     @Transactional
     @Modifying
     void saveUserRole(@Param("email") String email,@Param("i") int i);
+
+    @Query(value="select *  from user_role where username = :username",nativeQuery = true)
+    UserRole findUserRoleByUsername(@Param("username") String username);
 }

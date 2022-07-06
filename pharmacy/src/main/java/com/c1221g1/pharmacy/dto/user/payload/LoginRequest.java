@@ -14,14 +14,13 @@ import javax.validation.constraints.NotEmpty;
  */
 public class LoginRequest implements Validator {
 
-    @Length(min = 5,message = "Tên tài khoản quá ngắn")
-    @Length(max = 50, message = "Tên tài khoản quá dài")
-    @Email(message = "Không đúng định dạng email")
-    @NotEmpty(message = "Không để trống")
+    @Length(min = 5,message = "Tên tài khoản quá ngắn.")
+    @Length(max = 50, message = "Tên tài khoản quá dài.")
+    @Email(message = "Không đúng định dạng email.")
+    @NotEmpty(message = "Không bỏ trống.")
     private String username;
-    @Length(min=5,message = "Mật khẩu quá ngắn")
-    @Length(max=50,message = "Mật khẩu quá dài")
-    @NotEmpty(message = "Không để trống")
+    @Length(min=5,message = "Mật khẩu quá ngắn.")
+    @Length(max=50,message = "Mật khẩu quá dài.")
     private String password;
 
     public String getUsername() {
@@ -49,9 +48,9 @@ public class LoginRequest implements Validator {
     public void validate(Object target, Errors errors) {
         LoginRequest loginRequest = (LoginRequest) target;
         if(loginRequest.getPassword().contains(" ")){
-            errors.rejectValue("password","","Mật khẩu chứa kí tự trống");
-        }else if(!loginRequest.getPassword().matches("^(\\s?[a-zA-Z!@#$%^&*()\\d]\\s?){6,100}$")){
-            errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép");
+            errors.rejectValue("password","","Mật khẩu chứa kí tự trống.");
+        }else if(!loginRequest.getPassword().matches("^(\\s?[a-zA-Z!@#$%^&*()\\d]\\s?){6,50}$")){
+            errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép.");
         }
     }
 }
