@@ -1,8 +1,5 @@
 package com.c1221g1.pharmacy.dto.user;
 
-import com.c1221g1.pharmacy.entity.user.UserRole;
-
-import java.util.List;
 
 public class RolesDto {
     private Integer roleId;
