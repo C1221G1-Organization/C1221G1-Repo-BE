@@ -19,7 +19,6 @@ public interface IInvoiceService {
                                      String startTime, String endTime,
                                      String typeOfInvoiceId, Pageable pageable);
 
-
     void delete(String id);
 
     Invoice findById(String id);
