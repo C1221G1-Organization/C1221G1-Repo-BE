@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeController_findAccountById {
+public class AccountEmployeeController_findAccountById {
     @Autowired
     private MockMvc mockMvc;
 
@@ -28,7 +28,7 @@ public class EmployeeController_findAccountById {
     public void findAccountById_1() throws Exception {
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .get("/api/manager-employee/employees/findAccount/{id}", "null"))
+                        .get("/api/manager-account/account/{id}", "null"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -43,7 +43,7 @@ public class EmployeeController_findAccountById {
     public void gfindAccountById_2() throws Exception {
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .get("/api/manager-employee/employees/findAccount/{id}", "NV-0006"))
+                        .get("/api/manager-account/account/{id}", "NV-0006"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.password").value("111111"))

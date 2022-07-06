@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeController_getListAndSearchAccountPage {
+public class AccountEmployeeController_getListAndSearchAccountPage {
     @Autowired
     private MockMvc mockMvc;
 
@@ -28,7 +28,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_5() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage/"))
+                                .get("/api/manager-account/account/listAccountPage/"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
 
@@ -44,7 +44,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_6() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage/"))
+                                .get("/api/manager-account/account/listAccountPage/"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.totalPages").value(1))
@@ -54,7 +54,6 @@ public class EmployeeController_getListAndSearchAccountPage {
                 .andExpect(jsonPath("$.content[4].username").value("nguena"))
                 .andExpect(jsonPath("$.content[4].employeeName").value("Nguyễn A"))
                 .andExpect(jsonPath("$.content[4].employeeId").value("NV-0006"));
-
     }
 
 
@@ -68,7 +67,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_7() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("id","null"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -84,7 +83,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_8() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("id",""))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -100,7 +99,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_9() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("id","k"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -117,7 +116,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_10() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("id","NV-0003"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
@@ -134,7 +133,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_11() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("name","null"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -150,7 +149,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_12() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("name",""))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -168,7 +167,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_13() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("name","k"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -183,7 +182,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_14() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("name","Nguyễn Văn C"))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -200,7 +199,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_15() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("username","null"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -217,7 +216,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_16() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("username",""))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -234,7 +233,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_17() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("username","j"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -251,7 +250,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_18() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("username","nguena"))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -266,7 +265,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_19() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("position","null"))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
@@ -282,7 +281,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_20() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("position",""))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -298,7 +297,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_21() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("position","1"))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -316,7 +315,7 @@ public class EmployeeController_getListAndSearchAccountPage {
     public void getListAndSearchAccountPage_22() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/manager-employee/employees/listAccountPage")
+                                .get("/api/manager-account/account/listAccountPage")
                                 .param("position","2"))
                 .andDo(print())
                 .andExpect(status().isOk());

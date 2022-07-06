@@ -1,7 +1,7 @@
 package com.c1221g1.pharmacy.controller;
 
 
-import com.c1221g1.pharmacy.dto.employee.AccountEmployeeDto;
+import com.c1221g1.pharmacy.dto.account.AccountEmployeeDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeController_updateAccount {
+public class AccountEmployeeController_updateAccount {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -35,10 +35,10 @@ public class EmployeeController_updateAccount {
         accountEmployeeDto.setEmployeeId("NV-0003");
         accountEmployeeDto.setEmployeeName("Nguyễn Văn C");
         accountEmployeeDto.setUsername("nguyenc");
-        accountEmployeeDto.setPositionId(2);
+        accountEmployeeDto.getPosition().setPositionId(2);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/updateAccount?id=NV-0003/")
+                        .patch("/api/manager-account/account/updateAccount?id=NV-0003/")
                         .content(this.objectMapper.writeValueAsString(accountEmployeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -59,10 +59,10 @@ public class EmployeeController_updateAccount {
         accountEmployeeDto.setEmployeeId("NV-0003");
         accountEmployeeDto.setEmployeeName("Nguyễn Văn C");
         accountEmployeeDto.setUsername("nguyenc");
-        accountEmployeeDto.setPositionId(2);
+        accountEmployeeDto.getPosition().setPositionId(2);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/updateAccount?id=NV-0003/")
+                        .patch("/api/manager-account/account/updateAccount?id=NV-0003/")
                         .content(this.objectMapper.writeValueAsString(accountEmployeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -82,10 +82,10 @@ public class EmployeeController_updateAccount {
         accountEmployeeDto.setEmployeeId("NV-0003");
         accountEmployeeDto.setEmployeeName("Nguyễn Văn C");
         accountEmployeeDto.setUsername("nguyenc");
-        accountEmployeeDto.setPositionId(2);
+        accountEmployeeDto.getPosition().setPositionId(2);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/updateAccount?id=NV-0003/")
+                        .patch("/api/manager-account/account/updateAccount?id=NV-0003/")
                         .content(this.objectMapper.writeValueAsString(accountEmployeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -106,10 +106,10 @@ public class EmployeeController_updateAccount {
         accountEmployeeDto.setEmployeeId("NV-0003");
         accountEmployeeDto.setEmployeeName("Nguyễn Văn C");
         accountEmployeeDto.setUsername("nguyenc");
-        accountEmployeeDto.setPositionId(2);
+        accountEmployeeDto.getPosition().setPositionId(2);
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .patch("/api/manager-employee/employees/updateAccount?id=NV-0003")
+                        .patch("/api/manager-account/account/updateAccount?id=NV-0003")
                         .content(this.objectMapper.writeValueAsString(accountEmployeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

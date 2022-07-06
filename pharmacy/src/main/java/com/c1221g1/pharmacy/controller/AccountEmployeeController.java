@@ -97,6 +97,7 @@ public class AccountEmployeeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         IAccountEmployeeDto iAccountEmployeeDto = iAccountService.findAccountId(id);
+
         if (iAccountEmployeeDto != null) {
             iAccountService.updateAccount(accountEmployeeDto.getPassword(), accountEmployeeDto.getPosition().getPositionId(),  id);
             return new ResponseEntity<>(HttpStatus.OK);
