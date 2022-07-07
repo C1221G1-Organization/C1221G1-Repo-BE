@@ -69,16 +69,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/api/manager-security/users/sign-in"
-                        , "/api/manager-security/users/sign-up",
+                .antMatchers("/api/manager-security/users/sign-in",
+                        "/api/manager-security/users/sign-up",
                         "/api/carts/saveCart",
                         "/api/payment**",
                         "/api/manager-position**",
-                        "/api/cart**",
-                        "/api/manager-medicine/**"
-//                        "/api/manager_report/**",
-//                        "/**"
-
+                        "/api/carts/**",
+                        "/api/manager-medicine/**",
+                        "/api/manager-security/users/sign-in-facebook"
                 )
                 .permitAll()
                 .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
