@@ -1,0 +1,53 @@
+
+·
+java:S3577" Rename class "EmployeeController_createEmployee" to match the regular expression: '^((Test|IT)[a-zA-Z0-9_]+|[A-Z][a-zA-Z0-9_]*(Test|Tests|TestCase|IT|ITCase))$'(ôäî÷
+9
+java:S5786 "Remove this 'public' modifier.(Š™­şÿÿÿÿ
+9
+java:S5786D"Remove this 'public' modifier.(ö”¡øÿÿÿÿ
+9
+java:S5786h"Remove this 'public' modifier.(ÏÅ±”ÿÿÿÿÿ
+5
+java:S5786Œ"Remove this 'public' modifier.(¾şºå
+:
+java:S5786°"Remove this 'public' modifier.(ı­á„ûÿÿÿÿ
+:
+java:S5786Ó"Remove this 'public' modifier.(·¤»¹øÿÿÿÿ
+5
+java:S5786ö"Remove this 'public' modifier.(æÊ¹Ù
+:
+java:S5786™"Remove this 'public' modifier.(Çû›Èûÿÿÿÿ
+5
+java:S5786½"Remove this 'public' modifier.(ëşÑó
+:
+java:S5786á"Remove this 'public' modifier.(Ã¤—ûÿÿÿÿ
+4
+java:S5786…"Remove this 'public' modifier.(ƒšâu
+4
+java:S5786©"Remove this 'public' modifier.(§‘×3
+5
+java:S5786Ì"Remove this 'public' modifier.(éÅÄ‡
+:
+java:S5786ğ"Remove this 'public' modifier.(¾à‘ùÿÿÿÿ
+5
+java:S5786•"Remove this 'public' modifier.(è¥­Ş
+:
+java:S5786·"Remove this 'public' modifier.(½¨¾‚üÿÿÿÿ
+:
+java:S5786Ú"Remove this 'public' modifier.(²½¥…øÿÿÿÿ
+:
+java:S5786ş"Remove this 'public' modifier.(ÊŒÉôøÿÿÿÿ
+:
+java:S5786¢"Remove this 'public' modifier.(ì×ğ›ÿÿÿÿÿ
+5
+java:S5786Å"Remove this 'public' modifier.(ùç÷
+:
+java:S5786è"Remove this 'public' modifier.(¬ß¢ªûÿÿÿÿ
+5
+java:S5786Œ"Remove this 'public' modifier.(‘•”
+:
+java:S5786®"Remove this 'public' modifier.(ÔæÿÓúÿÿÿÿ
+4
+java:S5786"Remove this 'public' modifier.(ôäî÷
+R
+java:S5976Ó"6Replace these 5 tests with a single Parameterized one.(·¤»¹øÿÿÿÿ
