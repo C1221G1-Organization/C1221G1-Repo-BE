@@ -6,13 +6,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 @JsonIgnoreProperties({"userRoleList"})
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
     private String roleName;
-    @OneToMany(mappedBy = "roles",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private List<UserRole> userRoleList;
 
     public Roles() {
@@ -22,7 +23,6 @@ public class Roles {
     public Roles(String roleName) {
         this.roleName = roleName;
     }
-
 
     public Integer getRoleId() {
         return roleId;

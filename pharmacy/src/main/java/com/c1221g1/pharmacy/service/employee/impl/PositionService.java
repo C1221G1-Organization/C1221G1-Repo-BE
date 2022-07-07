@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class PositionService implements IPositionService {
+
     @Autowired
     private IPositionRepository iPositionRepository;
 
@@ -24,3 +26,5 @@ public class PositionService implements IPositionService {
         return this.iPositionRepository.getAllPosition();
     }
 }
+
+

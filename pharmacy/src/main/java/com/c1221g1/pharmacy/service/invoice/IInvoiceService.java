@@ -16,7 +16,6 @@ public interface IInvoiceService {
     Invoice findByInvoiceId(String invoiceId);
 
     Page<IInvoiceDto> findAllInvoice(String startDate, String endDate,
-                                     String startTime, String endTime,
                                      String typeOfInvoiceId, Pageable pageable);
 
     void delete(String id);
