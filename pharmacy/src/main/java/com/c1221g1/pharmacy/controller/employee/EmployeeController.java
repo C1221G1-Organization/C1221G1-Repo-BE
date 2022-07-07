@@ -57,6 +57,7 @@ public class EmployeeController {
     public ResponseEntity<Object> createEmployee(@Valid @RequestBody EmployeeDto employeeDto,
                                                  BindingResult bindingResult) {
         Map<String, String> errorMap = new HashMap<>();
+
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(
@@ -73,6 +74,9 @@ public class EmployeeController {
             errorMap.put("usersName", "Tên đăng nhập tồn tại");
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed!", errorMap, new ArrayList<>()));
         }
+        if (employeeDto.getEmployeeImage().isEmpty()) {
+
+        }
         users.setFlag(true);
         users.setPassword(passwordEncoder.encode("123456"));
         this.iUsersService.saveUser(users);
@@ -80,9 +84,9 @@ public class EmployeeController {
         BeanUtils.copyProperties(employeeDto, employee);
         employee.setFlag(true);
         Roles roles = null;
-        if(employee.getPosition().getPositionId() == 2){
-             roles = this.iRoleService.findRole("ROLE_MANAGER");
-        }else if(employee.getPosition().getPositionId() == 1) {
+        if (employee.getPosition().getPositionId() == 2) {
+            roles = this.iRoleService.findRole("ROLE_MANAGER");
+        } else if (employee.getPosition().getPositionId() == 1) {
             roles = this.iRoleService.findRole("ROLE_EMPLOYEE");
         }
         UserRole userRole = new UserRole();
@@ -99,14 +103,16 @@ public class EmployeeController {
       Function:  Update Employee
  */
     @PatchMapping(value = "{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable String id,
-                                                   @Valid @RequestBody EmployeeDto employeeDto,
-                                                   BindingResult bindingResult) {
+    public ResponseEntity<Object> updateEmployee(@PathVariable String id,
+                                                 @Valid @RequestBody EmployeeDto employeeDto,
+                                                 BindingResult bindingResult) {
         Employee employeeById = this.iEmployeeService.findEmployeeById(id);
         if (employeeById == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         Map<String, String> errorMap = new HashMap<>();
+        employeeDto.validate(employeeDto, bindingResult);
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(
@@ -126,9 +132,9 @@ public class EmployeeController {
         employee.setEmployeeUsername(users);
         BeanUtils.copyProperties(employeeDto, employee);
         Roles roles = null;
-        if(employee.getPosition().getPositionId() == 2){
+        if (employee.getPosition().getPositionId() == 2) {
             roles = this.iRoleService.findRole("ROLE_MANAGER");
-        }else if(employee.getPosition().getPositionId() == 1) {
+        } else if (employee.getPosition().getPositionId() == 1) {
             roles = this.iRoleService.findRole("ROLE_EMPLOYEE");
         }
         UserRole userRole = this.iUserRoleService.findUserRole(users.getUsername());

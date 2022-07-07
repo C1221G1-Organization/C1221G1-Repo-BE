@@ -2,7 +2,7 @@ package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import com.c1221g1.pharmacy.dto.employee.Position;
-import com.c1221g1.pharmacy.dto.user.Users;
+import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -781,7 +781,7 @@ Function:  update test position
         position.setPositionId(1);
         employeeDto.setPosition(position);
 
-        Users usersDto = new Uers();
+        Users usersDto = new Users();
         usersDto.setUsername("nat");
         employeeDto.setEmployeeUsername(usersDto);
 

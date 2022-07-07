@@ -2,7 +2,7 @@ package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
 import com.c1221g1.pharmacy.dto.employee.Position;
-import com.c1221g1.pharmacy.dto.user.Users;
+import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -194,7 +194,7 @@ public class EmployeeController_createEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/create")
+                        .post("/api/manager-employee/employees/")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -228,7 +228,7 @@ public class EmployeeController_createEmployee {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-employee/employees/create")
+                        .post("/api/manager-employee/employees/")
                         .content(this.objectMapper.writeValueAsString(employeeDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

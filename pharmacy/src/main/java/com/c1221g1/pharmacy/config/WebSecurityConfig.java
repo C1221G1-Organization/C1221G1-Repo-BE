@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public AuthTokenFilter authTokenFilter;
+
     /**
      * Created by HuuNQ
      * Time 16:00 29/06/2022
@@ -52,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
     /**
      * Created by HuuNQ
      * Time 16:00 29/06/2022
@@ -70,43 +72,44 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        ,"/api/manager-security/users/sign-up","/api/carts","/api/payment-online","/api/manager-position**"
-                    )
-                .permitAll()
-                .antMatchers("/api/manager-cart**")
-                .hasRole("USER")
-                .antMatchers("/api/manager-customer/customers**","/api/manager-prescription/**",
-                        "/api/manager-sale/**","api/manager-sale/invoices**"
-                        ,"/api/manager-medicine/**","/api/manager-prescription**","/api/manager_report/**"
+                        , "/api/manager-security/users/sign-up", "/api/carts", "/api/payment-online", "/api/manager-position**", "/**"
                 )
-                .hasAnyRole("EMPLOYEE","MANAGER")
-                .antMatchers("/api/manager-account/**","/api/manager-employee/**")
-                .hasRole("MANAGER")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler)
-                .and()
-                .rememberMe()
-                .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
-
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+                .permitAll();
+//                .antMatchers("/api/manager-cart**")
+//                .hasRole("USER")
+//                .antMatchers("/api/manager-customer/customers**","/api/manager-prescription/**",
+//                        "/api/manager-sale/**","api/manager-sale/invoices**"
+//                        ,"/api/manager-medicine/**","/api/manager-prescription**","/api/manager_report/**"
+//                )
+//                .hasAnyRole("EMPLOYEE","MANAGER")
+//                .antMatchers("/api/manager-account/**","/api/manager-employee/**")
+//                .hasRole("MANAGER")
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(unauthorizedHandler)
+//                .and()
+//                .rememberMe()
+//                .tokenRepository(persistentTokenRepository())
+//                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
+//
+//        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 
-    public int computeDurationInMilliseconds(){
-        return (60 * 60 *60 );
+    public int computeDurationInMilliseconds() {
+        return (60 * 60 * 60);
     }
 
 
     private PersistentTokenRepository persistentTokenRepository() {
         return new InMemoryTokenRepositoryImpl();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
