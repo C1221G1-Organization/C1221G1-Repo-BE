@@ -112,7 +112,6 @@ public class CustomerController {
         this.iCustomerService.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
     /**
      * Create by TruongNQ
      * Time : 20:21 29/06/2022
