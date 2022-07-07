@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.service.customer;
 
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 
 import org.springframework.data.domain.Page;
@@ -64,5 +65,15 @@ public interface ICustomerService {
      * Function get customer by customerType = 2 'khách sỉ'
      */
     List<Customer> findByCustomerType();
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: call repository to find customerDto by username.
+     *
+     * @param customerUsername
+     * @return totalItems
+     */
+    Customer findCustomerByUsername(String customerUsername);
 
 }

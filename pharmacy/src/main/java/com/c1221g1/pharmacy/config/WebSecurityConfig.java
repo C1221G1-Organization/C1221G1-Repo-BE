@@ -70,18 +70,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        , "/api/manager-security/users/sign-up",
+                        ,"/api/manager-security/users/sign-up",
                         "/api/carts/saveCart",
-                        "/api/payment**",
+                        "/api/carts/customer/**",
                         "/api/manager-position**",
                         "/api/cart**",
                         "/api/manager-medicine/**"
-
                 )
                 .permitAll()
                 .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
                         "/api/manager-sale/**", "api/manager-sale/invoices**"
-                        , "/api/manager-prescription**", "/api/manager_report/**"
+                        , "/api/manager-prescription**", "/api/manager_report/**",
+                        "/api/payment**"
                 )
                 .hasAnyRole("EMPLOYEE", "MANAGER")
                 .antMatchers("/api/manager-account/**", "/api/manager-employee/**")

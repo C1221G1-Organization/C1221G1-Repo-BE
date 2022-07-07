@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.controller.cart;
 
-import com.c1221g1.pharmacy.dto.cart.CartAndDetailDto;
-import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
-import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
-import com.c1221g1.pharmacy.dto.cart.CustomerMailing;
+import com.c1221g1.pharmacy.dto.cart.*;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
@@ -143,7 +140,11 @@ public class CartController {
         if (bindingResult.hasErrors()) {
             throw new MethodArgumentNotValidException(null, bindingResult);
         }
-        //Validate
+        if (cartAndDetailDto.getCustomer() != null) {
+            CustomerDtoForCart customerDtoForCart =
+                    this.iCartService.findCustomerByUsername(cartAndDetailDto.getCustomer().getCustomerName());
+            cartAndDetailDto.setCustomer(customerDtoForCart);
+        }
         System.out.println(cartAndDetailDto);
         return new ResponseEntity<>(cartAndDetailDto, HttpStatus.OK);
     }
@@ -168,6 +169,7 @@ public class CartController {
         this.iCartService.setCartComplete(cart.getCartId());
         System.out.println(cart);
         Double total = 0.0;
+
         for (CartDetailDto cartDetailDto : cartAndDetailDto.getCartDetail()) {
             total += cartDetailDto.getQuantity() * cartDetailDto.getMedicine().getMedicinePrice();
             CartDetail cartDetail = new CartDetail();
@@ -184,6 +186,7 @@ public class CartController {
                     Long.valueOf(cartDetail.getCartDetailQuantity()), 0);
             System.out.println("1");
         }
+
         PaymentOnline paymentOnline = new PaymentOnline();
         paymentOnline.setCart(cart);
         this.iPaymentOnlineService.save(paymentOnline);
@@ -200,6 +203,20 @@ public class CartController {
         }
         System.out.println("success");
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: find customer using cart by username
+     */
+    @GetMapping("/customer/{customerUsername}")
+    public ResponseEntity<CustomerDtoForCart> findCustomerByUsername(@PathVariable String customerUsername) {
+        CustomerDtoForCart customer = this.iCartService.findCustomerByUsername(customerUsername);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     /**
