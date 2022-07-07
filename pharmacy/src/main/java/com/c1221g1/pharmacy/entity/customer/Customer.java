@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.customer;
 
 import com.c1221g1.pharmacy.entity.cart.Cart;
+import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"cartList"})
+@JsonIgnoreProperties({"cartList", "invoices"})
 public class Customer {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -35,6 +36,8 @@ public class Customer {
     private CustomerType customerType;
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
+    @OneToMany(mappedBy = "customer")
+    private List<Invoice> invoices;
 
     public Customer() {
     }
@@ -127,6 +130,13 @@ public class Customer {
         this.cartList = cartList;
     }
 
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
+    }
 
 }
 

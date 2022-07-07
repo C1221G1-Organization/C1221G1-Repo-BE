@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleService implements IRoleService {
     @Autowired
-    IRoleRepository iRoleRepository;
+    private IRoleRepository iRoleRepository;
 
     @Override
-    public Roles findRole(String roleManager) {
-        return this.iRoleRepository.findRolesByRoleName(roleManager);
+    public Roles findRoleByName(String roleUser) {
+        return this.iRoleRepository.findRolesByRoleName(roleUser);
+
     }
 }
