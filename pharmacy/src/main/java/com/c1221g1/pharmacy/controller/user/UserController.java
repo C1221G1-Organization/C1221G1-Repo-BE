@@ -1,4 +1,5 @@
 package com.c1221g1.pharmacy.controller.user;
+
 import com.c1221g1.pharmacy.dto.user.payload.*;
 import com.c1221g1.pharmacy.entity.user.Provider;
 import com.c1221g1.pharmacy.entity.user.Roles;
@@ -21,12 +22,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/manager-security/users")
@@ -50,30 +53,31 @@ public class UserController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
     /**
      * Created by HuuNQ
      * Time 16:00 30/06/2022
      * Function Sign-in Account Online and when success login server will return information with JWT
      */
     @PostMapping("/sign-in")
-    public ResponseEntity<Object> getSignIn(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult){
-        new LoginRequest().validate(loginRequest,bindingResult);
+    public ResponseEntity<Object> getSignIn(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
+        new LoginRequest().validate(loginRequest, bindingResult);
         Map<String, String> errorMap = new HashMap<>();
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(
-                            err -> errorMap.put(err.getField(),err.getDefaultMessage())
+                            err -> errorMap.put(err.getField(), err.getDefaultMessage())
                     );
-            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed",errorMap,new ArrayList<>()));
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed", errorMap, new ArrayList<>()));
         }
 
-        if(this.iUsersService.checkEmail(loginRequest.getUsername()).isEmpty()){
-            errorMap.put("notExists","Tài khoản chưa tồn tại trong hệ thống");
-            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed",errorMap,new ArrayList<>()));
+        if (this.iUsersService.checkEmail(loginRequest.getUsername()).isEmpty()) {
+            errorMap.put("notExists", "Tài khoản chưa tồn tại trong hệ thống");
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed", errorMap, new ArrayList<>()));
         }
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), passwordEncoder.encode(loginRequest.getPassword()))
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -92,19 +96,19 @@ public class UserController {
      * Function Sign Up Online And Validate Sign Up Form
      */
     @PostMapping("/sign-up")
-    public ResponseEntity<Object> signUpUser(@Valid @RequestBody SignUpRequest signUpRequest,BindingResult bindingResult){
-        new SignUpRequest().validate(signUpRequest,bindingResult);
+    public ResponseEntity<Object> signUpUser(@Valid @RequestBody SignUpRequest signUpRequest, BindingResult bindingResult) {
+        new SignUpRequest().validate(signUpRequest, bindingResult);
         Map<String, String> errorMap = new HashMap<>();
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(
-                            err -> errorMap.put(err.getField(),err.getDefaultMessage())
+                            err -> errorMap.put(err.getField(), err.getDefaultMessage())
                     );
-            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed!", errorMap, new ArrayList<>()));
         }
-        if(!this.iUsersService.checkEmail(signUpRequest.getEmail()).isEmpty()){
-            errorMap.put("email","Email đã được sử dụng!");
-            return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed!",errorMap,new ArrayList<>()));
+        if (!this.iUsersService.checkEmail(signUpRequest.getEmail()).isEmpty()) {
+            errorMap.put("email", "Email đã được sử dụng!");
+            return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Failed!", errorMap, new ArrayList<>()));
         }
         try {
             this.iUsersService.saveUsers(signUpRequest);
@@ -114,24 +118,24 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-//    @PostMapping("/sign-in-facebook")
-//    public ResponseEntity<Users> signInWithFacebook(@RequestBody FacebookRequest facebookRequest){
-//        List<Users> users = this.iUsersService.checkEmail(facebookRequest.getEmail());
-//        if(users.isEmpty()){
-//            Users newUser = new Users();
-//            newUser.setUsername(facebookRequest.getEmail());
-//            newUser.setPassword(passwordEncoder.encode(facebookRequest.getAccessToken()));
-//            newUser.setProvider(Provider.FACEBOOK);
-//            newUser.setFlag(true);
-//            Roles roles = this.iRoleService.findRoleByName("ROLE_USER");
-//            UserRole userRole = new UserRole();
-//            userRole.setUsers(newUser);
-//            userRole.setRoles(roles);
-//            this.iUsersService.saveUser(newUser);
-//            this.iUserRoleService.saveUserRole(userRole);
-//            return ResponseEntity.ok().body(newUser);
-//        }else {
-//            return ResponseEntity.ok().body(users.get(0));
-//        }
-//    }
+    @PostMapping("/sign-in-facebook")
+    public ResponseEntity<Users> signInWithFacebook(@RequestBody FacebookRequest facebookRequest) {
+        List<Users> users = this.iUsersService.checkEmail(facebookRequest.getEmail());
+        if (users.isEmpty()) {
+            Users newUser = new Users();
+            newUser.setUsername(facebookRequest.getEmail());
+            newUser.setPassword(passwordEncoder.encode(facebookRequest.getAccessToken()));
+            newUser.setProvider(Provider.FACEBOOK);
+            newUser.setFlag(true);
+            Roles roles = this.iRoleService.findRoleByName("ROLE_USER");
+            UserRole userRole = new UserRole();
+            userRole.setUsers(newUser);
+            userRole.setRoles(roles);
+            this.iUsersService.saveUser(newUser);
+            this.iUserRoleService.saveUserRole(userRole);
+            return ResponseEntity.ok().body(newUser);
+        } else {
+            return ResponseEntity.ok().body(users.get(0));
+        }
+    }
 }

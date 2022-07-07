@@ -136,13 +136,14 @@ public class CartController {
     public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@Validated @RequestBody CartAndDetailDto cartAndDetailDto,
                                                                          BindingResult bindingResult) throws MethodArgumentNotValidException {
         System.out.println("in");
+
         this.iCartDetailService.checkExistOfLinksObject(cartAndDetailDto.getCartDetail(), bindingResult);
         if (bindingResult.hasErrors()) {
             throw new MethodArgumentNotValidException(null, bindingResult);
         }
         if (cartAndDetailDto.getCustomer() != null) {
             CustomerDtoForCart customerDtoForCart =
-                    this.iCartService.findCustomerByUsername(cartAndDetailDto.getCustomer().getCustomerName());
+                    this.iCartService.findCustomerByUsername(cartAndDetailDto.getCustomer().getCustomerUserName());
             cartAndDetailDto.setCustomer(customerDtoForCart);
         }
         System.out.println(cartAndDetailDto);

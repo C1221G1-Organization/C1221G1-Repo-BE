@@ -11,10 +11,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -74,9 +72,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/carts/saveCart",
                         "/api/carts/customer/**",
                         "/api/manager-position**",
-                        "/api/cart**",
+                        "/api/carts/**",
                         "/api/manager-medicine/**",
-                        "**"
+                        "/api/manager-security/users/sign-in-facebook"
                 )
                 .permitAll();
 //                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
