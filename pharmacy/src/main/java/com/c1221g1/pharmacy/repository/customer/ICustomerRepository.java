@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.repository.customer;
 
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -124,4 +125,17 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
     @Query(value = "SELECT * FROM customer WHERE flag = 1 AND customer_type_id = 2", nativeQuery = true)
     List<Customer> getCustomerList();
 
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: finding Customer by username
+     *
+     * @param customerUsername
+
+     * @return customerDto
+     */
+    @Query(value = "SELECT *\n" +
+            "FROM customer\n" +
+            "WHERE customer_username = :username", nativeQuery = true)
+    Customer findCustomerByUsername(@Param("username") String customerUsername);
 }
