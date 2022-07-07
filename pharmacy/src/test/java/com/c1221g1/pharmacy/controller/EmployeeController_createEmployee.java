@@ -1,7 +1,6 @@
 package com.c1221g1.pharmacy.controller;
 
 import com.c1221g1.pharmacy.dto.employee.EmployeeDto;
-import com.c1221g1.pharmacy.dto.employee.Position;
 import com.c1221g1.pharmacy.dto.user.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -95,6 +94,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
       Created by TamNA
       Time: 14:00:00 29/06/2022
@@ -166,6 +166,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
   Created by TamNA
   Time: 14:07:00 29/06/2022
@@ -200,6 +201,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
   Created by TamNA
   Time: 14:10:00 29/06/2022
@@ -305,6 +307,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
       Created by TamNA
       Time: 14:12:00 29/06/2022
@@ -376,6 +379,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
     /*
    Created by TamNA
    Time: 14:20:00 29/06/2022
@@ -411,6 +415,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
    Created by TamNA
    Time: 14:23:00 29/06/2022
@@ -445,6 +450,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
       Created by TamNA
       Time: 14:25:00 29/06/2022
@@ -551,6 +557,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
    Created by TamNA
    Time: 14:23:00 29/06/2022
@@ -585,6 +592,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
       Created by TamNA
       Time: 14:25:00 29/06/2022
@@ -657,7 +665,6 @@ public class EmployeeController_createEmployee {
     }
 
 
-
     /*
   Created by TamNA
   Time: 14:20:00 29/06/2022
@@ -692,6 +699,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /*
    Created by TamNA
    Time: 14:23:00 29/06/2022
@@ -762,6 +770,7 @@ public class EmployeeController_createEmployee {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
+
     /*
 Created by TamNA
 Time: 14:23:00 29/06/2022
