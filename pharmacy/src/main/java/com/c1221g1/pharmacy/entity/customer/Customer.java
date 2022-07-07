@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"cartList"})
+@JsonIgnoreProperties({"cartList", "invoices"})
 public class Customer {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -137,4 +137,6 @@ public class Customer {
     public void setInvoices(List<Invoice> invoices) {
         this.invoices = invoices;
     }
+
 }
+

@@ -32,4 +32,3 @@ public interface IMedicineStorageService {
     List<MedicineStorage> getAll();
 
 }
-

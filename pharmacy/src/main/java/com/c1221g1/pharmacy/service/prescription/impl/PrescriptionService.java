@@ -21,12 +21,13 @@ public class PrescriptionService implements IPrescriptionService {
 
     @Override
     public Page<Prescription> findAllPageAndSearch(Pageable pageable, String id, String name, String target, String symptom) {
-        return this.prescriptionRepository.findAllPage(pageable, "%"+id+"%",
-                "%"+ name +"%","%"+ target +"%","%"+ symptom +"%");
+
+        return this.prescriptionRepository.findAllPage(pageable, "%" + id + "%",
+                "%" + name + "%", "%" + target + "%", "%" + symptom + "%");
     }
 
     @Override
-    public void save(Prescription prescription) {
+    public void savePrescription(Prescription prescription) {
         this.prescriptionRepository.save(prescription);
     }
 
@@ -46,11 +47,15 @@ public class PrescriptionService implements IPrescriptionService {
     }
 
     @Override
-    public IMedicinePrescriptionDto getPrescriptionById(String id) {
+    public List<IMedicinePrescriptionDto> getPrescriptionById(String id) {
         return this.prescriptionRepository.detailPrescriptionById(id);
     }
 
     @Override
+    public List<Prescription> findAllListPrescription() {
+        return this.prescriptionRepository.findAllPre();
+    }
+
     public PrescriptionDetail getDetailPrescription(String id) {
         return this.prescriptionRepository.getDetailPrescription(id);
     }

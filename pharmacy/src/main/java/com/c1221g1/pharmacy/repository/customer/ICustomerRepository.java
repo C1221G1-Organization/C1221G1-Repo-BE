@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.repository.customer;
 
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerRepository extends JpaRepository<Customer, String> {
@@ -114,4 +116,26 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_type_id") Integer customer_type_id,
                         @Param("customer_id") String customer_id);
 
+
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    @Query(value = "SELECT * FROM customer WHERE flag = 1 AND customer_type_id = 2", nativeQuery = true)
+    List<Customer> getCustomerList();
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: finding Customer by username
+     *
+     * @param customerUsername
+
+     * @return customerDto
+     */
+    @Query(value = "SELECT *\n" +
+            "FROM customer\n" +
+            "WHERE customer_username = :username", nativeQuery = true)
+    Customer findCustomerByUsername(@Param("username") String customerUsername);
 }

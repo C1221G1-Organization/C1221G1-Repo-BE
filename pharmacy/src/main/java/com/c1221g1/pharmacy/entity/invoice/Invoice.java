@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"customer", "employee", "typeOfInvoice", "invoiceMedicineList"})
+@JsonIgnoreProperties({"invoiceMedicineList"})
 
 public class Invoice {
     @Id
@@ -126,4 +126,3 @@ public class Invoice {
         this.invoiceMedicineList = invoiceMedicineList;
     }
 }
-

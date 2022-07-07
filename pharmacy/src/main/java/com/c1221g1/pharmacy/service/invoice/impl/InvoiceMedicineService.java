@@ -106,16 +106,10 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
      * Function: function create Wholesale Invoice Medicine
      * */
     @Override
-    public boolean saveWholesaleInvoiceMedicine(InvoiceDto invoiceDto) throws Exception {
+    public boolean saveWholesaleInvoiceMedicine(InvoiceDto invoiceDto) throws Exception{
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         for (InvoiceMedicineDto item : invoiceMedicineList) {
-            try {
-                Medicine medicine = iMedicineRepository.findById(item.getMedicineId()).orElse(null);
-                Long quantity = item.getQuantity() * Long.parseLong(medicine.getMedicineConversionRate().toString());
-                iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(), quantity, 0);
-            } catch (NullPointerException e) {
-                e.printStackTrace();
-            }
+            iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),Long.parseLong(item.getQuantity().toString()),0);
         }
         TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
         typeOfInvoice.setTypeOfInvoiceId(2);
@@ -151,19 +145,7 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     public boolean saveRefundInvoiceMedicine(InvoiceDto invoiceDto) {
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         for (InvoiceMedicineDto item : invoiceMedicineList) {
-            if (invoiceDto.getTypeOfInvoiceId() == 1) {
-                iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),
-                        Long.parseLong(item.getQuantity().toString()), 2);
-            } else {
-                try {
-                    Medicine medicine = iMedicineRepository.findById(item.getMedicineId()).orElse(null);
-                    Long quantity = item.getQuantity()
-                            * Long.parseLong(medicine.getMedicineConversionRate().toString());
-                    iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(), quantity, 2);
-                } catch (NullPointerException e) {
-                    e.fillInStackTrace();
-                }
-            }
+            iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),Long.parseLong(item.getQuantity().toString()),2);
         }
         TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
         typeOfInvoice.setTypeOfInvoiceId(3);

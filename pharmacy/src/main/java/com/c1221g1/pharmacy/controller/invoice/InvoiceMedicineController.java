@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * Function: create InvoiceMedicineController and functions
  * */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin()
 @RequestMapping("/api/manager-sale/invoiceMedicines")
 public class InvoiceMedicineController {
     @Autowired

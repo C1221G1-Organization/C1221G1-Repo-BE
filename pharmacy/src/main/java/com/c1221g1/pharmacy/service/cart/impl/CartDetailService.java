@@ -8,6 +8,7 @@ import com.c1221g1.pharmacy.repository.cart.ICartDetailRepository;
 import com.c1221g1.pharmacy.repository.cart.ICartRepository;
 import com.c1221g1.pharmacy.service.cart.ICartDetailService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
+import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,9 @@ public class CartDetailService implements ICartDetailService {
     @Autowired
     private IMedicineService iMedicineService;
 
+    @Autowired
+    private IMedicineStorageService iMedicineStorageService;
+
     /**
      * Created by: KhoaPV
      * Date created: 29/6/2022
@@ -34,14 +38,30 @@ public class CartDetailService implements ICartDetailService {
      * @param bindingResult
      */
     @Override
-    public void checkExistOfLinksObject(CartDetailDto cartDetailDto, BindingResult bindingResult) {
-//        Cart cart = this.iCartRepository.findCartById(cartDetailDto.getCart().getCartId(), false);
-//        if (cart == null) {
-//            bindingResult.rejectValue("cart", "cart.notfound");
-//        }
-        Medicine medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId()).orElse(null);
-        if (medicine == null) {
-            bindingResult.rejectValue("medicine", "medicine.notfound");
+    public void checkExistOfLinksObject(List<CartDetailDto> cartDetailDtos, BindingResult bindingResult) {
+        int i = 0;
+
+        for (CartDetailDto cartDetail : cartDetailDtos) {
+            String medicineId = cartDetail.getMedicine().getMedicineId();
+            String medicineName = cartDetail.getMedicine().getMedicineName();
+            Long quatityInStorage = this.iMedicineStorageService.checkMedicineQuantity(medicineId);
+            if (this.iMedicineStorageService.checkExistInMedicineStorage(medicineId)) {
+                if (quatityInStorage < 1) {
+                    bindingResult.pushNestedPath("cartDetail[" + i + "]");
+                    bindingResult.rejectValue("medicine", "medicine.soldOut", medicineName + " hiện tại đã hết hàng");
+                    bindingResult.popNestedPath();
+                } else if (cartDetail.getQuantity() > quatityInStorage) {
+                    bindingResult.pushNestedPath("cartDetail[" + i + "]");
+                    bindingResult.rejectValue("medicine", "medicine.tooMuch",
+                            medicineName + " hiện tại chỉ còn " + quatityInStorage + " sản phẩm");
+                    bindingResult.popNestedPath();
+                }
+            } else {
+                bindingResult.pushNestedPath("cartDetail[" + i + "]");
+                bindingResult.rejectValue("medicine", "medicine.soldOut", medicineName + " hiện tại đã hết hàng");
+                bindingResult.popNestedPath();
+            }
+            i++;
         }
     }
 

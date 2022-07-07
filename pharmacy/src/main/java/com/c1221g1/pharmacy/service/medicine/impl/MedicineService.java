@@ -151,4 +151,15 @@ public class MedicineService implements IMedicineService {
         return medicineRepository.getAllMedicineByName(pageable, name, sort);
     }
 
+    /**
+     * HienTLD
+     * danh sách List<>
+     * 9:00 06/07/2022
+     */
+    @Override
+    public List<Medicine> findAllMedicine() {
+        return this.medicineRepository.findAll();
+    }
+
 }
+

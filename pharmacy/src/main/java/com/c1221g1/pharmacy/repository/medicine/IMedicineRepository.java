@@ -218,3 +218,4 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
     Page<IMedicineDto> getAllMedicineByName(Pageable pageable, @Param("name") String name, @Param("sort") String sort);
 
 }
+

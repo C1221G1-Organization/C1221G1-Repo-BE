@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 public class UserRoleService implements IUserRoleService {
     @Autowired
     private IUserRoleRepository iUserRoleRepository;
+
     @Override
-    public void save(UserRole userRole) {
-        this.iUserRoleRepository.save(userRole);
+    public UserRole findUserRole(String roleName) {
+        return this.iUserRoleRepository.findUserRoleByUsername(roleName);
     }
 
     @Override
-    public UserRole findUserRole(String username) {
-        return this.iUserRoleRepository.findUserRoleByUsername(username);
+    public void saveUserRole(UserRole userRole) {
+        this.iUserRoleRepository.save(userRole);
     }
+
 }

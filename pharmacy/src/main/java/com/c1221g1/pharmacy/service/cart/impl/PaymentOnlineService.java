@@ -51,7 +51,7 @@ public class PaymentOnlineService implements IPaymentOnlineService {
     @Override
     public void save(PaymentOnline paymentOnline) {
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formatDateTime = now.format(format);
         paymentOnline.setTimeCreate(formatDateTime);
         this.iPaymentOnlineRepository.save(paymentOnline);
