@@ -121,7 +121,7 @@ public class UserController {
         if(users.isEmpty()){
             Users newUser = new Users();
             newUser.setUsername(facebookRequest.getEmail());
-            newUser.setPassword(passwordEncoder.encode(facebookRequest.getAccessToken().substring(0,20)));
+            newUser.setPassword(passwordEncoder.encode(facebookRequest.getAccessToken()));
             newUser.setProvider(Provider.FACEBOOK);
             newUser.setFlag(true);
             Roles roles = this.iRoleService.findRoleByName("ROLE_USER");
