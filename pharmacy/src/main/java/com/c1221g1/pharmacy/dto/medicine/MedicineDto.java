@@ -28,12 +28,10 @@ public class MedicineDto {
 
     @NotNull
     @Positive
-    @Max(100)
     private Double medicineWholesaleProfit;
 
     @NotNull
     @Positive
-    @Max(100)
     private Double medicineRetailSaleProfit;
 
     @NotNull
@@ -78,8 +76,8 @@ public class MedicineDto {
                        @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineActiveIngredients,
                        @NotNull @Positive Double medicineImportPrice,
                        @NotNull @Positive @Max(100) Double medicineDiscount,
-                       @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
-                       @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
+                       @NotNull @Positive Double medicineWholesaleProfit,
+                       @NotNull @Positive Double medicineRetailSaleProfit,
                        @NotNull @Positive @Max(100) Double medicineTax,
                        @NotNull @Positive @Max(100) Integer medicineConversionRate,
                        @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineManufacture,
