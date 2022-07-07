@@ -1,6 +1,7 @@
 package com.c1221g1.pharmacy.entity.employee;
 
 import com.c1221g1.pharmacy.entity.import_invoice.ImportInvoice;
+import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
@@ -38,6 +39,9 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     private List<ImportInvoice> importInvoiceList;
+
+    @OneToMany(mappedBy = "employee")
+    private List<Invoice> invoices;
 
     public Employee() {
     }
@@ -128,5 +132,13 @@ public class Employee {
 
     public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
         this.importInvoiceList = importInvoiceList;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 }
