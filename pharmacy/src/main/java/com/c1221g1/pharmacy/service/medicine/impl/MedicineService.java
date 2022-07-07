@@ -90,6 +90,16 @@ public class MedicineService implements IMedicineService {
     }
 
     /**
+     * Created by: TrungTVH
+     * Date created: 4/7/2022
+     * function: get medicine list dùng tạm
+     */
+    @Override
+    public List<Medicine> getList() {
+        return this.medicineRepository.findAll();
+    }
+
+    /**
      * Creator: NghiaNTT Time: 29/02/2022
      *
      * @param medicineId: String
@@ -141,4 +151,15 @@ public class MedicineService implements IMedicineService {
         return medicineRepository.getAllMedicineByName(pageable, name, sort);
     }
 
+    /**
+     * HienTLD
+     * danh sách List<>
+     * 9:00 06/07/2022
+     */
+    @Override
+    public List<Medicine> findAllMedicine() {
+        return this.medicineRepository.findAll();
+    }
+
 }
+

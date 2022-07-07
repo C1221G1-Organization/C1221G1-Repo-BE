@@ -41,4 +41,6 @@ public class CustomerType {
         this.customerList = customerList;
     }
 
+
 }
+

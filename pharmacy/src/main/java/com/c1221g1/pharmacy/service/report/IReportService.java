@@ -64,4 +64,12 @@ public interface IReportService {
      * @Time 20:30 30/06/2022
      */
     List<Static> getStatic(String year);
+
+    /**
+     * this method to get list revenue and profit to show static on angular (by month)
+     *
+     * @author DinhH
+     * @Time 20:30 05/07/2022
+     */
+    List<StacticByMonth> getStaticByMonth(String month, String year);
 }

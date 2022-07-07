@@ -20,14 +20,15 @@ public interface IMedicineStorageService {
      * */
     Optional<MedicineStorage> getStorageByIdMedicine(String id);
 
+
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
      * Function: function updateMedicineQuantity
      * */
+
     void updateMedicineQuantity(MedicineStorage storage);
 
     List<MedicineStorage> getAll();
 
 }
-

@@ -34,12 +34,11 @@ public class PrescriptionController {
      * 16:00 29/06/2022
      */
     @GetMapping("")
-    public ResponseEntity<Page<Prescription>> getPageAndSearchPrescription(
-            @RequestParam Optional<String> id,
-            @RequestParam Optional<String> names,
-            @RequestParam Optional<String> target,
-            @RequestParam Optional<String> symptom,
-            @PageableDefault(value = 2) Pageable pageable) {
+    public ResponseEntity<Page<Prescription>> getPageAndSearchPrescription(@RequestParam Optional<String> id,
+                                                                           @RequestParam Optional<String> names,
+                                                                           @RequestParam Optional<String> target,
+                                                                           @RequestParam Optional<String> symptom,
+                                                                           @PageableDefault(value = 5) Pageable pageable) {
 
         String idVal = id.orElse("");
         String nameVal = names.orElse("");
@@ -58,20 +57,37 @@ public class PrescriptionController {
 
     /**
      * HienTLD
-     * Chi tiết toa thuốc
-     * 16:30 29/06/2022
+     * danh sách List<>
+     * 23:56 05/07/2022
      */
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<IMedicinePrescriptionDto> getInfoPrescription(@PathVariable String id) {
+    @GetMapping("/list")
+    public ResponseEntity<List<Prescription>> getListPrescription() {
 
-        IMedicinePrescriptionDto medicinePrescriptionDto = this.prescriptionService.getPrescriptionById(id);
+        List<Prescription> prescriptionList = this.prescriptionService.findAllListPrescription();
 
-        if (medicinePrescriptionDto == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (prescriptionList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(medicinePrescriptionDto, HttpStatus.OK);
+        return new ResponseEntity<>(prescriptionList, HttpStatus.OK);
     }
+
+//    /**
+//     * HienTLD
+//     * Lấy tất cả chỉ định toa thuốc
+//     * 16:30 29/06/2022
+//     */
+//    @GetMapping(value = "/{id}")
+//    public ResponseEntity<List<IMedicinePrescriptionDto>> getMedicinePrescription(@PathVariable String id) {
+//
+//        List<IMedicinePrescriptionDto> medicinePrescriptionDto = this.prescriptionService.getPrescriptionById(id);
+//
+//        if (medicinePrescriptionDto == null) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//
+//        return new ResponseEntity<>(medicinePrescriptionDto, HttpStatus.OK);
+//    }
 
     /**
      * HienTLD
@@ -84,14 +100,14 @@ public class PrescriptionController {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
-
         Prescription prescription = new Prescription();
 
         prescriptionDto.setFlag(true);
 
         BeanUtils.copyProperties(prescriptionDto, prescription);
 
-        this.prescriptionService.save(prescription);
+
+        this.prescriptionService.savePrescription(prescription);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -112,6 +128,31 @@ public class PrescriptionController {
     }
 
 
+    /**
+     * HienTLD
+     * Sửa toa thuốc
+     * update 11:18 30/06/2022
+     */
+    @PatchMapping("/{id}")
+    public ResponseEntity<List<FieldError>> editPrescription(@Validated @RequestBody PrescriptionDto prescriptionDto,
+                                                             BindingResult bindingResult,
+                                                             @PathVariable String id) {
+        if (bindingResult.hasFieldErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
+        }
+        Prescription prescription = new Prescription();
+
+        prescription.setPrescriptionId(id);
+
+        prescription.setFlag(true);
+
+        BeanUtils.copyProperties(prescriptionDto, prescription);
+
+        this.prescriptionService.edit(prescription);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     /*
      * Created by DaLQA
      * Time: 10:46 AM 05/07/2022
@@ -121,12 +162,14 @@ public class PrescriptionController {
     public ResponseEntity<PrescriptionDetail> getPrescriptionDetail(@PathVariable String id) {
         PrescriptionDetail prescriptionDetail = this.prescriptionService.getDetailPrescription(id);
 
+
         if (prescriptionDetail == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(prescriptionDetail, HttpStatus.OK);
     }
+
     /*
      * Created by DaLQA
      * Time: 10:46 AM 05/07/2022
@@ -140,4 +183,22 @@ public class PrescriptionController {
         }
         return new ResponseEntity<>(prescriptionMedicineDetails, HttpStatus.OK);
     }
+
+    /**
+     * HienTLD
+     * Chi tiết toa thuốc
+     * 10:58 06/07/2022
+     */
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Prescription> getInfoPrescription(@PathVariable String id) {
+
+        Prescription prescription = this.prescriptionService.findById(id);
+
+        if (prescription == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(prescription, HttpStatus.OK);
+    }
 }
+

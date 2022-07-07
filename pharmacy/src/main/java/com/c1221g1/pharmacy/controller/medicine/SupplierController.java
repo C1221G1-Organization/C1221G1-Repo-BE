@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.controller.medicine;
 
+import com.c1221g1.pharmacy.dto.import_invoice.ISupplierDto;
 import com.c1221g1.pharmacy.dto.import_invoice.SupplierDto;
 import com.c1221g1.pharmacy.entity.import_invoice.Supplier;
 import com.c1221g1.pharmacy.service.import_invoice.ISupplierService;
@@ -63,10 +64,6 @@ public class SupplierController {
         String valueName = searchName.orElse("");
         String valueAddress = searchAddress.orElse("");
         String valuePhone = searchPhone.orElse("");
-        System.out.println(valueSupplierId);
-        System.out.println(valueName);
-        System.out.println(valueAddress);
-        System.out.println(valuePhone);
         Page<Supplier> supplierPage = iSupplierService.findAll(valueSupplierId, valueName, valueAddress, valuePhone, pageable);
             if (!supplierPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -115,8 +112,6 @@ public class SupplierController {
     @GetMapping("/{id}")
     public ResponseEntity<Supplier> getSupplier(@PathVariable("id") String id) {
         Supplier supplier = iSupplierService.findById(id);
-        System.err.println("ID");
-        System.err.println(supplier);
         if (supplier == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -140,7 +135,6 @@ public class SupplierController {
         } else {
             Supplier supplier = new Supplier();
             BeanUtils.copyProperties(supplierDto, supplier);
-            System.err.println(supplier);
             iSupplierService.save(supplier);
             return new ResponseEntity<>(supplier, HttpStatus.OK);
 
@@ -163,7 +157,6 @@ public class SupplierController {
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
         }
         if ("null".equals(id) || null == id) {
-            System.err.println(" id Null ");
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
         } else if ("".equals(id)) {
             return new ResponseEntity<>(bindingResult.hasFieldErrors(), HttpStatus.BAD_REQUEST);
@@ -185,10 +178,8 @@ public class SupplierController {
      * 18h 29/06/2022  trần ngọc luật
      */
     @GetMapping("detail/{id}")
-    public ResponseEntity<Supplier> getSupplierDetail(@PathVariable("id") String id) {
-        Supplier supplier = iSupplierService.findByIdDEtail(id);
-        System.err.println("ID");
-        System.err.println(supplier);
+    public ResponseEntity<ISupplierDto> getSupplierDetail(@PathVariable("id") String id) {
+        ISupplierDto supplier = iSupplierService.findByIdDEtail(id);
         if (supplier == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

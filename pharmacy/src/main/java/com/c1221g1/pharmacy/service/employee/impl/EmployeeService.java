@@ -2,9 +2,11 @@ package com.c1221g1.pharmacy.service.employee.impl;
 
 import com.c1221g1.pharmacy.entity.employee.Employee;
 import com.c1221g1.pharmacy.entity.user.UserRole;
+
 import com.c1221g1.pharmacy.repository.employee.IEmployeeRepository;
 import com.c1221g1.pharmacy.service.employee.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.c1221g1.pharmacy.entity.employee.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,8 +15,19 @@ import java.util.List;
 
 @Service
 public class EmployeeService implements IEmployeeService {
+
     @Autowired
-    IEmployeeRepository iEmployeeRepository;
+    private IEmployeeRepository iEmployeeRepository;
+
+    /**
+     * Created by: TrungTVH
+     * Date created: 5/7/2022
+     * function: get medicine list dùng tạm
+     */
+    @Override
+    public List<Employee> getList() {
+        return this.iEmployeeRepository.findAll();
+    }
 
     /**
      * this function use to get all page Employee
@@ -29,7 +42,7 @@ public class EmployeeService implements IEmployeeService {
                 "%" + employeeNameVal + "%",
                 "%" + positionVal + "%",
                 "%" + employeeAddressVal + "%",
-                "%"+employeePhoneVal+"%", pageable);
+                "%" + employeePhoneVal + "%", pageable);
     }
 
     /**

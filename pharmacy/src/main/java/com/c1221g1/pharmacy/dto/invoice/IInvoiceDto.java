@@ -10,3 +10,4 @@ public interface IInvoiceDto {
     String getInvoiceCreateTime();
     String getInvoiceTotalMoney();
 }
+
