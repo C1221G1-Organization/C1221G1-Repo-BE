@@ -75,10 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/payment**",
                         "/api/manager-position**",
                         "/api/cart**",
-                        "/api/manager-medicine/**"
-//                        "/api/manager_report/**",
-//                        "/**"
-
+                        "/api/manager-medicine/**",
+                        "/api/manager_report/**"
                 )
                 .permitAll()
                 .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
