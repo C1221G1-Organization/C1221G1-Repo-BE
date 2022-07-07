@@ -1,10 +1,7 @@
 package com.c1221g1.pharmacy.controller.invoice;
 
 import com.c1221g1.pharmacy.dto.invoice.IInvoiceDto;
-import com.c1221g1.pharmacy.dto.invoice.InvoiceDto;
-import com.c1221g1.pharmacy.dto.invoice.InvoiceRefundDto;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
-import com.c1221g1.pharmacy.entity.invoice.InvoiceMedicine;
 import com.c1221g1.pharmacy.service.invoice.IInvoiceService;
 import com.c1221g1.pharmacy.service.invoice.impl.InvoiceMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,7 +39,7 @@ public class InvoiceController {
             @RequestParam(defaultValue = "invoiceId") String fieldSort) {
         String endDateVal = endDate.orElse(String.valueOf(LocalDate.now()));
         Pageable pageable = PageRequest.of(0, 5, Sort.by(fieldSort).ascending());
-        Page<IInvoiceDto> invoicePage = iInvoiceService.findAllInvoice(startDate, endDateVal, typeOfInvoiceId, pageable);
+        Page<IInvoiceDto> invoicePage = this.iInvoiceService.findAllInvoice(startDate, endDateVal, typeOfInvoiceId, pageable);
         if (invoicePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
