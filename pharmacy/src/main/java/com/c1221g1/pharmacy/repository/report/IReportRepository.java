@@ -20,16 +20,16 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select i.invoice_id invoiceId,\n" +
             "            i.invoice_created_date createdDay,\n" +
             "            i.employee_id employeeId,\n" +
-            "            (if(i.type_of_invoice_id = 1,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
             "                                               *m.medicine_retail_sale_profit),\n" +
             "                ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                                               *m.medicine_wholesale_profit))) total,\n" +
-            "           (if(i.type_of_invoice_id = 1,\n" +
+            "                                               *m.medicine_wholesale_profit)))) total,\n" +
+            "           sum((if(i.type_of_invoice_id = 1,\n" +
             "               ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
             "                   *(m.medicine_retail_sale_profit-1),\n" +
             "               ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                   *(m.medicine_wholesale_profit-1))) profit\n" +
+            "                   *(m.medicine_wholesale_profit-1)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -129,14 +129,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '1' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -146,14 +146,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '2' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -163,14 +163,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '3' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -180,14 +180,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '4' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -197,14 +197,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '5' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -214,14 +214,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '6' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -231,14 +231,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '7' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -248,14 +248,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '8' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -265,14 +265,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '9' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -282,14 +282,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '10' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -299,14 +299,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '11' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -316,17 +316,581 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '12' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
             "     Where (month(i.invoice_created_date)='12' and year(i.invoice_created_date)=:year);", nativeQuery = true)
     Static getMonth12(@Param("year") String year);
+
+    /**
+     * this method to get list revenue and profit to show static on angular (by month)
+     *
+     * @author DinhH
+     * @Time 20:30 05/07/2022
+     */
+    @Query(value = "Select      '1' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='1' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay1(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '2' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='2' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay2(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '3' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='3' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay3(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '4' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='4' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay4(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '5' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='5' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay5(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '6' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='6' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay6(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '7' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='7' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay7(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '8' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='8' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay8(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '9' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='9' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay9(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '10' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='10' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay10(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '11' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='11' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay11(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '12' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='12' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay12(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '13' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='13' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay13(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '14' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='14' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay14(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '15' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='15' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay15(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '16' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='16' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay16(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '17' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='17' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay17(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '18' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='18' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay18(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '19' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='19' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay19(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '20' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='20' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay20(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '21' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='21' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay21(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '22' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='22' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay22(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '23' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='23' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay23(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '24' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='24' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay24(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '25' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='25' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay25(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '26' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='26' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay26(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '27' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='27' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay27(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '28' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='28' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay28(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '29' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='29' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay29(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '30' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='30' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay30(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "Select      '31' day,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
+            "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
+            "            sum((if(i.type_of_invoice_id = 1,\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
+            "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
+            "            from invoice i\n" +
+            "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
+            "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
+            "            Where (day(i.invoice_created_date)='31' and month(i.invoice_created_date)=:month and\n" +
+            "            year(i.invoice_created_date)=:year);", nativeQuery = true)
+    StacticByMonth getDay31(@Param("month") String month, @Param("year") String year);
 }

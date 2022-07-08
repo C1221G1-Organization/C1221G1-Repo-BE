@@ -78,5 +78,3 @@ Select      '1' month,
               inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id
               inner join medicine m on ic.medicine_id = m.medicine_id
      Where (month(i.invoice_created_date)='1' and year(i.invoice_created_date)=:'year');
-
-

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("*")
+@CrossOrigin()
 @RequestMapping(value = "/api/manager_report/report")
 @RestController
 public class ReportController {
@@ -160,6 +160,24 @@ public class ReportController {
     public ResponseEntity<List<Static>> getStatic(@RequestParam Optional<String> year) {
         String yearVal = year.orElse("");
         List<Static> statics = this.iReportService.getStatic(yearVal);
+        if (statics.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(statics, HttpStatus.OK);
+    }
+
+    /**
+     * this method to get list revenue and profit to show static on angular (by month)
+     *
+     * @author DinhH
+     * @Time 20:30 05/07/2022
+     */
+    @GetMapping("/staticByMonth")
+    public ResponseEntity<List<StacticByMonth>> getStaticByMonth(@RequestParam Optional<String> month,
+                                                                 @RequestParam Optional<String> year) {
+        String monthVal = month.orElse("");
+        String yearVal = year.orElse("");
+        List<StacticByMonth> statics = this.iReportService.getStaticByMonth(monthVal,yearVal);
         if (statics.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

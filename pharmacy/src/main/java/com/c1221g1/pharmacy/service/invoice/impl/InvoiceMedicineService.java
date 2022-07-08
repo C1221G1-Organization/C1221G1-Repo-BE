@@ -52,9 +52,10 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     public boolean saveInvoiceMedicine(InvoiceDto invoiceDto) throws Exception {
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         List<String> listErrorQuantity = new ArrayList<>();
+        int i = 0;
         for (InvoiceMedicineDto item : invoiceMedicineList) {
             MedicineStorage medicineStorage = this.iMedicineStorageService
-                    .getStorageByIdMedicine(item.getMedicineId()).get();
+                    .getStorageByIdMedicine(item.getMedicineId()).orElse(null);
             Long quantityCurrentMedicine = medicineStorage.getMedicineQuantity();
             if (quantityCurrentMedicine - item.getQuantity() < 0) {
                 listErrorQuantity.add(medicineStorage.getMedicine().getMedicineName());
@@ -90,6 +91,7 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
             return false;
         }
     }
+
     /*
      * Created by TrinhNN
      * Function: function find invoice by invoice id
@@ -98,6 +100,7 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     public List<InvoiceMedicine> findByInvoiceId(String id) {
         return invoiceMedicineRepository.findByInvoiceId(id);
     }
+
     /*
      * Created by TrinhNN
      * Function: function create Wholesale Invoice Medicine
@@ -106,9 +109,7 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     public boolean saveWholesaleInvoiceMedicine(InvoiceDto invoiceDto) throws Exception{
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         for (InvoiceMedicineDto item : invoiceMedicineList) {
-            Medicine medicine = iMedicineRepository.findById(item.getMedicineId()).orElse(null);
-            Long quantity = item.getQuantity() * Long.parseLong(medicine.getMedicineConversionRate().toString());
-            iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),quantity,0);
+            iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),Long.parseLong(item.getQuantity().toString()),0);
         }
         TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
         typeOfInvoice.setTypeOfInvoiceId(2);
@@ -144,15 +145,7 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     public boolean saveRefundInvoiceMedicine(InvoiceDto invoiceDto) {
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         for (InvoiceMedicineDto item : invoiceMedicineList) {
-            if(invoiceDto.getTypeOfInvoiceId() == 1){
-                iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),
-                        Long.parseLong(item.getQuantity().toString()),2);
-            }else{
-                Medicine medicine = iMedicineRepository.findById(item.getMedicineId()).orElse(null);
-                Long quantity = item.getQuantity() * Long.parseLong(medicine.getMedicineConversionRate().toString());
-                iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),quantity,2);
-            }
-
+            iMedicineStorageService.changeMedicineQuantity(item.getMedicineId(),Long.parseLong(item.getQuantity().toString()),2);
         }
         TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
         typeOfInvoice.setTypeOfInvoiceId(3);
