@@ -137,5 +137,6 @@ public class Customer {
     public void setInvoices(List<Invoice> invoices) {
         this.invoices = invoices;
     }
+
 }
 
