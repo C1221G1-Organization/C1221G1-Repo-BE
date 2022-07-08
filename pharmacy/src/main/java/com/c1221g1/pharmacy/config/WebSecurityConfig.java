@@ -72,16 +72,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/manager-security/users/sign-in",
                         "/api/manager-security/users/sign-up",
                         "/api/carts/saveCart",
-                        "/api/payment**",
-                        "/api/manager-position**",
+                        "/api/manager-online*",
+                        "/api/manager-position/**",
                         "/api/carts/**",
                         "/api/manager-medicine/**",
                         "/api/manager-security/users/sign-in-facebook"
                 )
                 .permitAll()
-                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
-                        "/api/manager-sale/**", "api/manager-sale/invoices**"
-                        , "/api/manager-prescription**", "/api/manager_report/**"
+                .antMatchers("/api/manager-customer/**", "/api/manager-prescription/**"
+                        , "api/manager-sale/**"
+                        , "/api/manager_report**"
                 )
                 .hasAnyRole("EMPLOYEE", "MANAGER")
                 .antMatchers("/api/manager-account/**", "/api/manager-employee/**")

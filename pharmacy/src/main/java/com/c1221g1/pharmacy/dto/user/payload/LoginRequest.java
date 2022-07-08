@@ -17,10 +17,9 @@ public class LoginRequest implements Validator {
     @Length(min = 5,message = "Tên tài khoản quá ngắn.")
     @Length(max = 50, message = "Tên tài khoản quá dài.")
     @Email(message = "Không đúng định dạng email.")
-    @NotEmpty(message = "Không bỏ trống.")
+    @NotEmpty(message = "Vui lòng không bỏ trống.")
     private String username;
-    @Length(min=5,message = "Mật khẩu quá ngắn.")
-    @Length(max=50,message = "Mật khẩu quá dài.")
+    @NotEmpty(message = "Vui lòng không bỏ trống.")
     private String password;
 
     public String getUsername() {
@@ -47,10 +46,13 @@ public class LoginRequest implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         LoginRequest loginRequest = (LoginRequest) target;
+        final String PASSWORD = "password";
         if(loginRequest.getPassword().contains(" ")){
-            errors.rejectValue("password","","Mật khẩu chứa kí tự trống.");
-        }else if(!loginRequest.getPassword().matches("^(\\s?[a-zA-Z!@#$%^&*()\\d]\\s?){6,50}$")){
-            errors.rejectValue("password","","Có kí tự đặc biệt không được cho phép.");
+            errors.rejectValue(PASSWORD,"","Mật khẩu chứa kí tự trống.");
+        }else if(loginRequest.getPassword().length()>50 || loginRequest.getPassword().length()<6){
+            errors.rejectValue(PASSWORD,"","Độ dài mật khẩu phải từ 6 đến 50 kí tự.");
+        }else if(!loginRequest.getPassword().matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,50})")){
+            errors.rejectValue(PASSWORD,"","Mật khẩu phải có ít nhất 1 chữ số,chữ thường,chữ hoa và kí tự đặc biệt.");
         }
     }
 }

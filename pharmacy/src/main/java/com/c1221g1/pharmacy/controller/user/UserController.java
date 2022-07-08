@@ -69,7 +69,7 @@ public class UserController {
         }
 
         if(this.iUsersService.checkEmail(loginRequest.getUsername()).isEmpty()){
-            errorMap.put("notExists","Tài khoản chưa tồn tại trong hệ thống");
+            errorMap.put("notExists","Chưa có tài khoản này trong hệ thống");
             return ResponseEntity.badRequest().body(new ResponseMessage<>(false,"Failed",errorMap,new ArrayList<>()));
         }
 
@@ -125,6 +125,10 @@ public class UserController {
             newUser.setProvider(Provider.FACEBOOK);
             newUser.setFlag(true);
             Roles roles = this.iRoleService.findRoleByName("ROLE_USER");
+            if(roles == null){
+                roles = new Roles("ROLE_USER");
+            }
+            this.iRoleService.saveRole(roles);
             UserRole userRole = new UserRole();
             userRole.setUsers(newUser);
             userRole.setRoles(roles);

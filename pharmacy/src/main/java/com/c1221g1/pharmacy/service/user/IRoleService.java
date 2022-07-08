@@ -7,4 +7,5 @@ public interface IRoleService {
     Roles findRoleByName(String roleUser);
 
 
+    void saveRole(Roles roles);
 }
