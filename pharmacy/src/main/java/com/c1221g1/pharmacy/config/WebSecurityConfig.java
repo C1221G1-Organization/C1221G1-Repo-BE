@@ -79,29 +79,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/manager-security/users/sign-in-facebook",
                         "/**"
                 )
-                .permitAll()
-                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
-                        "/api/manager-sale/**", "api/manager-sale/invoices**"
-                        , "/api/manager-prescription**", "/api/manager_report/**",
-                        "/api/payment**"
-                )
-                .hasAnyRole("EMPLOYEE", "MANAGER")
-                .antMatchers("/api/manager-account/**", "/api/manager-employee/**")
-                .hasRole("MANAGER")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler)
-                .and()
-                .rememberMe()
-                .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
-
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+                .permitAll();
+//                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
+//                        "/api/manager-sale/**", "api/manager-sale/invoices**"
+//                        , "/api/manager-prescription**", "/api/manager_report/**",
+//                        "/api/payment**"
+//                )
+//                .hasAnyRole("EMPLOYEE", "MANAGER")
+//                .antMatchers("/api/manager-account/**", "/api/manager-employee/**")
+//                .hasRole("MANAGER")
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(unauthorizedHandler)
+//                .and()
+//                .rememberMe()
+//                .tokenRepository(persistentTokenRepository())
+//                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
+//
+//        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 

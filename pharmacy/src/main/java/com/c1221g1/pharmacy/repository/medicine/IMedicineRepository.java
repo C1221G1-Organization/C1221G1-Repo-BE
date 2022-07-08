@@ -24,9 +24,8 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
      */
     @Query(value = "SELECT  medicine_id AS medicineId" +
             ", medicine_name AS medicineName," +
-            " ((medicine_import_price +" +
-            "((medicine_import_price*medicine_retail_sale_profit/100)))/medicine_conversion_rate)" +
-            "AS retailPrice FROM medicine"
+            " (((medicine_import_price*(medicine_retail_sale_profit)/100+1))/medicine_conversion_rate)" +
+            " AS retailPrice FROM medicine"
             , nativeQuery = true)
     List<MedicineSale> getListMedicineSale();
 

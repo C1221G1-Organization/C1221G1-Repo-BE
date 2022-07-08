@@ -129,14 +129,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '1' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -146,14 +146,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '2' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -163,14 +163,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '3' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -180,14 +180,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '4' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -197,14 +197,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '5' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -214,14 +214,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '6' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -231,14 +231,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '7' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -248,14 +248,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '8' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -265,14 +265,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '9' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -282,14 +282,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '10' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -299,14 +299,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '11' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -316,14 +316,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '12' month,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_retail_sale_profit),\n" +
+            "                        *(m.medicine_retail_sale_profit/100+1)),\n" +
             "                    ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *m.medicine_wholesale_profit)))) revenue,\n" +
+            "                        *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_retail_sale_profit-1),\n" +
+            "                        *((m.medicine_retail_sale_profit)/100),\n" +
             "                    ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "                        *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "                        *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "     from invoice i\n" +
             "              inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "              inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -339,14 +339,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '1' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -357,14 +357,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '2' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -375,14 +375,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '3' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -393,14 +393,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '4' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -411,14 +411,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '5' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -429,14 +429,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '6' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -447,14 +447,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '7' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -465,14 +465,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '8' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -483,14 +483,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '9' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -501,14 +501,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '10' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -519,14 +519,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '11' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -537,14 +537,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '12' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -555,14 +555,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '13' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -573,14 +573,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '14' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -591,14 +591,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '15' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -609,14 +609,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '16' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -627,14 +627,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '17' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -645,14 +645,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '18' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -663,14 +663,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '19' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -681,14 +681,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '20' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -699,14 +699,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '21' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -717,14 +717,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '22' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -735,14 +735,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '23' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -753,14 +753,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '24' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -771,14 +771,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '25' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -789,14 +789,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '26' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -807,14 +807,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '27' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -825,14 +825,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '28' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -843,14 +843,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '29' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -861,14 +861,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '30' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +
@@ -879,14 +879,14 @@ public interface IReportRepository extends JpaRepository<Customer, String> {
     @Query(value = "Select      '31' day,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_retail_sale_profit),\n" +
+            "            *(m.medicine_retail_sale_profit/100+1)),\n" +
             "            ic.invoice_medicine_quantity*((m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *m.medicine_wholesale_profit)))) revenue,\n" +
+            "            *(m.medicine_wholesale_profit/100+1))))) revenue,\n" +
             "            sum((if(i.type_of_invoice_id = 1,\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_retail_sale_profit-1),\n" +
+            "            *((m.medicine_retail_sale_profit)/100),\n" +
             "            ic.invoice_medicine_quantity*(m.medicine_import_price/m.medicine_conversion_rate)\n" +
-            "            *(m.medicine_wholesale_profit-1)))) profit\n" +
+            "            *((m.medicine_wholesale_profit)/100)))) profit\n" +
             "            from invoice i\n" +
             "            inner join invoice_medicine ic on  i.invoice_id = ic.invoice_id\n" +
             "            inner join medicine m on ic.medicine_id = m.medicine_id\n" +

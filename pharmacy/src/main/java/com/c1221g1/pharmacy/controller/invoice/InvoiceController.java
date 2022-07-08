@@ -35,11 +35,17 @@ public class InvoiceController {
     ResponseEntity<Page<IInvoiceDto>> getListInvoice(
             @RequestParam(defaultValue = "") String startDate,
             @RequestParam Optional<String> endDate,
+            @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "1") String typeOfInvoiceId,
             @RequestParam(defaultValue = "invoiceId") String fieldSort) {
         String endDateVal = endDate.orElse(String.valueOf(LocalDate.now()));
-        Pageable pageable = PageRequest.of(0, 5, Sort.by(fieldSort).ascending());
-        Page<IInvoiceDto> invoicePage = this.iInvoiceService.findAllInvoice(startDate, endDateVal, typeOfInvoiceId, pageable);
+        Pageable pageable;
+        if (fieldSort.equals("time")){
+            pageable = PageRequest.of(page, 5, Sort.by("invoiceCreatedDate", "invoiceCreateTime"));
+        } else {
+            pageable = PageRequest.of(page, 5, Sort.by(fieldSort).ascending());
+        }
+        Page<IInvoiceDto> invoicePage = iInvoiceService.findAllInvoice(startDate, endDateVal, typeOfInvoiceId, pageable);
         if (invoicePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
