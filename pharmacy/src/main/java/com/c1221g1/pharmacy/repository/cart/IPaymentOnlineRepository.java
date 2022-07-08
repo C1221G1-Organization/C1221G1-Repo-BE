@@ -24,11 +24,12 @@ public interface IPaymentOnlineRepository extends JpaRepository<PaymentOnline, I
             "       po.payment_id                  AS paymentId,\n" +
             "       c2.customer_name               AS customerName,\n" +
             "       po.note                        AS note,\n" +
-            "       sum(m.medicine_import_price *\n" +
+            "        (sum(m.medicine_import_price *\n" +
             "           (1 + medicine_retail_sale_profit / 100) / m.medicine_conversion_rate\n" +
-            "           * cd.cart_detail_quantity) AS totalPrice\n" +
+            "           * cd.cart_detail_quantity) * (1 - d.discount_value)) AS totalPrice\n" +
             "FROM payment_online po\n" +
             "         JOIN cart c ON po.cart_id = c.cart_id\n" +
+            "          JOIN discount d ON c.discount_id = d.discount_id\n" +
             "         JOIN customer c2 ON c.customer_id = c2.customer_id\n" +
             "         JOIN cart_detail cd ON c.cart_id = cd.cart_id\n" +
             "         JOIN medicine m ON cd.medicine_id = m.medicine_id\n" +
@@ -40,11 +41,12 @@ public interface IPaymentOnlineRepository extends JpaRepository<PaymentOnline, I
                     "       po.payment_id                  AS paymentId,\n" +
                     "       c2.customer_name               AS customerName,\n" +
                     "       po.note                        AS note,\n" +
-                    "       sum(m.medicine_import_price *\n" +
+                    "        (sum(m.medicine_import_price *\n" +
                     "           (1 + medicine_retail_sale_profit / 100) / m.medicine_conversion_rate\n" +
-                    "           * cd.cart_detail_quantity) AS totalPrice\n" +
+                    "           * cd.cart_detail_quantity) * (1 - d.discount_value)) AS totalPrice\n" +
                     "FROM payment_online po\n" +
                     "         JOIN cart c ON po.cart_id = c.cart_id\n" +
+                    "          JOIN discount d ON c.discount_id = d.discount_id\n" +
                     "         JOIN customer c2 ON c.customer_id = c2.customer_id\n" +
                     "         JOIN cart_detail cd ON c.cart_id = cd.cart_id\n" +
                     "         JOIN medicine m ON cd.medicine_id = m.medicine_id\n" +
