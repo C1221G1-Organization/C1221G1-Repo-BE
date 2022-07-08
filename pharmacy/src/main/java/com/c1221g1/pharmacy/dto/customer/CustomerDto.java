@@ -2,6 +2,7 @@ package com.c1221g1.pharmacy.dto.customer;
 
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.entity.user.Users;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -10,14 +11,13 @@ import javax.validation.constraints.*;
 public class CustomerDto {
     private String customerId;
     @NotNull
-    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$")
+    @Pattern(regexp = "^([a-zA-ZxzÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠyỳọầảấờễạằệếộậốứữịỗềểẩớặồợụủỹắẫựỉỏừỷởửỵẳẹẽổẵẻỡ]+)((\\s{1}[a-zA-ZxzÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠyỳọầảấờễạằệếộậốứữịỗềểẩớặồợụủỹắẫựỉỏừỷởửỵẳẹẽổẵẻỡ]+){1,})$")
     private String customerName;
     private String customerBirthday;
     @NotNull
     private Integer customerGender;
 
-    @Size(max = 20)
-    @Size(min = 2)
+    @Size(max = 100)
     private String customerAddress;
 
     @NotNull
@@ -36,7 +36,6 @@ public class CustomerDto {
 
     public CustomerDto() {
     }
-
 
     public Integer getCustomerGender() {
         return customerGender;
