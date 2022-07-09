@@ -24,8 +24,8 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
      */
     @Query(value = "SELECT  medicine_id AS medicineId" +
             ", medicine_name AS medicineName," +
-            "((medicine_import_price + " +
-            "(medicine_import_price*medicine_retail_sale_profit/100))/medicine_conversion_rate) " +
+            " ((medicine_import_price +" +
+            "((medicine_import_price*medicine_retail_sale_profit/100)))/medicine_conversion_rate)" +
             "AS retailPrice FROM medicine"
             , nativeQuery = true)
     List<MedicineSale> getListMedicineSale();
@@ -130,34 +130,35 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
        Time: 21:00 29/06/2022
        Function: Get list 10 medicines best seller,
    */
-    @Query(value =
-            "SELECT medicineId,medicineName,medicinePrice,medicineImage, sum(totalQuantity) AS soldQuantity " +
-                    "FROM " +
-                    "(SELECT m.medicine_id AS medicineId," +
-                    "m.medicine_name AS medicineName," +
-                    "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice," +
-                    "m.medicine_image AS medicineImage," +
-                    "sum(cd.cart_detail_quantity) AS totalQuantity " +
-                    "FROM medicine m\n" +
-                    "         INNER JOIN cart_detail cd ON m.medicine_id = cd.medicine_id " +
-                    "         INNER JOIN cart c ON cd.cart_id = c.cart_id " +
-                    "         INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id " +
-                    "WHERE c.cart_status = 1 " +
-                    "GROUP BY m.medicine_id " +
-                    "UNION " +
-                    "SELECT m.medicine_id AS medicineId," +
-                    "       m.medicine_name AS medicineName," +
-                    "       (m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice," +
-                    "       m.medicine_image AS medicineImage," +
-                    "       sum(im.invoice_medicine_quantity) AS totalQuantity " +
-                    "FROM medicine m\n" +
-                    "         INNER JOIN invoice_medicine im ON m.medicine_id = im.medicine_id " +
-                    "         INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id " +
-                    "GROUP BY m.medicine_id " +
-                    ") AS total " +
-                    "GROUP BY medicineId " +
-                    "ORDER BY soldQuantity DESC " +
-                    "LIMIT 10;",
+    @Query(value ="SELECT medicineId,medicineName,medicinePrice,medicineImage, medicineQuantity, sum(totalQuantity) AS soldQuantity\n" +
+            "                    FROM\n" +
+            "                    (SELECT m.medicine_id AS medicineId,\n" +
+            "                    m.medicine_name AS medicineName,\n" +
+            "                    (m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice,\n" +
+            "                    m.medicine_image AS medicineImage, ms.medicine_quantity as medicineQuantity ,\n" +
+            "                    sum(cd.cart_detail_quantity) AS totalQuantity\n" +
+            "                    FROM medicine m\n" +
+            "                             INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id\n" +
+            "                             INNER JOIN cart_detail cd ON m.medicine_id = cd.medicine_id\n" +
+            "                             INNER JOIN cart c ON cd.cart_id = c.cart_id\n" +
+            "                             INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id\n" +
+            "                    WHERE c.cart_status = 1\n" +
+            "                    GROUP BY m.medicine_id\n" +
+            "                    UNION\n" +
+            "                    SELECT m.medicine_id AS medicineId,\n" +
+            "                           m.medicine_name AS medicineName,\n" +
+            "                           (m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice,\n" +
+            "                           m.medicine_image AS medicineImage, ms.medicine_quantity as medicineQuantity ,\n" +
+            "                           sum(im.invoice_medicine_quantity) AS totalQuantity\n" +
+            "                    FROM medicine m\n" +
+            "                             INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id\n" +
+            "                             INNER JOIN invoice_medicine im ON m.medicine_id = im.medicine_id\n" +
+            "                             INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id\n" +
+            "                    GROUP BY m.medicine_id\n" +
+            "                    ) AS total\n" +
+            "                    GROUP BY medicineId\n" +
+            "                    ORDER BY soldQuantity DESC\n" +
+            "                    LIMIT 10",
             nativeQuery = true)
     List<IMedicineDto> getListMedicineBestSeller();
 
@@ -171,9 +172,10 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice,"
                     + "m.medicine_manufacture AS medicineManufacture, "
                     + "m.medicine_image AS medicineImage,"
-                    + "mt.medicine_type_name AS medicineTypeName "
+                    + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                     + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
-                    + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
+                    + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id "
+                    +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                     + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.medicine_type_id = :typeId AND m.flag=1"
                     + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             countQuery =
@@ -181,9 +183,10 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                             + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice,"
                             + "m.medicine_manufacture AS medicineManufacture, "
                             + "m.medicine_image AS medicineImage,"
-                            + "mt.medicine_type_name AS medicineTypeName "
+                            + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                             + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                             + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
+                            +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                             + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.medicine_type_id = :typeId AND m.flag=1"
                             + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             nativeQuery = true)
@@ -199,9 +202,10 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice,"
                     + "m.medicine_manufacture AS medicineManufacture, "
                     + "m.medicine_image AS medicineImage,"
-                    + "mt.medicine_type_name AS medicineTypeName "
+                    + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                     + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                     + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
+                    +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                     + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.flag=1"
                     + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             countQuery =
@@ -209,9 +213,10 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                             + "(m.medicine_import_price * (1+m.medicine_retail_sale_profit/100)/m.medicine_conversion_rate) AS medicinePrice,"
                             + "m.medicine_manufacture AS medicineManufacture, "
                             + "m.medicine_image AS medicineImage,"
-                            + "mt.medicine_type_name AS medicineTypeName "
+                            + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                             + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                             + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
+                            +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                             + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.flag=1"
                             + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             nativeQuery = true)

@@ -4,6 +4,7 @@ public interface IMedicineDto {
     String getMedicineId();
     String getMedicineName();
     Double getMedicinePrice();
+    Integer getMedicineQuantity();
     Integer getSoldQuantity();
     String getMedicineImage();
     String getMedicineTypeName();
