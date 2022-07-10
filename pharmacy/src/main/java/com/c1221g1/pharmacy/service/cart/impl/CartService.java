@@ -1,11 +1,13 @@
 package com.c1221g1.pharmacy.service.cart.impl;
 
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.Discount;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.repository.cart.ICartRepository;
 import com.c1221g1.pharmacy.service.cart.ICartService;
 import com.c1221g1.pharmacy.service.customer.ICustomerService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,6 +80,23 @@ public class CartService implements ICartService {
     @Override
     public Integer countItemInCart(String customerId) {
         return this.iCartRepository.countItemInCart(customerId, false);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: call repository to find customerDto by username.
+     *
+     * @param customerUsername
+     * @return totalItems
+     */
+    @Override
+    public CustomerDtoForCart findCustomerByUsername(String customerUsername) {
+        Customer customer = this.iCustomerService.findCustomerByUsername(customerUsername);
+        CustomerDtoForCart customerDtoForCart = new CustomerDtoForCart();
+        BeanUtils.copyProperties(customer, customerDtoForCart);
+        customerDtoForCart.setCustomerUserName(customer.getCustomerUsername().getUsername());
+        return customerDtoForCart;
     }
 
 }

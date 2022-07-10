@@ -45,8 +45,8 @@ public class ImportInvoiceService implements IImportInvoiceService {
      * @return
      */
     @Override
-    public Page<ImportInvoice> findAllImportInvoice(String startDate, String endDate, String startTime, String endTime, Pageable pageable) {
-        return importInvoiceRepository.findAllImportInvoice(startDate, endDate, startTime, endTime, pageable);
+    public Page<ImportInvoice> findAllImportInvoice(String startDate, String endDate, Pageable pageable) {
+        return importInvoiceRepository.findAllImportInvoice(startDate, endDate, pageable);
     }
 
     /**
