@@ -22,7 +22,7 @@ public class EmployeeDto  {
     private String employeeId;
     @NotNull(message = "Name may not be null")
     @NotEmpty(message = "Name may not be empty")
-    @Pattern(regexp = "^([(A-Z{1}+)][a-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]+)((\\s{1}[(A-Z{1}+)][a-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]+){1,})$", message = "\n" +
+    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
             "Name do not enter special characters\n")
     @Size(max = 50, message = "\n" +
             "Do not exceed 50 characters")
