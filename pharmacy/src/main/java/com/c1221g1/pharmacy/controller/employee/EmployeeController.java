@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.*;
 
-
 @RestController
 @CrossOrigin
 @RequestMapping(value = "api/manager-employee/employees")
@@ -112,7 +111,6 @@ public class EmployeeController {
         }
 
         Map<String, String> errorMap = new HashMap<>();
-        employeeDto.validate(employeeDto, bindingResult);
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors()
                     .forEach(
