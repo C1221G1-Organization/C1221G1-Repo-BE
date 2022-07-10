@@ -37,7 +37,7 @@ public class SendingEmailService implements ISendingEmailService {
 
         Map<String, String> model = new HashMap<>();
         model.put("name", customerMailing.getName());
-        model.put("total", customerMailing.getTotal().toString());
+        model.put("total", String.format("%,.0f",customerMailing.getTotal()));
         model.put("address", customerMailing.getAddress());
         model.put("phone", customerMailing.getPhone());
         model.put("location", "Đội ngũ C1221G1");

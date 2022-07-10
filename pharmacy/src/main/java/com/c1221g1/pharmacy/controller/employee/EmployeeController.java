@@ -82,14 +82,14 @@ public class EmployeeController {
         employee.setFlag(true);
         Roles roles = null;
         if(employee.getPosition().getPositionId() == 2){
-             roles = this.iRoleService.findRole("ROLE_MANAGER");
+             roles = this.iRoleService.findRoleByName("ROLE_MANAGER");
         }else if(employee.getPosition().getPositionId() == 1) {
-            roles = this.iRoleService.findRole("ROLE_EMPLOYEE");
+            roles = this.iRoleService.findRoleByName("ROLE_EMPLOYEE");
         }
         UserRole userRole = new UserRole();
         userRole.setUsers(users);
         userRole.setRoles(roles);
-        this.iUserRoleService.save(userRole);
+        this.iUserRoleService.saveUserRole(userRole);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -128,14 +128,14 @@ public class EmployeeController {
         BeanUtils.copyProperties(employeeDto, employee);
         Roles roles = null;
         if(employee.getPosition().getPositionId() == 2){
-            roles = this.iRoleService.findRole("ROLE_MANAGER");
+            roles = this.iRoleService.findRoleByName("ROLE_MANAGER");
         }else if(employee.getPosition().getPositionId() == 1) {
-            roles = this.iRoleService.findRole("ROLE_EMPLOYEE");
+            roles = this.iRoleService.findRoleByName("ROLE_EMPLOYEE");
         }
         UserRole userRole = this.iUserRoleService.findUserRole(users.getUsername());
         userRole.setUsers(users);
         userRole.setRoles(roles);
-        this.iUserRoleService.save(userRole);
+        this.iUserRoleService.saveUserRole(userRole);
         this.iEmployeeService.saveEmployee(employee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
