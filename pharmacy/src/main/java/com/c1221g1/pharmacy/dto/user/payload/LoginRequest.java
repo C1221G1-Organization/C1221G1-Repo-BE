@@ -51,8 +51,9 @@ public class LoginRequest implements Validator {
             errors.rejectValue(PASSWORD,"","Mật khẩu chứa kí tự trống.");
         }else if(loginRequest.getPassword().length()>50 || loginRequest.getPassword().length()<6){
             errors.rejectValue(PASSWORD,"","Độ dài mật khẩu phải từ 6 đến 50 kí tự.");
-        }else if(!loginRequest.getPassword().matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,50})")){
-            errors.rejectValue(PASSWORD,"","Mật khẩu phải có ít nhất 1 chữ số,chữ thường,chữ hoa và kí tự đặc biệt.");
         }
+//        else if(!loginRequest.getPassword().matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,50})")){
+//            errors.rejectValue(PASSWORD,"","Mật khẩu phải có ít nhất 1 chữ số,chữ thường,chữ hoa và kí tự đặc biệt.");
+//        }
     }
 }

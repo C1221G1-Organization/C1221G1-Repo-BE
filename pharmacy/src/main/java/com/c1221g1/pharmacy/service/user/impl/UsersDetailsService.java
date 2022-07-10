@@ -38,4 +38,8 @@ public class UsersDetailsService implements UserDetailsService {
                 true,true,true,true,
                 authorities);
     }
+
+    public boolean checkUsers(Users users){
+        return this.iUsersRepository.check(users);
+    }
 }

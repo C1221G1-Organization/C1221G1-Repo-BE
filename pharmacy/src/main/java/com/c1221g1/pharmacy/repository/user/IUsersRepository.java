@@ -45,6 +45,9 @@ public interface IUsersRepository extends JpaRepository<Users,String> {
      * Time 12:00 30/06/2022
      * Function: use to get User by username
      */
-    @Query("SELECT u FROM Users u WHERE u.username = :username")
+    @Query( value = "SELECT * FROM users u WHERE u.username = :username",nativeQuery=true)
     Users getUserByUsername(@Param("username") String username);
+
+    @Query()
+    boolean check(Users users);
 }

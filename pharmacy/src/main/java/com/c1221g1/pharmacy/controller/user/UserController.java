@@ -127,8 +127,8 @@ public class UserController {
             Roles roles = this.iRoleService.findRoleByName("ROLE_USER");
             if(roles == null){
                 roles = new Roles("ROLE_USER");
+                this.iRoleService.saveRole(roles);
             }
-            this.iRoleService.saveRole(roles);
             UserRole userRole = new UserRole();
             userRole.setUsers(newUser);
             userRole.setRoles(roles);
