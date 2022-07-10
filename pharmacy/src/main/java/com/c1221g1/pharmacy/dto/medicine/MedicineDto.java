@@ -15,7 +15,6 @@ public class MedicineDto {
     private String medicineName;
 
     @NotEmpty
-    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineActiveIngredients;
     @NotNull
     @Positive
@@ -45,16 +44,12 @@ public class MedicineDto {
     private Integer medicineConversionRate;
 
     @NotEmpty
-    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineManufacture;
     @NotEmpty
-    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineUsage;
     @NotEmpty
-    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineInstruction;
     @NotEmpty
-    @Pattern(regexp = VieRegex.VN_REGEX)
     private String medicineAgeApproved;
     private String medicineImage;
     private String medicineDescription;
@@ -73,17 +68,17 @@ public class MedicineDto {
 
     public MedicineDto(String medicineId,
                        @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineName,
-                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineActiveIngredients,
+                       @NotEmpty String medicineActiveIngredients,
                        @NotNull @Positive Double medicineImportPrice,
                        @NotNull @Positive @Max(100) Double medicineDiscount,
                        @NotNull @Positive Double medicineWholesaleProfit,
                        @NotNull @Positive Double medicineRetailSaleProfit,
                        @NotNull @Positive @Max(100) Double medicineTax,
                        @NotNull @Positive @Max(100) Integer medicineConversionRate,
-                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineManufacture,
-                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineUsage,
-                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineInstruction,
-                       @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineAgeApproved,
+                       @NotEmpty String medicineManufacture,
+                       @NotEmpty String medicineUsage,
+                       @NotEmpty String medicineInstruction,
+                       @NotEmpty String medicineAgeApproved,
                        String medicineImage,
                        String medicineDescription,
                        boolean flag,

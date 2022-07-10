@@ -7,6 +7,6 @@ public interface Revenue {
     String getInvoiceId();
     String getCreatedDay();
     String getEmployeeId();
-    String getTotal();
-    String getProfit();
+    Double getTotal();
+    Double getProfit();
 }

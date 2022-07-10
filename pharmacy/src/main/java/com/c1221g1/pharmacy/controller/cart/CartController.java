@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@CrossOrigin(value = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/api/carts")
 public class CartController {
     @Autowired
@@ -130,7 +130,7 @@ public class CartController {
     /**
      * Created by: KhoaPV
      * Date created: 4/7/2022
-     * function: check cart and details send from client, and return to payment pay if cart valid (For user non-login)
+     * function: check cart and details send from client, and return to payment pay if cart valid (cart save at localstorage)
      */
     @PostMapping("")
     public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@Validated @RequestBody CartAndDetailDto cartAndDetailDto,
@@ -153,7 +153,7 @@ public class CartController {
     /**
      * Created by: KhoaPV
      * Date created: 4/7/2022
-     * function: save cart and detail after customer pay with paypal (For user non-login)
+     * function: save cart and detail after customer pay with paypal (cart save at localstorage)
      */
     @PostMapping("/saveCart")
     public ResponseEntity<HttpStatus> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
@@ -187,6 +187,7 @@ public class CartController {
                     Long.valueOf(cartDetail.getCartDetailQuantity()), 0);
             System.out.println("1");
         }
+        total = total * (1 - cart.getDiscount().getDiscountValue());
 
         PaymentOnline paymentOnline = new PaymentOnline();
         paymentOnline.setCart(cart);

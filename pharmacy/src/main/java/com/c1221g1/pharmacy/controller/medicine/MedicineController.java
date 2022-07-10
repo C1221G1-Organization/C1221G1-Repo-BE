@@ -307,7 +307,7 @@ public class MedicineController {
     @GetMapping("")
     public ResponseEntity<Page<IMedicineDto>> getAllMedicineAndSearch(@RequestParam(defaultValue = "0") Integer
                                                                               page,
-                                                                      @RequestParam(defaultValue = "5") Integer pageSize,
+                                                                      @RequestParam(defaultValue = "10") Integer pageSize,
                                                                       @RequestParam Optional<String> sort,
                                                                       @RequestParam Optional<String> name,
                                                                       @RequestParam Optional<Integer> typeId) {

@@ -76,8 +76,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/manager-position**",
                         "/api/carts/**",
                         "/api/manager-medicine/**",
-                        "/api/manager-security/users/sign-in-facebook"
-                        ,"/**"
+                        "/api/manager-security/users/sign-in-facebook",
+                        "/**"
                 )
                 .permitAll();
 //                .antMatchers("/api/manager-customer/customers**", "/api/manager-prescription/**",
