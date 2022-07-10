@@ -16,4 +16,9 @@ public class RoleService implements IRoleService {
         return this.iRoleRepository.findRolesByRoleName(roleUser);
 
     }
+
+    @Override
+    public void saveRole(Roles roles) {
+        this.iRoleRepository.save(roles);
+    }
 }
