@@ -1,6 +1,6 @@
 package com.c1221g1.pharmacy.service.customer.impl;
 
-
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.repository.customer.ICustomerRepository;
 import com.c1221g1.pharmacy.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,6 @@ public class CustomerService implements ICustomerService {
     public Customer getRetailCustomer() {
         return this.iCustomerRepository.getRetailCustomer();
     }
-
 
     /**
      * create by TinBQ
@@ -78,7 +77,6 @@ public class CustomerService implements ICustomerService {
                 , customer.getCustomerType().getCustomerTypeId(), customer.getCustomerId());
     }
 
-
     /**
      * Create by TrinhNN
      * Time : 20:21 29/06/2022
@@ -87,6 +85,19 @@ public class CustomerService implements ICustomerService {
     @Override
     public List<Customer> findByCustomerType() {
         return iCustomerRepository.getCustomerList();
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: call repository to find customerDto by username.
+     *
+     * @param customerUsername
+     * @return totalItems
+     */
+    @Override
+    public Customer findCustomerByUsername(String customerUsername) {
+        return this.iCustomerRepository.findCustomerByUsername(customerUsername);
     }
 
 }

@@ -47,6 +47,11 @@ public class LoginRequest implements Validator {
     public void validate(Object target, Errors errors) {
         LoginRequest loginRequest = (LoginRequest) target;
         final String PASSWORD = "password";
+        final String USERNAME = "username";
+        if(loginRequest.getUsername()==null){
+            errors.rejectValue(USERNAME,"","Không được bỏ trống.");
+        }
+
         if(loginRequest.getPassword().contains(" ")){
             errors.rejectValue(PASSWORD,"","Mật khẩu chứa kí tự trống.");
         }else if(loginRequest.getPassword().length()>50 || loginRequest.getPassword().length()<6){

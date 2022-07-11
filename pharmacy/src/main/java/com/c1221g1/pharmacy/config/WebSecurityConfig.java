@@ -65,26 +65,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * @Time 17:00:00 04/07/2022
          * @Function Config role to access api url
          */
-        http
+        http.cors().and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/api/manager-security/users/sign-in",
-                        "/api/manager-security/users/sign-up",
+                .antMatchers("/api/manager-security/users/sign-in"
+                        , "/api/manager-security/users/sign-up",
+                        "/api/manager-security/users/verify/**",
                         "/api/carts/saveCart",
-                        "/api/manager-online*",
-                        "/api/manager-position/**",
+                        "/api/manager-online**",
+                        "/api/carts/customer/**",
                         "/api/carts/**",
-                        "/api/manager-medicine/**",
                         "/api/manager-security/users/sign-in-facebook"
+                        ,"/api/manager-medicine/**"
                 )
                 .permitAll()
-                .antMatchers("/api/manager-customer/**", "/api/manager-prescription/**"
-                        , "api/manager-sale/**"
-                        , "/api/manager_report**"
+                .antMatchers("/api/manager-prescription/**"
+                        , "/api/manager-sale/invoiceMedicines/getMedicines"
+                        , "/api/manager-report/report/**"
+                        ,"/api/manager-sale/invoices**" // Đã check
+                        ,"/api/manager-customer/customers/**" // ĐÃ check
+                        ,"/api/manager-customer/customerTypes"
+                        ,"/api/manager-position/positions",
+                        "/api/manager-employee/employees/list"
                 )
                 .hasAnyRole("EMPLOYEE", "MANAGER")
-                .antMatchers("/api/manager-account/**", "/api/manager-employee/**")
+                .antMatchers(
+                        "/api/manager-account/account/listAccount",
+                        "/api/manager-account/account/**"
+                        , "/api/manager-employee/employees/**"
+                        )
                 .hasRole("MANAGER")
                 .anyRequest()
                 .authenticated()

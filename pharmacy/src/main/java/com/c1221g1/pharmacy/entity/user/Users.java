@@ -20,6 +20,7 @@ public class Users {
     @Column(columnDefinition = "VARCHAR(30)")
     private String username;
     private String password;
+    private String activeToken;
     @Column(columnDefinition = "BIT")
     private boolean flag;
     /**
@@ -98,5 +99,13 @@ public class Users {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public String getActiveToken() {
+        return activeToken;
+    }
+
+    public void setActiveToken(String activeToken) {
+        this.activeToken = activeToken;
     }
 }

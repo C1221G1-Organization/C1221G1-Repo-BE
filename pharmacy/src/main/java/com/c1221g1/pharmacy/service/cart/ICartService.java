@@ -1,4 +1,6 @@
 package com.c1221g1.pharmacy.service.cart;
+
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 
 public interface ICartService {
@@ -40,4 +42,14 @@ public interface ICartService {
      * @return totalItems
      */
     Integer countItemInCart(String customerId);
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: call repository to find customerDto by username.
+     *
+     * @param customerUsername
+     * @return totalItems
+     */
+    CustomerDtoForCart findCustomerByUsername(String customerUsername);
 }

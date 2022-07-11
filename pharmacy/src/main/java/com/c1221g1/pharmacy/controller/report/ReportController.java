@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("")
-@RequestMapping(value = "/api/manager_report/report")
+@CrossOrigin
+@RequestMapping(value = "/api/manager-report/report")
 @RestController
 public class ReportController {
     @Autowired

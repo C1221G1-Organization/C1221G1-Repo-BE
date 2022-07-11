@@ -116,13 +116,14 @@ public class SignUpRequest implements Validator {
         final String NAME = "name";
         final String EMAIL = "email";
         final String PASSWORD = "password";
-        if (signUpRequest.getName().length() > 50){
-            errors.rejectValue(NAME,"","Tên quá dài.");
-        }else if(signUpRequest.getName().length() < 5){
-            errors.rejectValue(NAME,"","Tên quá ngắn.");
-        }else if(!signUpRequest.getName().matches("^(\\s?[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểễỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]\\s?){5,50}$"))
+//        if (signUpRequest.getName().length() > 50){
+//            errors.rejectValue(NAME,"","Tên quá dài.");
+//        }else if(signUpRequest.getName().length() < 5){
+//            errors.rejectValue(NAME,"","Tên quá ngắn.");
+//        }else
+            if(!signUpRequest.getName().matches("^(\\s?[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỂưạảấầẩẫậắằẳẵặẹẻẽềểễỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]\\s?){5,50}$"))
         {
-            errors.rejectValue(NAME,"","Tên không được các chứa kí tự đặc biệt.");
+            errors.rejectValue(NAME,"","Tên không được các chứa kí tự đặc biệt và có độ dài từ 5-50 kí tự.");
         }
 
         if(signUpRequest.getEmail() == null){
@@ -135,13 +136,15 @@ public class SignUpRequest implements Validator {
 
         if(signUpRequest.getPassword().contains(" ")){
             errors.rejectValue(PASSWORD,"","Có khoảng trống trong mật khẩu của bạn.");
-        }else if(signUpRequest.getPassword().length()>50){
-            errors.rejectValue(PASSWORD,"","Mật khẩu vượt quá độ dài cho phép.");
-        }else if(signUpRequest.getPassword().length()<6){
-            errors.rejectValue(PASSWORD,"","Mật khẩu quá ngắn.");
         }else if(!signUpRequest.getPassword().matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,50})")){
             errors.rejectValue(PASSWORD,"","Mật khẩu phải có ít nhất 1 chữ số,chữ thường,chữ hoa và kí tự đặc biệt.");
         }
+//        else if(signUpRequest.getPassword().length()>50){
+//            errors.rejectValue(PASSWORD,"","Mật khẩu vượt quá độ dài cho phép.");
+//        }else if(signUpRequest.getPassword().length()<6){
+//            errors.rejectValue(PASSWORD,"","Mật khẩu quá ngắn.");
+//        }
+
 
         if(!signUpRequest.getPhone().matches("((09)|(08)|(07))\\d{8}")){
             errors.rejectValue("phone","phone.invalid.pattern","Số điện thoại phải bắt đầu bằng 09 08 hoặc 07 .");

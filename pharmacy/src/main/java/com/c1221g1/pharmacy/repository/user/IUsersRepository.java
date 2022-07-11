@@ -48,6 +48,7 @@ public interface IUsersRepository extends JpaRepository<Users,String> {
     @Query( value = "SELECT * FROM users u WHERE u.username = :username",nativeQuery=true)
     Users getUserByUsername(@Param("username") String username);
 
-    @Query()
-    boolean check(Users users);
+
+    @Query(value="SELECT * FROM users where active_token = :token",nativeQuery=true)
+    Users findUserByToken(@Param("token") String token);
 }

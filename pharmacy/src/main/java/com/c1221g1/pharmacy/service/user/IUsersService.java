@@ -23,4 +23,6 @@ public interface IUsersService {
     void saveUser(Users users);
 
     List<Users> checkEmail(String email);
+
+    Users findUserByToken(String token);
 }
