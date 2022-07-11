@@ -3,6 +3,7 @@ package com.c1221g1.pharmacy.dto.customer;
 import com.c1221g1.pharmacy.entity.customer.CustomerType;
 import com.c1221g1.pharmacy.entity.user.Users;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -11,22 +12,25 @@ import javax.validation.constraints.Size;
 public class CustomerDto {
     private String customerId;
     @NotNull
-    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$")
+    @NotEmpty
+    @Pattern(regexp = "^([a-zA-ZxzÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠyỳọầảấờễạằệếộậốứữịỗềểẩớặồợụủỹắẫựỉỏừỷởửỵẳẹẽổẵẻỡ]+)((\\s{1}[a-zA-ZxzÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠyỳọầảấờễạằệếộậốứữịỗềểẩớặồợụủỹắẫựỉỏừỷởửỵẳẹẽổẵẻỡ]+){1,})$")
     @Size(max = 20)
     @Size(min = 2)
     private String customerName;
+    @NotNull
     private String customerBirthday;
     @NotNull
     private Integer customerGender;
 
     @Size(max = 20)
-    @Size(min = 2)
     private String customerAddress;
 
     @NotNull
-    @Pattern(regexp = "^(0?)(3[2-9]|5[6|9]|7[0|6-9]|8[0-6|9]|9[0-4|6-9])[0-9]{7}$")
+    @NotEmpty
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
     private String customerPhone;
 
+    @NotNull
     @Size(max = 20)
     @Size(min = 2)
     private String customerNote;

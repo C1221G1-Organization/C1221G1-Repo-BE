@@ -4,6 +4,9 @@ import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
+
 public interface ICustomerService {
     /*
      * Created by DaLQA
@@ -19,8 +22,18 @@ public interface ICustomerService {
                                    String customerPhone,
                                    String customerType);
 
+    /**
+     * Create by TinBQ
+     * Time : 20:21 29/06/2022
+     * Function to delete customer by id
+     */
     void deleteCustomer(String id);
 
+    /**
+     * Create by TinBQ
+     * Time : 20:21 29/06/2022
+     * Function find customer by id
+     */
     Customer findById(String id);
 
     /**
@@ -38,12 +51,28 @@ public interface ICustomerService {
      */
     Customer findByCustomerId(String customerId);
 
-
     /**
      * Create by TruongNQ
      * Time : 20:23 29/06/2022
      * Function update customer
      */
     void updateCustomer(Customer customer);
-}
 
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    List<Customer> findByCustomerType();
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: call repository to find customerDto by username.
+     *
+     * @param customerUsername
+     * @return totalItems
+     */
+    Customer findCustomerByUsername(String customerUsername);
+
+}

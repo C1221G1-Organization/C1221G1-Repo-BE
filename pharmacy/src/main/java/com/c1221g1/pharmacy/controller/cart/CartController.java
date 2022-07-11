@@ -1,19 +1,16 @@
 package com.c1221g1.pharmacy.controller.cart;
 
-import com.c1221g1.pharmacy.dto.cart.CartAndDetailDto;
-import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
-import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
-import com.c1221g1.pharmacy.dto.cart.CustomerMailing;
+import com.c1221g1.pharmacy.dto.cart.*;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
-import com.c1221g1.pharmacy.entity.customer.Customer;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.c1221g1.pharmacy.service.cart.ICartDetailService;
 import com.c1221g1.pharmacy.service.cart.ICartService;
 import com.c1221g1.pharmacy.service.cart.IPaymentOnlineService;
 import com.c1221g1.pharmacy.service.cart.ISendingEmailService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
+import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,13 +21,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(value = "http://localhost:4200")
 @RequestMapping("/api/carts")
 public class CartController {
     @Autowired
@@ -45,6 +39,8 @@ public class CartController {
     private IPaymentOnlineService iPaymentOnlineService;
     @Autowired
     private ISendingEmailService iSendingEmailService;
+    @Autowired
+    private IMedicineStorageService iMedicineStorageService;
 
     /**
      * Created by: KhoaPV
@@ -57,15 +53,17 @@ public class CartController {
      * @return
      */
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateItem(@PathVariable String id,
-                                        @Validated @RequestBody CartDetailDto cartDetailDto,
-                                        BindingResult bindingResult) {
+    public ResponseEntity<Map<String, String>> updateItem(@PathVariable String id,
+                                                          @Validated @RequestBody CartDetailDto cartDetailDto,
+                                                          BindingResult bindingResult) {
         Cart cart = this.iCartService.findCartByCustomerId(id);
         if (cart == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         new CartDetailDto().validate(cartDetailDto, bindingResult);
-        this.iCartDetailService.checkExistOfLinksObject(cartDetailDto, bindingResult);
+        List<CartDetailDto> cartDetailDtos = new ArrayList<>();
+        cartDetailDtos.add(cartDetailDto);
+        this.iCartDetailService.checkExistOfLinksObject(cartDetailDtos, bindingResult);
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             bindingResult.getAllErrors().forEach((error) -> {
@@ -90,7 +88,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/details/{id}")
-    public ResponseEntity<?> getListDetail(@PathVariable String id) {
+    public ResponseEntity<List<CartDtoForList>> getListDetail(@PathVariable String id) {
         Cart cart = this.iCartService.findCartByCustomerId(id);
         if (cart == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -112,7 +110,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> findCartByCustomerId(@PathVariable String id) {
+    public ResponseEntity<Map<String, Object>> findCartByCustomerId(@PathVariable String id) {
         Map<String, Object> cartResponse = new HashMap<>();
         Cart cart = this.iCartService.findCartByCustomerId(id);
         if (cart == null) {
@@ -135,9 +133,19 @@ public class CartController {
      * function: check cart and details send from client, and return to payment pay if cart valid (For user non-login)
      */
     @PostMapping("")
-    public ResponseEntity<?> checkCartAndDetailFromClient(@RequestBody CartAndDetailDto cartAndDetailDto) {
+    public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@Validated @RequestBody CartAndDetailDto cartAndDetailDto,
+                                                                         BindingResult bindingResult) throws MethodArgumentNotValidException {
+        System.out.println("in");
 
-        //Validate
+        this.iCartDetailService.checkExistOfLinksObject(cartAndDetailDto.getCartDetail(), bindingResult);
+        if (bindingResult.hasErrors()) {
+            throw new MethodArgumentNotValidException(null, bindingResult);
+        }
+        if (cartAndDetailDto.getCustomer() != null) {
+            CustomerDtoForCart customerDtoForCart =
+                    this.iCartService.findCustomerByUsername(cartAndDetailDto.getCustomer().getCustomerUserName());
+            cartAndDetailDto.setCustomer(customerDtoForCart);
+        }
         System.out.println(cartAndDetailDto);
         return new ResponseEntity<>(cartAndDetailDto, HttpStatus.OK);
     }
@@ -148,25 +156,38 @@ public class CartController {
      * function: save cart and detail after customer pay with paypal (For user non-login)
      */
     @PostMapping("/saveCart")
-    public ResponseEntity<?> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
+    public ResponseEntity<HttpStatus> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
         System.out.println(cartAndDetailDto);
         Cart cart = new Cart();
         if (cartAndDetailDto.getDiscount() != null) {
             cart.setDiscount(cartAndDetailDto.getDiscount());
         }
-        cart = this.iCartService.save(cart, "KH-0001");
+        if (cartAndDetailDto.getCustomer().getCustomerId() == null) {
+            cart = this.iCartService.save(cart, "KH-00001");
+        } else {
+            cart = this.iCartService.save(cart, cartAndDetailDto.getCustomer().getCustomerId());
+        }
         this.iCartService.setCartComplete(cart.getCartId());
         System.out.println(cart);
         Double total = 0.0;
+
         for (CartDetailDto cartDetailDto : cartAndDetailDto.getCartDetail()) {
             total += cartDetailDto.getQuantity() * cartDetailDto.getMedicine().getMedicinePrice();
             CartDetail cartDetail = new CartDetail();
             cartDetail.setCartDetailQuantity(cartDetailDto.getQuantity());
-            Medicine medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId()).get();
-            cartDetail.setMedicine(medicine);
+
+            Optional<Medicine> medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId());
+            if (medicine.isPresent()) {
+                cartDetail.setMedicine(medicine.get());
+            }
             cartDetail.setCart(cart);
             this.iCartDetailService.save(cartDetail);
+            this.iMedicineStorageService.changeMedicineQuantity(
+                    cartDetail.getMedicine().getMedicineId(),
+                    Long.valueOf(cartDetail.getCartDetailQuantity()), 0);
+            System.out.println("1");
         }
+
         PaymentOnline paymentOnline = new PaymentOnline();
         paymentOnline.setCart(cart);
         this.iPaymentOnlineService.save(paymentOnline);
@@ -176,13 +197,27 @@ public class CartController {
         customerMailing.setAddress(cartAndDetailDto.getCustomer().getCustomerAddress());
         customerMailing.setEmail(cartAndDetailDto.getCustomer().getCustomerUserName());
         customerMailing.setTotal(total);
-        try{
+        try {
             this.iSendingEmailService.sendEmail(customerMailing);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         System.out.println("success");
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: find customer using cart by username
+     */
+    @GetMapping("/customer/{customerUsername}")
+    public ResponseEntity<CustomerDtoForCart> findCustomerByUsername(@PathVariable String customerUsername) {
+        CustomerDtoForCart customer = this.iCartService.findCustomerByUsername(customerUsername);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     /**

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 
-@JsonIgnoreProperties({"paymentOnlineList","cartDetailList"})
+@JsonIgnoreProperties({"paymentOnlineList", "cartDetailList"})
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,6 @@ public class Cart {
     private Discount discount;
     @OneToMany(mappedBy = "cart")
     private List<PaymentOnline> paymentOnlineList;
-
 
     @OneToMany(mappedBy = "cart")
     private List<CartDetail> cartDetailList;
@@ -87,5 +86,19 @@ public class Cart {
 
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "cartId=" + cartId +
+                ", cartStatus=" + cartStatus +
+                ", dateCreate='" + dateCreate + '\'' +
+                ", customer=" + customer +
+                ", discount=" + discount +
+                ", paymentOnlineList=" + paymentOnlineList +
+                ", cartDetailList=" + cartDetailList +
+                '}';
     }
 }

@@ -56,8 +56,10 @@ public class Medicine {
     private MedicineConversionUnit medicineConversionUnit;
     @OneToMany(mappedBy = "medicine")
     private List<CartDetail> cartDetailList;
+
     @OneToMany(mappedBy = "medicine")
     private Set<MedicineStorage> medicineStorageSet;
+
 
     public Medicine() {
     }
@@ -229,7 +231,6 @@ public class Medicine {
     public void setCartDetailList(List<CartDetail> cartDetailList) {
         this.cartDetailList = cartDetailList;
     }
-
 
     public Set<MedicineStorage> getMedicineStorageSet() {
         return medicineStorageSet;

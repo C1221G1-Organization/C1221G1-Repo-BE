@@ -1,5 +1,6 @@
 package com.c1221g1.pharmacy.service.cart.impl;
 
+import com.c1221g1.pharmacy.dto.cart.PaymentOnlineForLookup;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
 import com.c1221g1.pharmacy.repository.cart.IPaymentOnlineRepository;
 import com.c1221g1.pharmacy.service.cart.ICartService;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class PaymentOnlineService implements IPaymentOnlineService {
@@ -29,7 +31,7 @@ public class PaymentOnlineService implements IPaymentOnlineService {
      * @return
      */
     @Override
-    public Page<PaymentOnline> findAll(String paymentOnlineIdVal, String customerNameVal, Pageable pageable) {
+    public Page<PaymentOnlineForLookup> findAll(String paymentOnlineIdVal, String customerNameVal, Pageable pageable) {
         if (!paymentOnlineIdVal.equals("")) {
             return this.iPaymentOnlineRepository.findPaymentOnlineByIdAndCustomerName(paymentOnlineIdVal, customerNameVal, pageable);
         } else {
@@ -43,11 +45,15 @@ public class PaymentOnlineService implements IPaymentOnlineService {
      * function: Save payment information in database
      * (using save(Entity) of spring data jpa because payment online Id have custom GenericGenerator (String and number)
      * and set cart status is completed.
+     *
      * @param paymentOnline
      */
     @Override
     public void save(PaymentOnline paymentOnline) {
-        paymentOnline.setTimeCreate(LocalDateTime.now().toString());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formatDateTime = now.format(format);
+        paymentOnline.setTimeCreate(formatDateTime);
         this.iPaymentOnlineRepository.save(paymentOnline);
         this.iCartService.setCartComplete(paymentOnline.getCart().getCartId());
         //sending email for customer
