@@ -40,7 +40,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -65,7 +65,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -90,7 +90,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -115,7 +115,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -140,7 +140,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -165,7 +165,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -190,7 +190,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -215,7 +215,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -240,7 +240,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -265,7 +265,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -290,7 +290,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -315,7 +315,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -340,7 +340,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -365,7 +365,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -390,7 +390,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -415,7 +415,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -441,7 +441,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -466,7 +466,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -491,7 +491,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -516,7 +516,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -541,7 +541,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -566,7 +566,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -616,7 +616,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -641,7 +641,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -666,7 +666,7 @@ public class PrescriptionRestController_createPrescription {
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/api/manager-prescription/prescriptions/create")
+                        .post("/api/manager-prescription/prescriptions")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

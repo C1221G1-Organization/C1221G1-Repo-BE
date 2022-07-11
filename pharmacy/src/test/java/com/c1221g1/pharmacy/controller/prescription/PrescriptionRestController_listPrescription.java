@@ -17,65 +17,37 @@ public class PrescriptionRestController_listPrescription {
     @Autowired
     private MockMvc mockMvc;
 
-<<<<<<< HEAD
     /**
      * HienTLD
      * JUnit trường hợp danh sách trả về size = 0
      * 16:50 30/06/2022
      */
-=======
-
-     // trường hợp danh sách trả về size = 0
->>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229
     @Test
     public void getListPrescription_5() throws Exception {
 
-        this.mockMvc.perform(
-<<<<<<< HEAD
-                        MockMvcRequestBuilders
-                                .get("/api/manager-prescription/prescriptions/"))
-=======
-                MockMvcRequestBuilders
-                        .get("/api/manager-prescription/prescriptions/"))
->>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/manager-prescription/prescriptions?page=3"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
 
-<<<<<<< HEAD
     /**
      * HienTLD
      * JUnit trường hợp danh sách trả về size > 0
      * 17:13 30/06/2022
      */
-=======
-
-     // JUnit trường hợp danh sách trả về size > 0
->>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229
     @Test
     public void getListPrescription_6() throws Exception {
-
-        this.mockMvc.perform(
-<<<<<<< HEAD
-                        MockMvcRequestBuilders
-                                .get("/api/manager-prescription/prescriptions/"))
-=======
-                MockMvcRequestBuilders
-                        .get("/api/manager-prescription/prescriptions/"))
->>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/manager-prescription/prescriptions"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$.totalPages").value(3))
+                .andExpect(jsonPath("$.totalPages").value(2))
                 .andExpect(jsonPath("$.totalElements").value(9))
-                .andExpect(jsonPath("$.content[2].prescriptionName").value("Viêm họng TE"))
-                .andExpect(jsonPath("$.content[2].prescriptionSymptom").value("Đau họng, ho"))
+                .andExpect(jsonPath("$.content[2].prescriptionName").value("Cảm cúm TE"))
+                .andExpect(jsonPath("$.content[2].prescriptionSymptom").value("Sốt, đau đầu, sổ mũi."))
                 .andExpect(jsonPath("$.content[2].prescriptionTargetUser").value("Trẻ em"))
-                .andExpect(jsonPath("$.content[2].prescriptionNote").value("Cấm trẻ sơ sinh ..."))
+                .andExpect(jsonPath("$.content[2].prescriptionNote").value("Cấm trẻ sơ sinh."))
                 .andExpect(jsonPath("$.content[2].prescriptionNumberOfDays").value(3))
                 .andExpect(jsonPath("$.content[2].flag").value(true));
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229

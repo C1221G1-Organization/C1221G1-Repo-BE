@@ -38,7 +38,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -59,7 +59,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -79,7 +79,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -100,7 +100,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -121,7 +121,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -142,7 +142,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Người lớn");
         prescriptionDto.setPrescriptionNote("Cấm trẻ em dưới 10 tuổi ...");
         prescriptionDto.setPrescriptionNumberOfDays(7);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is2xxSuccessful());
@@ -163,7 +163,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -184,7 +184,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -204,7 +204,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -225,7 +225,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -246,7 +246,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -266,7 +266,7 @@ public class PrescriptionRestController_editPrescription {
 //        prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -287,7 +287,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -307,7 +307,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ5342%#$@");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -328,7 +328,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("a");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -349,7 +349,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -370,7 +370,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
 //        prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -391,7 +391,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -411,7 +411,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm%#$@#%");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -432,7 +432,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("a");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -453,7 +453,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         prescriptionDto.setPrescriptionNumberOfDays(4);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -473,7 +473,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
 //        prescriptionDto.setPrescriptionNumberOfDays(0);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -514,7 +514,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(Integer.parseInt("ad"));
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -535,7 +535,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(0);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
@@ -556,7 +556,7 @@ public class PrescriptionRestController_editPrescription {
         prescriptionDto.setPrescriptionTargetUser("Trẻ em");
         prescriptionDto.setPrescriptionNote("Cấm trẻ sơ sinh ...");
         prescriptionDto.setPrescriptionNumberOfDays(366);
-        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/edit/{id}", "DT-00009")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/manager-prescription/prescriptions/{id}", "DT-00009")
                         .content(this.objectMapper.writeValueAsString(prescriptionDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print()).andExpect(status().is4xxClientError());
