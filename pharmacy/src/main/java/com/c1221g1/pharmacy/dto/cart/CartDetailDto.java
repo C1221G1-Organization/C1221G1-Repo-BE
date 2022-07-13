@@ -42,6 +42,5 @@ public class CartDetailDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         CartDetailDto cartDetailDto = (CartDetailDto) target;
-
     }
 }

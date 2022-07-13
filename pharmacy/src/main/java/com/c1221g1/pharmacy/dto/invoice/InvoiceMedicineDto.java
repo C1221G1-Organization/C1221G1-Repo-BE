@@ -3,7 +3,7 @@ package com.c1221g1.pharmacy.dto.invoice;
 /*
  * Created by DaLQA
  * Time: 7:30 PM 29/06/2022
- * Function: remove properties
+ * Function:  InvoiceMedicineDto
  * */
 
 public class InvoiceMedicineDto {

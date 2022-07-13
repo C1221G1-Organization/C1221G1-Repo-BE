@@ -6,6 +6,15 @@ public class CustomerDtoForCart {
     private String customerUserName;
     private String customerPhone;
     private String customerAddress;
+    private String uuidChat;
+
+    public String getUuidChat() {
+        return uuidChat;
+    }
+
+    public void setUuidChat(String uuidChat) {
+        this.uuidChat = uuidChat;
+    }
 
     public CustomerDtoForCart() {
     }

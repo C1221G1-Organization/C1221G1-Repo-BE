@@ -1,6 +1,7 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.cart;
 
 import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
+import com.c1221g1.pharmacy.dto.cart.MedicineDtoForCart;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,13 +38,9 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(null);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
-
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -66,13 +63,10 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(-1);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
 
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -95,13 +89,10 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(3000);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
 
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -123,10 +114,7 @@ public class CartController_updateItem {
     public void updateItem_medicine_19() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
-        Medicine medicine = null;
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
+        MedicineDtoForCart medicine = null;
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -148,12 +136,9 @@ public class CartController_updateItem {
     public void updateItem_medicine_20() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("");
         cartDetailDto.setMedicine(medicine);
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -176,12 +161,9 @@ public class CartController_updateItem {
     public void updateItem_medicine_21() throws Exception {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
-        Medicine medicine = new Medicine();
-        medicine.setMedicineId("ABD-0001");
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
+        medicine.setMedicineId("ABC-0001");
         cartDetailDto.setMedicine(medicine);
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -205,7 +187,7 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
 
@@ -232,13 +214,9 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
-
-        Cart cart = new Cart();
-        cart.setCartId(-1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -261,13 +239,10 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
 
-        Cart cart = new Cart();
-        cart.setCartId(500);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders
@@ -290,13 +265,10 @@ public class CartController_updateItem {
         CartDetailDto cartDetailDto = new CartDetailDto();
         cartDetailDto.setQuantity(1);
 
-        Medicine medicine = new Medicine();
+        MedicineDtoForCart medicine = new MedicineDtoForCart();
         medicine.setMedicineId("T-0001");
         cartDetailDto.setMedicine(medicine);
 
-        Cart cart = new Cart();
-        cart.setCartId(1);
-        cartDetailDto.setCart(cart);
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders

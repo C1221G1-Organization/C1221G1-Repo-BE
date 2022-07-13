@@ -4,6 +4,7 @@ import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.UUID;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class Customer {
     private String customerAddress;
     private String customerPhone;
     private String customerNote;
+    private String uuidChat = UUID.randomUUID().toString();
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @OneToOne
@@ -40,6 +42,14 @@ public class Customer {
     private List<Invoice> invoices;
 
     public Customer() {
+    }
+
+    public String getUuidChat() {
+        return uuidChat;
+    }
+
+    public void setUuidChat(String uuidChat) {
+        this.uuidChat = uuidChat;
     }
 
     public String getCustomerId() {

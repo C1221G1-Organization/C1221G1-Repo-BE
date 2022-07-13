@@ -292,7 +292,7 @@ public class MedicineController {
     public ResponseEntity<List<MedicineDetailDto>> get5RelativeMedicinesOf(@PathVariable("medicineId") String
                                                                                    medicineId) {
         List<MedicineDetailDto> medicineDetailDtoList = medicineService.get5RelativeMedicinesOf(medicineId);
-        if (medicineDetailDtoList == null) {
+        if (medicineDetailDtoList == null || medicineDetailDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(medicineDetailDtoList, HttpStatus.OK);
