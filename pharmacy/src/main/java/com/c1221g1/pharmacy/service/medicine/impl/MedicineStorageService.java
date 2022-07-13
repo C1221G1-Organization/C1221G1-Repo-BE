@@ -7,6 +7,7 @@ import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -55,7 +56,6 @@ public class MedicineStorageService implements IMedicineStorageService {
 
     public boolean checkExistInMedicineStorage(String medicineId) {
         MedicineStorage medicineStorage = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
-        System.out.println("thuoc"+medicineStorage);
         return medicineStorage != null;
     }
     /**
@@ -90,18 +90,16 @@ public class MedicineStorageService implements IMedicineStorageService {
      * @param medicineId
      */
     @Override
-    public boolean changeMedicineQuantity(String medicineId, Long quantity, int manipulation) {
+    public boolean changeMedicineQuantity(String medicineId, Long quantity, int manipulation)  {
         boolean checkExist = this.checkExistInMedicineStorage(medicineId);
-
+        MedicineStorage invoiceMedicine = this.iMedicineStorageRepository.findMedicineStorageById(medicineId);
         Long medicineQuantity = this.checkMedicineQuantity(medicineId);
         switch (manipulation) {
             case 0:
                 if ((!checkExist) || (medicineQuantity < quantity)) {
                     return false;
                 } else {
-                    System.out.println("xuongs"+quantity);
                     medicineQuantity -= quantity;
-                    System.out.println(medicineQuantity + "thuôc trư");
                     this.iMedicineStorageRepository.changeMedicineQuantity(medicineId, medicineQuantity);
                     return true;
                 }

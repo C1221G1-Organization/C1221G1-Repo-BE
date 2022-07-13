@@ -95,9 +95,18 @@ public class InvoiceMedicineController {
         try {
             boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveWholesaleInvoiceMedicine(invoiceDto);
             return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
-            Map<String, String> errors = new HashMap<>();
-            errors.put("errors", "số lượng trong kho không đủ");
+        }
+        catch (NullPointerException ex) {
+            Map<String,String> errors = new HashMap<>();
+            errors.put("errors", ex.getMessage());
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+        catch (Exception e){
+            Map<String,String> errors = new HashMap<>();
+            String messageErr = e.getMessage();
+            messageErr = messageErr.replace("[","");
+            messageErr = messageErr.replace("]","");
+            errors.put("errors","Số lượng " + messageErr + " trong kho không đủ" );
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }

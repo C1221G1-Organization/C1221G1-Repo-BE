@@ -12,7 +12,7 @@ public interface IMedicineStorageService {
 
     Long checkMedicineQuantity(String medicineId);
 
-    boolean changeMedicineQuantity(String medicineId, Long quantity, int manipulation);
+    boolean changeMedicineQuantity(String medicineId, Long quantity, int manipulation) ;
     /*
      * Created by DaLQA
      * Time: 11:49 AM 30/06/2022
