@@ -1,7 +1,11 @@
 package com.c1221g1.pharmacy.dto.invoice;
 
 import java.util.List;
-
+/*
+ * Created by DaLQA
+ * Time: 7:30 PM 29/06/2022
+ * Function:  InvoiceDto
+ * */
 public class InvoiceDto {
     private String invoiceId;
     private String customerId;

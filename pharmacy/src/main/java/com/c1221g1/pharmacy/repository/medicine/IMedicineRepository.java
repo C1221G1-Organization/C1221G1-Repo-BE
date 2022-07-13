@@ -129,7 +129,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
     Time: 21:00 29/06/2022
     Function: Get list 10 medicines best seller,
 */
-    @Query(value ="SELECT medicineId,medicineName,medicinePrice,medicineImage, medicineQuantity, sum(totalQuantity) AS soldQuantity\n" +
+    @Query(value = "SELECT medicineId,medicineName,medicinePrice,medicineImage, medicineQuantity, sum(totalQuantity) AS soldQuantity\n" +
             "                    FROM\n" +
             "                    (SELECT m.medicine_id AS medicineId,\n" +
             "                    m.medicine_name AS medicineName,\n" +
@@ -174,7 +174,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                     + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                     + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id "
-                    +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
+                    + " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                     + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.medicine_type_id = :typeId AND m.flag=1"
                     + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             countQuery =
@@ -185,7 +185,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                             + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                             + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                             + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
-                            +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
+                            + " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                             + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.medicine_type_id = :typeId AND m.flag=1"
                             + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             nativeQuery = true)
@@ -204,7 +204,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                     + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                     + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                     + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
-                    +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
+                    + " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                     + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.flag=1"
                     + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             countQuery =
@@ -215,7 +215,7 @@ public interface IMedicineRepository extends JpaRepository<Medicine, String> {
                             + "mt.medicine_type_name AS medicineTypeName, ms.medicine_quantity as medicineQuantity "
                             + "FROM medicine m INNER JOIN medicine_origin mo ON m.medicine_origin_id = mo.medicine_origin_id "
                             + "INNER JOIN medicine_type mt ON m.medicine_type_id = mt.medicine_type_id"
-                            +  " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
+                            + " INNER JOIN medicine_storage ms ON m.medicine_id = ms.medicine_id"
                             + " WHERE m.medicine_name LIKE concat('%',:name,'%') AND m.flag=1"
                             + " ORDER BY CASE WHEN :sort = 'priceDesc' THEN medicinePrice END DESC, CASE WHEN :sort = 'priceAsc' THEN medicinePrice END ASC, CASE WHEN :sort = 'idDesc' THEN medicineId END DESC",
             nativeQuery = true)

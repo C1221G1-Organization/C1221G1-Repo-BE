@@ -52,7 +52,6 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
     public boolean saveInvoiceMedicine(InvoiceDto invoiceDto) throws Exception {
         List<InvoiceMedicineDto> invoiceMedicineList = invoiceDto.getInvoiceMedicineList();
         List<String> listErrorQuantity = new ArrayList<>();
-        int i = 0;
         for (InvoiceMedicineDto item : invoiceMedicineList) {
             MedicineStorage medicineStorage = this.iMedicineStorageService
                     .getStorageByIdMedicine(item.getMedicineId()).orElse(null);
@@ -66,8 +65,8 @@ public class InvoiceMedicineService implements IInvoiceMedicineService {
             throw new Exception(listErrorQuantity.toString());
         }
         invoiceDto.setTypeOfInvoiceId(1);
-        Employee employee = this.iEmployeeRepository.findById(invoiceDto.getEmployeeId()).orElse(null);
-        Customer customer = this.iCustomerRepository.findById(invoiceDto.getCustomerId()).orElse(null);
+        Employee employee = this.iEmployeeRepository.findEmployeeById(invoiceDto.getEmployeeId());
+        Customer customer = this.iCustomerRepository.findByCustomerId(invoiceDto.getCustomerId());
         TypeOfInvoice typeOfInvoice = new TypeOfInvoice();
         typeOfInvoice.setTypeOfInvoiceId(1);
         Invoice invoice = new Invoice();

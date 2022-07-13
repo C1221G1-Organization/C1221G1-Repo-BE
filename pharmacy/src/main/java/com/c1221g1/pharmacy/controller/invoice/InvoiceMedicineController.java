@@ -36,51 +36,47 @@ public class InvoiceMedicineController {
 
     @Autowired
     private IMedicineStorageService iMedicineStorageService;
+
     /*
      * Created by DaLQA
      * Time: 00:50 PM 30/06/2022
      * Function: function createRetailInvoice
      * */
     @PostMapping("/createRetail")
-    public ResponseEntity<Map<String, String>> createRetailInvoice(@Validated @RequestBody
-                                                                           InvoiceDto invoiceDto,
+    public ResponseEntity<Map<String, String>> createRetailInvoice(@Validated @RequestBody InvoiceDto invoiceDto,
                                                                    BindingResult bindingResult) throws Exception {
+        Map<String, String> errors = new HashMap<>();
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getFieldError());
-            Map<String, String> errorMap = bindingResult.getFieldErrors()
+            errors = bindingResult.getFieldErrors()
                     .stream().collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
-            return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
         try {
             boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto);
             return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
-        } catch (NullPointerException ex) {
-            Map<String,String> errors = new HashMap<>();
-            errors.put("errors", ex.getMessage());
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-        }
-        catch (Exception e){
-            Map<String,String> errors = new HashMap<>();
+        } catch (Exception e) {
             String messageErr = e.getMessage();
-            messageErr = messageErr.replace("[","");
-            messageErr = messageErr.replace("]","");
-            errors.put("errors","Số lượng " + messageErr + " trong kho không đủ" );
+            messageErr = messageErr.replace("[", "");
+            messageErr = messageErr.replace("]", "");
+            errors.put("errors", "Số lượng " + messageErr + " trong kho không đủ");
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }
+
     /*
      * Created by DaLQA
      * Time: 10:30 PM 3/07/2022
      * Function: function getListMedicine
      * */
     @GetMapping("/getMedicines")
-    public ResponseEntity<List<MedicineSale>> getListMedicine(){
+    public ResponseEntity<List<MedicineSale>> getListMedicine() {
         List<MedicineSale> medicineSaleDtoList = this.iMedicineService.getListMedicineSale();
-        if(medicineSaleDtoList.isEmpty()){
+        if (medicineSaleDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(medicineSaleDtoList, HttpStatus.OK);
     }
+
     /*
      * Created by TrinhNN
      * Function: function createWholesaleInvoice
@@ -124,18 +120,20 @@ public class InvoiceMedicineController {
         boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveRefundInvoiceMedicine(invoiceDto);
         return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> findInvoiceByInvoiceId(@PathVariable String id) {
         List<InvoiceMedicine> invoiceMedicines = iInvoiceMedicineService.findByInvoiceId(id);
-        if(invoiceMedicines == null){
+        if (invoiceMedicines == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(invoiceMedicines,HttpStatus.OK);
+        return new ResponseEntity<>(invoiceMedicines, HttpStatus.OK);
     }
+
     @GetMapping("/medicine")
-    public ResponseEntity<List<MedicineStorage>> getAllMedicine(){
+    public ResponseEntity<List<MedicineStorage>> getAllMedicine() {
         List<MedicineStorage> medicineStorageList = iMedicineStorageService.getAll();
-        if(medicineStorageList == null){
+        if (medicineStorageList == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicineStorageList, HttpStatus.OK);
