@@ -27,7 +27,7 @@ public class PaymentOnlineController_getPaymentOnline {
     @Test
     public void getPaymentOnline_paymentOnlineId_7() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/payment-online?paymentOnlineId=null"))
+                .get("/api/payment-online?paymentOnlineId="))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
