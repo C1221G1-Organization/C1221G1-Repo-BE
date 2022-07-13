@@ -7,4 +7,5 @@ public interface IMedicineDto {
     Integer getSoldQuantity();
     String getMedicineImage();
     String getMedicineTypeName();
+    Integer getMedicineQuantity();
 }

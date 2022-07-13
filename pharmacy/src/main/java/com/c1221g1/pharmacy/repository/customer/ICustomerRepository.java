@@ -1,16 +1,21 @@
 package com.c1221g1.pharmacy.repository.customer;
 
+import com.c1221g1.pharmacy.dto.cart.CustomerDtoForCart;
 import com.c1221g1.pharmacy.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerRepository extends JpaRepository<Customer, String> {
@@ -20,12 +25,12 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      * Time: 7:30 PM 29/06/2022
      * Function: function getRetailCustomer
      * */
-    @Query(value ="select customer_id, customer_address, customer_birthday," +
+    @Query(value = "SELECT customer_id, customer_address, customer_birthday," +
             "customer_gender, customer_name, customer_note,customer_phone, " +
             "flag, customer_type_id, customer_username " +
-            "from customer " +
-            "order by customer.customer_id " +
-            "asc limit 1",
+            "FROM customer " +
+            "ORDER BY customer.customer_id " +
+            "ASC LIMIT 1",
             nativeQuery = true)
     Customer getRetailCustomer();
 
@@ -43,7 +48,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
             "AND customer_name LIKE:customerName " +
             "AND customer_address LIKE:customerAddress " +
             "AND customer_phone LIKE:customerPhone"
-            ,countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username " +
+            , countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username " +
             "FROM customer " +
             "WHERE flag = 1 " +
             "AND customer_id LIKE :customerId " +
@@ -59,7 +64,6 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
             @Param("customerAddress") String customerAddress,
             @Param("customerPhone") String customerPhone,
             Pageable pageable);
-
 
     /**
      * create by TinBQ
@@ -87,8 +91,8 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      * This method to find id customer in database
      */
 
-    @Query(value = "select customer_id,customer_name,customer_address,customer_birthday,customer_gender,customer_note,customer_phone," +
-            "customer_type_id, flag, customer_username from customer where customer_id = :customerId",
+    @Query(value = "SELECT customer_id,customer_name,customer_address,customer_birthday,customer_gender,customer_note,customer_phone," +
+            "customer_type_id, flag, customer_username FROM customer WHERE customer_id = :customerId",
             nativeQuery = true)
     Customer findByCustomerId(@Param("customerId") String customerId);
 
@@ -99,9 +103,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      */
     @Transactional
     @Modifying
-    @Query(value = "update customer set customer_name = :customer_name,customer_address = :customer_address,customer_birthday = :customer_birthday" +
+    @Query(value = "UPDATE customer SET customer_name = :customer_name,customer_address = :customer_address,customer_birthday = :customer_birthday" +
             ",customer_gender = :customer_gender,customer_note = :customer_note,customer_phone = :customer_phone,customer_type_id = :customer_type_id" +
-            " where customer_id = :customer_id",
+            " WHERE customer_id = :customer_id",
             nativeQuery = true)
     void updateCustomer(@Param("customer_name") String customer_name,
                         @Param("customer_address") String customer_address,
@@ -111,5 +115,27 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
                         @Param("customer_phone") String customer_phone,
                         @Param("customer_type_id") Integer customer_type_id,
                         @Param("customer_id") String customer_id);
-}
 
+
+    /**
+     * Create by TrinhNN
+     * Time : 20:21 29/06/2022
+     * Function get customer by customerType = 2 'khách sỉ'
+     */
+    @Query(value = "SELECT * FROM customer WHERE flag = 1 AND customer_type_id = 2", nativeQuery = true)
+    List<Customer> getCustomerList();
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: finding Customer by username
+     *
+     * @param customerUsername
+
+     * @return customerDto
+     */
+    @Query(value = "SELECT *\n" +
+            "FROM customer\n" +
+            "WHERE customer_username = :username", nativeQuery = true)
+    Customer findCustomerByUsername(@Param("username") String customerUsername);
+}

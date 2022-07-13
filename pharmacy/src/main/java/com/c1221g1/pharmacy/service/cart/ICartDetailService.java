@@ -16,7 +16,7 @@ public interface ICartDetailService {
      * @param cartDetailDto
      * @param bindingResult
      */
-    void checkExistOfLinksObject(CartDetailDto cartDetailDto, BindingResult bindingResult);
+    void checkExistOfLinksObject(List<CartDetailDto> cartDetailDto, BindingResult bindingResult);
 
     /**
      * Created by: KhoaPV

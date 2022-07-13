@@ -1,4 +1,5 @@
 package com.c1221g1.pharmacy.controller.medicine;
+
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDto;
@@ -8,10 +9,8 @@ import com.c1221g1.pharmacy.service.medicine.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -36,6 +35,7 @@ public class MedicineController {
     private IMedicineUnitService medicineUnitService;
     @Autowired
     private IMedicineConversionUnitService medicineConversionUnitService;
+
     /**
      * Created by MyC
      * Time: 23:00 29/06/2022
@@ -43,29 +43,22 @@ public class MedicineController {
      */
 
     @GetMapping("/search")
-    public ResponseEntity<?> findAllMedicine(@PageableDefault(value = 4) Pageable pageable,
-                                             @RequestParam Optional<String> columName,
-                                             @RequestParam Optional<String> condition,
-                                             @RequestParam Optional<String> keyWord
+    public ResponseEntity<List<MedicineLookUpDto>> findAllMedicine(
+                                                                   @RequestParam Optional<String> columName,
+                                                                   @RequestParam Optional<String> condition,
+                                                                   @RequestParam Optional<String> keyWord
     ) {
         String columNameValue = columName.orElse("medicineId");
         String conditionValue = condition.orElse("like");
         String keyWordValue = keyWord.orElse("'%%'");
-        System.out.println(columNameValue);
-        System.out.println(conditionValue);
-        System.out.println(keyWordValue);
         List<MedicineLookUpDto> medicinePage = medicineService.findAllMedicine(columNameValue, conditionValue, keyWordValue);
         if (medicinePage.isEmpty()) {
-            System.out.println(medicinePage);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(medicinePage, HttpStatus.OK);
+
         }
-        final int start = (int) pageable.getOffset();
-        final int end = Math.min((start + pageable.getPageSize()), medicinePage.size());
-        final Page<MedicineLookUpDto> page = new PageImpl<>(medicinePage.subList(start, end), pageable, medicinePage.size());
-        return new ResponseEntity<>(page, HttpStatus.OK);
     }
-
-
 
 
     /**
@@ -240,7 +233,6 @@ public class MedicineController {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         MedicineType medicineType = new MedicineType();
         MedicineOrigin medicineOrigin = new MedicineOrigin();
         MedicineUnit medicineUnit = new MedicineUnit();
@@ -300,7 +292,7 @@ public class MedicineController {
     public ResponseEntity<List<MedicineDetailDto>> get5RelativeMedicinesOf(@PathVariable("medicineId") String
                                                                                    medicineId) {
         List<MedicineDetailDto> medicineDetailDtoList = medicineService.get5RelativeMedicinesOf(medicineId);
-        if (medicineDetailDtoList == null) {
+        if (medicineDetailDtoList == null || medicineDetailDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(medicineDetailDtoList, HttpStatus.OK);
@@ -315,15 +307,13 @@ public class MedicineController {
     @GetMapping("")
     public ResponseEntity<Page<IMedicineDto>> getAllMedicineAndSearch(@RequestParam(defaultValue = "0") Integer
                                                                               page,
-                                                                      @RequestParam(defaultValue = "5") Integer pageSize,
+                                                                      @RequestParam(defaultValue = "10") Integer pageSize,
                                                                       @RequestParam Optional<String> sort,
-                                                                      @RequestParam Optional<String> dir,
                                                                       @RequestParam Optional<String> name,
                                                                       @RequestParam Optional<Integer> typeId) {
         String nameVal = name.orElse("");
         Integer typeIdVal = typeId.orElse(null);
         String sortVal = sort.orElse("idDesc");
-        String dirVal = dir.orElse("");
         Pageable pageable;
         pageable = PageRequest.of(page, pageSize);
         Page<IMedicineDto> medicineDtoPage = medicineService.getListAndSearch(pageable, nameVal, typeIdVal, sortVal);
@@ -346,5 +336,21 @@ public class MedicineController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicineDtoList, HttpStatus.OK);
+    }
+
+    /**
+     * HienTLD
+     * danh sách List<Medicine>
+     * 8:58 06/07/2022
+     */
+    @GetMapping("/list")
+    public ResponseEntity<List<Medicine>> getAllMedicineList(){
+        List<Medicine> medicineList = medicineService.findAllMedicine();
+
+        if (medicineList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(medicineList, HttpStatus.OK);
     }
 }

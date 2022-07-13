@@ -18,12 +18,11 @@ import java.util.List;
   Function:  Validate EmployeeDto
 */
 
-public class EmployeeDto implements Validator {
+public class EmployeeDto  {
     private String employeeId;
     @NotNull(message = "Name may not be null")
     @NotEmpty(message = "Name may not be empty")
-    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
-            "Name do not enter special characters\n")
+    @Pattern(regexp = "^([a-zA-ZxzÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠyỳọầảấờễạằệếộậốứữịỗềểẩớặồợụủỹắẫựỉỏừỷởửỵẳẹẽổẵẻỡ]+)((\\s{1}[a-zA-ZxzÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠyỳọầảấờễạằệếộậốứữịỗềểẩớặồợụủỹắẫựỉỏừỷởửỵẳẹẽổẵẻỡ]+){1,})$")
     @Size(max = 50, message = "\n" +
             "Do not exceed 50 characters")
     @Size(min = 1, message = "\n" +
@@ -49,14 +48,13 @@ public class EmployeeDto implements Validator {
     private String employeeImage;
 
     @NotNull(message = "Address may not be null")
+
     @NotEmpty(message = "Address may not be empty")
-    @Pattern(regexp = "^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ][\\s\\S]*$", message = "\n" +
-            "Do not enter special characters\n")
     private String employeeAddress;
 
     @NotNull(message = "Phone may not be null")
     @NotEmpty(message = "Phone may not be empty")
-    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$",
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|9]|7[0|6-9]|8[0-6|9]|9[0-4|6-9])[0-9]{7}$",
             message = "\n" +
                     "Enter the correct phone number format including 10 numbers")
     private String employeePhone;
@@ -162,16 +160,6 @@ public class EmployeeDto implements Validator {
 
     public void setImportInvoiceList(List<ImportInvoice> importInvoiceList) {
         this.importInvoiceList = importInvoiceList;
-    }
-
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-
     }
 
 }

@@ -1,18 +1,15 @@
 package com.c1221g1.pharmacy.service.medicine;
 
 import com.c1221g1.pharmacy.dto.invoice.MedicineSale;
-import com.c1221g1.pharmacy.entity.medicine.Medicine;
-
-
-import java.util.List;
-import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.dto.medicine.IMedicineDto;
 import com.c1221g1.pharmacy.dto.medicine.MedicineDetailDto;
+import com.c1221g1.pharmacy.dto.medicine.MedicineLookUpDto;
 import com.c1221g1.pharmacy.entity.medicine.Medicine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.Optional;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface IMedicineService {
 
@@ -32,6 +29,8 @@ public interface IMedicineService {
 
     void updateMedicine(Medicine existMedicine);
 
+    List<Medicine> getList();
+
     MedicineDetailDto getMedicineDetailDtoById(String medicineId);
 
     List<MedicineDetailDto> get5RelativeMedicinesOf(String medicineId);
@@ -50,5 +49,11 @@ public interface IMedicineService {
     */
 
     Page<IMedicineDto> getListAndSearch(Pageable pageable, String name, Integer typeId, String sort);
-}
 
+    /**
+     * HienTLD
+     * danh sách List<>
+     * 9:00 06/07/2022
+     */
+    List<Medicine> findAllMedicine();
+}

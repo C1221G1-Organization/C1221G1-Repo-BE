@@ -1,13 +1,17 @@
 package com.c1221g1.pharmacy.entity.customer;
+
 import com.c1221g1.pharmacy.entity.cart.Cart;
+import com.c1221g1.pharmacy.entity.invoice.Invoice;
 import com.c1221g1.pharmacy.entity.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.UUID;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"cartList"})
+@JsonIgnoreProperties({"cartList", "invoices"})
 public class Customer {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")
@@ -23,6 +27,7 @@ public class Customer {
     private String customerAddress;
     private String customerPhone;
     private String customerNote;
+    private String uuidChat = UUID.randomUUID().toString();
     @Column(columnDefinition = "BIT")
     private boolean flag;
     @OneToOne
@@ -33,8 +38,18 @@ public class Customer {
     private CustomerType customerType;
     @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
+    @OneToMany(mappedBy = "customer")
+    private List<Invoice> invoices;
 
     public Customer() {
+    }
+
+    public String getUuidChat() {
+        return uuidChat;
+    }
+
+    public void setUuidChat(String uuidChat) {
+        this.uuidChat = uuidChat;
     }
 
     public String getCustomerId() {
@@ -123,6 +138,14 @@ public class Customer {
 
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
 }
