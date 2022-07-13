@@ -18,11 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 
     @Autowired
     private UsersDetailsService usersDetailService;
@@ -32,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public AuthTokenFilter authTokenFilter;
+
     /**
      * Created by HuuNQ
      * Time 16:00 29/06/2022
@@ -52,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
     /**
      * Created by HuuNQ
      * Time 16:00 29/06/2022
@@ -70,8 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        ,"/api/manager-security/users/sign-up","/api/carts","/api/payment-online","/api/manager-position**",
-                    "/**")
+                        , "/api/manager-security/users/sign-up", "/api/carts", "/api/payment-online", "/api/manager-position**",
+                        "/**")
                 .permitAll();
 //                .antMatchers("/api/manager-cart**")
 //                .hasRole("USER")
@@ -99,14 +99,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    public int computeDurationInMilliseconds(){
-        return (60 * 60 *60 );
+    public int computeDurationInMilliseconds() {
+        return (60 * 60 * 60);
     }
-
 
     private PersistentTokenRepository persistentTokenRepository() {
         return new InMemoryTokenRepositoryImpl();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

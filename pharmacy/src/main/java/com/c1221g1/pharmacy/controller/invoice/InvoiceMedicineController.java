@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * Function: create InvoiceMedicineController and functions
  * */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin()
 @RequestMapping("/api/manager-sale/invoiceMedicines")
 public class InvoiceMedicineController {
     @Autowired
@@ -52,7 +52,7 @@ public class InvoiceMedicineController {
             return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
         try {
-            boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto, bindingResult);
+            boolean checkCreateInvoiceMedicine = this.iInvoiceMedicineService.saveInvoiceMedicine(invoiceDto);
             return new ResponseEntity<>(checkCreateInvoiceMedicine ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
         } catch (NullPointerException ex) {
             Map<String,String> errors = new HashMap<>();
@@ -61,7 +61,10 @@ public class InvoiceMedicineController {
         }
         catch (Exception e){
             Map<String,String> errors = new HashMap<>();
-            errors.put("errors","số lượng " + e.getMessage() + " trong kho không đủ" );
+            String messageErr = e.getMessage();
+            messageErr = messageErr.replace("[","");
+            messageErr = messageErr.replace("]","");
+            errors.put("errors","Số lượng " + messageErr + " trong kho không đủ" );
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }

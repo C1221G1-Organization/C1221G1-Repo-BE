@@ -45,7 +45,7 @@ public class InvoiceService implements IInvoiceService {
      * Function: List and search and sort invoices
      */
     @Override
-    public Page<IInvoiceDto> findAllInvoice(String startDate, String endDate, String startTime, String endTime,
+    public Page<IInvoiceDto> findAllInvoice(String startDate, String endDate,
                                             String typeOfInvoiceId, Pageable pageable) {
         return iInvoiceRepository.findAllInvoice(startDate,endDate,typeOfInvoiceId,pageable);
     }

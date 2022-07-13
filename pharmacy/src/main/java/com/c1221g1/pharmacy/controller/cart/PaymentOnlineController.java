@@ -2,7 +2,9 @@ package com.c1221g1.pharmacy.controller.cart;
 
 import com.c1221g1.pharmacy.dto.cart.PaymentOnlineDto;
 import com.c1221g1.pharmacy.dto.cart.PaymentOnlineForLookup;
+import com.c1221g1.pharmacy.entity.cart.Discount;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
+import com.c1221g1.pharmacy.service.cart.IDiscountService;
 import com.c1221g1.pharmacy.service.cart.IPaymentOnlineService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,13 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/api/payment-online")
 public class PaymentOnlineController {
     @Autowired
     private IPaymentOnlineService iPaymentOnlineService;
+    @Autowired
+    private IDiscountService iDiscountService;
 
     /**
      * Created by: KhoaPV
@@ -41,9 +45,9 @@ public class PaymentOnlineController {
      */
     @GetMapping("")
     public ResponseEntity<Page<PaymentOnlineForLookup>> getPaymentOnline(@RequestParam Optional<String> paymentOnlineId,
-                                                                @RequestParam Optional<String> customerName,
-                                                                @RequestParam(defaultValue = "0") int page,
-                                                                @RequestParam(defaultValue = "5") int size) {
+                                                                         @RequestParam Optional<String> customerName,
+                                                                         @RequestParam(defaultValue = "0") int page,
+                                                                         @RequestParam(defaultValue = "5") int size) {
         String paymentOnlineIdVal = paymentOnlineId.orElse("");
         String customerNameVal = customerName.orElse("");
         Pageable pageable = PageRequest.of(page, size);
@@ -52,6 +56,24 @@ public class PaymentOnlineController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(paymentOnlines, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 7/7/2022
+     * function: get discount id from request of client
+     * return discount value if exists.
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/discount/{id}")
+    public ResponseEntity<Discount> getDiscount(@PathVariable String id) {
+        Discount discount = this.iDiscountService.getDiscount(id);
+        if (discount == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(discount, HttpStatus.OK);
     }
 
     /**

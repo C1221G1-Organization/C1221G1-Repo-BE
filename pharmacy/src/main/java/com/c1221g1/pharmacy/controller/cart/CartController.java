@@ -1,9 +1,6 @@
 package com.c1221g1.pharmacy.controller.cart;
 
-import com.c1221g1.pharmacy.dto.cart.CartAndDetailDto;
-import com.c1221g1.pharmacy.dto.cart.CartDetailDto;
-import com.c1221g1.pharmacy.dto.cart.CartDtoForList;
-import com.c1221g1.pharmacy.dto.cart.CustomerMailing;
+import com.c1221g1.pharmacy.dto.cart.*;
 import com.c1221g1.pharmacy.entity.cart.Cart;
 import com.c1221g1.pharmacy.entity.cart.CartDetail;
 import com.c1221g1.pharmacy.entity.cart.PaymentOnline;
@@ -13,6 +10,7 @@ import com.c1221g1.pharmacy.service.cart.ICartService;
 import com.c1221g1.pharmacy.service.cart.IPaymentOnlineService;
 import com.c1221g1.pharmacy.service.cart.ISendingEmailService;
 import com.c1221g1.pharmacy.service.medicine.IMedicineService;
+import com.c1221g1.pharmacy.service.medicine.IMedicineStorageService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,13 +21,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/api/carts")
 public class CartController {
     @Autowired
@@ -44,6 +39,8 @@ public class CartController {
     private IPaymentOnlineService iPaymentOnlineService;
     @Autowired
     private ISendingEmailService iSendingEmailService;
+    @Autowired
+    private IMedicineStorageService iMedicineStorageService;
 
     /**
      * Created by: KhoaPV
@@ -57,14 +54,16 @@ public class CartController {
      */
     @PatchMapping("/{id}")
     public ResponseEntity<Map<String, String>> updateItem(@PathVariable String id,
-                                        @Validated @RequestBody CartDetailDto cartDetailDto,
-                                        BindingResult bindingResult) {
+                                                          @Validated @RequestBody CartDetailDto cartDetailDto,
+                                                          BindingResult bindingResult) {
         Cart cart = this.iCartService.findCartByCustomerId(id);
         if (cart == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         new CartDetailDto().validate(cartDetailDto, bindingResult);
-        this.iCartDetailService.checkExistOfLinksObject(cartDetailDto, bindingResult);
+        List<CartDetailDto> cartDetailDtos = new ArrayList<>();
+        cartDetailDtos.add(cartDetailDto);
+        this.iCartDetailService.checkExistOfLinksObject(cartDetailDtos, bindingResult);
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             bindingResult.getAllErrors().forEach((error) -> {
@@ -131,12 +130,22 @@ public class CartController {
     /**
      * Created by: KhoaPV
      * Date created: 4/7/2022
-     * function: check cart and details send from client, and return to payment pay if cart valid (For user non-login)
+     * function: check cart and details send from client, and return to payment pay if cart valid (cart save at localstorage)
      */
     @PostMapping("")
-    public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@RequestBody CartAndDetailDto cartAndDetailDto) {
+    public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@Validated @RequestBody CartAndDetailDto cartAndDetailDto,
+                                                                         BindingResult bindingResult) throws MethodArgumentNotValidException {
+        System.out.println("in");
 
-        //Validate
+        this.iCartDetailService.checkExistOfLinksObject(cartAndDetailDto.getCartDetail(), bindingResult);
+        if (bindingResult.hasErrors()) {
+            throw new MethodArgumentNotValidException(null, bindingResult);
+        }
+        if (cartAndDetailDto.getCustomer() != null) {
+            CustomerDtoForCart customerDtoForCart =
+                    this.iCartService.findCustomerByUsername(cartAndDetailDto.getCustomer().getCustomerUserName());
+            cartAndDetailDto.setCustomer(customerDtoForCart);
+        }
         System.out.println(cartAndDetailDto);
         return new ResponseEntity<>(cartAndDetailDto, HttpStatus.OK);
     }
@@ -144,7 +153,7 @@ public class CartController {
     /**
      * Created by: KhoaPV
      * Date created: 4/7/2022
-     * function: save cart and detail after customer pay with paypal (For user non-login)
+     * function: save cart and detail after customer pay with paypal (cart save at localstorage)
      */
     @PostMapping("/saveCart")
     public ResponseEntity<HttpStatus> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
@@ -153,10 +162,15 @@ public class CartController {
         if (cartAndDetailDto.getDiscount() != null) {
             cart.setDiscount(cartAndDetailDto.getDiscount());
         }
-        cart = this.iCartService.save(cart, "KH-0001");
+        if (cartAndDetailDto.getCustomer().getCustomerId() == null) {
+            cart = this.iCartService.save(cart, "KH-00001");
+        } else {
+            cart = this.iCartService.save(cart, cartAndDetailDto.getCustomer().getCustomerId());
+        }
         this.iCartService.setCartComplete(cart.getCartId());
         System.out.println(cart);
         Double total = 0.0;
+
         for (CartDetailDto cartDetailDto : cartAndDetailDto.getCartDetail()) {
             total += cartDetailDto.getQuantity() * cartDetailDto.getMedicine().getMedicinePrice();
             CartDetail cartDetail = new CartDetail();
@@ -166,10 +180,15 @@ public class CartController {
             if (medicine.isPresent()) {
                 cartDetail.setMedicine(medicine.get());
             }
-
             cartDetail.setCart(cart);
             this.iCartDetailService.save(cartDetail);
+            this.iMedicineStorageService.changeMedicineQuantity(
+                    cartDetail.getMedicine().getMedicineId(),
+                    Long.valueOf(cartDetail.getCartDetailQuantity()), 0);
+            System.out.println("1");
         }
+        total = total * (1 - cart.getDiscount().getDiscountValue());
+
         PaymentOnline paymentOnline = new PaymentOnline();
         paymentOnline.setCart(cart);
         this.iPaymentOnlineService.save(paymentOnline);
@@ -186,6 +205,20 @@ public class CartController {
         }
         System.out.println("success");
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Created by: KhoaPV
+     * Date created: 6/7/2022
+     * function: find customer using cart by username
+     */
+    @GetMapping("/customer/{customerUsername}")
+    public ResponseEntity<CustomerDtoForCart> findCustomerByUsername(@PathVariable String customerUsername) {
+        CustomerDtoForCart customer = this.iCartService.findCustomerByUsername(customerUsername);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     /**

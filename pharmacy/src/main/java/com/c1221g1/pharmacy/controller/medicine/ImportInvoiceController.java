@@ -139,18 +139,13 @@ public class ImportInvoiceController {
     ResponseEntity<Page<ImportInvoice>> getPageListImportInvoice(
             @RequestParam String startDate,
             @RequestParam String endDate,
-            @RequestParam String startTime,
-            @RequestParam String endTime,
             @RequestParam (defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size,
             @RequestParam String fieldSort,
             @RequestParam String fieldSortBy) {
 
         if ("".equals(endDate)) {
-            endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(LocalDateTime.now());
-        }
-        if ("".equals(endTime)) {
-            endTime = "23:59";
+            endDate = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm", Locale.ENGLISH).format(LocalDateTime.now());
         }
         Pageable pageable = null;
         if ("asc".equals(fieldSortBy)) {
@@ -158,7 +153,7 @@ public class ImportInvoiceController {
         } else {
             pageable = PageRequest.of(page, size, Sort.by(fieldSort).descending());
         }
-        Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDate, endDate, startTime, endTime, pageable);
+        Page<ImportInvoice> importInvoicePage = importInvoiceService.findAllImportInvoice(startDate, endDate, pageable);
 
         if (importInvoicePage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
