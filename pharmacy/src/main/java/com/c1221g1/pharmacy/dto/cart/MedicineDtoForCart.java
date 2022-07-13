@@ -2,9 +2,9 @@ package com.c1221g1.pharmacy.dto.cart;
 
 public class MedicineDtoForCart {
     private String medicineId;
-    private String MedicineName;
-    private String MedicineImage;
-    private Double MedicinePrice;
+    private String medicineName;
+    private String medicineImage;
+    private Double medicinePrice;
 
     public MedicineDtoForCart() {
     }
@@ -18,36 +18,36 @@ public class MedicineDtoForCart {
     }
 
     public String getMedicineName() {
-        return MedicineName;
+        return medicineName;
     }
 
     public void setMedicineName(String medicineName) {
-        MedicineName = medicineName;
+        this.medicineName = medicineName;
     }
 
     public String getMedicineImage() {
-        return MedicineImage;
+        return medicineImage;
     }
 
     public void setMedicineImage(String medicineImage) {
-        MedicineImage = medicineImage;
+        this.medicineImage = medicineImage;
     }
 
     public Double getMedicinePrice() {
-        return MedicinePrice;
+        return medicinePrice;
     }
 
     public void setMedicinePrice(Double medicinePrice) {
-        MedicinePrice = medicinePrice;
+        this.medicinePrice = medicinePrice;
     }
 
     @Override
     public String toString() {
         return "MedicineDtoForCart{" +
                 "medicineId='" + medicineId + '\'' +
-                ", MedicineName='" + MedicineName + '\'' +
-                ", MedicineImage='" + MedicineImage + '\'' +
-                ", MedicinePrice=" + MedicinePrice +
+                ", MedicineName='" + medicineName + '\'' +
+                ", MedicineImage='" + medicineImage + '\'' +
+                ", MedicinePrice=" + medicinePrice +
                 '}';
     }
 }

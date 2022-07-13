@@ -135,7 +135,6 @@ public class CartController {
     @PostMapping("")
     public ResponseEntity<CartAndDetailDto> checkCartAndDetailFromClient(@Validated @RequestBody CartAndDetailDto cartAndDetailDto,
                                                                          BindingResult bindingResult) throws MethodArgumentNotValidException {
-        System.out.println("in");
 
         this.iCartDetailService.checkExistOfLinksObject(cartAndDetailDto.getCartDetail(), bindingResult);
         if (bindingResult.hasErrors()) {
@@ -157,7 +156,6 @@ public class CartController {
      */
     @PostMapping("/saveCart")
     public ResponseEntity<HttpStatus> saveCartAndDetail(@RequestBody CartAndDetailDto cartAndDetailDto) {
-        System.out.println(cartAndDetailDto);
         Cart cart = new Cart();
         if (cartAndDetailDto.getDiscount() != null) {
             cart.setDiscount(cartAndDetailDto.getDiscount());
@@ -168,14 +166,11 @@ public class CartController {
             cart = this.iCartService.save(cart, cartAndDetailDto.getCustomer().getCustomerId());
         }
         this.iCartService.setCartComplete(cart.getCartId());
-        System.out.println(cart);
-        Double total = 0.0;
-
+        double total = 0.0;
         for (CartDetailDto cartDetailDto : cartAndDetailDto.getCartDetail()) {
             total += cartDetailDto.getQuantity() * cartDetailDto.getMedicine().getMedicinePrice();
             CartDetail cartDetail = new CartDetail();
             cartDetail.setCartDetailQuantity(cartDetailDto.getQuantity());
-
             Optional<Medicine> medicine = this.iMedicineService.findMedicineById(cartDetailDto.getMedicine().getMedicineId());
             if (medicine.isPresent()) {
                 cartDetail.setMedicine(medicine.get());
@@ -185,21 +180,16 @@ public class CartController {
             this.iMedicineStorageService.changeMedicineQuantity(
                     cartDetail.getMedicine().getMedicineId(),
                     Long.valueOf(cartDetail.getCartDetailQuantity()), 0);
-            System.out.println("1");
         }
-        total = total * (1 - cart.getDiscount().getDiscountValue());
-
+        double discount = 0;
+        if (cartAndDetailDto.getDiscount() != null) {
+            discount = cartAndDetailDto.getDiscount().getDiscountValue();
+        }
         PaymentOnline paymentOnline = new PaymentOnline();
         paymentOnline.setCart(cart);
         this.iPaymentOnlineService.save(paymentOnline);
-        CustomerMailing customerMailing = new CustomerMailing();
-        customerMailing.setName(cartAndDetailDto.getCustomer().getCustomerName());
-        customerMailing.setPhone(cartAndDetailDto.getCustomer().getCustomerPhone());
-        customerMailing.setAddress(cartAndDetailDto.getCustomer().getCustomerAddress());
-        customerMailing.setEmail(cartAndDetailDto.getCustomer().getCustomerUserName());
-        customerMailing.setTotal(total);
         try {
-            this.iSendingEmailService.sendEmail(customerMailing);
+            this.iSendingEmailService.sendEmail(cartAndDetailDto, total, discount);
         } catch (Exception ex) {
             System.out.println(ex);
         }
