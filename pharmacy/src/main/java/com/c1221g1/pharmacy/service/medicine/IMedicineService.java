@@ -12,7 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IMedicineService {
-
+    /*
+     * Created by DaLQA
+     * Time: 10:30 PM 3/07/2022
+     * Function: function getListMedicineSale
+     * */
     List<MedicineSale> getListMedicineSale();
 
     Optional<Medicine> findMedicineById(String medicineId);
