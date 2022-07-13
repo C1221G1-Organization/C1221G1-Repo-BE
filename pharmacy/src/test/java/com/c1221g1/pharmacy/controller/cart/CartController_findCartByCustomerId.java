@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.cart;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +57,7 @@ public class CartController_findCartByCustomerId {
     @Test
     public void findCartByCustomerId_id_3() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/carts/{id}", ""))
+                .get("/api/carts/{id}", "KH-100011"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }

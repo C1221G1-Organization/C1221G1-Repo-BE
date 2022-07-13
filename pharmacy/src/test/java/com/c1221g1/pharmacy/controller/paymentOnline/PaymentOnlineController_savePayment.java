@@ -1,4 +1,4 @@
-package com.c1221g1.pharmacy.controller;
+package com.c1221g1.pharmacy.controller.paymentOnline;
 
 import com.c1221g1.pharmacy.dto.cart.PaymentOnlineDto;
 import com.c1221g1.pharmacy.entity.cart.Cart;
