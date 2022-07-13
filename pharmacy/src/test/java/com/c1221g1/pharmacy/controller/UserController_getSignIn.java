@@ -58,7 +58,7 @@ public class UserController_getSignIn {
     }
 
     @Test
-    public void getSignIn_username_15() throws Exception {
+    void getSignIn_username_15() throws Exception {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername("abcab cs");
         loginRequest.setPassword("123123");
