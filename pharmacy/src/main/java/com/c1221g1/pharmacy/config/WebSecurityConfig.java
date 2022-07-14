@@ -70,6 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
+
                         , "/api/manager-security/users/sign-up",
                         "/api/manager-security/users/verify/**",
                         "/api/carts/saveCart",

@@ -11,7 +11,6 @@ import java.util.List;
 
 @Entity
 @JsonIgnoreProperties({"invoiceMedicineList"})
-
 public class Invoice {
     @Id
     @Column(columnDefinition = "VARCHAR(20)")

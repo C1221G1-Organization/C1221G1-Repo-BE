@@ -26,7 +26,7 @@ public interface IInvoiceMedicineRepository extends JpaRepository<InvoiceMedicin
               Function: Find invoiceMedicine by Invoice id
         */
     @Query(value = "select *" +
-            "from invoice_medicine\n" +
-            "where invoice_id = :invoice_id", nativeQuery = true)
+            "from invoice inner join invoice_medicine  on invoice.invoice_id = invoice_medicine.invoice_id" +
+            " where invoice.invoice_id = :invoice_id and invoice.type_of_invoice_id = 2", nativeQuery = true)
     List<InvoiceMedicine> findByInvoiceId(@Param("invoice_id") String id);
 }

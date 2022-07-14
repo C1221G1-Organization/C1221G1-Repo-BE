@@ -48,7 +48,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
             "AND customer_name LIKE:customerName " +
             "AND customer_address LIKE:customerAddress " +
             "AND customer_phone LIKE:customerPhone"
-            , countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username, uuid_chat " +
+            , countQuery = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username, uuid_chat  " +
             "FROM customer " +
             "WHERE flag = 1 " +
             "AND customer_id LIKE :customerId " +
@@ -81,10 +81,10 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      * This method to find id customer in database
      */
 
-    @Query(value = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username, uuid_chat " +
+
+    @Query(value = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username, uuid_chat  " +
             "FROM customer WHERE customer_id = :id", nativeQuery = true)
     Optional<Customer> findByCustomerIdOptional(String id);
-
     /**
      * create by TruongNQ
      * time: 30/06/2022
@@ -92,7 +92,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      */
 
     @Query(value = "SELECT customer_id,customer_name,customer_address,customer_birthday,customer_gender,customer_note,customer_phone," +
-            "customer_type_id, flag, customer_username, uuid_chat FROM customer WHERE customer_id = :customerId",
+            "customer_type_id, flag, customer_username, uuid_chat  FROM customer WHERE customer_id = :customerId",
             nativeQuery = true)
     Customer findByCustomerId(@Param("customerId") String customerId);
 
