@@ -69,9 +69,23 @@ public class PrescriptionRestController_listPrescription {
 //public class PrescriptionRestController_listPrescription {
 //    @Autowired
 //    private MockMvc mockMvc;
+<<<<<<< HEAD
+//
+//<<<<<<< HEAD
+//    /**
+//     * HienTLD
+//     * JUnit trường hợp danh sách trả về size = 0
+//     * 16:50 30/06/2022
+//     */
+//=======
+//
+//     // trường hợp danh sách trả về size = 0
+//>>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229
+=======
 //x
 //
 //     // trường hợp danh sách trả về size = 0
+>>>>>>> 8742e52c101e4dd6fe98881d155d8fd633cdc383
 //    @Test
 //    public void getListPrescription_5() throws Exception {
 //
@@ -103,8 +117,13 @@ public class PrescriptionRestController_listPrescription {
 //        this.mockMvc.perform(
 //<<<<<<< HEAD
 //                        MockMvcRequestBuilders
+<<<<<<< HEAD
+//                                .get("/api/manager-prescription/prescriptions/"))
+//=======
+=======
 ////                                .get("/api/manager-prescraiption/prescriptions/"))
 //=======a
+>>>>>>> 8742e52c101e4dd6fe98881d155d8fd633cdc383
 //                MockMvcRequestBuilders
 //                        .get("/api/manager-prescription/prescriptions/"))
 //>>>>>>> 770b939a5d8a128ce0a183a30a2aaa58056ca229

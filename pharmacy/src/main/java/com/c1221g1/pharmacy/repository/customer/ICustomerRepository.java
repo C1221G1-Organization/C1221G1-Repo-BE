@@ -27,7 +27,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      * */
     @Query(value = "SELECT customer_id, customer_address, customer_birthday," +
             "customer_gender, customer_name, customer_note,customer_phone, " +
-            "flag, customer_type_id, customer_username, uuid_chat  " +
+            "flag, customer_type_id, customer_username, uuid_chat " +
             "FROM customer " +
             "ORDER BY customer.customer_id " +
             "ASC LIMIT 1",
@@ -81,10 +81,10 @@ public interface ICustomerRepository extends JpaRepository<Customer, String> {
      * This method to find id customer in database
      */
 
+
     @Query(value = "SELECT customer_id, customer_address, customer_birthday, customer_gender, customer_name, customer_note, customer_phone, flag, customer_type_id, customer_username, uuid_chat  " +
             "FROM customer WHERE customer_id = :id", nativeQuery = true)
     Optional<Customer> findByCustomerIdOptional(String id);
-
     /**
      * create by TruongNQ
      * time: 30/06/2022

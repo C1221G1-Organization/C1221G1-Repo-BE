@@ -26,16 +26,23 @@ public class UsersDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users users = this.iUsersRepository.getUserByUsername(username);
-        if(users == null){
-            throw new UsernameNotFoundException("Not found user with username: "+username);
+        if (users == null) {
+            throw new UsernameNotFoundException("Not found user with username: " + username);
         }
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (int i = 0; i < users.getUserRoleList().size(); i++) {
-            authorities.add( new SimpleGrantedAuthority(users.getUserRoleList().get(i).getRoles().getRoleName()));
+            authorities.add(new SimpleGrantedAuthority(users.getUserRoleList().get(i).getRoles().getRoleName()));
+        }
+        if (users.isFlag()) {
+            return new User(users.getUsername(),
+                    users.getPassword(),
+                    true, true, true, true,
+                    authorities);
         }
         return new User(users.getUsername(),
                 users.getPassword(),
-                true,true,true,true,
-                authorities);
+                false, false, false, false,
+                null);
     }
+
 }

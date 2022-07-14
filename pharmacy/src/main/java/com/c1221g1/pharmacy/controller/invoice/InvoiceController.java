@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/manager-sale/invoices")
+@RequestMapping("/api/manager-sale/invoices")
 public class InvoiceController {
     @Autowired
     IInvoiceService iInvoiceService;

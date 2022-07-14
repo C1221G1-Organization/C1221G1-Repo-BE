@@ -65,37 +65,52 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * @Time 17:00:00 04/07/2022
          * @Function Config role to access api url
          */
-        http
+        http.cors().and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/manager-security/users/sign-in"
-                        , "/api/manager-security/users/sign-up", "/api/carts", "/api/payment-online", "/api/manager-position**",
-                        "/**")
-                .permitAll();
-//                .antMatchers("/api/manager-cart**")
-//                .hasRole("USER")
-//                .antMatchers("/api/manager-customer/customers**","/api/manager-prescription/**",
-//                        "/api/manager-sale/**","api/manager-sale/invoices**"
-//                        ,"/api/manager-medicine/**","/api/manager-prescription**","/api/manager_report/**"
-//                )
-//                .hasAnyRole("EMPLOYEE","MANAGER")
-//                .antMatchers("/api/manager-account/**","/api/manager-employee/**")
-//                .hasRole("MANAGER")
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .exceptionHandling()
-//                .authenticationEntryPoint(unauthorizedHandler)
-//                .and()
-//                .rememberMe()
-//                .tokenRepository(persistentTokenRepository())
-//                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
-//
-//        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+                        , "/api/manager-security/users/sign-up",
+                        "/api/manager-security/users/verify/**",
+                        "/api/carts/saveCart",
+                        "/api/manager-online**",
+                        "/api/carts/customer/**",
+                        "/api/carts/**",
+                        "/api/manager-security/users/sign-in-facebook"
+                        ,"/api/manager-medicine/**"
+                )
+                .permitAll()
+                .antMatchers("/api/manager-prescription/**"
+                        , "/api/manager-sale/invoiceMedicines/getMedicines"
+                        , "/api/manager-report/report/**"
+                        ,"/api/manager-sale/invoices**" // Đã check
+                        ,"/api/manager-customer/customers/**" // ĐÃ check
+                        ,"/api/manager-customer/customerTypes"
+                        ,"/api/manager-position/positions",
+                        "/api/manager-employee/employees/list"
+                )
+                .hasAnyRole("EMPLOYEE", "MANAGER")
+                .antMatchers(
+                        "/api/manager-account/account/listAccount",
+                        "/api/manager-account/account/**"
+                        , "/api/manager-employee/employees/**"
+                        )
+                .hasRole("MANAGER")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(unauthorizedHandler)
+                .and()
+                .rememberMe()
+                .tokenRepository(persistentTokenRepository())
+                .tokenValiditySeconds(computeDurationInMilliseconds()).and().logout().logoutSuccessUrl("/");
+
+        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 
