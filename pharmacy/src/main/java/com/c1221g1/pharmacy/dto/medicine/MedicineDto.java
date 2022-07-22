@@ -18,6 +18,7 @@ public class MedicineDto {
     private String medicineActiveIngredients;
     @NotNull
     @Positive
+    @Max(value = 500000000,message = "Giá nhập không quá 500 triệu.")
     private Double medicineImportPrice;
 
     @NotNull
@@ -27,10 +28,12 @@ public class MedicineDto {
 
     @NotNull
     @Positive
+    @Max(100)
     private Double medicineWholesaleProfit;
 
     @NotNull
     @Positive
+    @Max(100)
     private Double medicineRetailSaleProfit;
 
     @NotNull
@@ -69,10 +72,10 @@ public class MedicineDto {
     public MedicineDto(String medicineId,
                        @NotEmpty @Pattern(regexp = VieRegex.VN_REGEX) String medicineName,
                        @NotEmpty String medicineActiveIngredients,
-                       @NotNull @Positive Double medicineImportPrice,
+                       @NotNull @Positive @Max(500000000) Double medicineImportPrice,
                        @NotNull @Positive @Max(100) Double medicineDiscount,
-                       @NotNull @Positive Double medicineWholesaleProfit,
-                       @NotNull @Positive Double medicineRetailSaleProfit,
+                       @NotNull @Positive @Max(100) Double medicineWholesaleProfit,
+                       @NotNull @Positive @Max(100) Double medicineRetailSaleProfit,
                        @NotNull @Positive @Max(100) Double medicineTax,
                        @NotNull @Positive @Max(100) Integer medicineConversionRate,
                        @NotEmpty String medicineManufacture,

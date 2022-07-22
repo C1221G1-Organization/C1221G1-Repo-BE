@@ -18,8 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -44,9 +43,9 @@ public class MedicineController {
 
     @GetMapping("/search")
     public ResponseEntity<List<MedicineLookUpDto>> findAllMedicine(
-                                                                   @RequestParam Optional<String> columName,
-                                                                   @RequestParam Optional<String> condition,
-                                                                   @RequestParam Optional<String> keyWord
+            @RequestParam Optional<String> columName,
+            @RequestParam Optional<String> condition,
+            @RequestParam Optional<String> keyWord
     ) {
         String columNameValue = columName.orElse("medicineId");
         String conditionValue = condition.orElse("like");
@@ -129,10 +128,16 @@ public class MedicineController {
      * @Time 15:30 29/06/2022
      */
     @PostMapping("")
-    public ResponseEntity<List<FieldError>> createMedicine(@Valid @RequestBody MedicineDto medicineDto,
-                                                           BindingResult bindingResult) {
+    public ResponseEntity<Map<String,String>> createMedicine(@Valid @RequestBody MedicineDto medicineDto,
+                                                          BindingResult bindingResult) {
+        Map<String,String> errorMap = new HashMap<>();
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            bindingResult.getFieldErrors().forEach(
+                    fieldError -> {
+                        errorMap.put(fieldError.getField(),fieldError.getDefaultMessage());
+                    }
+            );
+            return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
         Medicine medicine = new Medicine();
         MedicineType medicineType = new MedicineType();
@@ -338,13 +343,8 @@ public class MedicineController {
         return new ResponseEntity<>(medicineDtoList, HttpStatus.OK);
     }
 
-    /**
-     * HienTLD
-     * danh sách List<Medicine>
-     * 8:58 06/07/2022
-     */
     @GetMapping("/list")
-    public ResponseEntity<List<Medicine>> getAllMedicineList(){
+    public ResponseEntity<List<Medicine>> getAllMedicineList() {
         List<Medicine> medicineList = medicineService.findAllMedicine();
 
         if (medicineList.isEmpty()) {
