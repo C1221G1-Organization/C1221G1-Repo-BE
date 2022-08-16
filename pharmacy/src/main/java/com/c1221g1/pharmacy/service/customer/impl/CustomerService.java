@@ -36,7 +36,9 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Page<Customer> findAllCustomer(Pageable pageable, String customerId, String customerName, String customerAddress, String customerPhone, String customerType) {
-        return iCustomerRepository.getAllSearchAndSortCustomer("%" + customerId + "%", "%" + customerType + "%", "%" + customerName + "%", "%" + customerAddress + "%", "%" + customerPhone + "%", pageable);
+        return iCustomerRepository.getAllSearchAndSortCustomer("%" + customerId + "%",
+                "%" + customerType + "%", "%" + customerName + "%",
+                "%" + customerAddress + "%", "%" + customerPhone + "%", pageable);
     }
 
     /**
